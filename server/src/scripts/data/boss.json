@@ -1,0 +1,362 @@
+[
+  {
+    "bossId": 2684,
+    "name": "Plexus Sentinel",
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "raidName": "Manaforge Omega",
+    "order": 1,
+    "icon": "ui-ej-boss-arcanomatrixwarden",
+    "loots": [
+      237547, 237534, 237533, 237525, 237543, 237523, 237528, 237551, 237739, 237736, 237813,
+      242394, 237567
+    ]
+  },
+  {
+    "bossId": 2686,
+    "name": "Loom'ithar",
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "raidName": "Manaforge Omega",
+    "icon": "ui-ej-boss-loombeast",
+    "order": 2,
+    "loots": [
+      237524, 237552, 237522, 237545, 237732, 237729, 237723, 242395, 242393, 237596, 237595,
+      237594, 237593
+    ]
+  },
+  {
+    "bossId": 2685,
+    "name": "Soulbinder Naazindhri",
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "raidName": "Manaforge Omega",
+    "icon": "ui-ej-boss-soulbindernaazindhri",
+    "order": 3,
+    "loots": [
+      237527, 237546, 237539, 237550, 237738, 237730, 237568, 242391, 242398, 237588, 237587,
+      237586, 237585
+    ]
+  },
+  {
+    "bossId": 2687,
+    "name": "Forgeweaver Araz",
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "raidName": "Manaforge Omega",
+    "icon": "ui-ej-boss-highmanaforgeraraz",
+    "order": 4,
+    "loots": [
+      237538, 237553, 237529, 237526, 237726, 237737, 237724, 237570, 242402, 237592, 237591,
+      237590, 237589
+    ]
+  },
+  {
+    "bossId": 2688,
+    "name": "The Soul Hunters",
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "raidName": "Manaforge Omega",
+    "icon": "ui-ej-boss-thesoulhunters",
+    "order": 5,
+    "loots": [
+      237549, 237541, 237554, 237561, 237727, 237741, 242397, 242401, 237600, 237599, 237598, 237597
+    ]
+  },
+  {
+    "bossId": 2747,
+    "name": "Fractillus",
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "raidName": "Manaforge Omega",
+    "icon": "ui-ej-boss-fractillus",
+    "order": 6,
+    "loots": [
+      237558, 237565, 237536, 237530, 237728, 237733, 237742, 242392, 242396, 237584, 237583,
+      237582, 237581
+    ]
+  },
+  {
+    "bossId": 2690,
+    "name": "Nexus-King Salhadaar",
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "raidName": "Manaforge Omega",
+    "icon": "ui-ej-boss-nexuskingsalhadaar",
+    "order": 7,
+    "loots": [
+      237556, 237548, 237557, 237531, 237555, 237544, 237564, 237532, 237740, 237735, 237734,
+      243365, 242406, 242403, 242400
+    ]
+  },
+  {
+    "bossId": 2691,
+    "name": "Dimensius, the All-Devouring",
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "raidName": "Manaforge Omega",
+    "icon": "ui-ej-boss-dimensius",
+    "order": 8,
+    "loots": [
+      237559, 237542, 237562, 237540, 237537, 237560, 237535, 237563, 242405, 237731, 237725,
+      242404, 242399, 237602
+    ]
+  },
+  {
+    "bossId": 724337671,
+    "name": "Bind on Equip",
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "raidName": "Manaforge Omega",
+    "icon": "ui-ej-boss-trash-drops",
+    "order": 9,
+    "loots": [238033, 243048, 238031, 238027, 238032, 238030, 238028, 238034, 238036]
+  },
+  {
+    "bossId": 240435,
+    "name": "Imperator Averzian",
+    "extension": "Midnight",
+    "season": "season-01",
+    "raidName": "The Voidspire",
+    "order": 1,
+    "icon": "ui-ej-boss-imperatoraverzian",
+    "loots": [
+      249275, 249306, 249319, 249335, 249323, 249344, 249313, 249326, 249310, 249320, 249279,
+      249334, 249293
+    ]
+  },
+  {
+    "bossId": 240434,
+    "name": "Vorasius",
+    "extension": "Midnight",
+    "season": "season-01",
+    "raidName": "The Voidspire",
+    "order": 2,
+    "icon": "ui-ej-boss-vorasius",
+    "loots": [
+      249317, 249276, 249342, 249925, 249302, 249332, 249336, 249327, 249353, 249352, 249354,
+      249351, 249315
+    ]
+  },
+  {
+    "bossId": 240432,
+    "name": "Fallen-King Salhadaar",
+    "extension": "Midnight",
+    "season": "season-01",
+    "raidName": "The Voidspire",
+    "order": 3,
+    "icon": "ui-ej-boss-fallenkingsalhadaar",
+    "loots": [
+      249281, 249316, 249308, 249304, 249337, 249298, 249314, 249365, 249364, 249366, 249363,
+      249341, 249340
+    ]
+  },
+  {
+    "bossId": 250892,
+    "name": "Vaelgor & Ezzorak",
+    "extension": "Midnight",
+    "season": "season-01",
+    "raidName": "The Voidspire",
+    "order": 4,
+    "icon": "ui-ej-boss-vaelgorezzorak",
+    "loots": [
+      249287, 249370, 249280, 249331, 249339, 249318, 249305, 249321, 249346, 249361, 249360,
+      249362, 249359
+    ]
+  },
+  {
+    "bossId": 250589,
+    "name": "Lightblinded Vanguard",
+    "extension": "Midnight",
+    "season": "season-01",
+    "raidName": "The Voidspire",
+    "order": 5,
+    "icon": "ui-ej-boss-lightblindedvanguard",
+    "loots": [
+      249277, 249294, 249333, 249369, 249311, 249808, 249357, 249356, 249358, 249355, 249303, 249330
+    ]
+  },
+  {
+    "bossId": 244761,
+    "name": "Crown of the Cosmos",
+    "extension": "Midnight",
+    "season": "season-01",
+    "raidName": "The Voidspire",
+    "order": 6,
+    "icon": "ui-ej-boss-crownofthecosmos",
+    "loots": [
+      260423, 249382, 249368, 249329, 249380, 249809, 249312, 249345, 249288, 249309, 249295, 249325
+    ]
+  },
+  {
+    "bossId": 256116,
+    "name": "Chimaerus, the Undreamt God",
+    "extension": "Midnight",
+    "season": "season-01",
+    "raidName": "The Voidspire",
+    "order": 7,
+    "icon": "ui-ej-boss-chimaerustheundreamtgod",
+    "loots": [
+      249349, 249348, 249350, 249278, 249347, 249373, 249343, 249381, 249374, 249371, 249922, 249805
+    ]
+  },
+  {
+    "bossId": 2000008,
+    "name": "Belo'ren, Child of Al'ar",
+    "extension": "Midnight",
+    "season": "season-01",
+    "raidName": "The Voidspire",
+    "order": 8,
+    "icon": "ui-ej-boss-belorenchildofalar",
+    "loots": [
+      249283, 249284, 249921, 249328, 249322, 249307, 249376, 249324, 249377, 249919, 249806,
+      249807, 260235
+    ]
+  },
+  {
+    "bossId": 214650,
+    "name": "L'ura",
+    "extension": "Midnight",
+    "season": "season-01",
+    "raidName": "The Voidspire",
+    "order": 9,
+    "icon": "ui-ej-boss-lura",
+    "loots": [
+      249810, 249912, 249914, 249913, 260408, 249811, 249920, 249915, 249367, 249286, 250247, 249296
+    ]
+  },
+  {
+    "bossId": 254176,
+    "name": "Rotmire",
+    "extension": "Midnight",
+    "season": "season-01",
+    "raidName": "The Voidspire",
+    "order": 10,
+    "icon": "ui-ej-boss-rotmire",
+    "loots": [
+      268282, 268283, 268284, 268285, 268286, 268287, 268288, 268289, 268290, 268291, 268292
+    ]
+  },
+  {
+    "bossId": 253563,
+    "name": "Nek'zali the Soulcoiler",
+    "extension": "Midnight",
+    "season": "season-02",
+    "raidName": "The Venomous Abyss",
+    "order": 1,
+    "icon": "ui-ej-boss-nekzalithesoulcoiler",
+    "loots": [
+      281227, 268230, 270162, 268203, 268236, 268235, 268229, 268245, 268208, 270930, 268248,
+      268218, 268240, 268216
+    ]
+  },
+  {
+    "bossId": 258557,
+    "name": "Entombed Sentinels",
+    "extension": "Midnight",
+    "season": "season-02",
+    "raidName": "The Venomous Abyss",
+    "order": 2,
+    "icon": "ui-ej-boss-entombedsentinels",
+    "loots": [
+      270913, 270912, 270911, 270910, 268250, 270165, 268204, 268198, 268224, 268228, 268219, 268197
+    ]
+  },
+  {
+    "bossId": 267077,
+    "name": "The Lost Explorers",
+    "extension": "Midnight",
+    "season": "season-02",
+    "raidName": "The Venomous Abyss",
+    "order": 3,
+    "icon": "ui-ej-boss-thelostexplorers",
+    "loots": [
+      270925, 270924, 270923, 270922, 270164, 270160, 268210, 268200, 268227, 268242, 268258,
+      268239, 268196
+    ]
+  },
+  {
+    "bossId": 266403,
+    "name": "Vashnik the Malignant",
+    "extension": "Midnight",
+    "season": "season-02",
+    "raidName": "The Venomous Abyss",
+    "order": 4,
+    "icon": "ui-ej-boss-vashnikthemalignant",
+    "loots": [
+      270929, 270928, 270927, 270926, 268249, 268246, 268254, 268260, 268214, 270166, 270161, 268205
+    ]
+  },
+  {
+    "bossId": 257347,
+    "name": "Sszorak",
+    "extension": "Midnight",
+    "season": "season-02",
+    "raidName": "The Venomous Abyss",
+    "order": 5,
+    "icon": "ui-ej-boss-sszorak",
+    "loots": [
+      270921, 270920, 270919, 270918, 270163, 270174, 268206, 268201, 268257, 268234, 268233, 268252
+    ]
+  },
+  {
+    "bossId": 257361,
+    "name": "The Twin Fangs",
+    "extension": "Midnight",
+    "season": "season-02",
+    "raidName": "The Venomous Abyss",
+    "order": 6,
+    "icon": "ui-ej-boss-thetwinfangs",
+    "loots": [
+      270917, 270916, 270915, 270914, 270171, 270170, 268251, 268264, 268241, 268261, 268223, 268220
+    ]
+  },
+  {
+    "bossId": 259447,
+    "name": "The Coiled Altar",
+    "extension": "Midnight",
+    "season": "season-02",
+    "raidName": "The Venomous Abyss",
+    "order": 7,
+    "icon": "ui-ej-boss-thecoiledaltar",
+    "loots": [
+      268225, 268231, 268209, 270173, 268243, 270169, 268237, 268222, 268213, 268253, 268255,
+      268256, 268259, 268211, 275937, 275938
+    ]
+  },
+  {
+    "bossId": 268335,
+    "name": "Ula'tek",
+    "extension": "Midnight",
+    "season": "season-02",
+    "raidName": "The Venomous Abyss",
+    "order": 8,
+    "icon": "ui-ej-boss-ulatek",
+    "loots": [
+      270909, 268202, 268215, 270168, 270175, 268207, 268265, 271874, 271875, 271876, 271878,
+      271093, 271092
+    ]
+  },
+  {
+    "bossId": 252959,
+    "name": "Nymrissa Wavecaller",
+    "extension": "Midnight",
+    "season": "season-02",
+    "raidName": "The Venomous Abyss",
+    "order": 9,
+    "icon": "ui-ej-boss-nymrissawavecaller",
+    "loots": [
+      270167, 268199, 268221, 268238, 268226, 268263, 268262, 268232, 268247, 268217, 268244, 268266
+    ]
+  },
+  {
+    "bossId": 252959,
+    "name": "Kith'ix",
+    "extension": "Midnight",
+    "season": "season-02",
+    "raidName": "The Venomous Abyss",
+    "order": 10,
+    "icon": "ui-ej-boss-kithix",
+    "loots": [281215, 280835, 280617, 281029, 281235, 281236, 281238, 281239, 281056, 280799]
+  }
+]

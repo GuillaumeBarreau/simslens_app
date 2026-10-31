@@ -1,0 +1,27 @@
+{
+  "tooltip": "Report bug / Contact",
+  "title": "Contact / Bug Report",
+  "subject": "Subject",
+  "subjects": {
+    "bug": "Report a Bug",
+    "feature": "Suggestion",
+    "other": "Other"
+  },
+  "name": "Name",
+  "name_placeholder": "Your name",
+  "email": "Email (Optional)",
+  "email_placeholder": "your@email.com",
+  "message": "Message",
+  "message_placeholder": "Describe your issue or suggestion...",
+  "cancel": "Cancel",
+  "send": "Send",
+  "success_title": "Message sent",
+  "success_message": "Thanks for your feedback!",
+  "error_title": "Error",
+  "error_message": "Could not send message. Please try again later.",
+  "validation": {
+    "name_short": "Name is too short",
+    "email_invalid": "Invalid email",
+    "message_short": "Message is too short"
+  }
+}

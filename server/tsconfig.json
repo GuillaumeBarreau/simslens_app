@@ -1,0 +1,18 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "node16",
+    "moduleResolution": "node16",
+    "types": ["node", "vitest/globals"],
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts", "src/**/*.js"],
+  "exclude": ["src/generated", "dist"],
+  // Les fichiers de configuration vivent à la racine de server/, donc hors
+  // rootDir : ils ne peuvent pas rejoindre ce projet sans décaler dist/.
+  // Cette référence les rattache quand même pour l'IDE et `tsc -b`.
+  "references": [{ "path": "./tsconfig.tools.json" }]
+}

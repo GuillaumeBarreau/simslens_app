@@ -1,0 +1,24 @@
+# Relecture obligatoire du mainteneur sur les chemins protégés
+# (même liste que scripts/agents/protected-paths.json — garder les deux alignés).
+# N'est appliqué que si la protection de `master` exige la revue des code owners.
+
+/server/prisma/                              @GuillaumeBarreau
+/server/src/shared/config/permissions/       @GuillaumeBarreau
+/app/src/types/permissions.ts                @GuillaumeBarreau
+/server/src/api/auth/                        @GuillaumeBarreau
+/server/src/api/device_auth/                 @GuillaumeBarreau
+/server/src/middleware/                      @GuillaumeBarreau
+/server/src/app.js                           @GuillaumeBarreau
+/server/src/shared/config/index.js           @GuillaumeBarreau
+/server/docker-entrypoint.sh                 @GuillaumeBarreau
+/.github/                                    @GuillaumeBarreau
+Dockerfile                                   @GuillaumeBarreau
+/docker-compose*.yml                         @GuillaumeBarreau
+/deployment/                                 @GuillaumeBarreau
+.env*                                        @GuillaumeBarreau
+/scripts/env-manager.js                      @GuillaumeBarreau
+package.json                                 @GuillaumeBarreau
+package-lock.json                            @GuillaumeBarreau
+/CLAUDE.md                                   @GuillaumeBarreau
+/scripts/agents/                             @GuillaumeBarreau
+/docs/TECHNICAL_DEBT.md                      @GuillaumeBarreau

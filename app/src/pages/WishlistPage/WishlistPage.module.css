@@ -1,0 +1,237 @@
+/* Wishlist (SIMS-250) : cartes sobres, filets fins, aucun effet de survol marqué.
+   --accent : couleur de la classe du personnage, posée sur la page. */
+
+.page {
+  --accent: var(--mantine-color-brand-5);
+  --surface: var(--mantine-color-dark-7);
+  --surface-raised: var(--mantine-color-dark-6);
+  --line: var(--mantine-color-dark-4);
+}
+
+.header {
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-lg);
+  background: var(--surface-raised);
+  border-top: 3px solid var(--accent);
+}
+
+.progressValue {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--mantine-color-white);
+  font-variant-numeric: tabular-nums;
+}
+
+.section {
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-lg);
+  background: var(--surface-raised);
+}
+
+/* Liste d'emplacements : un conteneur, des filets entre les lignes. */
+.slotList {
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-md);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.slotRow {
+  display: flex;
+  align-items: center;
+  gap: var(--mantine-spacing-sm);
+  width: 100%;
+  padding: 10px var(--mantine-spacing-md);
+  text-align: left;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  font: inherit;
+}
+
+.slotRow + .slotRow {
+  border-top: 1px solid var(--mantine-color-dark-5);
+}
+
+.slotRow[data-clickable] {
+  cursor: pointer;
+}
+
+.slotRow:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* Emplacement ouvert dans le tiroir : filet coloré à gauche, sans animation. */
+.slotRow[data-selected] {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.slotIcon {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--mantine-color-dark-8);
+}
+
+.slotIcon[data-empty] img {
+  filter: grayscale(100%);
+  opacity: 0.35;
+}
+
+.slotLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mantine-color-dimmed);
+}
+
+.suggestion {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.gain {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.paperdoll {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-md);
+  background: var(--mantine-color-dark-8);
+}
+
+.paperdollRender {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.paperdollRender img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0.85;
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+}
+
+.candidate {
+  display: flex;
+  align-items: center;
+  gap: var(--mantine-spacing-sm);
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-md);
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.candidate[data-current] {
+  border-color: var(--mantine-color-brand-6);
+}
+
+.candidate[data-disabled] {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+.candidate:focus-visible {
+  outline: 2px solid var(--mantine-color-brand-5);
+  outline-offset: 1px;
+}
+
+.bossCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mantine-spacing-sm);
+  padding: var(--mantine-spacing-md);
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-md);
+  background: var(--surface);
+}
+
+.rosterRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  padding: 10px var(--mantine-spacing-md);
+}
+
+.rosterRow + .rosterRow {
+  border-top: 1px solid var(--mantine-color-dark-5);
+}
+
+.rosterRow[data-current] {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.rosterIdentity {
+  display: flex;
+  align-items: center;
+  gap: var(--mantine-spacing-sm);
+  flex: 0 0 220px;
+  min-width: 0;
+}
+
+.rosterCompletion {
+  flex: 0 0 110px;
+}
+
+.rosterIcons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  flex: 1 1 360px;
+  min-width: 0;
+}
+
+.rosterIcon {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background-color: var(--mantine-color-dark-8);
+  background-size: cover;
+  background-position: center;
+}
+
+.rosterIcon[data-empty] {
+  opacity: 0.18;
+}
+
+.rosterGap {
+  width: 8px;
+}
+
+@media (max-width: 48em) {
+  .rosterIdentity {
+    flex: 1 1 auto;
+  }
+
+  .rosterCompletion {
+    flex: 0 0 90px;
+  }
+}

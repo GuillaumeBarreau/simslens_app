@@ -1,0 +1,280 @@
+{
+  "header": {
+    "guild": "Guild",
+    "members_count_found": "{{count}} member(s) found",
+    "members_count_active": "{{count}} member(s) active"
+  },
+  "actions": {
+    "clear_upgrades": "Clear upgrades",
+    "manage_admins": "Admins",
+    "sync_battlenet": "Import roster via Armory",
+    "add_manual": "Add manually"
+  },
+  "stats": {
+    "members": "Members",
+    "backup": "Pending",
+    "archived": "Archived",
+    "region": "Region"
+  },
+  "search": {
+    "placeholder": "Search character...",
+    "all_classes": "All classes"
+  },
+  "classes": {
+    "warrior": "Warrior",
+    "paladin": "Paladin",
+    "hunter": "Hunter",
+    "rogue": "Rogue",
+    "priest": "Priest",
+    "death_knight": "Death Knight",
+    "shaman": "Shaman",
+    "mage": "Mage",
+    "warlock": "Warlock",
+    "monk": "Monk",
+    "druid": "Druid",
+    "demon_hunter": "Demon Hunter",
+    "evoker": "Evoker"
+  },
+  "table": {
+    "spec": "Spec",
+    "name": "Name",
+    "discord_tag": "Discord Tag",
+    "realm": "Realm",
+    "linked_status": "Linked to user",
+    "actions": "Actions",
+    "not_linked": "Not linked",
+    "linked": "Linked to user",
+    "view_wishlist": "View wishlist",
+    "edit_discord": "Edit Discord Tag",
+    "approve": "Approve",
+    "reject": "Reject",
+    "edit": "Edit",
+    "delete": "Delete",
+    "archive": "Archive",
+    "restore": "Restore",
+    "discord_linked": "Discord registered",
+    "discord_not_linked": "No Discord registered",
+    "connect_discord": "Connect with Discord"
+  },
+  "notifications": {
+    "success_title": "Success",
+    "error_title": "Error",
+    "warning_title": "Warning",
+    "upgrades_cleared": "All upgrades cleared successfully!",
+    "upgrades_clear_error": "Error clearing upgrades. Check console for details.",
+    "confirm_clear_upgrades": "Are you sure you want to delete ALL upgrades from the database? This action is irreversible.",
+    "updating_data": "Updating data",
+    "fetching_info": "Fetching imported characters info...",
+    "data_updated": "Character data updated successfully.",
+    "update_error": "Error updating data. Please try again via the Tracking page.",
+    "delete_confirm": "Delete {{name}}?",
+    "archive_confirm": "Archive {{name}}?",
+    "delete_error": "Error deleting character",
+    "archive_error": "Error archiving character",
+    "loading_realm_error": "Error loading realm data"
+  },
+  "empty": {
+    "no_result_title": "No results",
+    "roster_empty_title": "Empty Roster",
+    "no_result_desc": "No character matches your search criteria.",
+    "roster_empty_desc": "Your roster contains no characters for the moment. Use the 'Import roster via Armory' or 'Add manually' button to add characters.",
+    "backup_empty_title": "No pending validations",
+    "backup_empty_desc": "No characters waiting for validation found.",
+    "backup_empty_wip": "This feature is under development and coming soon.",
+    "archived_empty_title": "No archives",
+    "archived_empty_desc": "No archived characters found."
+  },
+  "drawer": {
+    "title": "Roster Management",
+    "add_title": "Add a character",
+    "edit_title": "Edit a character",
+    "fields": {
+      "name": {
+        "label": "Character Name",
+        "placeholder": "Enter character name",
+        "error": "Name must have at least 2 characters"
+      },
+      "class": {
+        "label": "Class",
+        "placeholder": "Select class",
+        "error": "Class is required"
+      },
+      "realm": {
+        "label": "Realm",
+        "placeholder": "e.g. Dalaran",
+        "error": "Realm is required"
+      },
+      "region": {
+        "label": "Region"
+      },
+      "spec": {
+        "label": "Specialization",
+        "placeholder": "Select specialization",
+        "error": "Specialization is required"
+      },
+      "discord_tag": {
+        "label": "Discord Tag",
+        "placeholder": "e.g. username#1234"
+      }
+    },
+    "buttons": {
+      "add": "Add to roster",
+      "update": "Update"
+    },
+    "notifications": {
+      "add_success": "{{name}} has been added to the roster",
+      "update_success": "{{name}} has been updated",
+      "remove_success": "{{name}} has been removed from the roster",
+      "discord_success": "Discord tag updated for {{name}}",
+      "update_error": "Error updating character",
+      "add_error": "Error adding character",
+      "remove_error": "Error removing character"
+    }
+  },
+  "admin_drawer": {
+    "title": "Admin Management",
+    "add_title": "Add an admin",
+    "current_title": "Current Admins",
+    "empty": "No admins found",
+    "loading": "Loading...",
+    "you": "You",
+    "fields": {
+      "user": {
+        "label": "User",
+        "placeholder": "Select a user",
+        "description": "Choose a user who has characters in this realm",
+        "error": "Select a user"
+      },
+      "role": {
+        "label": "Role",
+        "placeholder": "Select role",
+        "error": "Role is required"
+      }
+    },
+    "roles": {
+      "admin": "Administrator",
+      "moderator": "Moderator",
+      "member": "Member"
+    },
+    "buttons": {
+      "add": "Add"
+    },
+    "notifications": {
+      "member_exists": "User is already a member of the realm.",
+      "add_success": "Admin added successfully",
+      "remove_success": "Admin removed successfully",
+      "update_success": "Role updated successfully",
+      "add_error": "Error adding admin",
+      "remove_error": "Error removing admin",
+      "update_error": "Error updating role",
+      "load_error": "Error loading admins"
+    },
+    "tooltips": {
+      "no_edit_self": "You cannot modify your own role",
+      "no_delete_self": "You cannot remove your own access"
+    }
+  },
+  "page": {
+    "header": {
+      "label": "Roster",
+      "members_one": "{{count}} member",
+      "members_other": "{{count}} members",
+      "pending_one": "{{count}} pending",
+      "pending_other": "{{count}} pending",
+      "guests_one": "{{count}} guest",
+      "guests_other": "{{count}} guests",
+      "more": "Manage",
+      "danger_zone": "Danger zone"
+    },
+    "summary": {
+      "composition": "Composition",
+      "classes": "Classes",
+      "completeness": "To complete",
+      "completeness_hint": "Missing information on members. Click to filter.",
+      "incomplete_one": "{{count}} character",
+      "incomplete_other": "{{count}} characters",
+      "complete": "Everything is filled in",
+      "complete_count_one": "{{count}} / {{total}} member fully filled in",
+      "complete_count_other": "{{count}} / {{total}} members fully filled in",
+      "pending": "Awaiting approval",
+      "show_pending_one": "View the request",
+      "show_pending_other": "View the {{count}} requests"
+    },
+    "roles": {
+      "tank": "Tanks",
+      "healer": "Healers",
+      "melee": "Melee",
+      "ranged": "Ranged",
+      "unknown": "No spec"
+    },
+    "status": {
+      "all": "Members",
+      "pending": "Pending",
+      "guests": "Guests"
+    },
+    "completeness": {
+      "no_discord": "No Discord",
+      "not_linked": "Account not linked",
+      "empty_wishlist": "Empty wishlist"
+    },
+    "filters": {
+      "class": "Class",
+      "role": "Role",
+      "all_roles": "All roles",
+      "completeness": "Completeness",
+      "all_completeness": "Any completeness",
+      "incomplete_one": "To complete ({{count}})",
+      "incomplete_other": "To complete ({{count}})",
+      "reset": "Reset",
+      "results_one": "{{count}} / {{total}} character",
+      "results_other": "{{count}} / {{total}} characters"
+    },
+    "table": {
+      "character": "Character",
+      "account": "Account",
+      "wishlist": "Wishlist",
+      "more": "More actions for {{name}}",
+      "remove": "Remove from roster"
+    },
+    "badges": {
+      "guest": "Guest",
+      "pending": "Pending"
+    },
+    "account": {
+      "linked": "Linked",
+      "not_linked": "Not linked",
+      "linked_hint": "A player has linked this character to their account: they manage its wishlist and sign-ups.",
+      "not_linked_hint": "No player has linked this character to their account.",
+      "discord": "Discord",
+      "no_discord": "No Discord",
+      "discord_hint": "Discord tag filled in.",
+      "no_discord_hint": "No Discord tag filled in.",
+      "click_to_edit": "Click to edit it."
+    },
+    "wishlist": {
+      "empty": "Empty",
+      "empty_hint": "No item picked in the main spec wishlist.",
+      "hint": "{{count}} of {{total}} slots filled (main spec, weapons counted together)."
+    },
+    "no_spec": "No spec set",
+    "empty": {
+      "guests_title": "No guests",
+      "guests_desc": "No guest has joined this realm yet."
+    },
+    "discord_modal": {
+      "title": "Discord — {{name}}"
+    },
+    "clear_modal": {
+      "title": "Delete upgrades",
+      "body": "All upgrades imported for {{guild}} (Droptimizer reports) will be deleted.",
+      "irreversible": "This cannot be undone: reports will have to be imported again.",
+      "confirm": "Delete upgrades"
+    },
+    "delete_modal": {
+      "title": "Remove {{name}} from the roster?",
+      "body": "The character is archived and no longer appears in the roster.",
+      "reject_title": "Reject {{name}}?",
+      "reject_body": "The request is rejected and the character is removed from the roster."
+    }
+  }
+}

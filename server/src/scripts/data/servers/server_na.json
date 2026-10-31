@@ -1,0 +1,1726 @@
+{
+  "Realms": [
+    {
+      "name": "Aegwynn",
+      "slug": "aegwynn",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Aerie Peak",
+      "slug": "aerie-peak",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Agamaggan",
+      "slug": "agamaggan",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Aggramar",
+      "slug": "aggramar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Akama",
+      "slug": "akama",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Alexstrasza",
+      "slug": "alexstrasza",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Alleria",
+      "slug": "alleria",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Altar of Storms",
+      "slug": "altar-of-storms",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Alterac Mountains",
+      "slug": "alterac-mountains",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Aman'Thul",
+      "slug": "amanthul",
+      "locale": "en-US",
+      "category": "Oceanic",
+      "region": "NA"
+    },
+    {
+      "name": "Andorhal",
+      "slug": "andorhal",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Anetheron",
+      "slug": "anetheron",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Antonidas",
+      "slug": "antonidas",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Anub'arak",
+      "slug": "anubarak",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Anvilmar",
+      "slug": "anvilmar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Arathor",
+      "slug": "arathor",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Archimonde",
+      "slug": "archimonde",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Area 52",
+      "slug": "area-52",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Argent Dawn",
+      "slug": "argent-dawn",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Arthas",
+      "slug": "arthas",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Arygos",
+      "slug": "arygos",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Auchindoun",
+      "slug": "auchindoun",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Azgalor",
+      "slug": "azgalor",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Azjol-Nerub",
+      "slug": "azjolnerub",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Azralon",
+      "slug": "azralon",
+      "locale": "pt-BR",
+      "category": "Brazil",
+      "region": "NA"
+    },
+    {
+      "name": "Azshara",
+      "slug": "azshara",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Azuremyst",
+      "slug": "azuremyst",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Baelgun",
+      "slug": "baelgun",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Balnazzar",
+      "slug": "balnazzar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Barthilas",
+      "slug": "barthilas",
+      "locale": "en-US",
+      "category": "Oceanic",
+      "region": "NA"
+    },
+    {
+      "name": "Black Dragonflight",
+      "slug": "black-dragonflight",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Blackhand",
+      "slug": "blackhand",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Blackrock",
+      "slug": "blackrock",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Blackwater Raiders",
+      "slug": "blackwater-raiders",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Blackwing Lair",
+      "slug": "blackwing-lair",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Blade's Edge",
+      "slug": "blades-edge",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Bladefist",
+      "slug": "bladefist",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Bleeding Hollow",
+      "slug": "bleeding-hollow",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Blood Furnace",
+      "slug": "blood-furnace",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Bloodhoof",
+      "slug": "bloodhoof",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Bloodscalp",
+      "slug": "bloodscalp",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Bonechewer",
+      "slug": "bonechewer",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Borean Tundra",
+      "slug": "borean-tundra",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Boulderfist",
+      "slug": "boulderfist",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Bronzebeard",
+      "slug": "bronzebeard",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Burning Blade",
+      "slug": "burning-blade",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Burning Legion",
+      "slug": "burning-legion",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Caelestrasz",
+      "slug": "caelestrasz",
+      "locale": "en-US",
+      "category": "Oceanic",
+      "region": "NA"
+    },
+    {
+      "name": "Cairne",
+      "slug": "cairne",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Cenarion Circle",
+      "slug": "cenarion-circle",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Cenarius",
+      "slug": "cenarius",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Cho'gall",
+      "slug": "chogall",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Chromaggus",
+      "slug": "chromaggus",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Coilfang",
+      "slug": "coilfang",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Crushridge",
+      "slug": "crushridge",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Daggerspine",
+      "slug": "daggerspine",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Dalaran",
+      "slug": "dalaran",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Dalvengyr",
+      "slug": "dalvengyr",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Dark Iron",
+      "slug": "dark-iron",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Darkspear",
+      "slug": "darkspear",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Darrowmere",
+      "slug": "darrowmere",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Dath'Remar",
+      "slug": "dathremar",
+      "locale": "en-US",
+      "category": "Oceanic",
+      "region": "NA"
+    },
+    {
+      "name": "Dawnbringer",
+      "slug": "dawnbringer",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Deathwing",
+      "slug": "deathwing",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Demon Soul",
+      "slug": "demon-soul",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Dentarg",
+      "slug": "dentarg",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Destromath",
+      "slug": "destromath",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Dethecus",
+      "slug": "dethecus",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Detheroc",
+      "slug": "detheroc",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Doomhammer",
+      "slug": "doomhammer",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Draenor",
+      "slug": "draenor",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Dragonblight",
+      "slug": "dragonblight",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Dragonmaw",
+      "slug": "dragonmaw",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Drak'Tharon",
+      "slug": "draktharon",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Drak'thul",
+      "slug": "drakthul",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Draka",
+      "slug": "draka",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Drakkari",
+      "slug": "drakkari",
+      "locale": "es-MX",
+      "category": "Latin America",
+      "region": "NA"
+    },
+    {
+      "name": "Dreadmaul",
+      "slug": "dreadmaul",
+      "locale": "en-US",
+      "category": "Oceanic",
+      "region": "NA"
+    },
+    {
+      "name": "Drenden",
+      "slug": "drenden",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Dunemaul",
+      "slug": "dunemaul",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Durotan",
+      "slug": "durotan",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Duskwood",
+      "slug": "duskwood",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Earthen Ring",
+      "slug": "earthen-ring",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Echo Isles",
+      "slug": "echo-isles",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Eitrigg",
+      "slug": "eitrigg",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Eldre'Thalas",
+      "slug": "eldrethalas",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Elune",
+      "slug": "elune",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Emerald Dream",
+      "slug": "emerald-dream",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Eonar",
+      "slug": "eonar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Eredar",
+      "slug": "eredar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Executus",
+      "slug": "executus",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Exodar",
+      "slug": "exodar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Farstriders",
+      "slug": "farstriders",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Feathermoon",
+      "slug": "feathermoon",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Fenris",
+      "slug": "fenris",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Firetree",
+      "slug": "firetree",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Fizzcrank",
+      "slug": "fizzcrank",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Frostmane",
+      "slug": "frostmane",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Frostmourne",
+      "slug": "frostmourne",
+      "locale": "en-US",
+      "category": "Oceanic",
+      "region": "NA"
+    },
+    {
+      "name": "Frostwolf",
+      "slug": "frostwolf",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Galakrond",
+      "slug": "galakrond",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Gallywix",
+      "slug": "gallywix",
+      "locale": "pt-BR",
+      "category": "Brazil",
+      "region": "NA"
+    },
+    {
+      "name": "Garithos",
+      "slug": "garithos",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Garona",
+      "slug": "garona",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Garrosh",
+      "slug": "garrosh",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Ghostlands",
+      "slug": "ghostlands",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Gilneas",
+      "slug": "gilneas",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Gnomeregan",
+      "slug": "gnomeregan",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Goldrinn",
+      "slug": "goldrinn",
+      "locale": "pt-BR",
+      "category": "Brazil",
+      "region": "NA"
+    },
+    {
+      "name": "Gorefiend",
+      "slug": "gorefiend",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Gorgonnash",
+      "slug": "gorgonnash",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Greymane",
+      "slug": "greymane",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Grizzly Hills",
+      "slug": "grizzly-hills",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Gul'dan",
+      "slug": "guldan",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Gundrak",
+      "slug": "gundrak",
+      "locale": "en-US",
+      "category": "Oceanic",
+      "region": "NA"
+    },
+    {
+      "name": "Gurubashi",
+      "slug": "gurubashi",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Hakkar",
+      "slug": "hakkar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Haomarush",
+      "slug": "haomarush",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Hellscream",
+      "slug": "hellscream",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Hydraxis",
+      "slug": "hydraxis",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Hyjal",
+      "slug": "hyjal",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Icecrown",
+      "slug": "icecrown",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Illidan",
+      "slug": "illidan",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Jaedenar",
+      "slug": "jaedenar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Jubei'Thos",
+      "slug": "jubeithos",
+      "locale": "en-US",
+      "category": "Oceanic",
+      "region": "NA"
+    },
+    {
+      "name": "Kael'thas",
+      "slug": "kaelthas",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Kalecgos",
+      "slug": "kalecgos",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Kargath",
+      "slug": "kargath",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Kel'Thuzad",
+      "slug": "kelthuzad",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Khadgar",
+      "slug": "khadgar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Khaz Modan",
+      "slug": "khaz-modan",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Khaz'goroth",
+      "slug": "khazgoroth",
+      "locale": "en-US",
+      "category": "Oceanic",
+      "region": "NA"
+    },
+    {
+      "name": "Kil'jaeden",
+      "slug": "kiljaeden",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Kilrogg",
+      "slug": "kilrogg",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Kirin Tor",
+      "slug": "kirin-tor",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Korgath",
+      "slug": "korgath",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Korialstrasz",
+      "slug": "korialstrasz",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Kul Tiras",
+      "slug": "kul-tiras",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Laughing Skull",
+      "slug": "laughing-skull",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Lethon",
+      "slug": "lethon",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Lightbringer",
+      "slug": "lightbringer",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Lightning's Blade",
+      "slug": "lightnings-blade",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Lightninghoof",
+      "slug": "lightninghoof",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Llane",
+      "slug": "llane",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Lothar",
+      "slug": "lothar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Madoran",
+      "slug": "madoran",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Maelstrom",
+      "slug": "maelstrom",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Magtheridon",
+      "slug": "magtheridon",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Maiev",
+      "slug": "maiev",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Mal'Ganis",
+      "slug": "malganis",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Malfurion",
+      "slug": "malfurion",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Malorne",
+      "slug": "malorne",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Malygos",
+      "slug": "malygos",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Mannoroth",
+      "slug": "mannoroth",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Medivh",
+      "slug": "medivh",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Misha",
+      "slug": "misha",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Mok'Nathal",
+      "slug": "moknathal",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Moon Guard",
+      "slug": "moon-guard",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Moonrunner",
+      "slug": "moonrunner",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Mug'thol",
+      "slug": "mugthol",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Muradin",
+      "slug": "muradin",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Nagrand",
+      "slug": "nagrand",
+      "locale": "en-US",
+      "category": "Oceanic",
+      "region": "NA"
+    },
+    {
+      "name": "Nathrezim",
+      "slug": "nathrezim",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Nazgrel",
+      "slug": "nazgrel",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Nazjatar",
+      "slug": "nazjatar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Nemesis",
+      "slug": "nemesis",
+      "locale": "pt-BR",
+      "category": "Brazil",
+      "region": "NA"
+    },
+    {
+      "name": "Ner'zhul",
+      "slug": "nerzhul",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Nesingwary",
+      "slug": "nesingwary",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Nordrassil",
+      "slug": "nordrassil",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Norgannon",
+      "slug": "norgannon",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Onyxia",
+      "slug": "onyxia",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Perenolde",
+      "slug": "perenolde",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Proudmoore",
+      "slug": "proudmoore",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Quel'Thalas",
+      "slug": "quelthalas",
+      "locale": "es-MX",
+      "category": "Latin America",
+      "region": "NA"
+    },
+    {
+      "name": "Quel'dorei",
+      "slug": "queldorei",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Ragnaros",
+      "slug": "ragnaros",
+      "locale": "es-MX",
+      "category": "Latin America",
+      "region": "NA"
+    },
+    {
+      "name": "Ravencrest",
+      "slug": "ravencrest",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Ravenholdt",
+      "slug": "ravenholdt",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Rexxar",
+      "slug": "rexxar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Rivendare",
+      "slug": "rivendare",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Runetotem",
+      "slug": "runetotem",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Sargeras",
+      "slug": "sargeras",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Saurfang",
+      "slug": "saurfang",
+      "locale": "en-US",
+      "category": "Oceanic",
+      "region": "NA"
+    },
+    {
+      "name": "Scarlet Crusade",
+      "slug": "scarlet-crusade",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Scilla",
+      "slug": "scilla",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Sen'jin",
+      "slug": "senjin",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Sentinels",
+      "slug": "sentinels",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Shadow Council",
+      "slug": "shadow-council",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Shadowmoon",
+      "slug": "shadowmoon",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Shadowsong",
+      "slug": "shadowsong",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Shandris",
+      "slug": "shandris",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Shattered Halls",
+      "slug": "shattered-halls",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Shattered Hand",
+      "slug": "shattered-hand",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Shu'halo",
+      "slug": "shuhalo",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Silver Hand",
+      "slug": "silver-hand",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Silvermoon",
+      "slug": "silvermoon",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Sisters of Elune",
+      "slug": "sisters-of-elune",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Skullcrusher",
+      "slug": "skullcrusher",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Skywall",
+      "slug": "skywall",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Smolderthorn",
+      "slug": "smolderthorn",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Spinebreaker",
+      "slug": "spinebreaker",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Spirestone",
+      "slug": "spirestone",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Staghelm",
+      "slug": "staghelm",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Steamwheedle Cartel",
+      "slug": "steamwheedle-cartel",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Stonemaul",
+      "slug": "stonemaul",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Stormrage",
+      "slug": "stormrage",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Stormreaver",
+      "slug": "stormreaver",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Stormscale",
+      "slug": "stormscale",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Suramar",
+      "slug": "suramar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Tanaris",
+      "slug": "tanaris",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Terenas",
+      "slug": "terenas",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Terokkar",
+      "slug": "terokkar",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Thaurissan",
+      "slug": "thaurissan",
+      "locale": "en-US",
+      "category": "Oceanic",
+      "region": "NA"
+    },
+    {
+      "name": "The Forgotten Coast",
+      "slug": "the-forgotten-coast",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "The Scryers",
+      "slug": "the-scryers",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "The Underbog",
+      "slug": "the-underbog",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "The Venture Co",
+      "slug": "the-venture-co",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Thorium Brotherhood",
+      "slug": "thorium-brotherhood",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Thrall",
+      "slug": "thrall",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Thunderhorn",
+      "slug": "thunderhorn",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Thunderlord",
+      "slug": "thunderlord",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Tichondrius",
+      "slug": "tichondrius",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Tol Barad",
+      "slug": "tol-barad",
+      "locale": "pt-BR",
+      "category": "Brazil",
+      "region": "NA"
+    },
+    {
+      "name": "Tortheldrin",
+      "slug": "tortheldrin",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Trollbane",
+      "slug": "trollbane",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Turalyon",
+      "slug": "turalyon",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Twisting Nether",
+      "slug": "twisting-nether",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Uldaman",
+      "slug": "uldaman",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Uldum",
+      "slug": "uldum",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Undermine",
+      "slug": "undermine",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Ursin",
+      "slug": "ursin",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Uther",
+      "slug": "uther",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Vashj",
+      "slug": "vashj",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Vek'nilash",
+      "slug": "veknilash",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Velen",
+      "slug": "velen",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Warsong",
+      "slug": "warsong",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Whisperwind",
+      "slug": "whisperwind",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Wildhammer",
+      "slug": "wildhammer",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Windrunner",
+      "slug": "windrunner",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Winterhoof",
+      "slug": "winterhoof",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Wyrmrest Accord",
+      "slug": "wyrmrest-accord",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Ysera",
+      "slug": "ysera",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Ysondre",
+      "slug": "ysondre",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Zangarmarsh",
+      "slug": "zangarmarsh",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Zul'jin",
+      "slug": "zuljin",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    },
+    {
+      "name": "Zuluhed",
+      "slug": "zuluhed",
+      "locale": "en-US",
+      "category": "United States",
+      "region": "NA"
+    }
+  ]
+}

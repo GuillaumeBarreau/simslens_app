@@ -1,0 +1,191 @@
+.calendarGrid {
+  margin-bottom: 8px;
+}
+
+.weekDayHeader {
+  padding: 8px;
+  text-align: center;
+}
+
+.calendarCell {
+  min-height: 120px;
+  padding: 8px;
+  border: 1px solid var(--mantine-color-dark-4);
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.calendarCell:hover {
+  background-color: var(--mantine-color-dark-6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.calendarCellToday {
+  background: linear-gradient(
+    135deg,
+    var(--mantine-color-app-6) 0%,
+    var(--mantine-color-app-7) 100%
+  );
+}
+
+.calendarCellToday:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.calendarCellOtherMonth {
+  opacity: 0.4;
+}
+
+.calendarCellPast {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.calendarCellPast:hover {
+  background-color: transparent;
+  transform: none;
+  box-shadow: none;
+}
+
+.availabilityBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.availabilityM0 {
+  background-color: var(--mantine-color-blue-9);
+  color: var(--mantine-color-blue-2);
+}
+
+.availabilityMPlus {
+  background-color: var(--mantine-color-orange-9);
+  color: var(--mantine-color-orange-2);
+}
+
+/* ============================================================
+   Day Gantt: players × hours (14h-23h)
+   ============================================================ */
+
+.ganttDayWrapper {
+  overflow-x: auto;
+  overflow-y: visible;
+  border-radius: 8px;
+  border: 1px solid var(--mantine-color-dark-4);
+}
+
+.ganttDayTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.ganttDayNameCol {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  width: 140px;
+  min-width: 140px;
+  padding: 6px 8px;
+  background: var(--mantine-color-dark-7);
+  border-bottom: 1px solid var(--mantine-color-dark-4);
+  text-align: left;
+}
+
+.ganttDayHourCol {
+  width: 50px;
+  min-width: 50px;
+  padding: 4px 2px;
+  border-bottom: 1px solid var(--mantine-color-dark-4);
+  text-align: center;
+  white-space: nowrap;
+  background: var(--mantine-color-dark-7);
+}
+
+.ganttDayRowEven {
+  background: var(--mantine-color-dark-7);
+}
+
+.ganttDayRowOdd {
+  background: var(--mantine-color-dark-8);
+}
+
+.ganttDayRowEven:hover,
+.ganttDayRowOdd:hover {
+  background: var(--mantine-color-dark-5);
+  transition: background 0.15s ease;
+}
+
+.ganttDayNameCell {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  padding: 4px 8px;
+  max-width: 140px;
+  min-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: inherit;
+  border-right: 1px solid var(--mantine-color-dark-4);
+}
+
+.ganttDayCell {
+  width: 50px;
+  min-width: 50px;
+  padding: 3px 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ganttDayTimelineCol {
+  padding: 4px 8px 0;
+  background: var(--mantine-color-dark-7);
+  border-bottom: 1px solid var(--mantine-color-dark-4);
+  width: 100%;
+}
+
+/* Timeline cell (single cell per row, contains positioned slot blocks) */
+.ganttDayTimelineCell {
+  padding: 2px 0;
+  width: 100%;
+}
+
+/* Colored availability block — positioned absolutely inside the timeline cell */
+.ganttDayBlock {
+  cursor: help;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+
+.ganttDayBlock:hover {
+  opacity: 1;
+}
+
+.ganttDayBlockOwn {
+  border-top: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.ganttDayFooter {
+  background: var(--mantine-color-dark-6);
+  border-top: 2px solid var(--mantine-color-dark-4);
+}
+
+.calendarCellSelected {
+  outline: 2px solid var(--mantine-color-orange-5);
+  outline-offset: -2px;
+}
+
+.composerCreateCard {
+  background: var(--mantine-color-dark-7);
+  border-color: var(--mantine-color-dark-5);
+}

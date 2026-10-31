@@ -1,0 +1,41 @@
+[
+  {
+    "name": "warrior"
+  },
+  {
+    "name": "paladin"
+  },
+  {
+    "name": "hunter"
+  },
+  {
+    "name": "rogue"
+  },
+  {
+    "name": "priest"
+  },
+  {
+    "name": "death_knight"
+  },
+  {
+    "name": "shaman"
+  },
+  {
+    "name": "mage"
+  },
+  {
+    "name": "warlock"
+  },
+  {
+    "name": "monk"
+  },
+  {
+    "name": "druid"
+  },
+  {
+    "name": "demon_hunter"
+  },
+  {
+    "name": "evoker"
+  }
+]

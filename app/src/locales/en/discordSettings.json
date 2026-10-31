@@ -1,0 +1,51 @@
+{
+  "title": "Discord Settings",
+  "loading": "Loading...",
+  "info": "These settings connect the Discord bot to your server. The bot will use these IDs to publish raid events and automatically create channels in the defined category.",
+  "guild_id": {
+    "label": "Discord Server ID",
+    "description": "Numeric ID of the Discord server the bot is connected to.",
+    "placeholder": "e.g. 123456789012345678"
+  },
+  "category_id": {
+    "label": "Raid Calendar Category ID",
+    "description": "ID of the Discord category where raid channels will be created.",
+    "placeholder": "e.g. 123456789012345678"
+  },
+  "lock_hours": {
+    "label": "Signup lock (hours before raid)",
+    "description": "Window before the raid during which players can no longer change their signup. Admins are exempt. Set to 0 to disable."
+  },
+  "reminder_hours": {
+    "label": "Auto reminder (hours before lock)",
+    "description": "The bot automatically pings players with no status, once per raid. Set to 0 to disable."
+  },
+  "confirm_reminder_hours": {
+    "label": "Second reminder (hours before raid)",
+    "description": "The bot mentions starters and tentative signups and announces the composition by role, once per raid. Set to 0 to disable."
+  },
+  "timezone": {
+    "label": "Time zone of Discord messages",
+    "description": "Time zone the bot uses for dates and times in announcements and reminders. In the app, everyone sees times in their browser's time zone.",
+    "placeholder": "e.g. Europe/Paris"
+  },
+  "cancel": "Cancel",
+  "save": "Save",
+  "notifications": {
+    "load_error_title": "Error",
+    "load_error_message": "Failed to load Discord settings.",
+    "success_title": "Saved",
+    "success_message": "Discord settings updated.",
+    "save_error_title": "Error",
+    "save_error_message": "Failed to save Discord settings."
+  },
+  "invite_bot": "Invite Discord Bot",
+  "sections": {
+    "connection": "Bot connection",
+    "signups": "Signups and reminders"
+  },
+  "invite_bot_row": {
+    "label": "Discord bot",
+    "description": "Add the bot to your Discord server before entering the IDs below."
+  }
+}

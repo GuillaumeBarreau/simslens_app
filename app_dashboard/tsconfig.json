@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.web.json",
+  "compilerOptions": {
+    // Remplace l'ancien `baseUrl: "./src"`, déprécié depuis TS 6.0.
+    // Les imports nus (`services/api`, `components/...`) résolvent depuis src/,
+    // avec repli sur node_modules si aucun fichier ne correspond.
+    "paths": { "*": ["./src/*"] },
+    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"]
+  },
+  "include": ["src", "vite.config.ts"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,190 @@
+{
+  "header": {
+    "subtitle": "Optimisation",
+    "title": "Suivi des sims",
+    "description": "État des rapports Raidbots et QE Live du roster, mode par mode.",
+    "last_updated": "Dernière mise à jour : {{date}}",
+    "keys_history": "Historique des keys"
+  },
+  "actions": {
+    "refresh": "Actualiser les données"
+  },
+  "modes": {
+    "overview": "Vue d'ensemble",
+    "normal": "Normal",
+    "heroic": "Héroïque",
+    "mythic": "Mythique",
+    "short": {
+      "normal": "N",
+      "heroic": "H",
+      "mythic": "M"
+    }
+  },
+  "state": {
+    "fresh": "À jour",
+    "late": "En retard",
+    "stale": "À refaire",
+    "missing": "Manquant",
+    "done": "Terminé"
+  },
+  "state_tooltip": {
+    "fresh": "{{mode}} : rapport importé le {{date}}",
+    "late": "{{mode}} : rapport importé le {{date}}, bientôt à refaire (seuil {{days}} j)",
+    "stale": "{{mode}} : rapport importé le {{date}}, plus de {{days}} jours, à refaire",
+    "missing": "{{mode}} : aucun rapport importé",
+    "done": "{{mode}} : rapport du {{date}}, aucune amélioration disponible"
+  },
+  "age": {
+    "today": "aujourd'hui",
+    "days_ago": "il y a {{count}} j"
+  },
+  "summary": {
+    "title": "Synthèse par mode",
+    "todo_one": "{{count}} à traiter",
+    "todo_other": "{{count}} à traiter",
+    "todo_none": "Rien à traiter",
+    "filter_hint": "Cliquer pour filtrer le tableau"
+  },
+  "filters": {
+    "search": "Rechercher un personnage",
+    "todo_only": "À traiter seulement",
+    "todo_only_hint": "En retard, à refaire ou manquant dans le mode affiché",
+    "show_gear": "Afficher l'équipement",
+    "gear_label": "Équipement",
+    "gear": {
+      "all": "Tout équipement",
+      "none": "Conforme ({{count}})",
+      "orange": "À améliorer ({{count}})",
+      "red": "À corriger ({{count}})"
+    },
+    "gear_hint": "À corriger : enchantement ou gemme manquant, ou aucune gemme épique. À améliorer : enchantement ou gemme de rang 1.",
+    "active_state": "{{mode}} : {{state}}",
+    "clear_state": "Retirer ce filtre",
+    "reset": "Réinitialiser",
+    "results": "{{count}} / {{total}} personnages"
+  },
+  "import": {
+    "placeholder": "Collez l'URL ou l'ID du rapport Raidbots ici...",
+    "placeholder_with_qe": "Collez l'URL ou l'ID d'un rapport Raidbots, ou QE Live pour un soigneur...",
+    "button_importing": "Import...",
+    "button_default": "Importer le rapport",
+    "error_empty": "Veuillez saisir l'URL ou l'ID du rapport",
+    "error_invalid": "Entrée invalide — collez l'URL complète ou l'ID du rapport Raidbots",
+    "success_title": "Succès",
+    "success_message": "Rapport soumis : {{name}} mis à jour",
+    "status_processing": "Traitement en cours",
+    "message_processing": "Traitement du rapport : {{progress}}",
+    "timeout": "Délai d'attente dépassé (le traitement continue en arrière-plan)",
+    "error_generic": "Une erreur est survenue lors du traitement",
+    "refused": {
+      "QE_NO_HEALER_SPEC": "Rapport QE Live refusé : la spécialisation simulée n'est pas reconnue et aucune spécialisation de soin ne peut être déduite pour ce personnage (sa classe n'en a pas, ou plusieurs sont possibles). Déclarez votre spécialisation de soin dans « Mes spécialisations », puis réimportez le rapport.",
+      "QE_NOT_HEALER_SPEC": "Rapport QE Live refusé : la spécialisation simulée n'est pas une spécialisation de soin."
+    }
+  },
+  "roster_update": {
+    "success_title": "Succès",
+    "success_message": "Roster mis à jour avec succès. Les thumbnails ont été récupérés.",
+    "error_title": "Erreur",
+    "error_default": "Erreur lors de la mise à jour du roster"
+  },
+  "table": {
+    "spec": "Spéc",
+    "name": "Nom",
+    "ilvl": "Ilvl",
+    "key": "Keys",
+    "score": "Score",
+    "state_mode": "État {{mode}}",
+    "modes": "Modes",
+    "actions": "Actions",
+    "tooltip_wishlist": "Voir la wishlist"
+  },
+  "row_actions": {
+    "open_report": "Ouvrir le rapport",
+    "open_report_mode": "Ouvrir le rapport {{mode}}",
+    "more": "Plus d'actions",
+    "wishlist": "Voir la wishlist",
+    "loots_one": "{{count}} loot importé",
+    "loots_other": "{{count}} loots importés",
+    "show_loots": "Afficher les loots importés",
+    "hide_loots": "Masquer les loots importés"
+  },
+  "loots_table": {
+    "no_loots": "Aucun loot importé pour ce personnage",
+    "date": "Date",
+    "item": "Item",
+    "response": "Réponse"
+  },
+  "empty": {
+    "title": "Aucun personnage suivi",
+    "description": "Le tableau de suivi est vide. Les personnages apparaîtront ici une fois qu'ils seront ajoutés au Roster."
+  },
+  "empty_filtered": {
+    "title": "Aucun personnage ne correspond",
+    "description": "Modifiez la recherche ou les filtres pour élargir la liste."
+  },
+  "error": {
+    "loading": "Erreur de chargement",
+    "invalid_request": "Erreur 400 — requête invalide",
+    "unauthorized": "Erreur 401 — non autorisé. Veuillez vous reconnecter.",
+    "forbidden": "Erreur 403 — accès refusé",
+    "not_found": "Erreur 404 — rapport introuvable",
+    "too_many_requests": "Erreur 429 — trop de requêtes. Réessayez plus tard.",
+    "server_error": "Erreur {{status}} — erreur serveur. Réessayez plus tard.",
+    "unknown": "Erreur: {{message}}"
+  },
+  "gear": {
+    "tooltip": {
+      "enchant_missing": "Enchantement : manquant",
+      "enchant_inferior": "Enchantement inférieur : {{name}}",
+      "enchant_valid": "Enchantement : {{name}} (rang {{rank}})",
+      "gem_missing": "Gemme : manquante",
+      "gem_inferior": "Gemme inférieure : {{name}}",
+      "gem_valid": "Gemme : rang {{rank}}",
+      "unknown": "inconnu(e)",
+      "valid": "valide"
+    },
+    "notes": {
+      "title": "Notes du joueur",
+      "all_correct": "Aucune anomalie",
+      "no_data": "Aucune donnée d'équipement",
+      "enchantments": "Enchantements",
+      "gems": "Gemmes",
+      "epic_gem": "Gemme épique",
+      "enchant_missing": "enchantement manquant",
+      "gem_missing": "gemme manquante",
+      "enchant_inferior": "enchantement inférieur",
+      "gem_inferior": "gemme inférieure",
+      "rank_1": "rang 1",
+      "no_epic_gem": "Aucune gemme épique équipée"
+    }
+  },
+  "droptimizer_update": {
+    "button": "Mettre à jour le Droptimizer",
+    "tooltip_date": "Mettre à jour le Droptimizer — dernier rapport Mythique : {{date}}",
+    "tooltip_missing": "Mettre à jour le Droptimizer — aucun rapport Mythique",
+    "modal_title": "Mettre à jour le Droptimizer — {{name}}",
+    "instructions": "Raidbots s’est ouvert dans un nouvel onglet. Lance le Droptimizer en Mythique avec les réglages ci-dessous, puis colle ici le lien du rapport.",
+    "open_raidbots": "Rouvrir le Droptimizer sur Raidbots",
+    "healer_note": "Soigneur : un lien de rapport QuestionablyEpic est aussi accepté.",
+    "healer_qe_limit": "Ses gains sont des HPS, rattachés à votre spécialisation de soin ; QE Live ne simule que les niveaux d'amélioration 1/6 et 6/6.",
+    "cancel": "Annuler",
+    "settings": {
+      "title": "Réglages exigés par la guilde",
+      "difficulty": "Difficulté",
+      "mythic": "Mythique",
+      "none": "aucun",
+      "unavailable": "Réglages indisponibles : le rapport sera tout de même vérifié à l’import."
+    }
+  },
+  "sim_freshness": {
+    "column": "Dernier sim",
+    "no_sim": "Aucun sim",
+    "stale": "Sim périmé",
+    "tooltip": "Dernier rapport importé : {{date}} (périmé après {{days}} jours)",
+    "tooltip_stale": "Dernier rapport importé : {{date}} — plus de {{days}} jours, à refaire"
+  },
+  "sim_metric": {
+    "hps": "HPS",
+    "hps_tooltip": "Gain de soins (HPS) importé de QE Live : il ne se compare pas tel quel à un gain de DPS. Limite de QE Live : seuls les niveaux d'amélioration 1/6 et 6/6 sont simulés, les niveaux intermédiaires ne sont pas estimés."
+  }
+}

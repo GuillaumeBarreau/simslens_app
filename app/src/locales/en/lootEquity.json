@@ -1,0 +1,58 @@
+{
+  "header": {
+    "kicker": "Officer reports",
+    "title": "Loot equity",
+    "subtitle": "Read only, for officers: loot is voted in game, in RCLootCouncil."
+  },
+  "access_denied_title": "Access denied",
+  "access_denied": "This table is reserved for officers.",
+  "filters": {
+    "date_range": "Period",
+    "role": "Role",
+    "include_optional": "Include optional raids"
+  },
+  "roles": {
+    "ALL": "All",
+    "TANK": "Tank",
+    "HEALER": "Healer",
+    "MELEE": "Melee",
+    "RANGED": "Ranged"
+  },
+  "stats": {
+    "events": "{{count}} raid night(s)",
+    "players": "{{count}} player(s)",
+    "items": "{{count}} item(s) awarded"
+  },
+  "columns": {
+    "player": "Player",
+    "items": "Items",
+    "items_per_raid": "Items / raid",
+    "average_gain": "Average gain (sim before the drop)",
+    "cumulative_gain": "Cumulative gain",
+    "bis": "BiS filled",
+    "presence": "Attendance"
+  },
+  "hints": {
+    "items_per_raid": "Items received divided by the number of raid nights the player attended.",
+    "gain": "Gain frozen when the loot is imported: the one of the player's sim at that time (same item, same difficulty, main spec, sim before the drop), which a new sim no longer changes. Without a frozen gain (older drop, file import, no sim at import), gain estimated from the latest sim, the only one kept, if it predates the drop. Otherwise \"unknown\", and left out of the average.",
+    "bis": "Items of the current wishlist (main spec, all difficulties) obtained by the end of the period."
+  },
+  "known_gains": "{{known}}/{{total}} known",
+  "ratio": "{{value}}/{{total}}",
+  "detail": {
+    "date": "Received",
+    "item": "Item",
+    "response": "Response",
+    "instance": "Instance",
+    "gain": "Gain (sim before the drop)",
+    "bis": "BiS",
+    "unknown": "unknown",
+    "gain_frozen": "Gain frozen at import — sim of {{date}}",
+    "gain_estimated": "Estimated gain, none frozen at import — sim of {{date}}",
+    "no_items": "No item received during the period."
+  },
+  "empty": "No data for the selected period.",
+  "error": {
+    "title": "Error"
+  }
+}

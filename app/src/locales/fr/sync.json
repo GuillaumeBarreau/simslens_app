@@ -1,0 +1,52 @@
+{
+  "title": "Synchroniser Personnages",
+  "import": {
+    "title": "Roster de la Guilde",
+    "retry": "Réessayer",
+    "select_all": "Tout sélectionner",
+    "clear": "Effacer",
+    "cancel": "Annuler",
+    "import_selected": "Importer la sélection ({{count}})",
+    "selected_count": "<strong>{{selected}}</strong> <1>/ {{total}} total</1>",
+    "rank": "Rang {{rank}}",
+    "notifications": {
+      "complete_title": "Import Terminé",
+      "complete_message": "Importé: {{imported}}, Ignoré: {{skipped}}, Échoué: {{failed}}",
+      "failed_title": "Échec de l'import"
+    }
+  },
+  "page": {
+    "title": "Synchroniser Personnages",
+    "subtitle": "Gérez vos personnages liés et accédez à vos royaumes.",
+    "refresh": "Actualiser",
+    "welcome_title": "Bienvenue !",
+    "welcome_message": "Pour accéder à votre guilde, vous devez d'abord lier au moins un de vos personnages ci-dessous.",
+    "error_title": "Erreur",
+    "error_fetch_failed": "Échec de la récupération des personnages Blizzard."
+  },
+  "loading": {
+    "title": "Synchronisation des données Blizzard",
+    "message": "Nous vérifions l'appartenance de guilde pour tous vos personnages.<br />Cela garantit une liaison précise et peut prendre quelques secondes."
+  },
+  "alert": {
+    "no_guild_title": "Aucune Guilde Correspondante",
+    "no_guild_message_1": "Aucun de vos personnages ne correspond à une guilde active dans notre base de données.",
+    "no_guild_message_2": "Si vous êtes l'administrateur de votre guilde, vous devez d'abord créer votre Royaume.",
+    "create_realm_btn": "Créer un Royaume"
+  },
+  "linked_list": {
+    "title": "Mes Royaumes Liés",
+    "divider_label": "Personnages Liés",
+    "go_to_guild": "Voir {{guild}}",
+    "unknown_guild": "Guilde Inconnue",
+    "status_pending": "En attente"
+  },
+  "available_list": {
+    "title": "Personnages Disponibles (Battle.net)",
+    "search_placeholder": "Rechercher par nom ou guilde...",
+    "guild_verified": "Guilde Vérifiée",
+    "matches_known_guild": "Correspond à la guilde connue : {{guild}}",
+    "link_to_guild": "Lier à {{guild}}",
+    "link_character": "Lier ce personnage"
+  }
+}

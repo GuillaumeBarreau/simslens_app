@@ -1,0 +1,85 @@
+## Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs
+
+## Node & package manager
+node_modules/
+/.pnp
+.pnp.js
+.yarn-integrity
+
+## Build / output
+/build
+.next
+.nuxt
+.vuepress/dist
+.cache
+
+## Coverage & tests
+/coverage
+.nyc_output
+.specs
+
+## Editor / OS
+.DS_Store
+.node_repl_history
+
+## Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.test
+.env.production
+.env.agents
+
+## Agents (sorties locales)
+.agents-out/
+# Configuration Claude Code (agents, skills, hooks) : locale au mainteneur, copiée dans
+# les worktrees par scripts/agents/worktree.mjs
+.claude/
+
+## Caches / tools
+.eslintcache
+.lock-wscript
+.fusebox/
+.serverless/
+.dynamodb/
+.grunt
+.cache
+
+## Misc
+*.tgz
+.notes/
+
+## Project specific
+/server/src/store/data.db
+/server/src/generated
+/server/src/generated/
+woodpecker-server-data/
+**/data.db
+backups/
+backup_*.sql*
+
+/app/dist
+dist/
+*storybook.log
+storybook-static
+
+## Données Raidbots (SIMS-284) : non redistribuées, téléchargées à la demande
+## (server/src/scripts/data/ensureEquippableItems.js)
+/server/src/scripts/data/equippable-items.json
+/server/src/scripts/data/equippable-items.json.bak
+/server/src/scripts/data/Equippable-items-app.json
+*.bak
+
+## Documents personnels retirés du dépôt (ne pas les reversionner)
+/server/src/scripts/data/Service de retours.pdf
+/server/src/scripts/data/ShipperLabel
+
+# Commit déployé (deployment/deploy.sh)
+deployment/.last-deployed-commit

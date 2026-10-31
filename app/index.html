@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SimsLens</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
+
+    <!-- Wowhead Tooltips -->
+    <script>
+      window.whTooltips = {
+        colorLinks: true,
+        iconSize: true,
+        renameLinks: false,
+        hide: {},
+      };
+    </script>
+    <script async src="https://wow.zamimg.com/widgets/power.js"></script>
+    <script>
+      // Override Wowhead tooltip positioning on mousemove
+      document.addEventListener('mousemove', (e) => {
+        const tooltip = document.querySelector('.wowhead-tooltip');
+        if (tooltip && tooltip.style.display !== 'none') {
+          const offset = 25;
+          const padding = 10; // Padding from viewport edges
+
+          const rect = tooltip.getBoundingClientRect();
+          let x = e.clientX + offset;
+          let y = e.clientY + offset;
+
+          // Prevent tooltip from capturing mouse events (causes flickering)
+          tooltip.style.pointerEvents = 'none';
+
+          // Keep tooltip within horizontal viewport
+          const maxX = window.innerWidth - rect.width - padding;
+          x = Math.min(x, maxX);
+          x = Math.max(padding, x); // Also prevent going off left edge
+
+          // If tooltip goes beyond bottom edge, flip it above the cursor
+          if (y + rect.height > window.innerHeight - padding) {
+            y = e.clientY - offset - rect.height;
+            // If still doesn't fit above, position at top of viewport
+            if (y < padding) {
+              y = padding;
+            }
+          }
+
+          tooltip.style.left = `${x}px`;
+          tooltip.style.top = `${y}px`;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+{
+  "title": "Paramètres Discord",
+  "loading": "Chargement...",
+  "info": "Ces paramètres permettent de connecter le bot Discord à votre serveur. Le bot utilisera ces IDs pour publier les événements de raid et créer automatiquement les channels dans la catégorie définie.",
+  "guild_id": {
+    "label": "ID du Discord",
+    "description": "ID numérique du Discord sur lequel le bot est connecté.",
+    "placeholder": "Ex: 123456789012345678"
+  },
+  "category_id": {
+    "label": "ID Catégorie Raid Calendar",
+    "description": "ID de la catégorie Discord dans laquelle les channels de raid seront créés.",
+    "placeholder": "Ex: 123456789012345678"
+  },
+  "lock_hours": {
+    "label": "Fermeture des inscriptions (heures avant le raid)",
+    "description": "Délai à partir duquel les joueurs ne peuvent plus modifier leur inscription. Les administrateurs ne sont pas concernés. Mettre 0 pour désactiver."
+  },
+  "reminder_hours": {
+    "label": "Rappel automatique (heures avant la fermeture)",
+    "description": "Le bot pingue automatiquement les joueurs sans statut, une seule fois par raid. Mettre 0 pour désactiver."
+  },
+  "confirm_reminder_hours": {
+    "label": "Second rappel (heures avant le raid)",
+    "description": "Le bot mentionne les titulaires et les inscrits « tentative » et annonce la composition par rôle, une seule fois par raid. Mettre 0 pour désactiver."
+  },
+  "timezone": {
+    "label": "Fuseau horaire des messages Discord",
+    "description": "Fuseau utilisé par le bot pour les dates et heures des annonces et des rappels. Dans l'application, chacun voit les heures dans le fuseau de son navigateur.",
+    "placeholder": "Ex : Europe/Paris"
+  },
+  "cancel": "Annuler",
+  "save": "Sauvegarder",
+  "notifications": {
+    "load_error_title": "Erreur",
+    "load_error_message": "Impossible de charger les paramètres Discord.",
+    "success_title": "Sauvegardé",
+    "success_message": "Paramètres Discord mis à jour.",
+    "save_error_title": "Erreur",
+    "save_error_message": "Impossible de sauvegarder les paramètres Discord."
+  },
+  "invite_bot": "Inviter le Bot Discord",
+  "sections": {
+    "connection": "Connexion du bot",
+    "signups": "Inscriptions et rappels"
+  },
+  "invite_bot_row": {
+    "label": "Bot Discord",
+    "description": "Ajoutez le bot à votre serveur Discord avant de renseigner les identifiants ci-dessous."
+  }
+}

@@ -1,0 +1,8 @@
+.signed-out-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: var(--mantine-color-app-7);
+  height: 100vh;
+}

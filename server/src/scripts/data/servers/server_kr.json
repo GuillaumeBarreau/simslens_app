@@ -1,0 +1,130 @@
+{
+  "Realms": [
+    {
+      "name": "Alexstrasza",
+      "slug": "alexstrasza",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Azshara",
+      "slug": "azshara",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Burning Legion",
+      "slug": "burning-legion",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Cenarius",
+      "slug": "cenarius",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Dalaran",
+      "slug": "dalaran",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Deathwing",
+      "slug": "deathwing",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Durotan",
+      "slug": "durotan",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Garona",
+      "slug": "garona",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Gul'dan",
+      "slug": "guldan",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Hellscream",
+      "slug": "hellscream",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Hyjal",
+      "slug": "hyjal",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Malfurion",
+      "slug": "malfurion",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Norgannon",
+      "slug": "norgannon",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Rexxar",
+      "slug": "rexxar",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Stormrage",
+      "slug": "stormrage",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Wildhammer",
+      "slug": "wildhammer",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Windrunner",
+      "slug": "windrunner",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    },
+    {
+      "name": "Zul'jin",
+      "slug": "zuljin",
+      "locale": "ko-KR",
+      "category": "Korea",
+      "region": "KR"
+    }
+  ]
+}

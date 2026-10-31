@@ -1,0 +1,190 @@
+{
+  "header": {
+    "subtitle": "Optimization",
+    "title": "Sim tracking",
+    "description": "Raidbots and QE Live report status of the roster, mode by mode.",
+    "last_updated": "Last update: {{date}}",
+    "keys_history": "Keys history"
+  },
+  "actions": {
+    "refresh": "Refresh data"
+  },
+  "modes": {
+    "overview": "Overview",
+    "normal": "Normal",
+    "heroic": "Heroic",
+    "mythic": "Mythic",
+    "short": {
+      "normal": "N",
+      "heroic": "H",
+      "mythic": "M"
+    }
+  },
+  "state": {
+    "fresh": "Up to date",
+    "late": "Late",
+    "stale": "Redo",
+    "missing": "Missing",
+    "done": "Done"
+  },
+  "state_tooltip": {
+    "fresh": "{{mode}}: report imported on {{date}}",
+    "late": "{{mode}}: report imported on {{date}}, due soon (threshold {{days}} d)",
+    "stale": "{{mode}}: report imported on {{date}}, over {{days}} days old, needs a new sim",
+    "missing": "{{mode}}: no imported report",
+    "done": "{{mode}}: report from {{date}}, no upgrade available"
+  },
+  "age": {
+    "today": "today",
+    "days_ago": "{{count}} d ago"
+  },
+  "summary": {
+    "title": "Summary by mode",
+    "todo_one": "{{count}} needs action",
+    "todo_other": "{{count}} need action",
+    "todo_none": "Nothing to do",
+    "filter_hint": "Click to filter the table"
+  },
+  "filters": {
+    "search": "Search a character",
+    "todo_only": "Needs action only",
+    "todo_only_hint": "Late, redo or missing in the displayed mode",
+    "show_gear": "Show gear",
+    "gear_label": "Gear",
+    "gear": {
+      "all": "All gear",
+      "none": "Compliant ({{count}})",
+      "orange": "Improvable ({{count}})",
+      "red": "To fix ({{count}})"
+    },
+    "gear_hint": "To fix: missing enchantment or gem, or no epic gem. Improvable: rank 1 enchantment or gem.",
+    "active_state": "{{mode}}: {{state}}",
+    "clear_state": "Remove this filter",
+    "reset": "Reset",
+    "results": "{{count}} / {{total}} characters"
+  },
+  "import": {
+    "placeholder": "Paste Raidbots report URL or ID here...",
+    "placeholder_with_qe": "Paste the URL or ID of a Raidbots report, or QE Live for a healer...",
+    "button_importing": "Importing...",
+    "button_default": "Import report",
+    "error_empty": "Please enter the report URL or ID",
+    "error_invalid": "Invalid input — paste the full URL or ID of the Raidbots report",
+    "success_title": "Success",
+    "success_message": "Report submitted: {{name}} updated",
+    "status_processing": "Processing",
+    "message_processing": "Processing report: {{progress}}",
+    "timeout": "Timeout (processing continues in background)",
+    "error_generic": "An error occurred during processing",
+    "refused": {
+      "QE_NO_HEALER_SPEC": "QE Live report refused: the simulated specialization is not recognized and no healer specialization can be deduced for this character (its class has none, or several are possible). Declare your healer specialization in “My specializations”, then import the report again.",
+      "QE_NOT_HEALER_SPEC": "QE Live report refused: the simulated specialization is not a healer specialization."
+    }
+  },
+  "roster_update": {
+    "success_title": "Success",
+    "success_message": "Roster updated successfully. Thumbnails retrieved.",
+    "error_title": "Error",
+    "error_default": "Error updating roster"
+  },
+  "table": {
+    "spec": "Spec",
+    "name": "Name",
+    "ilvl": "Ilvl",
+    "key": "Keys",
+    "score": "Score",
+    "state_mode": "{{mode}} status",
+    "modes": "Modes",
+    "actions": "Actions",
+    "tooltip_wishlist": "View wishlist"
+  },
+  "row_actions": {
+    "open_report": "Open the report",
+    "open_report_mode": "Open the {{mode}} report",
+    "more": "More actions",
+    "wishlist": "View wishlist",
+    "loots_one": "{{count}} imported loot",
+    "loots_other": "{{count}} imported loots",
+    "show_loots": "Show imported loots",
+    "hide_loots": "Hide imported loots"
+  },
+  "loots_table": {
+    "no_loots": "No loots imported for this character",
+    "date": "Date",
+    "item": "Item",
+    "response": "Response"
+  },
+  "empty": {
+    "title": "No tracked characters",
+    "description": "The tracking table is empty. Characters will appear here once added to the Roster."
+  },
+  "empty_filtered": {
+    "title": "No matching character",
+    "description": "Change the search or the filters to widen the list."
+  },
+  "error": {
+    "loading": "Loading error",
+    "invalid_request": "Error 400 — invalid request",
+    "unauthorized": "Error 401 — unauthorized. Please log in again.",
+    "forbidden": "Error 403 — access denied",
+    "not_found": "Error 404 — report not found",
+    "too_many_requests": "Error 429 — too many requests. Try again later.",
+    "server_error": "Error {{status}} — server error. Try again later.",
+    "unknown": "Error: {{message}}"
+  },
+  "gear": {
+    "tooltip": {
+      "enchant_missing": "Enchantment: missing",
+      "enchant_inferior": "Inferior enchantment: {{name}}",
+      "enchant_valid": "Enchantment: {{name}} (rank {{rank}})",
+      "gem_missing": "Gem: missing",
+      "gem_inferior": "Inferior gem: {{name}}",
+      "gem_valid": "Gem: rank {{rank}}",
+      "unknown": "unknown",
+      "valid": "valid"
+    },
+    "notes": {
+      "title": "Player Notes",
+      "all_correct": "Everything is correct",
+      "no_data": "No equipment data",
+      "enchantments": "Enchantments",
+      "gems": "Gems",
+      "epic_gem": "Epic Gem",
+      "enchant_missing": "missing enchantment",
+      "gem_missing": "missing gem",
+      "enchant_inferior": "inferior enchantment",
+      "gem_inferior": "inferior gem",
+      "rank_1": "rank 1",
+      "no_epic_gem": "No epic gem equipped"
+    }
+  },
+  "droptimizer_update": {
+    "button": "Update the Droptimizer",
+    "tooltip_date": "Update the Droptimizer — last Mythic report: {{date}}",
+    "tooltip_missing": "Update the Droptimizer — no Mythic report",
+    "modal_title": "Update the Droptimizer — {{name}}",
+    "instructions": "Raidbots opened in a new tab. Run the Droptimizer on Mythic with the settings below, then paste the report link here.",
+    "open_raidbots": "Reopen the Droptimizer on Raidbots",
+    "healer_note": "Healer: a QuestionablyEpic report link is also accepted.",
+    "healer_qe_limit": "Its gains are HPS, attached to your healer specialization; QE Live only simulates upgrade levels 1/6 and 6/6.",
+    "cancel": "Cancel",
+    "settings": {
+      "title": "Settings required by the guild",
+      "difficulty": "Difficulty",
+      "mythic": "Mythic",
+      "none": "none",
+      "unavailable": "Settings unavailable: the report will still be checked on import."
+    }
+  },
+  "sim_freshness": {
+    "column": "Last sim",
+    "no_sim": "No sim",
+    "stale": "Stale sim",
+    "tooltip": "Last imported report: {{date}} (stale after {{days}} days)",
+    "tooltip_stale": "Last imported report: {{date}} — over {{days}} days old, needs a new sim"
+  },
+  "sim_metric": {
+    "hps": "HPS",
+    "hps_tooltip": "Healing gain (HPS) imported from QE Live: it is not compared as-is with a DPS gain. QE Live limitation: only upgrade levels 1/6 and 6/6 are simulated; intermediate levels are not estimated."
+  }
+}

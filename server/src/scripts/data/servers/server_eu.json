@@ -1,0 +1,1873 @@
+{
+  "Realms": [
+    {
+      "name": "Aegwynn",
+      "slug": "aegwynn",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Aerie Peak",
+      "slug": "aerie-peak",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Agamaggan",
+      "slug": "agamaggan",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Aggra (Português)",
+      "slug": "aggra-português",
+      "locale": "pt-PT",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Aggramar",
+      "slug": "aggramar",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Ahn'Qiraj",
+      "slug": "ahnqiraj",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Al'Akir",
+      "slug": "alakir",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Alexstrasza",
+      "slug": "alexstrasza",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Alleria",
+      "slug": "alleria",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Alonsus",
+      "slug": "alonsus",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Aman'Thul",
+      "slug": "amanthul",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Ambossar",
+      "slug": "ambossar",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Anachronos",
+      "slug": "anachronos",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Anetheron",
+      "slug": "anetheron",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Antonidas",
+      "slug": "antonidas",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Anub'arak",
+      "slug": "anubarak",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Arak-arahm",
+      "slug": "arakarahm",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Arathi",
+      "slug": "arathi",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Arathor",
+      "slug": "arathor",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Archimonde",
+      "slug": "archimonde",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Area 52",
+      "slug": "area-52",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Argent Dawn",
+      "slug": "argent-dawn",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Arthas",
+      "slug": "arthas",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Arygos",
+      "slug": "arygos",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Ashenvale",
+      "slug": "ashenvale",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Aszune",
+      "slug": "aszune",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Auchindoun",
+      "slug": "auchindoun",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Azjol-Nerub",
+      "slug": "azjolnerub",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Azshara",
+      "slug": "azshara",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Azuregos",
+      "slug": "azuregos",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Azuremyst",
+      "slug": "azuremyst",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Baelgun",
+      "slug": "baelgun",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Balnazzar",
+      "slug": "balnazzar",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Blackhand",
+      "slug": "blackhand",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Blackmoore",
+      "slug": "blackmoore",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Blackrock",
+      "slug": "blackrock",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Blackscar",
+      "slug": "blackscar",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Blade's Edge",
+      "slug": "blades-edge",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Bladefist",
+      "slug": "bladefist",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Bloodfeather",
+      "slug": "bloodfeather",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Bloodhoof",
+      "slug": "bloodhoof",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Bloodscalp",
+      "slug": "bloodscalp",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Blutkessel",
+      "slug": "blutkessel",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Booty Bay",
+      "slug": "booty-bay",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Borean Tundra",
+      "slug": "borean-tundra",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Boulderfist",
+      "slug": "boulderfist",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Bronze Dragonflight",
+      "slug": "bronze-dragonflight",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Bronzebeard",
+      "slug": "bronzebeard",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Burning Blade",
+      "slug": "burning-blade",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Burning Legion",
+      "slug": "burning-legion",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Burning Steppes",
+      "slug": "burning-steppes",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "C'Thun",
+      "slug": "cthun",
+      "locale": "es-ES",
+      "category": "Spanish",
+      "region": "EU"
+    },
+    {
+      "name": "Chamber of Aspects",
+      "slug": "chamber-of-aspects",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Chants éternels",
+      "slug": "chants-éternels",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Cho'gall",
+      "slug": "chogall",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Chromaggus",
+      "slug": "chromaggus",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Colinas Pardas",
+      "slug": "colinas-pardas",
+      "locale": "es-ES",
+      "category": "Spanish",
+      "region": "EU"
+    },
+    {
+      "name": "Confrérie du Thorium",
+      "slug": "confrérie-du-thorium",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Conseil des Ombres",
+      "slug": "conseil-des-ombres",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Crushridge",
+      "slug": "crushridge",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Culte de la Rive noire",
+      "slug": "culte-de-la-rive-noire",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Daggerspine",
+      "slug": "daggerspine",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Dalaran",
+      "slug": "dalaran",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Dalvengyr",
+      "slug": "dalvengyr",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Darkmoon Faire",
+      "slug": "darkmoon-faire",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Darksorrow",
+      "slug": "darksorrow",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Darkspear",
+      "slug": "darkspear",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Das Konsortium",
+      "slug": "das-konsortium",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Das Syndikat",
+      "slug": "das-syndikat",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Deathguard",
+      "slug": "deathguard",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Deathweaver",
+      "slug": "deathweaver",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Deathwing",
+      "slug": "deathwing",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Deepholm",
+      "slug": "deepholm",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Defias Brotherhood",
+      "slug": "defias-brotherhood",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Dentarg",
+      "slug": "dentarg",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Der Mithrilorden",
+      "slug": "der-mithrilorden",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Der Rat von Dalaran",
+      "slug": "der-rat-von-dalaran",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Der abyssische Rat",
+      "slug": "der-abyssische-rat",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Destromath",
+      "slug": "destromath",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Dethecus",
+      "slug": "dethecus",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Die Aldor",
+      "slug": "die-aldor",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Die Arguswacht",
+      "slug": "die-arguswacht",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Die Nachtwache",
+      "slug": "die-nachtwache",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Die Silberne Hand",
+      "slug": "die-silberne-hand",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Die Todeskrallen",
+      "slug": "die-todeskrallen",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Die ewige Wacht",
+      "slug": "die-ewige-wacht",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Doomhammer",
+      "slug": "doomhammer",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Draenor",
+      "slug": "draenor",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Dragonblight",
+      "slug": "dragonblight",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Dragonmaw",
+      "slug": "dragonmaw",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Drak'thul",
+      "slug": "drakthul",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Drek'Thar",
+      "slug": "drekthar",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Dun Modr",
+      "slug": "dun-modr",
+      "locale": "es-ES",
+      "category": "Spanish",
+      "region": "EU"
+    },
+    {
+      "name": "Dun Morogh",
+      "slug": "dun-morogh",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Dunemaul",
+      "slug": "dunemaul",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Durotan",
+      "slug": "durotan",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Earthen Ring",
+      "slug": "earthen-ring",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Echsenkessel",
+      "slug": "echsenkessel",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Eitrigg",
+      "slug": "eitrigg",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Eldre'Thalas",
+      "slug": "eldrethalas",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Elune",
+      "slug": "elune",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Emerald Dream",
+      "slug": "emerald-dream",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Emeriss",
+      "slug": "emeriss",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Eonar",
+      "slug": "eonar",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Eredar",
+      "slug": "eredar",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Eversong",
+      "slug": "eversong",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Executus",
+      "slug": "executus",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Exodar",
+      "slug": "exodar",
+      "locale": "es-ES",
+      "category": "Spanish",
+      "region": "EU"
+    },
+    {
+      "name": "Festung der Stürme",
+      "slug": "festung-der-stürme",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Fordragon",
+      "slug": "fordragon",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Forscherliga",
+      "slug": "forscherliga",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Frostmane",
+      "slug": "frostmane",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Frostmourne",
+      "slug": "frostmourne",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Frostwhisper",
+      "slug": "frostwhisper",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Frostwolf",
+      "slug": "frostwolf",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Galakrond",
+      "slug": "galakrond",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Garona",
+      "slug": "garona",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Garrosh",
+      "slug": "garrosh",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Genjuros",
+      "slug": "genjuros",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Ghostlands",
+      "slug": "ghostlands",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Gilneas",
+      "slug": "gilneas",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Goldrinn",
+      "slug": "goldrinn",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Gordunni",
+      "slug": "gordunni",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Gorgonnash",
+      "slug": "gorgonnash",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Greymane",
+      "slug": "greymane",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Grim Batol",
+      "slug": "grim-batol",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Grom",
+      "slug": "grom",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Gul'dan",
+      "slug": "guldan",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Hakkar",
+      "slug": "hakkar",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Haomarush",
+      "slug": "haomarush",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Hellfire",
+      "slug": "hellfire",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Hellscream",
+      "slug": "hellscream",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Howling Fjord",
+      "slug": "howling-fjord",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Hyjal",
+      "slug": "hyjal",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Illidan",
+      "slug": "illidan",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Jaedenar",
+      "slug": "jaedenar",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Kael'thas",
+      "slug": "kaelthas",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Karazhan",
+      "slug": "karazhan",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Kargath",
+      "slug": "kargath",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Kazzak",
+      "slug": "kazzak",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Kel'Thuzad",
+      "slug": "kelthuzad",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Khadgar",
+      "slug": "khadgar",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Khaz Modan",
+      "slug": "khaz-modan",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Khaz'goroth",
+      "slug": "khazgoroth",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Kil'jaeden",
+      "slug": "kiljaeden",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Kilrogg",
+      "slug": "kilrogg",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Kirin Tor",
+      "slug": "kirin-tor",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Kor'gall",
+      "slug": "korgall",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Krag'jin",
+      "slug": "kragjin",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Krasus",
+      "slug": "krasus",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Kul Tiras",
+      "slug": "kul-tiras",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Kult der Verdammten",
+      "slug": "kult-der-verdammten",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "La Croisade écarlate",
+      "slug": "la-croisade-écarlate",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Laughing Skull",
+      "slug": "laughing-skull",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Les Clairvoyants",
+      "slug": "les-clairvoyants",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Les Sentinelles",
+      "slug": "les-sentinelles",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Lich King",
+      "slug": "lich-king",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Lightbringer",
+      "slug": "lightbringer",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Lightning's Blade",
+      "slug": "lightnings-blade",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Lordaeron",
+      "slug": "lordaeron",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Los Errantes",
+      "slug": "los-errantes",
+      "locale": "es-ES",
+      "category": "Spanish",
+      "region": "EU"
+    },
+    {
+      "name": "Lothar",
+      "slug": "lothar",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Madmortem",
+      "slug": "madmortem",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Magtheridon",
+      "slug": "magtheridon",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Mal'Ganis",
+      "slug": "malganis",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Malfurion",
+      "slug": "malfurion",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Malorne",
+      "slug": "malorne",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Malygos",
+      "slug": "malygos",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Mannoroth",
+      "slug": "mannoroth",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Marécage de Zangar",
+      "slug": "marécage-de-zangar",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Mazrigos",
+      "slug": "mazrigos",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Medivh",
+      "slug": "medivh",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Minahonda",
+      "slug": "minahonda",
+      "locale": "es-ES",
+      "category": "Spanish",
+      "region": "EU"
+    },
+    {
+      "name": "Moonglade",
+      "slug": "moonglade",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Mug'thol",
+      "slug": "mugthol",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Nagrand",
+      "slug": "nagrand",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Nathrezim",
+      "slug": "nathrezim",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Naxxramas",
+      "slug": "naxxramas",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Nazjatar",
+      "slug": "nazjatar",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Nefarian",
+      "slug": "nefarian",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Nemesis",
+      "slug": "nemesis",
+      "locale": "it-IT",
+      "category": "Italian",
+      "region": "EU"
+    },
+    {
+      "name": "Neptulon",
+      "slug": "neptulon",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Ner'zhul",
+      "slug": "nerzhul",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Nera'thor",
+      "slug": "nerathor",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Nethersturm",
+      "slug": "nethersturm",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Nordrassil",
+      "slug": "nordrassil",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Norgannon",
+      "slug": "norgannon",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Nozdormu",
+      "slug": "nozdormu",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Onyxia",
+      "slug": "onyxia",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Outland",
+      "slug": "outland",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Perenolde",
+      "slug": "perenolde",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Pozzo dell'Eternità",
+      "slug": "pozzo-delleternità",
+      "locale": "it-IT",
+      "category": "Italian",
+      "region": "EU"
+    },
+    {
+      "name": "Proudmoore",
+      "slug": "proudmoore",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Quel'Thalas",
+      "slug": "quelthalas",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Ragnaros",
+      "slug": "ragnaros",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Rajaxx",
+      "slug": "rajaxx",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Rashgarroth",
+      "slug": "rashgarroth",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Ravencrest",
+      "slug": "ravencrest",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Ravenholdt",
+      "slug": "ravenholdt",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Razuvious",
+      "slug": "razuvious",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Rexxar",
+      "slug": "rexxar",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Runetotem",
+      "slug": "runetotem",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Sanguino",
+      "slug": "sanguino",
+      "locale": "es-ES",
+      "category": "Spanish",
+      "region": "EU"
+    },
+    {
+      "name": "Sargeras",
+      "slug": "sargeras",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Saurfang",
+      "slug": "saurfang",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Scarshield Legion",
+      "slug": "scarshield-legion",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Sen'jin",
+      "slug": "senjin",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Shadowsong",
+      "slug": "shadowsong",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Shattered Halls",
+      "slug": "shattered-halls",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Shattered Hand",
+      "slug": "shattered-hand",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Shattrath",
+      "slug": "shattrath",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Shen'dralar",
+      "slug": "shendralar",
+      "locale": "es-ES",
+      "category": "Spanish",
+      "region": "EU"
+    },
+    {
+      "name": "Silvermoon",
+      "slug": "silvermoon",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Sinstralis",
+      "slug": "sinstralis",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Skullcrusher",
+      "slug": "skullcrusher",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Soulflayer",
+      "slug": "soulflayer",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Spinebreaker",
+      "slug": "spinebreaker",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Sporeggar",
+      "slug": "sporeggar",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Steamwheedle Cartel",
+      "slug": "steamwheedle-cartel",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Stormrage",
+      "slug": "stormrage",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Stormreaver",
+      "slug": "stormreaver",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Stormscale",
+      "slug": "stormscale",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Sunstrider",
+      "slug": "sunstrider",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Suramar",
+      "slug": "suramar",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Sylvanas",
+      "slug": "sylvanas",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Taerar",
+      "slug": "taerar",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Talnivarr",
+      "slug": "talnivarr",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Tarren Mill",
+      "slug": "tarren-mill",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Teldrassil",
+      "slug": "teldrassil",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Temple noir",
+      "slug": "temple-noir",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Terenas",
+      "slug": "terenas",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Terokkar",
+      "slug": "terokkar",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Terrordar",
+      "slug": "terrordar",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "The Maelstrom",
+      "slug": "the-maelstrom",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "The Sha'tar",
+      "slug": "the-shatar",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "The Venture Co",
+      "slug": "the-venture-co",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Theradras",
+      "slug": "theradras",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Thermaplugg",
+      "slug": "thermaplugg",
+      "locale": "ru-RU",
+      "category": "Russian",
+      "region": "EU"
+    },
+    {
+      "name": "Thrall",
+      "slug": "thrall",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Throk'Feroth",
+      "slug": "throkferoth",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Thunderhorn",
+      "slug": "thunderhorn",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Tichondrius",
+      "slug": "tichondrius",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Tirion",
+      "slug": "tirion",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Todeswache",
+      "slug": "todeswache",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Trollbane",
+      "slug": "trollbane",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Turalyon",
+      "slug": "turalyon",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Twilight's Hammer",
+      "slug": "twilights-hammer",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Twisting Nether",
+      "slug": "twisting-nether",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Tyrande",
+      "slug": "tyrande",
+      "locale": "es-ES",
+      "category": "Spanish",
+      "region": "EU"
+    },
+    {
+      "name": "Uldaman",
+      "slug": "uldaman",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Ulduar",
+      "slug": "ulduar",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Uldum",
+      "slug": "uldum",
+      "locale": "es-ES",
+      "category": "Spanish",
+      "region": "EU"
+    },
+    {
+      "name": "Un'Goro",
+      "slug": "ungoro",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Varimathras",
+      "slug": "varimathras",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Vashj",
+      "slug": "vashj",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Vek'lor",
+      "slug": "veklor",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Vek'nilash",
+      "slug": "veknilash",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Vol'jin",
+      "slug": "voljin",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Wildhammer",
+      "slug": "wildhammer",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Wrathbringer",
+      "slug": "wrathbringer",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Xavius",
+      "slug": "xavius",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Ysera",
+      "slug": "ysera",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Ysondre",
+      "slug": "ysondre",
+      "locale": "fr-FR",
+      "category": "French",
+      "region": "EU"
+    },
+    {
+      "name": "Zenedar",
+      "slug": "zenedar",
+      "locale": "en-GB",
+      "category": "English",
+      "region": "EU"
+    },
+    {
+      "name": "Zirkel des Cenarius",
+      "slug": "zirkel-des-cenarius",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    },
+    {
+      "name": "Zul'jin",
+      "slug": "zuljin",
+      "locale": "es-ES",
+      "category": "Spanish",
+      "region": "EU"
+    },
+    {
+      "name": "Zuluhed",
+      "slug": "zuluhed",
+      "locale": "de-DE",
+      "category": "German",
+      "region": "EU"
+    }
+  ]
+}

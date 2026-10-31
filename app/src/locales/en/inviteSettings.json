@@ -1,0 +1,55 @@
+{
+  "title": "Invitations",
+  "intro": "An invite code lets a player from outside the guild join it as a guest. A guest can sign up for calendar events but cannot see the roster, wishlists or loot history. Send them the link: they sign in with Battle.net and join the guild. You can remove them at any time.",
+  "create": {
+    "title": "New code",
+    "expiry_label": "Expiration",
+    "expiry_description": "The code stays valid until the end of that day. Without a date, it never expires.",
+    "expiry_placeholder": "Never",
+    "max_uses_label": "Max uses",
+    "max_uses_description": "How many players can join with this code.",
+    "submit": "Generate a code",
+    "created_title": "Code created",
+    "created_description": "Send this link to the player you want to invite."
+  },
+  "codes": {
+    "title": "Active codes",
+    "inactive_title": "Expired or used up codes",
+    "inactive_description": "These codes can no longer be used to join the guild.",
+    "empty": "No active code. Generate one above to invite a player.",
+    "uses_one": "{{used}} / {{max}} use",
+    "uses_other": "{{used}} / {{max}} uses",
+    "expires": "expires {{relative}}",
+    "expired": "expired {{relative}}",
+    "never_expires": "no expiration",
+    "exhausted": "used up",
+    "copy_link": "Copy link",
+    "copied": "Copied",
+    "revoke": "Revoke",
+    "delete": "Delete"
+  },
+  "guests": {
+    "title": "Guests",
+    "empty": "No guests yet. Players who join with a code will show up here.",
+    "unknown_character": "Battle.net player #{{id}}",
+    "joined": "joined {{relative}}",
+    "via_code": "via {{code}}",
+    "remove": "Remove"
+  },
+  "confirm": {
+    "cancel": "Cancel",
+    "revoke_title": "Revoke this code?",
+    "revoke_message": "The code {{code}} can no longer be used. Guests who already used it stay in the guild.",
+    "delete_title": "Delete this code?",
+    "delete_message": "The code {{code}} will be removed from the list. Guests who used it stay in the guild.",
+    "remove_title": "Remove this guest?",
+    "remove_message": "{{name}} will lose access to the guild and their characters will be detached. They will need a new code to come back."
+  },
+  "notifications": {
+    "revoked": "Code revoked.",
+    "deleted": "Code deleted.",
+    "removed": "Guest removed.",
+    "error_title": "Error",
+    "error": "The action failed. Try again in a moment."
+  }
+}

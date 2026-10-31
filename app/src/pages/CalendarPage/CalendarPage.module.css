@@ -1,0 +1,255 @@
+.calendarGrid {
+  margin-bottom: 8px;
+}
+
+.weekDayHeader {
+  padding: 8px;
+  text-align: center;
+}
+
+.calendarCell {
+  min-height: 120px;
+  padding: 8px;
+  border: 1px solid var(--mantine-color-dark-4);
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.calendarCell:hover {
+  background-color: var(--mantine-color-dark-6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.calendarCellToday {
+  background: linear-gradient(
+    135deg,
+    var(--mantine-color-app-6) 0%,
+    var(--mantine-color-app-7) 100%
+  );
+}
+
+.calendarCellToday:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.calendarCellOtherMonth {
+  opacity: 0.4;
+}
+
+.calendarCellPast {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.calendarCellPast:hover {
+  background-color: transparent;
+  transform: none;
+  box-shadow: none;
+}
+
+.statusBorderGreen {
+  border-left: 4px solid var(--mantine-color-green-6);
+}
+
+.statusBorderRed {
+  border-left: 4px solid var(--mantine-color-red-6);
+}
+
+.statusBorderYellow {
+  border-left: 4px solid var(--mantine-color-yellow-6);
+}
+
+.statusBorderOrange {
+  border-left: 4px solid var(--mantine-color-orange-6);
+}
+
+.statusBorderGray {
+  border-left: 4px solid var(--mantine-color-gray-6);
+}
+
+.eventDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.eventDotGreen {
+  background-color: var(--mantine-color-green-6);
+}
+
+.eventDotRed {
+  background-color: var(--mantine-color-red-6);
+}
+
+.eventDotYellow {
+  background-color: var(--mantine-color-yellow-6);
+}
+
+.eventDotOrange {
+  background-color: var(--mantine-color-orange-6);
+}
+
+.eventDotGray {
+  background-color: var(--mantine-color-gray-6);
+}
+
+.eventDotBrand {
+  background-color: var(--mantine-color-brand-6);
+}
+
+.createEventButton {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--mantine-color-dark-5);
+  border: 1px solid var(--mantine-color-dark-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.createEventButton:hover {
+  background-color: var(--mantine-color-dark-4);
+}
+
+.eventRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ganttWrapper {
+  overflow-x: auto;
+  overflow-y: visible;
+  border-radius: 8px;
+  border: 1px solid var(--mantine-color-dark-4);
+}
+
+.ganttTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.ganttNameCol {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  width: 130px;
+  min-width: 130px;
+  padding: 6px 8px;
+  background: var(--mantine-color-dark-7);
+  border-bottom: 1px solid var(--mantine-color-dark-4);
+  text-align: left;
+}
+
+.ganttDayCol {
+  width: 28px;
+  min-width: 28px;
+  max-width: 28px;
+  padding: 4px 2px;
+  border-bottom: 1px solid var(--mantine-color-dark-4);
+  text-align: center;
+  white-space: nowrap;
+  background: var(--mantine-color-dark-7);
+}
+
+.ganttDayToday {
+  background-color: var(--mantine-color-violet-9) !important;
+}
+
+.ganttDayWeekend {
+  background-color: var(--mantine-color-dark-6);
+}
+
+.ganttRowEven {
+  background: var(--mantine-color-dark-7);
+}
+
+.ganttRowOdd {
+  background: var(--mantine-color-dark-8);
+}
+
+.ganttRowEven:hover,
+.ganttRowOdd:hover {
+  background: var(--mantine-color-dark-5);
+  transition: background 0.15s ease;
+}
+
+.ganttNameCell {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  padding: 4px 8px;
+  max-width: 130px;
+  min-width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: inherit;
+  border-right: 1px solid var(--mantine-color-dark-4);
+}
+
+.ganttDayCell {
+  width: 28px;
+  min-width: 28px;
+  max-width: 28px;
+  padding: 3px 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ganttBlock {
+  height: 18px;
+  cursor: help;
+  opacity: 0.85;
+  transition:
+    opacity 0.15s ease,
+    transform 0.1s ease;
+}
+
+.ganttBlock:hover {
+  opacity: 1;
+  transform: scaleY(1.1);
+}
+
+.ganttBlockOwn {
+  border-top: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Delete button inside own-row block, shown on hover */
+.ganttDeleteBtn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: rgba(220, 50, 50, 0.9);
+  color: white;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.ganttDeleteBtn:hover {
+  background: rgb(200, 30, 30);
+}
+
+.ganttBlock:hover .ganttDeleteBtn {
+  display: flex;
+}

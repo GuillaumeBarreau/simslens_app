@@ -1,0 +1,192 @@
+{
+  "subtitle": "Mon activité",
+  "no_character_title": "Aucun personnage sélectionné",
+  "no_character": "Sélectionnez un personnage pour voir votre activité.",
+  "no_status": "Sans statut",
+  "header": {
+    "ilvl": "ilvl {{ilvl}}",
+    "last_sim": "Dernier sim",
+    "open_wishlist": "Ma wishlist",
+    "settings": "Réglages"
+  },
+  "todo": {
+    "title": "À faire",
+    "raids": {
+      "label": "Raids à confirmer",
+      "unit": "sur {{total}}",
+      "pending_one": "{{count}} raid sans réponse ferme",
+      "pending_other": "{{count}} raids sans réponse ferme",
+      "ok": "Tous vos raids sont confirmés",
+      "none": "Aucun raid dans les 7 jours"
+    },
+    "sim": {
+      "label": "Sim Droptimizer",
+      "unit_one": "jour",
+      "unit_other": "jours",
+      "fresh": "À jour",
+      "late": "À rafraîchir bientôt",
+      "stale": "Périmé : refaites votre sim",
+      "missing": "Aucun sim importé",
+      "unknown": "Fraîcheur indisponible"
+    },
+    "gear": {
+      "label": "Enchantements et gemmes",
+      "issues_one": "{{count}} élément à corriger",
+      "issues_other": "{{count}} éléments à corriger",
+      "minor_one": "+ {{count}} au rang 1",
+      "minor_other": "+ {{count}} au rang 1",
+      "ok": "Équipement soigné",
+      "unknown": "Équipement non relevé",
+      "more_one": "et {{count}} autre",
+      "more_other": "et {{count}} autres"
+    },
+    "wishlist": {
+      "label": "Wishlist",
+      "unit": "/ {{total}}",
+      "ok": "Bien remplie",
+      "partial": "À compléter",
+      "empty": "À commencer",
+      "unknown": "Aucune spé principale"
+    },
+    "cta": {
+      "raids": "Répondre",
+      "raids_view": "Voir les raids",
+      "sim": "Voir les upgrades",
+      "gear": "Voir l'équipement",
+      "wishlist": "Ouvrir la wishlist"
+    }
+  },
+  "anomalies": {
+    "enchant_missing": "Enchantement manquant",
+    "enchant_invalid": "Enchantement invalide",
+    "enchant_rank1": "Enchantement de rang 1",
+    "gem_missing": "Gemme manquante",
+    "gem_invalid": "Gemme invalide",
+    "gem_rank1": "Gemme de rang 1"
+  },
+  "slots": {
+    "head": "Tête",
+    "neck": "Cou",
+    "shoulders": "Épaules",
+    "back": "Dos",
+    "chest": "Torse",
+    "wrists": "Poignets",
+    "hands": "Mains",
+    "waist": "Taille",
+    "legs": "Jambes",
+    "feet": "Pieds",
+    "finger1": "Anneau 1",
+    "finger2": "Anneau 2",
+    "trinket1": "Bijou 1",
+    "trinket2": "Bijou 2",
+    "main_hand": "Main droite",
+    "off_hand": "Main gauche",
+    "two_hand": "Deux mains"
+  },
+  "gear": {
+    "title": "Équipement",
+    "description_gear": "Votre équipement au dernier relevé.",
+    "description_anomalies": "Une pastille signale un enchantement ou une gemme à corriger.",
+    "description_wishlist": "Les objets de votre wishlist, emplacement par emplacement.",
+    "legend_alert": "Manquant ou invalide",
+    "legend_warning": "Rang 1 seulement"
+  },
+  "tabs": {
+    "wishlist": "Wishlist",
+    "snapgear": "Équipement"
+  },
+  "wishlist": {
+    "hide_labels": "Masquer les noms",
+    "show_labels": "Afficher les noms"
+  },
+  "raids": {
+    "title": "Prochains raids",
+    "description": "Les 7 prochains jours",
+    "today": "Aujourd'hui",
+    "tomorrow": "Demain",
+    "in_days_one": "Dans {{count}} jour",
+    "in_days_other": "Dans {{count}} jours",
+    "answer": "Répondre",
+    "optional": "Optionnel",
+    "empty_title": "Aucun raid prévu",
+    "empty_text": "Rien au calendrier pour les 7 prochains jours.",
+    "see_calendar": "Voir le calendrier"
+  },
+  "dungeons": {
+    "title": "Mes groupes M+",
+    "description": "Cette semaine",
+    "empty_title": "Aucun groupe cette semaine",
+    "empty_text": "Indiquez vos disponibilités pour être placé dans un groupe.",
+    "see_dungeons": "Voir les donjons"
+  },
+  "status": {
+    "present": "Présent",
+    "absent": "Absent",
+    "tentative": "Incertain",
+    "late": "En retard",
+    "bench": "Banc"
+  },
+  "boss_upgrades": {
+    "label": "Upgrades par boss",
+    "description": "Le loot qui vous fait gagner le plus, boss par boss",
+    "top_title": "Meilleurs gains",
+    "best_boss": "Meilleur boss",
+    "loot_table": "Loot",
+    "upgrades_count_one": "{{count}} upgrade",
+    "upgrades_count_other": "{{count}} upgrades",
+    "best_gain": "Meilleur gain",
+    "upgrade_chance_help": "Nombre d'items avec gain de DPS positif sur ce boss",
+    "best_gain_help": "Plus haut gain de DPS parmi le loot du boss",
+    "no_gain": "Aucun gain",
+    "no_loot": "Aucun loot",
+    "empty_title": "Pas encore d'upgrades",
+    "empty": "Aucune donnée pour cette difficulté. Importez un rapport Droptimizer pour voir les upgrades.",
+    "error_title": "Upgrades indisponibles",
+    "error": "Impossible de charger les upgrades pour le moment. Réessayez plus tard.",
+    "prev": "Boss précédents",
+    "next": "Boss suivants",
+    "simulated_spec": "Spé simulée :",
+    "change_spec": "Changer de spé simulée",
+    "no_sim_for_spec": "Aucune sim pour cette spé"
+  },
+  "settings": {
+    "title": "Réglages",
+    "description": "Vos spécialisations et votre agenda."
+  },
+  "specializations": {
+    "title": "Mes spécialisations",
+    "description": "Votre spé principale sert à la vue roster et aux compositions ; vos off-specs indiquent ce que vous pouvez jouer d'autre.",
+    "primary_label": "Spé principale",
+    "primary_placeholder": "Choisissez votre spé",
+    "offspecs_label": "Off-specs",
+    "offspecs_description": "Spés que vous pouvez aussi jouer. La spé principale n'en fait pas partie.",
+    "sim_data_label": "Spés avec un sim importé",
+    "sim_data_empty": "Aucun sim importé pour ce personnage.",
+    "save": "Enregistrer",
+    "saved": "Spécialisations enregistrées.",
+    "error_title": "Erreur",
+    "error": "Impossible d'enregistrer les spécialisations."
+  },
+  "calendar_feed": {
+    "title": "Mon agenda (iCal)",
+    "description": "Abonnez votre agenda (Google, Apple, Outlook…) aux soirées de vos guildes, avec votre statut d'inscription. Il se met à jour tout seul.",
+    "create": "Créer mon lien d'agenda",
+    "regenerate": "Régénérer le lien",
+    "revoke": "Révoquer",
+    "cancel": "Annuler",
+    "subscribe": "Ajouter à mon agenda",
+    "url_label": "Lien privé de l'agenda",
+    "copy": "Copier le lien",
+    "copied": "Copié",
+    "copy_now": "Copiez ce lien maintenant : il ne sera plus affiché. Ne le partagez pas, il donne accès à vos soirées.",
+    "active": "Lien actif depuis le {{createdAt}} — dernière lecture par votre agenda : {{lastUsedAt}}. Pour le retrouver, régénérez-le.",
+    "never": "jamais",
+    "regenerate_confirm_title": "Régénérer le lien de l'agenda ?",
+    "revoke_confirm_title": "Révoquer le lien de l'agenda ?",
+    "confirm_message": "L'ancien lien cessera aussitôt de fonctionner : les agendas qui l'utilisent ne recevront plus vos soirées.",
+    "revoked": "Lien d'agenda révoqué.",
+    "time_zone": "Dans l'application, les heures sont affichées dans votre fuseau : {{timeZone}}.",
+    "error_title": "Erreur",
+    "error": "Impossible de mettre à jour le lien d'agenda."
+  }
+}

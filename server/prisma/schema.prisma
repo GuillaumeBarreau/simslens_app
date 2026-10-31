@@ -1,0 +1,1101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model characters {
+  id                                                    Int                        @id @default(autoincrement())
+  lastModified                                          DateTime
+  name                                                  String
+  class                                                 String
+  realm                                                 String
+  region                                                String?                    @default("EU")
+  thumbnail                                             String?
+  archived                                              Int?                       @default(0)
+  archivedAt                                            DateTime?
+  status                                                String                     @default("approved") // pending, approved, archived
+  spec                                                  String?
+  specializationId                                      Int?
+  currentPeriodKeyCount                                 Int?                       @default(0)
+  ManaforgeBuff                                         String?
+  ilvl                                                  Int?
+  score                                                 Int?
+  discordTag                                            String?
+  realmId                                               Int?
+  userId                                                String?
+  realmRelation                                         realms?                    @relation(fields: [realmId], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  classes                                               classes                    @relation(fields: [class], references: [name], onDelete: Cascade, onUpdate: NoAction)
+  specialization                                        specializations?           @relation(fields: [specializationId], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  imported_loots_imported_loots_ownerTocharacters       imported_loots[]           @relation("imported_loots_ownerTocharacters")
+  imported_loots_imported_loots_characterIDTocharacters imported_loots[]           @relation("imported_loots_characterIDTocharacters")
+  upgrades                                              upgrades[]
+  wishlists                                             character_wishlists[]
+  talent_loadouts                                       character_talent_loadouts[]
+  raid_signups                                          raid_signups[]
+  gear_snapshots                                        character_gear_snapshots[]
+  event_roster_assignments                              event_roster_assignments[]
+  key_runs                                              character_key_runs[]
+  boss_note_assignments                                 event_boss_note_assignments[]
+  offspecs                                              character_offspecs[]
+
+  @@unique([name, realm], map: "unique_character_name_realm")
+  @@index([archived], map: "idx_characters_archived")
+  @@index([realmId], map: "idx_characters_realmId")
+  @@index([userId], map: "idx_characters_userId")
+  @@index([specializationId], map: "idx_characters_specializationId")
+}
+
+model raids {
+  id                 Int                 @id @default(autoincrement())
+  name               String              @unique
+  instanceId         Int?                @unique
+  description        String?
+  image_button       String?
+  image_button_small String?
+  image_background   String?
+  extension          String?
+  season             String?
+  raid_difficulties  raid_difficulties[]
+}
+
+model realms {
+  id                    Int      @id @default(autoincrement())
+  server                String
+  region                String   @default("EU")
+  guildName             String
+  createdBy             Int
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  discordGuildId        String?
+  discordRaidCategoryId String?
+  signupLockHours       Int      @default(24)
+  signupReminderHours   Int      @default(2)
+  confirmReminderHours  Int      @default(0)
+  tier                  Int      @default(1)
+  // Fuseau IANA des messages Discord (rappels, annonces) ; l'app affiche l'heure du navigateur
+  timezone              String   @default("Europe/Paris")
+
+  // Relations
+  characters             characters[]
+  owners                 realm_owners[]
+  instances              instances[]
+  raid_events            raid_events[]
+  raid_event_series      raid_event_series[]
+  raid_guests            raid_guests[]
+  member_absences        member_absences[]
+  dungeon_availabilities dungeon_availabilities[]
+  dungeon_groups         dungeon_groups[]
+  validation_settings    validation_settings?
+  activity_logs          activity_logs[]
+  subscriptions          realm_subscriptions[]
+  invite_codes           realm_invite_codes[]
+  guest_members          realm_user_guests[]
+
+  server_rel servers @relation(fields: [server, region], references: [slug, region], onDelete: Cascade)
+
+  @@unique([region, server, guildName])
+}
+
+model realm_subscriptions {
+  id        Int      @id @default(autoincrement())
+  realmId   Int
+  tier      Int
+  type      String // "monthly" | "annual"
+  status    String   @default("active") // "active" | "expired" | "cancelled"
+  price     Decimal  @db.Decimal(10, 2)
+  startedAt DateTime @default(now())
+  expiresAt DateTime
+  note      String?
+  createdAt DateTime @default(now())
+
+  realm realms @relation(fields: [realmId], references: [id], onDelete: Cascade)
+
+  @@index([realmId])
+  @@index([status])
+  @@index([expiresAt])
+  @@map("realm_subscriptions")
+}
+
+model realm_owners {
+  id      Int    @id @default(autoincrement())
+  realmId Int
+  ownerId String
+  role    String @default("admin") // "owner", "admin", "moderator"
+
+  realm realms @relation(fields: [realmId], references: [id], onDelete: Cascade)
+
+  @@unique([realmId, ownerId])
+  @@index([ownerId])
+  @@index([realmId])
+}
+
+model realm_invite_codes {
+  id        Int       @id @default(autoincrement())
+  realmId   Int
+  code      String    @unique
+  createdBy String // Battle.net userId of the creator
+  expiresAt DateTime?
+  maxUses   Int       @default(1)
+  useCount  Int       @default(0)
+  createdAt DateTime  @default(now())
+
+  realm  realms              @relation(fields: [realmId], references: [id], onDelete: Cascade)
+  guests realm_user_guests[]
+
+  @@index([realmId])
+  @@index([code])
+  @@map("realm_invite_codes")
+}
+
+model realm_user_guests {
+  id           Int      @id @default(autoincrement())
+  realmId      Int
+  userId       String // Battle.net userId
+  inviteCodeId Int?
+  joinedAt     DateTime @default(now())
+
+  realm      realms              @relation(fields: [realmId], references: [id], onDelete: Cascade)
+  inviteCode realm_invite_codes? @relation(fields: [inviteCodeId], references: [id], onDelete: SetNull)
+
+  @@unique([realmId, userId])
+  @@index([realmId])
+  @@index([userId])
+  @@map("realm_user_guests")
+}
+
+model classes {
+  id              Int               @id @default(autoincrement())
+  name            String            @unique
+  characters      characters[]
+  specializations specializations[]
+}
+
+model specializations {
+  id             Int     @id @default(autoincrement())
+  name           String // ex: "Fury", "Arms", "Protection"
+  classId        Int
+  role           String // rôle de raid, en minuscules : "tank", "healer", "melee", "ranged"
+  icon           String? // URL de l'icône (optionnel)
+  blizzardSpecId Int? // Blizzard playable specialization id (pour lier l'arbre de talents)
+  talentTreeId   Int? // Blizzard talent tree id (arbre de classe)
+
+  class               classes                     @relation(fields: [classId], references: [id], onDelete: Cascade)
+  characters          characters[]
+  character_wishlists character_wishlists[]
+  talent_tree         talent_trees?
+  talent_loadouts     character_talent_loadouts[]
+  upgrades            upgrades[]
+  gear_snapshots      character_gear_snapshots[]
+  offspecs            character_offspecs[]
+
+  @@unique([name, classId]) // Une spec est unique par classe
+  @@index([classId])
+}
+
+// Spécialisations secondaires (off-specs) déclarées pour un personnage (SIMS-212).
+// La spé principale reste characters.specializationId ; l'API garantit qu'elle
+// n'est pas aussi off-spec et que chaque off-spec est de la classe du personnage.
+model character_offspecs {
+  id               Int             @id @default(autoincrement())
+  characterId      Int
+  specializationId Int
+  createdAt        DateTime        @default(now())
+  character        characters      @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  specialization   specializations @relation(fields: [specializationId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([characterId, specializationId], map: "unique_character_offspec")
+  @@index([specializationId], map: "idx_character_offspecs_specializationId")
+}
+
+// --- Arbre de talents (données de référence importées depuis l'API Blizzard) ---
+
+// Un arbre par spécialisation. Regroupe les sous-arbres classe/spé/héros.
+model talent_trees {
+  id               Int      @id @default(autoincrement())
+  specializationId Int      @unique
+  blizzardTreeId   Int // talentTreeId Blizzard (arbre de classe)
+  blizzardSpecId   Int // playable specialization id Blizzard
+  updatedAt        DateTime @updatedAt
+
+  specialization specializations        @relation(fields: [specializationId], references: [id], onDelete: Cascade)
+  nodes          talent_nodes[]
+  heroSubTrees   talent_hero_subtrees[]
+
+  @@index([specializationId])
+}
+
+// Un sous-arbre héros (ex: "Colossus", "Slayer" pour Guerrier).
+model talent_hero_subtrees {
+  id         Int    @id @default(autoincrement())
+  treeId     Int
+  blizzardId Int // hero talent tree id Blizzard
+  name       String
+
+  tree  talent_trees   @relation(fields: [treeId], references: [id], onDelete: Cascade)
+  nodes talent_nodes[]
+
+  @@unique([treeId, blizzardId])
+  @@index([treeId])
+}
+
+// Un nœud de l'arbre. `entries` contient les talents (plusieurs pour un nœud de choix).
+model talent_nodes {
+  id             Int    @id @default(autoincrement())
+  treeId         Int
+  blizzardNodeId Int // node id Blizzard
+  nodeType       String // "CLASS" | "SPEC" | "HERO"
+  displayRow     Int
+  displayCol     Int
+  maxRank        Int    @default(1)
+  heroSubTreeId  Int? // renseigné pour les nœuds de type HERO
+  entries        Json // [{ talentId, spellId, name, icon, index }]
+  unlockNodeIds  Int[] // blizzardNodeIds que ce nœud débloque (pour tracer les arêtes)
+
+  tree        talent_trees          @relation(fields: [treeId], references: [id], onDelete: Cascade)
+  heroSubTree talent_hero_subtrees? @relation(fields: [heroSubTreeId], references: [id], onDelete: SetNull)
+
+  @@unique([treeId, blizzardNodeId])
+  @@index([treeId])
+  @@index([heroSubTreeId])
+}
+
+// Config de talents d'un joueur pour une spé (miroir de character_wishlists).
+model character_talent_loadouts {
+  id               Int      @id @default(autoincrement())
+  characterId      Int
+  specializationId Int
+  label            String? // nom du loadout (optionnel)
+  selectedNodes    Json // { [blizzardNodeId]: { rank: number, choiceIndex?: number } }
+  exportString     String? // code d'import/export WoW
+  source           String   @default("manual") // "manual" | "blizzard"
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  character      characters      @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  specialization specializations @relation(fields: [specializationId], references: [id], onDelete: Restrict)
+
+  @@unique([characterId, specializationId])
+  @@index([characterId])
+  @@index([specializationId])
+}
+
+model imported_loots {
+  id                                                Int         @id @default(autoincrement())
+  importID                                          Int
+  characterID                                       Int?
+  player                                            String?
+  date                                              String?
+  time                                              String?
+  itemID                                            Int?
+  response                                          String?
+  instance                                          String?
+  owner                                             Int?
+  // Gain figé à l'import (SIMS-229) : sim de l'objet retenu au moment du drop,
+  // jamais réécrit par un sim ultérieur. null = pas de sim trouvé, ou ligne
+  // antérieure à la fonctionnalité.
+  upgradePercent                                    Decimal?    @db.Decimal(10, 4)
+  upgradeSimAt                                      DateTime?
+  // Spé du sim retenu (instantané, sans clé étrangère)
+  upgradeSpecializationId                           Int?
+  // Grandeur du sim retenu (« dps » | « hps », CHECK en SQL) ; null vaut « dps »
+  upgradeMetric                                     String?
+  characters_imported_loots_ownerTocharacters      characters? @relation("imported_loots_ownerTocharacters", fields: [owner], references: [id], onUpdate: NoAction)
+  characters_imported_loots_characterIDTocharacters characters? @relation("imported_loots_characterIDTocharacters", fields: [characterID], references: [id], onUpdate: NoAction)
+  imports                                           imports     @relation(fields: [importID], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([player, date, time, itemID], map: "idx_imported_loots_unique_tuple")
+}
+
+model imports {
+  id             Int              @id @default(autoincrement())
+  filename       String
+  importedAt     Int
+  rowCount       Int
+  extension      String?
+  season         String?
+  instanceId     Int?
+  imported_loots imported_loots[]
+  instance       instances?       @relation(fields: [instanceId], references: [id], onDelete: SetNull, onUpdate: NoAction)
+
+  @@index([extension, season], map: "imports_extension_season_idx")
+}
+
+model items {
+  id               Int                   @id @default(autoincrement())
+  name             String
+  icon             String
+  quality          Int
+  itemLevel        Int
+  inventoryType    Int?
+  itemClass        Int?
+  itemSubClass     Int?
+  allowableClasses String?
+  upgrades         upgrades[]
+  boss_drop        boss_drop[]
+  instance_loots   instance_loots[]
+  wishlists        character_wishlists[]
+  tokens           item_tokens[]
+  gear_snapshots   gear_snapshot_items[]
+}
+
+model item_tokens {
+  id           Int     @id @default(autoincrement())
+  tokenItemId  Int
+  rewardItemId Int
+  class        String
+  armorType    String?
+  slot         String
+  tokenType    String
+  extension    String  @default("")
+  season       String  @default("")
+
+  item items @relation(fields: [rewardItemId], references: [id], onDelete: Cascade)
+
+  @@index([rewardItemId])
+  @@index([extension, season])
+}
+
+model difficulties {
+  name              String              @id
+  upgrades          upgrades[]
+  raid_difficulties raid_difficulties[]
+}
+
+model upgrades {
+  id               Int              @id @default(autoincrement())
+  characterID      Int
+  itemID           Int
+  reportID         String
+  dps              Float
+  baseDps          Float
+  spec             String // libellé brut de la sim (Raidbots : « Elemental Shaman »)
+  // Spé résolue dans la classe du personnage ; null si le libellé n'a pas été reconnu
+  specializationId Int?
+  // Grandeur simulée (SIMS-202) : « dps » (Raidbots) ou « hps » (QE Live, soigneurs).
+  // dps / baseDps sont alors des HPS : jamais comparés tels quels aux DPS.
+  metric           String           @default("dps")
+  difficulty       String
+  difficulty_rel   difficulties     @relation(fields: [difficulty], references: [name], onDelete: Restrict, onUpdate: NoAction)
+  timeStamp        DateTime
+  talents          String           @default("")
+  buildDate        String           @default("")
+  items            items            @relation(fields: [itemID], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  characters       characters       @relation(fields: [characterID], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  specialization   specializations? @relation(fields: [specializationId], references: [id], onDelete: SetNull, onUpdate: NoAction)
+
+  @@unique([characterID, itemID, reportID, difficulty, spec], map: "characterID_itemID_reportID_difficulty_spec")
+  @@index([timeStamp], map: "idx_upgrades_timestamp")
+  @@index([specializationId], map: "idx_upgrades_specializationId")
+}
+
+model instances {
+  id               Int      @id @default(autoincrement())
+  name             String
+  date             DateTime
+  raidDifficultyId Int
+  realmId          Int
+  createdBy        Int
+  // Status and boss tracking
+  status           String   @default("ONGOING")
+  bossesKilled     Int      @default(0)
+  totalBosses      Int?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Relations
+  raid_difficulty raid_difficulties @relation(fields: [raidDifficultyId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  realm           realms            @relation(fields: [realmId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  instance_bosses instance_bosses[]
+  instance_loots  instance_loots[]
+  imports         imports[]
+
+  @@index([realmId], map: "idx_raids_realmId")
+  @@index([raidDifficultyId], map: "idx_instances_raidDifficultyId")
+}
+
+// Link a raid to a difficulty and allow metadata per difficulty/version
+model raid_difficulties {
+  id                 Int     @id @default(autoincrement())
+  raidId             Int
+  difficulty         String
+  description        String?
+  image_button       String?
+  image_button_small String?
+  image_background   String?
+
+  // Relations
+  raid           raids         @relation(fields: [raidId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  difficulty_rel difficulties? @relation(fields: [difficulty], references: [name], onDelete: Restrict, onUpdate: NoAction)
+  instances      instances[]
+  raid_events    raid_events[]
+  raid_event_series raid_event_series[]
+
+  @@unique([raidId, difficulty])
+  @@index([raidId], map: "idx_raid_difficulties_raidId")
+  @@index([difficulty], map: "idx_raid_difficulties_difficulty")
+}
+
+// Track each boss state for a given instance
+model instance_bosses {
+  id         Int       @id @default(autoincrement())
+  instanceId Int
+  bossId     Int
+  killed     Boolean   @default(false)
+  killedAt   DateTime?
+
+  instance instances @relation(fields: [instanceId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  boss     bosses    @relation(fields: [bossId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([instanceId, bossId], map: "idx_instance_bosses_unique")
+  @@index([instanceId], map: "idx_instance_bosses_instanceId")
+  @@index([bossId], map: "idx_instance_bosses_bossId")
+}
+
+model bosses {
+  id                       Int                        @id @default(autoincrement())
+  name                     String
+  extension                String // "The-War-Within", "Midnight"
+  season                   String // "season-01", "season-02", "season-03"
+  raidName                 String? // "Manaforge Omega", optional for clarity
+  order                    Int
+  icon                     String?
+  // Relations
+  instance_bosses          instance_bosses[]
+  loots                    boss_drop[]
+  instance_loots           instance_loots[]
+  event_roster_assignments event_roster_assignments[]
+  guest_assignments        raid_guest_assignments[]
+  boss_notes               event_boss_notes[]
+
+  @@index([extension, season], map: "idx_bosses_extension_season")
+}
+
+// Template: defines which items a boss can potentially drop (catalogue)
+model boss_drop {
+  id     Int @id @default(autoincrement())
+  bossId Int
+  itemId Int
+
+  // Relations
+  boss bosses @relation(fields: [bossId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  item items  @relation(fields: [itemId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([bossId], map: "idx_boss_drop_bossId")
+  @@index([itemId], map: "idx_boss_drop_itemId")
+}
+
+// Occurrence: represents an actual drop event in an instance (used for assignment/votes/history)
+model instance_loots {
+  id         Int       @id @default(autoincrement())
+  instanceId Int
+  bossId     Int
+  itemId     Int
+  assignedTo Int?
+  assignedBy Int?
+  assignedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  // Relations
+  instance instances    @relation(fields: [instanceId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  boss     bosses       @relation(fields: [bossId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  item     items        @relation(fields: [itemId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  votes    loot_votes[]
+
+  @@index([instanceId], map: "idx_instance_loots_instanceId")
+  @@index([bossId], map: "idx_instance_loots_bossId")
+  @@index([itemId], map: "idx_instance_loots_itemId")
+}
+
+model loot_votes {
+  id        Int      @id @default(autoincrement())
+  lootId    Int
+  playerId  Int
+  choice    String // 'BiS', 'Upgrade', 'Offspec', 'Transmog', 'Pass'
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  loot instance_loots @relation(fields: [lootId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([lootId, playerId], map: "idx_loot_votes_unique")
+  @@index([lootId], map: "idx_loot_votes_lootId")
+  @@index([playerId], map: "idx_loot_votes_playerId")
+}
+
+model regions {
+  id      Int       @id @default(autoincrement())
+  name    String    @unique
+  servers servers[]
+}
+
+model servers {
+  id         Int      @id @default(autoincrement())
+  name       String
+  slug       String
+  locale     String
+  category   String
+  region     String
+  region_rel regions  @relation(fields: [region], references: [name], onDelete: Cascade)
+  realms     realms[]
+
+  @@unique([slug, region])
+  @@index([region])
+}
+
+model character_wishlists {
+  id               Int      @id @default(autoincrement())
+  characterId      Int
+  specializationId Int
+  slot             String // "head", "neck", "shoulder", etc.
+  itemId           Int? // NULL if no item selected
+  priority         Int?     @default(0) // 0 = no priority, 1-3 = priority
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  character      characters      @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  specialization specializations @relation(fields: [specializationId], references: [id], onDelete: Restrict)
+  item           items?          @relation(fields: [itemId], references: [id], onDelete: SetNull)
+
+  @@unique([characterId, specializationId, slot])
+  @@index([characterId])
+  @@index([specializationId])
+  @@index([itemId])
+}
+
+// ============================================================================
+// RAID CALENDAR & EVENTS
+// ============================================================================
+
+enum EventStatus {
+  SCHEDULED
+  CANCELLED
+  COMPLETED
+}
+
+enum SignupStatus {
+  PRESENT
+  ABSENT
+  TENTATIVE
+  BENCH
+  LATE
+}
+
+model raid_events {
+  id               Int         @id @default(autoincrement())
+  title            String
+  description      String?
+  startTime        DateTime
+  endTime          DateTime
+  raidDifficultyId Int?
+  realmId          Int
+  discordEventId   String?
+  discordChannelId String?
+  discordMessageId String?
+  status           EventStatus @default(SCHEDULED)
+  createdBy        String
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  isOptional       Boolean     @default(false)
+  defaultPresent   Boolean     @default(false)
+  signupLockDisabled Boolean   @default(false)
+  reminderSentAt   DateTime?
+  confirmReminderSentAt DateTime?
+  // Série récurrente d'origine (SIMS-200) et date de l'occurrence dans la série :
+  // la date reste celle prévue par la série même si l'occurrence est déplacée.
+  seriesId             Int?
+  seriesOccurrenceDate DateTime? @db.Date
+
+  // Relations
+  raid_difficulty          raid_difficulties?         @relation(fields: [raidDifficultyId], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  realm                    realms                     @relation(fields: [realmId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  series                   raid_event_series?         @relation(fields: [seriesId], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  signups                  raid_signups[]
+  guests                   raid_guests[]
+  event_roster_assignments event_roster_assignments[]
+  boss_notes               event_boss_notes[]
+
+  @@unique([seriesId, seriesOccurrenceDate], map: "uq_raid_events_series_occurrence")
+  @@index([realmId], map: "idx_raid_events_realmId")
+  @@index([raidDifficultyId], map: "idx_raid_events_raidDifficultyId")
+  @@index([startTime], map: "idx_raid_events_startTime")
+  @@index([status], map: "idx_raid_events_status")
+}
+
+// Série d'événements de raid récurrents (SIMS-200) : un raid par semaine, le
+// même jour à la même heure locale. Un job serveur crée les occurrences
+// `weeksAhead` semaines à l'avance ; `generatedUntil` est la dernière date
+// traitée, pour ne jamais recréer une occurrence supprimée.
+model raid_event_series {
+  id                 Int       @id @default(autoincrement())
+  realmId            Int
+  title              String
+  description        String?
+  raidDifficultyId   Int?
+  // Jour de la semaine, 0 = dimanche … 6 = samedi.
+  dayOfWeek          Int
+  // Horaires locaux "HH:mm" dans le fuseau `timezone` (IANA).
+  startTime          String
+  endTime            String
+  timezone           String    @default("Europe/Paris")
+  weeksAhead         Int       @default(4)
+  isOptional         Boolean   @default(false)
+  defaultPresent     Boolean   @default(false)
+  signupLockDisabled Boolean   @default(false)
+  active             Boolean   @default(true)
+  startsOn           DateTime  @db.Date
+  endsOn             DateTime? @db.Date
+  generatedUntil     DateTime? @db.Date
+  createdBy          String
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  // Relations
+  realm           realms             @relation(fields: [realmId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  raid_difficulty raid_difficulties? @relation(fields: [raidDifficultyId], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  events          raid_events[]
+
+  @@index([realmId], map: "idx_raid_event_series_realmId")
+  @@index([active], map: "idx_raid_event_series_active")
+}
+
+model raid_signups {
+  id            Int          @id @default(autoincrement())
+  eventId       Int
+  characterId   Int
+  status        SignupStatus @default(PRESENT)
+  role          String? // TANK, HEALER, DPS
+  lateTime      String? // e.g., "21:30"
+  absenceReason String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  // Relations
+  event     raid_events @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  character characters  @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([eventId, characterId], map: "idx_raid_signups_unique")
+  @@index([eventId], map: "idx_raid_signups_eventId")
+  @@index([characterId], map: "idx_raid_signups_characterId")
+}
+
+model raid_guests {
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  realmId   Int
+  name      String // Display name (e.g. "Ghostbane")
+  role      String // TANK | HEALER | MELEE | RANGED (default role)
+  class     String? // WoW class (e.g. "warrior", "death_knight")
+  addedBy   String? // Discord tag or userId of the person who added the guest
+  createdAt DateTime @default(now())
+
+  event       raid_events              @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  realm       realms                   @relation(fields: [realmId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  assignments raid_guest_assignments[]
+
+  @@index([eventId], map: "idx_raid_guests_eventId")
+  @@map("raid_guests")
+}
+
+model raid_guest_assignments {
+  id        Int      @id @default(autoincrement())
+  guestId   Int
+  bossId    Int
+  role      String // TANK | HEALER | MELEE | RANGED
+  createdAt DateTime @default(now())
+
+  guest raid_guests @relation(fields: [guestId], references: [id], onDelete: Cascade)
+  boss  bosses      @relation(fields: [bossId], references: [id], onDelete: Cascade)
+
+  @@unique([guestId, bossId])
+  @@map("raid_guest_assignments")
+}
+
+model member_absences {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  realmId   Int
+  startDate DateTime
+  endDate   DateTime
+  reason    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  realm realms @relation(fields: [realmId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, realmId, startDate], map: "idx_member_absences_unique") // One absence per user per realm per day
+  @@index([userId], map: "idx_member_absences_userId")
+  @@index([realmId], map: "idx_member_absences_realmId")
+  @@index([startDate, endDate], map: "idx_member_absences_dates")
+}
+
+model dungeon_availabilities {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  realmId   Int
+  date      DateTime
+  startTime String // "20:00"
+  endTime   String // "23:00"
+  type      String // "M0" or "M+"
+  roles     String // JSON array: ["TANK","HEALER","DPS"]
+  note      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  realm realms @relation(fields: [realmId], references: [id], onDelete: Cascade)
+
+  @@index([userId], map: "idx_dungeon_avail_userId")
+  @@index([realmId], map: "idx_dungeon_avail_realmId")
+  @@index([date], map: "idx_dungeon_avail_date")
+}
+
+model dungeon_groups {
+  id        Int      @id @default(autoincrement())
+  realmId   Int
+  date      DateTime
+  startTime String
+  endTime   String
+  type      String // "M0" or "M+"
+  note      String?
+  status    String   @default("DRAFT") // DRAFT, CONFIRMED
+  createdBy String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  realm   realms                  @relation(fields: [realmId], references: [id], onDelete: Cascade)
+  members dungeon_group_members[]
+  guests  dungeon_group_guests[]
+
+  @@index([realmId], map: "idx_dungeon_group_realmId")
+  @@index([date], map: "idx_dungeon_group_date")
+}
+
+model dungeon_group_members {
+  id      Int    @id @default(autoincrement())
+  groupId Int
+  userId  String
+  role    String // TANK, HEALER, DPS
+
+  group dungeon_groups @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@index([groupId], map: "idx_dungeon_group_member_groupId")
+}
+
+model dungeon_group_guests {
+  id        Int      @id @default(autoincrement())
+  groupId   Int
+  realmId   Int
+  name      String
+  role      String // TANK, HEALER, DPS
+  class     String?
+  addedBy   String?
+  slotId    String? // e.g. 'slot-TANK', 'slot-HEALER', 'slot-DPS-0'
+  createdAt DateTime @default(now())
+
+  group dungeon_groups @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@index([groupId], map: "idx_dungeon_group_guest_groupId")
+  @@map("dungeon_group_guests")
+}
+
+// ============================================================================
+// GEAR TRACKING
+// ============================================================================
+
+model character_gear_snapshots {
+  id               Int      @id @default(autoincrement())
+  characterId      Int
+  reportId         String
+  spec             String
+  // Spé résolue dans la classe du personnage ; null si le libellé n'a pas été reconnu
+  specializationId Int?
+  difficulty       String
+  timestamp        DateTime
+  createdAt        DateTime @default(now())
+
+  character      characters            @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  specialization specializations?      @relation(fields: [specializationId], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  items          gear_snapshot_items[]
+
+  @@index([characterId], map: "idx_gear_snapshots_characterId")
+  @@index([specializationId], map: "idx_gear_snapshots_specializationId")
+  @@index([reportId], map: "idx_gear_snapshots_reportId")
+  @@index([timestamp], map: "idx_gear_snapshots_timestamp")
+}
+
+model gear_snapshot_items {
+  id          Int     @id @default(autoincrement())
+  snapshotId  Int
+  slot        String
+  itemId      Int
+  ilevel      Int
+  encodedItem String
+  enchantId   Int?
+  gemIds      String?
+
+  // Upgrade information
+  upgradeLevel     Int? // Current upgrade level (e.g., 8)
+  upgradeMax       Int? // Maximum upgrade level (e.g., 8)
+  upgradeName      String? // Track name (e.g., "Myth")
+  upgradeFullName  String? // Full display name (e.g., "Myth 8/8")
+  upgradeBonusId   Int? // Bonus ID for the upgrade
+  upgradeItemLevel Int? // Item level with upgrade applied
+  upgradeGroup     Int? // Upgrade group ID
+  baseItemLevel    Int? // Base ilvl before upgrades
+
+  // Item source detection
+  itemSource      String? // "raid", "craft", "other"
+  craftingQuality Int? // Crafting quality (1-5) for crafted items
+
+  snapshot character_gear_snapshots @relation(fields: [snapshotId], references: [id], onDelete: Cascade)
+  item     items                    @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@index([snapshotId], map: "idx_gear_snapshot_items_snapshotId")
+  @@index([itemId], map: "idx_gear_snapshot_items_itemId")
+}
+
+// ============================================================================
+// ENCHANTMENTS & GEMS
+// ============================================================================
+
+model enchantments {
+  id              Int     @id
+  displayName     String  @map("displayName") @db.VarChar(255)
+  tokenizedName   String  @map("tokenizedName") @db.VarChar(255)
+  spellId         Int?    @map("spellId")
+  spellIcon       String? @map("spellIcon") @db.VarChar(255)
+  itemId          Int?    @map("itemId")
+  itemIcon        String? @map("itemIcon") @db.VarChar(255)
+  quality         Int?
+  expansion       Int?
+  craftingQuality Int?    @map("craftingQuality")
+  slot            String? @db.VarChar(50)
+  socketType      String? @map("socketType") @db.VarChar(50)
+  categoryId      Int?    @map("categoryId")
+  categoryName    String? @map("categoryName") @db.VarChar(100)
+  stats           Json?
+
+  @@index([spellId])
+  @@index([itemId])
+  @@index([categoryId])
+  @@map("enchantments")
+}
+
+model item_bonus_data {
+  id Int @id
+
+  // Upgrade information (if applicable)
+  upgradeGroup     Int?    @map("upgrade_group")
+  upgradeLevel     Int?    @map("upgrade_level")
+  upgradeMax       Int?    @map("upgrade_max")
+  upgradeName      String? @map("upgrade_name") @db.VarChar(50)
+  upgradeFullName  String? @map("upgrade_full_name") @db.VarChar(100)
+  upgradeItemLevel Int?    @map("upgrade_item_level")
+  upgradeSeasonId  Int?    @map("upgrade_season_id")
+  upgradePriority  Int?    @default(0) @map("upgrade_priority")
+
+  // Other bonus properties
+  quality       Int?
+  levelModifier Int?    @map("level_modifier")
+  tag           String? @db.VarChar(100)
+
+  // Stats (JSON for flexibility)
+  rawStats         Json?   @map("raw_stats")
+  statsDescription String? @map("stats_description") @db.Text
+
+  // Metadata
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([upgradeGroup])
+  @@index([upgradePriority(sort: Desc)])
+  @@index([upgradeSeasonId])
+  @@map("item_bonus_data")
+}
+
+// ============================================================================
+// WOW ITEMS CACHE (Blizzard API)
+// ============================================================================
+
+model wow_items {
+  id            Int      @id // Blizzard item ID
+  name          String
+  quality       Int // 0-5: Poor, Common, Uncommon, Rare, Epic, Legendary
+  itemLevel     Int      @map("item_level")
+  inventoryType Int      @map("inventory_type")
+  itemClass     Int      @map("item_class")
+  itemSubClass  Int      @map("item_subclass")
+  icon          String
+  description   String?  @db.Text
+  stats         Json? // Item stats as JSON array
+  rawData       Json     @map("raw_data") // Full Blizzard API response
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@index([quality])
+  @@index([itemLevel])
+  @@map("wow_items")
+}
+
+model event_roster_assignments {
+  id          Int      @id @default(autoincrement())
+  eventId     Int
+  characterId Int
+  bossId      Int?
+  role        String   @db.VarChar(20) // TANK, HEALER, DPS
+  position    Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  event     raid_events @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  character characters  @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  boss      bosses?     @relation(fields: [bossId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, characterId, bossId])
+  @@index([eventId])
+  @@index([characterId])
+  @@map("event_roster_assignments")
+}
+
+// Stratégie d'un boss sur un événement : note en markdown et assignations
+// simples (titulaire du boss → tâche), copiables vers Discord ou MRT (SIMS-206).
+model event_boss_notes {
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  bossId    Int
+  content   String   @default("") // Markdown, rendu côté front sans HTML brut
+  updatedBy String? // Battle.net user ID of the last editor
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  event       raid_events                   @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  boss        bosses                        @relation(fields: [bossId], references: [id], onDelete: Cascade)
+  assignments event_boss_note_assignments[]
+
+  @@unique([eventId, bossId], map: "idx_event_boss_notes_unique")
+  @@index([eventId], map: "idx_event_boss_notes_eventId")
+  @@map("event_boss_notes")
+}
+
+model event_boss_note_assignments {
+  id          Int    @id @default(autoincrement())
+  noteId      Int
+  characterId Int
+  task        String @db.VarChar(200)
+  position    Int    @default(0)
+
+  note      event_boss_notes @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  character characters       @relation(fields: [characterId], references: [id], onDelete: Cascade)
+
+  @@index([noteId], map: "idx_event_boss_note_assignments_noteId")
+  @@index([characterId], map: "idx_event_boss_note_assignments_characterId")
+  @@map("event_boss_note_assignments")
+}
+
+model validation_settings {
+  id                 Int      @id @default(autoincrement())
+  realmId            Int      @unique
+  allowedFightStyles String[] @default(["Patchwerk"])
+  fightLength        Int      @default(300)
+  enemyCount         Int      @default(1)
+  raidBuffsConfig    Json     @default("{\"skyfury\": true, \"bloodlust\": true, \"fortitude\": true, \"chaosBrand\": true, \"battleShout\": true, \"huntersMark\": true, \"mysticTouch\": true, \"markOfTheWild\": true, \"powerInfusion\": false, \"arcaneIntellect\": true}")
+  simStaleAfterDays  Int      @default(7)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  realm realms @relation(fields: [realmId], references: [id], onDelete: Cascade)
+
+  @@index([realmId])
+}
+
+model character_key_runs {
+  id            Int      @id @default(autoincrement())
+  characterId   Int
+  dungeon       String
+  shortName     String?
+  keystoneLevel Int
+  completedAt   DateTime
+  score         Float?
+  numUpgrades   Int?
+  clearTimeMs   Int?
+  parTimeMs     Int?
+  raiderIoUrl   String?
+  createdAt     DateTime @default(now())
+
+  character characters @relation(fields: [characterId], references: [id], onDelete: Cascade)
+
+  @@unique([characterId, dungeon, completedAt])
+  @@index([characterId])
+  @@index([completedAt])
+  @@index([characterId, completedAt])
+  @@map("character_key_runs")
+}
+
+model activity_logs {
+  id            Int      @id @default(autoincrement())
+  realmId       Int
+  userId        String // Auth user ID
+  characterName String // Character name or filename for context (e.g. "Michel" or "report.csv")
+  actionType    String // "WISHLIST_UPDATE" | "SIM_REPORT_UPLOAD"
+  metadata      Json? // Extra context: oldItemId, newItemId, slot, difficulty, filename…
+  createdAt     DateTime @default(now())
+
+  realm realms @relation(fields: [realmId], references: [id], onDelete: Cascade)
+
+  @@index([realmId])
+  @@index([userId])
+  @@index([createdAt(sort: Desc)])
+  @@map("activity_logs")
+}
+
+// ============================================================================
+// DESKTOP COMPANION — API TOKENS & OAUTH 2.0 DEVICE AUTHORIZATION GRANT
+// ============================================================================
+
+model api_tokens {
+  id         Int       @id @default(autoincrement())
+  userId     String // Battle.net user ID owning this token
+  name       String // Human-readable label (e.g. "Desktop - HOSTNAME")
+  tokenHash  String    @unique // SHA-256 of the raw token; raw value never stored
+  scopes     String[]  @default([]) // e.g. ["realm:42", "sync:loot:write"]
+  createdAt  DateTime  @default(now())
+  lastUsedAt DateTime?
+  expiresAt  DateTime?
+  revokedAt  DateTime?
+
+  @@index([userId])
+  @@map("api_tokens")
+}
+
+model device_codes {
+  id         Int       @id @default(autoincrement())
+  deviceCode String    @unique // Long opaque secret polled by the device
+  userCode   String    @unique // Short human-readable code displayed to the user
+  userId     String? // Set once the user approves (Battle.net ID)
+  scopes     String[]  @default([])
+  deviceName String? // Hostname / label proposed by the device
+  expiresAt  DateTime // Hard expiry of the request (~15 min)
+  approvedAt DateTime? // When the user approved the request
+  consumedAt DateTime? // When the device successfully exchanged for a token
+  createdAt  DateTime  @default(now())
+
+  @@index([userCode])
+  @@map("device_codes")
+}
+
+// ============================================================================
+// CALENDAR FEED (iCal) — URL privée par joueur
+// ============================================================================
+
+model calendar_feed_tokens {
+  id         Int       @id @default(autoincrement())
+  userId     String    @unique // Battle.net user ID : un seul flux actif par joueur
+  tokenHash  String    @unique // SHA-256 du jeton ; la valeur brute n'est jamais stockée
+  createdAt  DateTime  @default(now())
+  lastUsedAt DateTime?
+
+  @@map("calendar_feed_tokens")
+}

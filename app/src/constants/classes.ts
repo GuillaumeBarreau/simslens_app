@@ -1,0 +1,31 @@
+export const CLASS_TO_ID: Record<string, number> = {
+  warrior: 1,
+  paladin: 2,
+  hunter: 3,
+  rogue: 4,
+  priest: 5,
+  death_knight: 6,
+  shaman: 7,
+  mage: 8,
+  warlock: 9,
+  monk: 10,
+  druid: 11,
+  demon_hunter: 12,
+  evoker: 13,
+};
+
+export const CLASS_COLORS: Record<string, string> = {
+  warrior: '#C79C6E',
+  paladin: '#F58CBA',
+  hunter: '#ABD473',
+  rogue: '#FFF569',
+  priest: '#FFFFFF',
+  death_knight: '#C41F3B',
+  shaman: '#0070DE',
+  mage: '#40C7EB',
+  warlock: '#8787ED',
+  monk: '#00FF96',
+  druid: '#FF7D0A',
+  demon_hunter: '#A330C9',
+  evoker: '#33937F',
+};

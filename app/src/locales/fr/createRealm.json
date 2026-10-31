@@ -1,0 +1,25 @@
+{
+  "title": "Créer un Nouveau Royaume",
+  "subtitle": "Configurez votre nouvel environnement de guilde pour commencer le suivi du butin.",
+  "form": {
+    "guild_name": "Nom de la Guilde",
+    "guild_name_placeholder": "Ex: Method",
+    "region": "Région",
+    "region_placeholder": "Choisir région",
+    "server": "Serveur",
+    "server_placeholder": "Choisir serveur",
+    "create_btn": "Créer le Royaume"
+  },
+  "validation": {
+    "guild_name_short": "Le nom de la guilde doit comporter au moins 2 lettres",
+    "guild_name_long": "Le nom de la guilde ne peut pas dépasser 50 caractères",
+    "error_title": "Erreur de Validation",
+    "error_message": "Veuillez vérifier les champs du formulaire"
+  },
+  "notifications": {
+    "success_title": "Succès",
+    "success_message": "Guilde créée avec succès ! Veuillez maintenant lier vos personnages.",
+    "error_title": "Erreur",
+    "session_missing": "Session utilisateur manquante"
+  }
+}

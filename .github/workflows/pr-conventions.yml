@@ -1,0 +1,44 @@
+name: CI — Conventions de PR
+
+# Branche feat/SIMS-NNN, titre « SIMS-NNN : [Type] Titre », « Closes #N », labels
+# (type + périmètre + une priorité). Règles : scripts/agents/naming.mjs.
+# Rejoué quand le titre, le corps ou les labels changent, sans relancer la CI qualité.
+#
+# La PR est relue via l'API au moment de l'exécution, pas depuis l'événement :
+# `gh pr create --label …` crée la PR puis ajoute les labels, et l'événement
+# « opened » arrive sans eux (SIMS-128). Les exécutions périmées sont annulées.
+#
+# PR depuis un fork ou de Dependabot : écarts signalés en avertissement (résumé du job),
+# le check reste vert ; un mainteneur reprend titre et labels. Rester en `pull_request`
+# (jamais `pull_request_target`) : le code d'un fork ne doit pas voir les secrets.
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: [opened, synchronize, reopened, edited, labeled, unlabeled]
+
+concurrency:
+  group: pr-conventions-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  conventions:
+    name: Conventions
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 20
+
+      - name: Vérifier branche, titre, corps et labels
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/agents/pr-check.mjs "${{ github.event.pull_request.number }}"

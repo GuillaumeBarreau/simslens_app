@@ -1,0 +1,42 @@
+{
+  "title": "Historique",
+  "subtitle": "Activité de la guilde",
+  "no_realm": "Aucun realm sélectionné.",
+  "empty": "Aucune activité enregistrée pour le moment.",
+  "access_denied": "Accès refusé. Cette page est réservée aux administrateurs.",
+  "wishlist": {
+    "removed": "a retiré",
+    "from_wishlist": "de sa wishlist",
+    "added": "a ajouté",
+    "to_wishlist": "dans sa wishlist",
+    "replaced": "a remplacé",
+    "with": "par",
+    "in_wishlist": "dans sa wishlist"
+  },
+  "sim": {
+    "uploaded": "a chargé un nouveau rapport de sim"
+  },
+  "event": {
+    "signup": "s'est inscrit pour le raid du {{date}}",
+    "changed": "a changé son statut pour le raid du {{date}}",
+    "status": {
+      "present": "Présent",
+      "absent": "Absent",
+      "late": "En retard",
+      "tentative": "Incertain",
+      "bench": "Remplaçant"
+    }
+  },
+  "filter": {
+    "all": "Tout",
+    "wishlist": "Changements wishlist",
+    "sim": "Rapports sim",
+    "event": "Inscriptions",
+    "all_members": "Tous les membres"
+  },
+  "badges": {
+    "wishlist": "Wishlist",
+    "sim_report": "Rapport Sim",
+    "event": "Événement"
+  }
+}

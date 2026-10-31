@@ -1,0 +1,55 @@
+name: CI — Qualité
+
+# Mêmes vérifications que `node scripts/agents/verify.mjs` en local, pour toute PR
+# (humaine ou d'agent). Le build des images reste dans ci.yml.
+# Code 2 de verify.mjs = « vert, validation humaine requise » : ce n'est pas un échec
+# de CI, c'est une information pour la relecture (résumé du job).
+
+on:
+  pull_request:
+    branches:
+      - master
+
+concurrency:
+  group: quality-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Vérification
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Générer le client Prisma
+        working-directory: server
+        run: DATABASE_URL="postgresql://ci:ci@localhost:5432/ci" npx prisma generate
+
+      - name: Vérifier
+        run: |
+          set +e
+          node scripts/agents/verify.mjs --base "origin/${{ github.base_ref }}" --skip-build
+          code=$?
+          cat .agents-out/verify.md >> "$GITHUB_STEP_SUMMARY"
+          if [ "$code" -eq 2 ]; then
+            echo "::notice::Vert — validation humaine requise (voir le résumé)."
+            exit 0
+          fi
+          exit $code
+
+      - name: Tester les garde-fous des agents
+        run: npm run agents:test

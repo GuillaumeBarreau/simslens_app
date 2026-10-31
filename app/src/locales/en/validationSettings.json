@@ -1,0 +1,67 @@
+{
+  "title": "Validation Settings",
+  "loading": "Loading...",
+  "default_notice": "These are the default settings for Raidbots simulations. Modify and save to create a custom configuration for your guild's reports.",
+  "discord_channel_id": {
+    "label": "Discord Channel ID",
+    "description": "Numeric ID of the Discord channel where sim reports will be posted",
+    "placeholder": "e.g. 1234567890123456789"
+  },
+  "fight_styles": {
+    "label": "Allowed Fight Styles",
+    "description": "Comma-separated list (e.g., Patchwerk, DungeonSlice)",
+    "placeholder": "Patchwerk"
+  },
+  "fight_length": {
+    "label": "Fight Length (seconds)",
+    "description": "Simulated length of each fight."
+  },
+  "enemy_count": {
+    "label": "Enemy Count",
+    "description": "Number of targets in the simulation."
+  },
+  "simulation_title": "Simulation",
+  "sim_freshness": {
+    "title": "Sim freshness",
+    "label": "Sim stale after",
+    "description": "Age of the latest sim beyond which the roster and tracking flag it as stale ({{min}} to {{max}} days).",
+    "unit": "days"
+  },
+  "raid_buffs": {
+    "title": "Raid Buffs Required",
+    "providers": {
+      "bloodlust": "Brought by a Shaman, Mage, Hunter or Evoker.",
+      "arcaneIntellect": "Brought by a Mage.",
+      "fortitude": "Brought by a Priest.",
+      "battleShout": "Brought by a Warrior.",
+      "mysticTouch": "Brought by a Monk.",
+      "chaosBrand": "Brought by a Demon Hunter.",
+      "skyfury": "Brought by a Shaman.",
+      "markOfTheWild": "Brought by a Druid.",
+      "huntersMark": "Brought by a Hunter.",
+      "powerInfusion": "Brought by a Priest."
+    },
+    "bloodlust": "Bloodlust",
+    "arcaneIntellect": "Arcane Intellect",
+    "fortitude": "Fortitude",
+    "battleShout": "Battle Shout",
+    "mysticTouch": "Mystic Touch",
+    "chaosBrand": "Chaos Brand",
+    "skyfury": "Skyfury",
+    "markOfTheWild": "Mark of the Wild",
+    "huntersMark": "Hunter's Mark",
+    "powerInfusion": "Power Infusion"
+  },
+  "cancel": "Cancel",
+  "save": "Save Settings",
+  "notifications": {
+    "load_error_title": "Error",
+    "load_error_message": "Failed to load validation settings",
+    "validation_error_title": "Validation Error",
+    "validation_error_message": "At least one fight style must be specified",
+    "success_title": "Success",
+    "success_message": "Validation settings updated successfully",
+    "save_error_title": "Error",
+    "save_error_message": "Failed to save validation settings"
+  }
+}

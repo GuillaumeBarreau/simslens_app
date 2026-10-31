@@ -1,0 +1,55 @@
+{
+  "title": "Invitations",
+  "intro": "Un code d'invitation permet à un joueur extérieur à la guilde de la rejoindre comme invité. Un invité peut s'inscrire aux événements du calendrier, mais ne voit ni le roster, ni les wishlists, ni l'historique du loot. Envoie-lui le lien : il se connecte avec Battle.net et rejoint la guilde. Tu peux le retirer à tout moment.",
+  "create": {
+    "title": "Nouveau code",
+    "expiry_label": "Expiration",
+    "expiry_description": "Le code reste valable jusqu'à la fin de ce jour. Sans date, il n'expire pas.",
+    "expiry_placeholder": "Jamais",
+    "max_uses_label": "Utilisations max",
+    "max_uses_description": "Nombre de joueurs qui peuvent rejoindre avec ce code.",
+    "submit": "Générer un code",
+    "created_title": "Code créé",
+    "created_description": "Envoie ce lien au joueur à inviter."
+  },
+  "codes": {
+    "title": "Codes actifs",
+    "inactive_title": "Codes expirés ou épuisés",
+    "inactive_description": "Ces codes ne permettent plus de rejoindre la guilde.",
+    "empty": "Aucun code actif. Génère un code ci-dessus pour inviter un joueur.",
+    "uses_one": "{{used}} / {{max}} utilisation",
+    "uses_other": "{{used}} / {{max}} utilisations",
+    "expires": "expire {{relative}}",
+    "expired": "expiré {{relative}}",
+    "never_expires": "sans expiration",
+    "exhausted": "épuisé",
+    "copy_link": "Copier le lien",
+    "copied": "Copié",
+    "revoke": "Révoquer",
+    "delete": "Supprimer"
+  },
+  "guests": {
+    "title": "Invités",
+    "empty": "Aucun invité pour l'instant. Les joueurs qui rejoignent avec un code apparaîtront ici.",
+    "unknown_character": "Joueur Battle.net #{{id}}",
+    "joined": "a rejoint {{relative}}",
+    "via_code": "via {{code}}",
+    "remove": "Retirer"
+  },
+  "confirm": {
+    "cancel": "Annuler",
+    "revoke_title": "Révoquer ce code ?",
+    "revoke_message": "Le code {{code}} ne pourra plus être utilisé. Les invités qui l'ont déjà utilisé restent dans la guilde.",
+    "delete_title": "Supprimer ce code ?",
+    "delete_message": "Le code {{code}} sera retiré de la liste. Les invités qui l'ont utilisé restent dans la guilde.",
+    "remove_title": "Retirer cet invité ?",
+    "remove_message": "{{name}} perdra l'accès à la guilde et ses personnages seront détachés. Il faudra un nouveau code pour qu'il revienne."
+  },
+  "notifications": {
+    "revoked": "Code révoqué.",
+    "deleted": "Code supprimé.",
+    "removed": "Invité retiré.",
+    "error_title": "Erreur",
+    "error": "L'action n'a pas abouti. Réessaie dans un instant."
+  }
+}

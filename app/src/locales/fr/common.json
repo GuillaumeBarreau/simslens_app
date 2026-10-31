@@ -1,0 +1,98 @@
+{
+  "loading": "Chargement...",
+  "settings": "Réglages",
+  "feature_unavailable": {
+    "title": "Cette fonctionnalité n'est pas disponible.",
+    "description": "Elle est encore en cours de développement et arrivera bientôt."
+  },
+  "navigation": {
+    "loot_optimizer": "Droptimizer",
+    "tracking": "Tracking",
+    "calendar": "Calendrier",
+    "raid": "Raid",
+    "dungeons": "Donjons",
+    "roster": "Roster",
+    "wishlist": "Wishlist",
+    "my_activity": "Mon activité",
+    "history": "Historique",
+    "sync_characters": "Synchroniser personnages",
+    "logout": "Déconnexion",
+    "loot_equity": "Équité du loot",
+    "loot_equity_desc": "Loot reçu, gain simulé, BiS et présence (officiers)"
+  },
+  "languages": {
+    "fr": "Français",
+    "en": "Anglais",
+    "fr_short": "FR",
+    "en_short": "EN"
+  },
+  "user_fallback": "Utilisateur",
+  "difficulties": {
+    "mythic": "Mythique",
+    "heroic": "Héroïque",
+    "normal": "Normal"
+  },
+  "specializations": {
+    "arms": "Armes",
+    "fury": "Fureur",
+    "protection": "Protection",
+    "holy": "Sacré",
+    "retribution": "Vindicte",
+    "beast_mastery": "Maîtrise des bêtes",
+    "marksmanship": "Précision",
+    "survival": "Survie",
+    "assassination": "Assassinat",
+    "outlaw": "Hors-la-loi",
+    "subtlety": "Finesse",
+    "discipline": "Discipline",
+    "shadow": "Ombre",
+    "blood": "Sang",
+    "frost": "Givre",
+    "unholy": "Impie",
+    "elemental": "Élémentaire",
+    "enhancement": "Amélioration",
+    "restoration": "Restauration",
+    "arcane": "Arcanes",
+    "fire": "Feu",
+    "affliction": "Affliction",
+    "demonology": "Démonologie",
+    "destruction": "Destruction",
+    "brewmaster": "Maître brasseur",
+    "mistweaver": "Tisse-brume",
+    "windwalker": "Marche-vent",
+    "balance": "Équilibre",
+    "feral": "Combat farouche",
+    "guardian": "Gardien",
+    "havoc": "Dévastation",
+    "vengeance": "Vengeance",
+    "devourer": "Dévoreur",
+    "devastation": "Dévastation",
+    "preservation": "Préservation",
+    "augmentation": "Augmentation"
+  },
+  "cancel": "Annuler",
+  "confirm": "Confirmer",
+  "or": "ou",
+  "no_upgrades_available": "Aucune amélioration disponible",
+  "feature_wip": "Cette fonctionnalité est en cours de développement et arrive prochainement.",
+  "views": {
+    "standard": "Vue Standard",
+    "wishlist": "Vue Wishlist"
+  },
+  "error": {
+    "extension_not_found": {
+      "title": "Extension introuvable",
+      "description": "L'extension \"{{extension}}\" n'existe pas ou n'est pas disponible.",
+      "go_home": "Retour à l'accueil"
+    },
+    "realm_load_error": {
+      "message": "Impossible de charger les données de votre guilde.",
+      "retry": "Réessayer",
+      "go_home": "Retour à l'accueil"
+    },
+    "realm_not_found": {
+      "title": "Aucune guilde trouvée",
+      "description": "Aucune guilde n'est associée à votre compte. Synchronisez vos personnages pour rejoindre la vôtre."
+    }
+  }
+}

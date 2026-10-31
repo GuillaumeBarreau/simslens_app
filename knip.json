@@ -1,0 +1,22 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "workspaces": {
+    "app": {
+      "entry": ["src/index.tsx", "src/**/test.{ts,tsx}"],
+      "project": ["src/**/*.{ts,tsx}"],
+      "ignoreDependencies": [
+        "react-router",
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/parser",
+        "eslint-config-prettier",
+        "eslint-plugin-prettier",
+        "eslint-plugin-react",
+        "eslint-plugin-react-hooks",
+        "eslint-plugin-simple-import-sort",
+        "eslint-plugin-tailwindcss",
+        "@vitest/coverage-v8",
+        "playwright"
+      ]
+    }
+  }
+}

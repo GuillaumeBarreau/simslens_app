@@ -1,0 +1,322 @@
+/* « Mon activité » (SIMS-239).
+   --accent : couleur de la classe du personnage, posée sur la page.
+   --tone : couleur d'état d'une carte (ok, à surveiller, à corriger). */
+
+.page {
+  --accent: var(--mantine-color-brand-5);
+  --surface: var(--mantine-color-dark-7);
+  --surface-raised: var(--mantine-color-dark-6);
+  --line: var(--mantine-color-dark-4);
+}
+
+/* Ancres du bandeau « À faire » : sous l'en-tête de l'application. */
+.anchor {
+  scroll-margin-top: 72px;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-lg);
+  background:
+    radial-gradient(
+      120% 140% at 0% 0%,
+      color-mix(in srgb, var(--accent) 7%, transparent) 0%,
+      transparent 45%
+    ),
+    var(--surface-raised);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent 70%);
+}
+
+.heroRender {
+  position: absolute;
+  top: -10%;
+  right: -4%;
+  height: 140%;
+  width: auto;
+  opacity: 0.1;
+  pointer-events: none;
+  mask-image: linear-gradient(to left, black 30%, transparent 85%);
+}
+
+.avatarRing {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 50%;
+  padding: 3px;
+  background: var(--accent);
+}
+
+.classBadge {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+  background: var(--surface);
+}
+
+.metaChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.2);
+  font-size: var(--mantine-font-size-xs);
+  color: var(--mantine-color-dark-0);
+  white-space: nowrap;
+}
+
+.todoCard {
+  --tone: var(--mantine-color-dark-2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  padding: var(--mantine-spacing-md);
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-md);
+  background: var(--surface-raised);
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.todoCard::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--tone);
+}
+
+.todoCard:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--tone) 60%, var(--line));
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.todoCard:focus-visible {
+  outline: 2px solid var(--tone);
+  outline-offset: 2px;
+}
+
+.todoCard[data-status='ok'] {
+  --tone: var(--mantine-color-teal-5);
+}
+
+.todoCard[data-status='warning'] {
+  --tone: var(--mantine-color-orange-5);
+}
+
+.todoCard[data-status='alert'] {
+  --tone: var(--mantine-color-red-5);
+}
+
+.todoValue {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--mantine-color-white);
+  font-variant-numeric: tabular-nums;
+}
+
+.todoCta {
+  color: var(--tone);
+  transition: transform 150ms ease;
+}
+
+.todoCard:hover .todoCta {
+  transform: translateX(3px);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-lg);
+  background: var(--surface-raised);
+}
+
+/* Colonne de droite (raids, M+) étirée à la hauteur de l'équipement : les cartes
+   se partagent l'espace sans descendre sous la hauteur de leur contenu. */
+.fillColumn > * {
+  flex: 1 1 auto;
+}
+
+.timeline {
+  position: relative;
+}
+
+.raidItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--mantine-spacing-sm);
+  padding: 10px 12px;
+  border-radius: var(--mantine-radius-md);
+  border: 1px solid transparent;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.raidItem:hover {
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+.raidDate {
+  --tone: var(--mantine-color-dark-3);
+  flex-shrink: 0;
+  width: 52px;
+  padding: 6px 0;
+  border-radius: var(--mantine-radius-md);
+  text-align: center;
+  background: color-mix(in srgb, var(--tone) 14%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--tone) 45%, transparent);
+}
+
+.raidDate[data-status='ok'] {
+  --tone: var(--mantine-color-teal-5);
+}
+
+.raidDate[data-status='warning'] {
+  --tone: var(--mantine-color-orange-5);
+}
+
+.raidDate[data-status='alert'] {
+  --tone: var(--mantine-color-red-5);
+}
+
+.raidTitle {
+  color: var(--mantine-color-white);
+  text-decoration: none;
+}
+
+.raidTitle:hover {
+  text-decoration: underline;
+}
+
+.topUpgrade {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 8px 12px;
+  border-radius: var(--mantine-radius-md);
+  border: 1px solid color-mix(in srgb, var(--mantine-color-teal-5) 30%, var(--line));
+  background: var(--surface);
+}
+
+.bossRail {
+  display: flex;
+  gap: var(--mantine-spacing-md);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 6px;
+}
+
+.bossCard {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--mantine-spacing-sm);
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-md);
+  background: var(--surface);
+}
+
+.bestGain {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--mantine-color-teal-4);
+  font-variant-numeric: tabular-nums;
+}
+
+.emptyIcon {
+  border: 1px dashed var(--line);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 18%, transparent) 0%,
+    transparent 70%
+  );
+}
+
+.slotBadge {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  border: 2px solid var(--mantine-color-dark-8);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+  cursor: help;
+}
+
+.slotBadge[data-status='alert'] {
+  background: var(--mantine-color-red-6);
+  animation: badgePulse 2.4s ease-in-out infinite;
+}
+
+.slotBadge[data-status='warning'] {
+  background: var(--mantine-color-orange-6);
+}
+
+@keyframes badgePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--mantine-color-red-6) 70%, transparent);
+  }
+
+  50% {
+    box-shadow: 0 0 0 4px transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .todoCard,
+  .todoCta {
+    transition: none;
+  }
+
+  .todoCard:hover {
+    transform: none;
+  }
+
+  .slotBadge[data-status='alert'] {
+    animation: none;
+  }
+}

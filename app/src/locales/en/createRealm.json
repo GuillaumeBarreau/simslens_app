@@ -1,0 +1,25 @@
+{
+  "title": "Create a New Realm",
+  "subtitle": "Configure your new guild environment to start tracking loot.",
+  "form": {
+    "guild_name": "Guild Name",
+    "guild_name_placeholder": "Ex: Method",
+    "region": "Region",
+    "region_placeholder": "Pick region",
+    "server": "Server",
+    "server_placeholder": "Pick server",
+    "create_btn": "Create Realm"
+  },
+  "validation": {
+    "guild_name_short": "Guild name must have at least 2 letters",
+    "guild_name_long": "Guild name cannot exceed 50 characters",
+    "error_title": "Validation Error",
+    "error_message": "Please check the form fields"
+  },
+  "notifications": {
+    "success_title": "Success",
+    "success_message": "Guild created successfully! Please link your characters now.",
+    "error_title": "Error",
+    "session_missing": "User session missing"
+  }
+}

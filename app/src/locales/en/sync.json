@@ -1,0 +1,52 @@
+{
+  "title": "Sync Characters",
+  "import": {
+    "title": "Guild Roster",
+    "retry": "Retry",
+    "select_all": "Select All",
+    "clear": "Clear",
+    "cancel": "Cancel",
+    "import_selected": "Import Selected ({{count}})",
+    "selected_count": "<strong>{{selected}}</strong> <1>/ {{total}} total</1>",
+    "rank": "Rank {{rank}}",
+    "notifications": {
+      "complete_title": "Import Complete",
+      "complete_message": "Imported: {{imported}}, Skipped: {{skipped}}, Failed: {{failed}}",
+      "failed_title": "Import Failed"
+    }
+  },
+  "page": {
+    "title": "Sync Characters",
+    "subtitle": "Manage your linked characters and access your realms.",
+    "refresh": "Refresh",
+    "welcome_title": "Welcome!",
+    "welcome_message": "To access your guild, you must first link at least one of your characters below.",
+    "error_title": "Error",
+    "error_fetch_failed": "Failed to fetch characters from Blizzard."
+  },
+  "loading": {
+    "title": "Synchronizing Blizzard Data",
+    "message": "We are verifying guild membership for all your characters.<br />This ensures accurate linking and may take a few seconds."
+  },
+  "alert": {
+    "no_guild_title": "No Matching Guild Found",
+    "no_guild_message_1": "None of your characters match an active guild in our database.",
+    "no_guild_message_2": "If you are the guild administrator, you must create your Realm first.",
+    "create_realm_btn": "Create a Realm"
+  },
+  "linked_list": {
+    "title": "My Linked Realms",
+    "divider_label": "Linked Characters",
+    "go_to_guild": "View {{guild}}",
+    "unknown_guild": "Unknown Guild",
+    "status_pending": "Pending"
+  },
+  "available_list": {
+    "title": "Available Characters from Battle.net",
+    "search_placeholder": "Search by name or guild...",
+    "guild_verified": "Guild Verified",
+    "matches_known_guild": "Matches known guild: {{guild}}",
+    "link_to_guild": "Link to {{guild}}",
+    "link_character": "Link this character"
+  }
+}

@@ -1,0 +1,50 @@
+import { readdirSync } from 'node:fs';
+
+import { Collection } from 'discord.js';
+
+export default {
+  async execute(client) {
+    client.commands = new Collection();
+    client.commandAliases = new Collection();
+    client.slashCommands = new Collection();
+    client.slashDatas = [];
+
+    const commandFolders = readdirSync('./src/Commands');
+
+    await Promise.all(
+      commandFolders.map(async (category) => {
+        const commandFiles = readdirSync(`./src/Commands/${category}`);
+
+        await Promise.all(
+          commandFiles.map(async (file) => {
+            const commands = await import(`../Commands/${category}/${file}`);
+
+            if (commands) {
+              if (commands.commandBase) {
+                if (commands.commandBase.prefixData) {
+                  const prefixCommand = commands.commandBase;
+                  client.commands.set(prefixCommand.prefixData.name, prefixCommand);
+
+                  if (
+                    prefixCommand.prefixData.aliases &&
+                    Array.isArray(prefixCommand.prefixData.aliases)
+                  ) {
+                    prefixCommand.prefixData.aliases.forEach((alias) => {
+                      client.commandAliases.set(alias, prefixCommand.prefixData.name);
+                    });
+                  }
+                }
+              }
+
+              if (commands.commandBase?.slashData) {
+                const slashCommand = commands.commandBase;
+                client.slashDatas.push(slashCommand.slashData.toJSON());
+                client.slashCommands.set(slashCommand.slashData.name, slashCommand);
+              }
+            }
+          }),
+        );
+      }),
+    );
+  },
+};

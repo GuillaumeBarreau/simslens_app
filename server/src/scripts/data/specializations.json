@@ -1,0 +1,54 @@
+[
+  { "name": "Arms", "class": "warrior", "role": "melee" },
+  { "name": "Fury", "class": "warrior", "role": "melee" },
+  { "name": "Protection", "class": "warrior", "role": "tank" },
+
+  { "name": "Holy", "class": "paladin", "role": "healer" },
+  { "name": "Protection", "class": "paladin", "role": "tank" },
+  { "name": "Retribution", "class": "paladin", "role": "melee" },
+
+  { "name": "Beast Mastery", "class": "hunter", "role": "ranged" },
+  { "name": "Marksmanship", "class": "hunter", "role": "ranged" },
+  { "name": "Survival", "class": "hunter", "role": "melee" },
+
+  { "name": "Assassination", "class": "rogue", "role": "melee" },
+  { "name": "Outlaw", "class": "rogue", "role": "melee" },
+  { "name": "Subtlety", "class": "rogue", "role": "melee" },
+
+  { "name": "Discipline", "class": "priest", "role": "healer" },
+  { "name": "Holy", "class": "priest", "role": "healer" },
+  { "name": "Shadow", "class": "priest", "role": "ranged" },
+
+  { "name": "Blood", "class": "death_knight", "role": "tank" },
+  { "name": "Frost", "class": "death_knight", "role": "melee" },
+  { "name": "Unholy", "class": "death_knight", "role": "melee" },
+
+  { "name": "Elemental", "class": "shaman", "role": "ranged" },
+  { "name": "Enhancement", "class": "shaman", "role": "melee" },
+  { "name": "Restoration", "class": "shaman", "role": "healer" },
+
+  { "name": "Arcane", "class": "mage", "role": "ranged" },
+  { "name": "Fire", "class": "mage", "role": "ranged" },
+  { "name": "Frost", "class": "mage", "role": "ranged" },
+
+  { "name": "Affliction", "class": "warlock", "role": "ranged" },
+  { "name": "Demonology", "class": "warlock", "role": "ranged" },
+  { "name": "Destruction", "class": "warlock", "role": "ranged" },
+
+  { "name": "Brewmaster", "class": "monk", "role": "tank" },
+  { "name": "Mistweaver", "class": "monk", "role": "healer" },
+  { "name": "Windwalker", "class": "monk", "role": "melee" },
+
+  { "name": "Balance", "class": "druid", "role": "ranged" },
+  { "name": "Feral", "class": "druid", "role": "melee" },
+  { "name": "Guardian", "class": "druid", "role": "tank" },
+  { "name": "Restoration", "class": "druid", "role": "healer" },
+
+  { "name": "Havoc", "class": "demon_hunter", "role": "melee" },
+  { "name": "Vengeance", "class": "demon_hunter", "role": "tank" },
+  { "name": "Devourer", "class": "demon_hunter", "role": "ranged" },
+
+  { "name": "Devastation", "class": "evoker", "role": "ranged" },
+  { "name": "Preservation", "class": "evoker", "role": "healer" },
+  { "name": "Augmentation", "class": "evoker", "role": "ranged" }
+]

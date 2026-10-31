@@ -1,0 +1,745 @@
+[
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237594,
+    "slot": "legs",
+    "tokenType": "mystic",
+    "classes": ["hunter", "druid", "mage"],
+    "rewards": [
+      { "itemId": 237645, "class": "hunter", "armorType": "mail" },
+      { "itemId": 237681, "class": "druid", "armorType": "leather" },
+      { "itemId": 237716, "class": "mage", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237590,
+    "slot": "head",
+    "tokenType": "mystic",
+    "classes": ["hunter", "druid", "mage"],
+    "rewards": [
+      { "itemId": 237646, "class": "hunter", "armorType": "mail" },
+      { "itemId": 237682, "class": "druid", "armorType": "leather" },
+      { "itemId": 237721, "class": "mage", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237598,
+    "slot": "shoulder",
+    "tokenType": "mystic",
+    "classes": ["hunter", "druid", "mage"],
+    "rewards": [
+      { "itemId": 237644, "class": "hunter", "armorType": "mail" },
+      { "itemId": 237680, "class": "druid", "armorType": "leather" },
+      { "itemId": 237718, "class": "mage", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237582,
+    "slot": "chest",
+    "tokenType": "mystic",
+    "classes": ["hunter", "druid", "mage"],
+    "rewards": [
+      { "itemId": 237649, "class": "hunter", "armorType": "mail" },
+      { "itemId": 237685, "class": "druid", "armorType": "leather" },
+      { "itemId": 237717, "class": "mage", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237597,
+    "slot": "shoulder",
+    "tokenType": "dreadful",
+    "classes": ["death_knight", "warlock", "demon_hunter"],
+    "rewards": [
+      { "itemId": 237626, "class": "death_knight", "armorType": "plate" },
+      { "itemId": 237698, "class": "warlock", "armorType": "cloth" },
+      { "itemId": 237689, "class": "demon_hunter", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237581,
+    "slot": "chest",
+    "tokenType": "dreadful",
+    "classes": ["death_knight", "warlock", "demon_hunter"],
+    "rewards": [
+      { "itemId": 237631, "class": "death_knight", "armorType": "plate" },
+      { "itemId": 237703, "class": "warlock", "armorType": "cloth" },
+      { "itemId": 237694, "class": "demon_hunter", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237585,
+    "slot": "hands",
+    "tokenType": "dreadful",
+    "classes": ["death_knight", "warlock", "demon_hunter"],
+    "rewards": [
+      { "itemId": 237629, "class": "death_knight", "armorType": "plate" },
+      { "itemId": 237701, "class": "warlock", "armorType": "cloth" },
+      { "itemId": 237692, "class": "demon_hunter", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237593,
+    "slot": "legs",
+    "tokenType": "dreadful",
+    "classes": ["death_knight", "warlock", "demon_hunter"],
+    "rewards": [
+      { "itemId": 237627, "class": "death_knight", "armorType": "plate" },
+      { "itemId": 237699, "class": "warlock", "armorType": "cloth" },
+      { "itemId": 237690, "class": "demon_hunter", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237599,
+    "slot": "shoulder",
+    "tokenType": "venerated",
+    "classes": ["paladin", "priest", "shaman"],
+    "rewards": [
+      { "itemId": 237617, "class": "paladin", "armorType": "plate" },
+      { "itemId": 237707, "class": "priest", "armorType": "cloth" },
+      { "itemId": 237637, "class": "shaman", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237583,
+    "slot": "chest",
+    "tokenType": "venerated",
+    "classes": ["paladin", "priest", "shaman"],
+    "rewards": [
+      { "itemId": 237622, "class": "paladin", "armorType": "plate" },
+      { "itemId": 237712, "class": "priest", "armorType": "cloth" },
+      { "itemId": 237636, "class": "shaman", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237587,
+    "slot": "hands",
+    "tokenType": "venerated",
+    "classes": ["paladin", "priest", "shaman"],
+    "rewards": [
+      { "itemId": 237620, "class": "paladin", "armorType": "plate" },
+      { "itemId": 237710, "class": "priest", "armorType": "cloth" },
+      { "itemId": 237638, "class": "shaman", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237595,
+    "slot": "legs",
+    "tokenType": "venerated",
+    "classes": ["paladin", "priest", "shaman"],
+    "rewards": [
+      { "itemId": 237618, "class": "paladin", "armorType": "plate" },
+      { "itemId": 237708, "class": "priest", "armorType": "cloth" },
+      { "itemId": 237635, "class": "shaman", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237600,
+    "slot": "shoulder",
+    "tokenType": "zenith",
+    "classes": ["warrior", "rogue", "monk", "evoker"],
+    "rewards": [
+      { "itemId": 237608, "class": "warrior", "armorType": "plate" },
+      { "itemId": 237662, "class": "rogue", "armorType": "leather" },
+      { "itemId": 237671, "class": "monk", "armorType": "leather" },
+      { "itemId": 237653, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237584,
+    "slot": "chest",
+    "tokenType": "zenith",
+    "classes": ["warrior", "rogue", "monk", "evoker"],
+    "rewards": [
+      { "itemId": 237613, "class": "warrior", "armorType": "plate" },
+      { "itemId": 237667, "class": "rogue", "armorType": "leather" },
+      { "itemId": 237676, "class": "monk", "armorType": "leather" },
+      { "itemId": 237658, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237588,
+    "slot": "hands",
+    "tokenType": "zenith",
+    "classes": ["warrior", "rogue", "monk", "evoker"],
+    "rewards": [
+      { "itemId": 237611, "class": "warrior", "armorType": "plate" },
+      { "itemId": 237665, "class": "rogue", "armorType": "leather" },
+      { "itemId": 237674, "class": "monk", "armorType": "leather" },
+      { "itemId": 237656, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "tokenItemId": 237596,
+    "slot": "legs",
+    "tokenType": "zenith",
+    "classes": ["warrior", "rogue", "monk", "evoker"],
+    "rewards": [
+      { "itemId": 237609, "class": "warrior", "armorType": "plate" },
+      { "itemId": 237663, "class": "rogue", "armorType": "leather" },
+      { "itemId": 237672, "class": "monk", "armorType": "leather" },
+      { "itemId": 237654, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249353,
+    "slot": "hands",
+    "tokenType": "voidcast",
+    "classes": ["hunter", "shaman", "evoker"],
+    "rewards": [
+      { "itemId": 249989, "class": "hunter", "armorType": "mail" },
+      { "itemId": 249980, "class": "shaman", "armorType": "mail" },
+      { "itemId": 249998, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249352,
+    "slot": "hands",
+    "tokenType": "voidcured",
+    "classes": ["rogue", "monk", "druid", "demon_hunter"],
+    "rewards": [
+      { "itemId": 250007, "class": "rogue", "armorType": "leather" },
+      { "itemId": 250016, "class": "monk", "armorType": "leather" },
+      { "itemId": 250034, "class": "demon_hunter", "armorType": "leather" },
+      { "itemId": 250025, "class": "druid", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249354,
+    "slot": "hands",
+    "tokenType": "voidforged",
+    "classes": ["warrior", "paladin", "death_knight"],
+    "rewards": [
+      { "itemId": 249953, "class": "warrior", "armorType": "plate" },
+      { "itemId": 249962, "class": "paladin", "armorType": "plate" },
+      { "itemId": 249971, "class": "death_knight", "armorType": "plate" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249351,
+    "slot": "hands",
+    "tokenType": "voidwoven",
+    "classes": ["priest", "mage", "warlock"],
+    "rewards": [
+      { "itemId": 250052, "class": "priest", "armorType": "cloth" },
+      { "itemId": 250061, "class": "mage", "armorType": "cloth" },
+      { "itemId": 250043, "class": "warlock", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249365,
+    "slot": "shoulder",
+    "tokenType": "voidcast",
+    "classes": ["hunter", "shaman", "evoker"],
+    "rewards": [
+      { "itemId": 249986, "class": "hunter", "armorType": "mail" },
+      { "itemId": 249977, "class": "shaman", "armorType": "mail" },
+      { "itemId": 249995, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249364,
+    "slot": "shoulder",
+    "tokenType": "voidcured",
+    "classes": ["rogue", "monk", "druid", "demon_hunter"],
+    "rewards": [
+      { "itemId": 250004, "class": "rogue", "armorType": "leather" },
+      { "itemId": 250013, "class": "monk", "armorType": "leather" },
+      { "itemId": 250031, "class": "demon_hunter", "armorType": "leather" },
+      { "itemId": 250022, "class": "druid", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249366,
+    "slot": "shoulder",
+    "tokenType": "voidforged",
+    "classes": ["warrior", "paladin", "death_knight"],
+    "rewards": [
+      { "itemId": 249950, "class": "warrior", "armorType": "plate" },
+      { "itemId": 249959, "class": "paladin", "armorType": "plate" },
+      { "itemId": 249968, "class": "death_knight", "armorType": "plate" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249363,
+    "slot": "shoulder",
+    "tokenType": "voidwoven",
+    "classes": ["priest", "mage", "warlock"],
+    "rewards": [
+      { "itemId": 250049, "class": "priest", "armorType": "cloth" },
+      { "itemId": 250058, "class": "mage", "armorType": "cloth" },
+      { "itemId": 250040, "class": "warlock", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249361,
+    "slot": "legs",
+    "tokenType": "voidcast",
+    "classes": ["hunter", "shaman", "evoker"],
+    "rewards": [
+      { "itemId": 249987, "class": "hunter", "armorType": "mail" },
+      { "itemId": 249978, "class": "shaman", "armorType": "mail" },
+      { "itemId": 249996, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249360,
+    "slot": "legs",
+    "tokenType": "voidcured",
+    "classes": ["rogue", "monk", "druid", "demon_hunter"],
+    "rewards": [
+      { "itemId": 250005, "class": "rogue", "armorType": "leather" },
+      { "itemId": 250014, "class": "monk", "armorType": "leather" },
+      { "itemId": 250032, "class": "demon_hunter", "armorType": "leather" },
+      { "itemId": 250023, "class": "druid", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249362,
+    "slot": "legs",
+    "tokenType": "voidforged",
+    "classes": ["warrior", "paladin", "death_knight"],
+    "rewards": [
+      { "itemId": 249951, "class": "warrior", "armorType": "plate" },
+      { "itemId": 249960, "class": "paladin", "armorType": "plate" },
+      { "itemId": 249969, "class": "death_knight", "armorType": "plate" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249359,
+    "slot": "legs",
+    "tokenType": "voidwoven",
+    "classes": ["priest", "mage", "warlock"],
+    "rewards": [
+      { "itemId": 250050, "class": "priest", "armorType": "cloth" },
+      { "itemId": 250059, "class": "mage", "armorType": "cloth" },
+      { "itemId": 250041, "class": "warlock", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249357,
+    "slot": "head",
+    "tokenType": "voidcast",
+    "classes": ["hunter", "shaman", "evoker"],
+    "rewards": [
+      { "itemId": 249988, "class": "hunter", "armorType": "mail" },
+      { "itemId": 249979, "class": "shaman", "armorType": "mail" },
+      { "itemId": 249997, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249356,
+    "slot": "head",
+    "tokenType": "voidcured",
+    "classes": ["rogue", "monk", "druid", "demon_hunter"],
+    "rewards": [
+      { "itemId": 250006, "class": "rogue", "armorType": "leather" },
+      { "itemId": 250015, "class": "monk", "armorType": "leather" },
+      { "itemId": 250033, "class": "demon_hunter", "armorType": "leather" },
+      { "itemId": 250024, "class": "druid", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249358,
+    "slot": "head",
+    "tokenType": "voidforged",
+    "classes": ["warrior", "paladin", "death_knight"],
+    "rewards": [
+      { "itemId": 249952, "class": "warrior", "armorType": "plate" },
+      { "itemId": 249961, "class": "paladin", "armorType": "plate" },
+      { "itemId": 249970, "class": "death_knight", "armorType": "plate" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249355,
+    "slot": "head",
+    "tokenType": "voidwoven",
+    "classes": ["priest", "mage", "warlock"],
+    "rewards": [
+      { "itemId": 250051, "class": "priest", "armorType": "cloth" },
+      { "itemId": 250060, "class": "mage", "armorType": "cloth" },
+      { "itemId": 250042, "class": "warlock", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249349,
+    "slot": "chest",
+    "tokenType": "voidcast",
+    "classes": ["hunter", "shaman", "evoker"],
+    "rewards": [
+      { "itemId": 249991, "class": "hunter", "armorType": "mail" },
+      { "itemId": 249982, "class": "shaman", "armorType": "mail" },
+      { "itemId": 250000, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249348,
+    "slot": "chest",
+    "tokenType": "voidcured",
+    "classes": ["rogue", "monk", "druid", "demon_hunter"],
+    "rewards": [
+      { "itemId": 250009, "class": "rogue", "armorType": "leather" },
+      { "itemId": 250018, "class": "monk", "armorType": "leather" },
+      { "itemId": 250036, "class": "demon_hunter", "armorType": "leather" },
+      { "itemId": 250027, "class": "druid", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249350,
+    "slot": "chest",
+    "tokenType": "voidforged",
+    "classes": ["warrior", "paladin", "death_knight"],
+    "rewards": [
+      { "itemId": 249955, "class": "warrior", "armorType": "plate" },
+      { "itemId": 249964, "class": "paladin", "armorType": "plate" },
+      { "itemId": 249973, "class": "death_knight", "armorType": "plate" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-01",
+    "tokenItemId": 249347,
+    "slot": "chest",
+    "tokenType": "voidwoven",
+    "classes": ["priest", "mage", "warlock"],
+    "rewards": [
+      { "itemId": 250054, "class": "priest", "armorType": "cloth" },
+      { "itemId": 250063, "class": "mage", "armorType": "cloth" },
+      { "itemId": 250045, "class": "warlock", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270910,
+    "slot": "hands",
+    "tokenType": "venomwoven",
+    "classes": ["priest", "mage", "warlock"],
+    "rewards": [
+      { "itemId": 271556, "class": "priest", "armorType": "cloth" },
+      { "itemId": 271565, "class": "mage", "armorType": "cloth" },
+      { "itemId": 271547, "class": "warlock", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270911,
+    "slot": "hands",
+    "tokenType": "venomcured",
+    "classes": ["rogue", "monk", "druid", "demon_hunter"],
+    "rewards": [
+      { "itemId": 271511, "class": "rogue", "armorType": "leather" },
+      { "itemId": 271520, "class": "monk", "armorType": "leather" },
+      { "itemId": 271529, "class": "druid", "armorType": "leather" },
+      { "itemId": 271538, "class": "demon_hunter", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270912,
+    "slot": "hands",
+    "tokenType": "venomcast",
+    "classes": ["hunter", "shaman", "evoker"],
+    "rewards": [
+      { "itemId": 271493, "class": "hunter", "armorType": "mail" },
+      { "itemId": 271484, "class": "shaman", "armorType": "mail" },
+      { "itemId": 271502, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270913,
+    "slot": "hands",
+    "tokenType": "venomforged",
+    "classes": ["warrior", "paladin", "death_knight"],
+    "rewards": [
+      { "itemId": 271457, "class": "warrior", "armorType": "plate" },
+      { "itemId": 271466, "class": "paladin", "armorType": "plate" },
+      { "itemId": 271475, "class": "death_knight", "armorType": "plate" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270914,
+    "slot": "head",
+    "tokenType": "venomwoven",
+    "classes": ["priest", "mage", "warlock"],
+    "rewards": [
+      { "itemId": 271555, "class": "priest", "armorType": "cloth" },
+      { "itemId": 271564, "class": "mage", "armorType": "cloth" },
+      { "itemId": 271546, "class": "warlock", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270915,
+    "slot": "head",
+    "tokenType": "venomcured",
+    "classes": ["rogue", "monk", "druid", "demon_hunter"],
+    "rewards": [
+      { "itemId": 271510, "class": "rogue", "armorType": "leather" },
+      { "itemId": 271519, "class": "monk", "armorType": "leather" },
+      { "itemId": 271528, "class": "druid", "armorType": "leather" },
+      { "itemId": 271537, "class": "demon_hunter", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270916,
+    "slot": "head",
+    "tokenType": "venomcast",
+    "classes": ["hunter", "shaman", "evoker"],
+    "rewards": [
+      { "itemId": 271492, "class": "hunter", "armorType": "mail" },
+      { "itemId": 271483, "class": "shaman", "armorType": "mail" },
+      { "itemId": 271501, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270917,
+    "slot": "head",
+    "tokenType": "venomforged",
+    "classes": ["warrior", "paladin", "death_knight"],
+    "rewards": [
+      { "itemId": 271456, "class": "warrior", "armorType": "plate" },
+      { "itemId": 271465, "class": "paladin", "armorType": "plate" },
+      { "itemId": 271474, "class": "death_knight", "armorType": "plate" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270918,
+    "slot": "legs",
+    "tokenType": "venomwoven",
+    "classes": ["priest", "mage", "warlock"],
+    "rewards": [
+      { "itemId": 271554, "class": "priest", "armorType": "cloth" },
+      { "itemId": 271563, "class": "mage", "armorType": "cloth" },
+      { "itemId": 271545, "class": "warlock", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270919,
+    "slot": "legs",
+    "tokenType": "venomcured",
+    "classes": ["rogue", "monk", "druid", "demon_hunter"],
+    "rewards": [
+      { "itemId": 271509, "class": "rogue", "armorType": "leather" },
+      { "itemId": 271518, "class": "monk", "armorType": "leather" },
+      { "itemId": 271527, "class": "druid", "armorType": "leather" },
+      { "itemId": 271536, "class": "demon_hunter", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270920,
+    "slot": "legs",
+    "tokenType": "venomcast",
+    "classes": ["hunter", "shaman", "evoker"],
+    "rewards": [
+      { "itemId": 271491, "class": "hunter", "armorType": "mail" },
+      { "itemId": 271482, "class": "shaman", "armorType": "mail" },
+      { "itemId": 271500, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270921,
+    "slot": "legs",
+    "tokenType": "venomforged",
+    "classes": ["warrior", "paladin", "death_knight"],
+    "rewards": [
+      { "itemId": 271455, "class": "warrior", "armorType": "plate" },
+      { "itemId": 271464, "class": "paladin", "armorType": "plate" },
+      { "itemId": 271473, "class": "death_knight", "armorType": "plate" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270922,
+    "slot": "shoulder",
+    "tokenType": "venomwoven",
+    "classes": ["priest", "mage", "warlock"],
+    "rewards": [
+      { "itemId": 271553, "class": "priest", "armorType": "cloth" },
+      { "itemId": 271562, "class": "mage", "armorType": "cloth" },
+      { "itemId": 271544, "class": "warlock", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270923,
+    "slot": "shoulder",
+    "tokenType": "venomcured",
+    "classes": ["rogue", "monk", "druid", "demon_hunter"],
+    "rewards": [
+      { "itemId": 271508, "class": "rogue", "armorType": "leather" },
+      { "itemId": 271517, "class": "monk", "armorType": "leather" },
+      { "itemId": 271526, "class": "druid", "armorType": "leather" },
+      { "itemId": 271535, "class": "demon_hunter", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270924,
+    "slot": "shoulder",
+    "tokenType": "venomcast",
+    "classes": ["hunter", "shaman", "evoker"],
+    "rewards": [
+      { "itemId": 271490, "class": "hunter", "armorType": "mail" },
+      { "itemId": 271481, "class": "shaman", "armorType": "mail" },
+      { "itemId": 271499, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270925,
+    "slot": "shoulder",
+    "tokenType": "venomforged",
+    "classes": ["warrior", "paladin", "death_knight"],
+    "rewards": [
+      { "itemId": 271454, "class": "warrior", "armorType": "plate" },
+      { "itemId": 271463, "class": "paladin", "armorType": "plate" },
+      { "itemId": 271472, "class": "death_knight", "armorType": "plate" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270926,
+    "slot": "chest",
+    "tokenType": "venomwoven",
+    "classes": ["priest", "mage", "warlock"],
+    "rewards": [
+      { "itemId": 271558, "class": "priest", "armorType": "cloth" },
+      { "itemId": 271567, "class": "mage", "armorType": "cloth" },
+      { "itemId": 271549, "class": "warlock", "armorType": "cloth" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270927,
+    "slot": "chest",
+    "tokenType": "venomcured",
+    "classes": ["rogue", "monk", "druid", "demon_hunter"],
+    "rewards": [
+      { "itemId": 271513, "class": "rogue", "armorType": "leather" },
+      { "itemId": 271522, "class": "monk", "armorType": "leather" },
+      { "itemId": 271531, "class": "druid", "armorType": "leather" },
+      { "itemId": 271540, "class": "demon_hunter", "armorType": "leather" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270928,
+    "slot": "chest",
+    "tokenType": "venomcast",
+    "classes": ["hunter", "shaman", "evoker"],
+    "rewards": [
+      { "itemId": 271495, "class": "hunter", "armorType": "mail" },
+      { "itemId": 271486, "class": "shaman", "armorType": "mail" },
+      { "itemId": 271504, "class": "evoker", "armorType": "mail" }
+    ]
+  },
+  {
+    "extension": "Midnight",
+    "season": "season-02",
+    "tokenItemId": 270929,
+    "slot": "chest",
+    "tokenType": "venomforged",
+    "classes": ["warrior", "paladin", "death_knight"],
+    "rewards": [
+      { "itemId": 271459, "class": "warrior", "armorType": "plate" },
+      { "itemId": 271468, "class": "paladin", "armorType": "plate" },
+      { "itemId": 271477, "class": "death_knight", "armorType": "plate" }
+    ]
+  }
+]

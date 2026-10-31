@@ -1,0 +1,37 @@
+name: Notifications Discord — tickets
+
+# Publie sur le salon Discord des agents la création, l'assignation, les changements
+# de statut, la fermeture et la réouverture des issues (scripts/agents/issue-event.mjs).
+# Ne fait que notifier : aucun agent ne s'exécute dans GitHub Actions.
+
+on:
+  issues:
+    types: [opened, assigned, unassigned, labeled, closed, reopened]
+
+# Pas de groupe `concurrency` : GitHub n'y garde qu'une exécution en attente et
+# annule les autres, ce qui perdait des notifications lors d'une rafale
+# d'événements (SIMS-128). Les messages peuvent arriver dans le désordre.
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    name: Notifier Discord
+    # Jamais dans un fork : le webhook Discord est un secret du dépôt d'origine.
+    if: github.repository == 'GuillaumeBarreau/sims_tracking'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          sparse-checkout: scripts/agents
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 20
+
+      - name: Publier l'événement
+        env:
+          AGENTS_DISCORD_WEBHOOK_URL: ${{ secrets.AGENTS_DISCORD_WEBHOOK_URL }}
+        run: node scripts/agents/issue-event.mjs

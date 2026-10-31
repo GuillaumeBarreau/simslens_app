@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "name": "Manaforge Omega",
+    "extension": "The-War-Within",
+    "season": "season-03",
+    "instanceId": 1302,
+    "description": "Manaforge Omega, built to harness arcane power from the wastes of K'aresh, now hums with a sinister radiance. Within it, Nexus-King Salhadaar attempts to reawaken Dimensius, the All-Devouring, in a bid for ultimate power. The champions of Azeroth must disrupt Manaforge Omega's operations or else risk a reborn Dimensius feasting on reality itself.",
+    "image_button": "ui-ej-dungeonbutton-manaforge",
+    "image_button_small": "lfgicon-manaforge",
+    "image_background": "ui-ej-background-manaforge",
+    "bosses": [2684, 2690, 2695, 2686, 2692, 2696, 2682, 2697, 724337671]
+  },
+  {
+    "id": 2,
+    "name": "The Voidspire",
+    "extension": "Midnight",
+    "season": "season-01",
+    "description": "",
+    "image_button": "ui-ej-dungeonbutton-thevoidspire",
+    "image_button_small": "lfgicon-thevoidspire",
+    "image_background": "ui-ej-background-thevoidspire",
+    "bosses": [
+      240435, 240434, 240432, 250892, 250589, 244761, 256116, 2000008, 214650, 254176, 724337672
+    ]
+  },
+  {
+    "id": 3,
+    "name": "The Venomous Abyss",
+    "extension": "Midnight",
+    "season": "season-02",
+    "instanceId": 1320,
+    "description": "Guided by the dark whispers of Malacrass, Zul'jan has freed the forgotten broods of Ula'tek from their prison. As the monster's power grows, Zul'jarra calls upon the Champions of Azeroth to descend into the Vaults of Atal'Utek to stop her brother before the weapon is unleashed upon Azeroth.",
+    "image_button": "ui-ej-dungeonbutton-thevenomousabyss",
+    "image_button_small": "lfgicon-thevenomousabyss",
+    "image_background": "ui-ej-background-thevenomousabyss",
+    "bosses": [2888, 2874, 2894, 2882, 2871, 2887, 2883, 2895, 2849, 724337673]
+  }
+]

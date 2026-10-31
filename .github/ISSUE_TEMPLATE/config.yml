@@ -1,0 +1,7 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Signaler une faille de sécurité / Report a security vulnerability
+    url: https://github.com/GuillaumeBarreau/simslens_app/security/advisories/new
+    about: >-
+      Ne pas ouvrir d'issue publique : utiliser le signalement privé GitHub (voir SECURITY.md).
+      Do not open a public issue: use GitHub private vulnerability reporting (see SECURITY.md).

@@ -1,0 +1,55 @@
+.statusCard {
+  cursor: pointer;
+  border-color: var(--mantine-color-dark-4);
+  transition: all 0.15s ease;
+}
+
+.statusCardGreen:hover {
+  border-color: var(--mantine-color-green-6) !important;
+  background-color: var(--mantine-color-dark-6);
+}
+
+.statusCardRed:hover {
+  border-color: var(--mantine-color-red-6) !important;
+  background-color: var(--mantine-color-dark-6);
+}
+
+.statusCardOrange:hover {
+  border-color: var(--mantine-color-orange-6) !important;
+  background-color: var(--mantine-color-dark-6);
+}
+
+.statusCardYellow:hover {
+  border-color: var(--mantine-color-yellow-6) !important;
+  background-color: var(--mantine-color-dark-6);
+}
+
+.statusCardGray:hover {
+  border-color: var(--mantine-color-gray-6) !important;
+  background-color: var(--mantine-color-dark-6);
+}
+
+.statusCardActiveGreen {
+  border-color: var(--mantine-color-green-6) !important;
+  background-color: var(--mantine-color-green-light) !important;
+}
+
+.statusCardActiveRed {
+  border-color: var(--mantine-color-red-6) !important;
+  background-color: var(--mantine-color-red-light) !important;
+}
+
+.statusCardActiveOrange {
+  border-color: var(--mantine-color-orange-6) !important;
+  background-color: var(--mantine-color-orange-light) !important;
+}
+
+.statusCardActiveYellow {
+  border-color: var(--mantine-color-yellow-6) !important;
+  background-color: var(--mantine-color-yellow-light) !important;
+}
+
+.statusCardActiveGray {
+  border-color: var(--mantine-color-gray-6) !important;
+  background-color: var(--mantine-color-gray-light) !important;
+}

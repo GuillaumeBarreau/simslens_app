@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "realms" ADD COLUMN     "tier" INTEGER NOT NULL DEFAULT 1;

@@ -1,0 +1,192 @@
+{
+  "subtitle": "My Activity",
+  "no_character_title": "No character selected",
+  "no_character": "Select a character to view your activity.",
+  "no_status": "No status",
+  "header": {
+    "ilvl": "ilvl {{ilvl}}",
+    "last_sim": "Last sim",
+    "open_wishlist": "My wishlist",
+    "settings": "Settings"
+  },
+  "todo": {
+    "title": "To do",
+    "raids": {
+      "label": "Raids to confirm",
+      "unit": "of {{total}}",
+      "pending_one": "{{count}} raid without a firm answer",
+      "pending_other": "{{count}} raids without a firm answer",
+      "ok": "All your raids are confirmed",
+      "none": "No raid in the next 7 days"
+    },
+    "sim": {
+      "label": "Droptimizer sim",
+      "unit_one": "day",
+      "unit_other": "days",
+      "fresh": "Up to date",
+      "late": "Refresh it soon",
+      "stale": "Outdated: run your sim again",
+      "missing": "No sim imported",
+      "unknown": "Freshness unavailable"
+    },
+    "gear": {
+      "label": "Enchants and gems",
+      "issues_one": "{{count}} item to fix",
+      "issues_other": "{{count}} items to fix",
+      "minor_one": "+ {{count}} at rank 1",
+      "minor_other": "+ {{count}} at rank 1",
+      "ok": "Gear in good shape",
+      "unknown": "No gear recorded",
+      "more_one": "and {{count}} more",
+      "more_other": "and {{count}} more"
+    },
+    "wishlist": {
+      "label": "Wishlist",
+      "unit": "/ {{total}}",
+      "ok": "Well filled",
+      "partial": "To complete",
+      "empty": "To start",
+      "unknown": "No main spec"
+    },
+    "cta": {
+      "raids": "Answer",
+      "raids_view": "See raids",
+      "sim": "See upgrades",
+      "gear": "See gear",
+      "wishlist": "Open the wishlist"
+    }
+  },
+  "anomalies": {
+    "enchant_missing": "Missing enchant",
+    "enchant_invalid": "Invalid enchant",
+    "enchant_rank1": "Rank 1 enchant",
+    "gem_missing": "Missing gem",
+    "gem_invalid": "Invalid gem",
+    "gem_rank1": "Rank 1 gem"
+  },
+  "slots": {
+    "head": "Head",
+    "neck": "Neck",
+    "shoulders": "Shoulders",
+    "back": "Back",
+    "chest": "Chest",
+    "wrists": "Wrists",
+    "hands": "Hands",
+    "waist": "Waist",
+    "legs": "Legs",
+    "feet": "Feet",
+    "finger1": "Ring 1",
+    "finger2": "Ring 2",
+    "trinket1": "Trinket 1",
+    "trinket2": "Trinket 2",
+    "main_hand": "Main hand",
+    "off_hand": "Off hand",
+    "two_hand": "Two-hand"
+  },
+  "gear": {
+    "title": "Gear",
+    "description_gear": "Your gear as last recorded.",
+    "description_anomalies": "A badge flags an enchant or a gem to fix.",
+    "description_wishlist": "Your wishlist items, slot by slot.",
+    "legend_alert": "Missing or invalid",
+    "legend_warning": "Rank 1 only"
+  },
+  "tabs": {
+    "wishlist": "Wishlist",
+    "snapgear": "Gear"
+  },
+  "wishlist": {
+    "hide_labels": "Hide names",
+    "show_labels": "Show names"
+  },
+  "raids": {
+    "title": "Upcoming raids",
+    "description": "Next 7 days",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "in_days_one": "In {{count}} day",
+    "in_days_other": "In {{count}} days",
+    "answer": "Answer",
+    "optional": "Optional",
+    "empty_title": "No raid planned",
+    "empty_text": "Nothing on the calendar for the next 7 days.",
+    "see_calendar": "See the calendar"
+  },
+  "dungeons": {
+    "title": "My M+ groups",
+    "description": "This week",
+    "empty_title": "No group this week",
+    "empty_text": "Share your availability to be placed in a group.",
+    "see_dungeons": "See dungeons"
+  },
+  "status": {
+    "present": "Present",
+    "absent": "Absent",
+    "tentative": "Tentative",
+    "late": "Late",
+    "bench": "Bench"
+  },
+  "boss_upgrades": {
+    "label": "Upgrades by Boss",
+    "description": "The loot that gains you the most, boss by boss",
+    "top_title": "Best gains",
+    "best_boss": "Best boss",
+    "loot_table": "Loot Table",
+    "upgrades_count_one": "{{count}} upgrade",
+    "upgrades_count_other": "{{count}} upgrades",
+    "best_gain": "Best Gain",
+    "upgrade_chance_help": "Number of items with a positive DPS gain on this boss",
+    "best_gain_help": "Highest DPS gain among this boss's loot",
+    "no_gain": "No gain",
+    "no_loot": "No loot table",
+    "empty_title": "No upgrades yet",
+    "empty": "No boss data for this difficulty yet. Upload a Droptimizer report to see upgrades.",
+    "error_title": "Upgrades unavailable",
+    "error": "Could not load the upgrades right now. Please try again later.",
+    "prev": "Previous bosses",
+    "next": "Next bosses",
+    "simulated_spec": "Simulated spec:",
+    "change_spec": "Change simulated spec",
+    "no_sim_for_spec": "No sim for this spec"
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Your specializations and your calendar."
+  },
+  "specializations": {
+    "title": "My specializations",
+    "description": "Your main spec drives the roster view and compositions; your off-specs show what else you can play.",
+    "primary_label": "Main spec",
+    "primary_placeholder": "Pick your spec",
+    "offspecs_label": "Off-specs",
+    "offspecs_description": "Specs you can also play. Your main spec is not one of them.",
+    "sim_data_label": "Specs with an imported sim",
+    "sim_data_empty": "No sim imported for this character.",
+    "save": "Save",
+    "saved": "Specializations saved.",
+    "error_title": "Error",
+    "error": "Could not save the specializations."
+  },
+  "calendar_feed": {
+    "title": "My calendar (iCal)",
+    "description": "Subscribe your calendar (Google, Apple, Outlook…) to your guilds' raid nights, with your signup status. It updates on its own.",
+    "create": "Create my calendar link",
+    "regenerate": "Regenerate the link",
+    "revoke": "Revoke",
+    "cancel": "Cancel",
+    "subscribe": "Add to my calendar",
+    "url_label": "Private calendar link",
+    "copy": "Copy the link",
+    "copied": "Copied",
+    "copy_now": "Copy this link now: it won't be shown again. Don't share it, it gives access to your raid nights.",
+    "active": "Link active since {{createdAt}} — last read by your calendar: {{lastUsedAt}}. Regenerate it to get it again.",
+    "never": "never",
+    "regenerate_confirm_title": "Regenerate the calendar link?",
+    "revoke_confirm_title": "Revoke the calendar link?",
+    "confirm_message": "The old link will stop working immediately: calendars using it will no longer receive your raid nights.",
+    "revoked": "Calendar link revoked.",
+    "time_zone": "In the app, times are shown in your time zone: {{timeZone}}.",
+    "error_title": "Error",
+    "error": "Could not update the calendar link."
+  }
+}

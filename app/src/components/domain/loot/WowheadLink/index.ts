@@ -1,0 +1,1 @@
+export { WowheadLink } from './WowheadLink';

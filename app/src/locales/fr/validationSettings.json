@@ -1,0 +1,67 @@
+{
+  "title": "Paramètres de validation",
+  "loading": "Chargement...",
+  "default_notice": "Ce sont les paramètres par défaut pour les simulations de Raidbots. Modifiez et sauvegardez pour créer une configuration personnalisée pour les rapports de votre guilde.",
+  "discord_channel_id": {
+    "label": "ID du channel Discord",
+    "description": "ID numérique du channel Discord où les rapports de sims seront postés",
+    "placeholder": "ex. 1234567890123456789"
+  },
+  "fight_styles": {
+    "label": "Styles de combat autorisés",
+    "description": "Liste séparée par des virgules (ex. Patchwerk, DungeonSlice)",
+    "placeholder": "Patchwerk"
+  },
+  "fight_length": {
+    "label": "Durée du combat (secondes)",
+    "description": "Durée simulée de chaque combat."
+  },
+  "enemy_count": {
+    "label": "Nombre d'ennemis",
+    "description": "Nombre de cibles dans la simulation."
+  },
+  "simulation_title": "Simulation",
+  "sim_freshness": {
+    "title": "Fraîcheur des sims",
+    "label": "Sim périmé après",
+    "description": "Âge du dernier sim au-delà duquel le roster et le suivi le signalent comme périmé (de {{min}} à {{max}} jours).",
+    "unit": "jours"
+  },
+  "raid_buffs": {
+    "title": "Buffs de raid requis",
+    "providers": {
+      "bloodlust": "Apporté par un chaman, un mage, un chasseur ou un évocateur.",
+      "arcaneIntellect": "Apporté par un mage.",
+      "fortitude": "Apporté par un prêtre.",
+      "battleShout": "Apporté par un guerrier.",
+      "mysticTouch": "Apporté par un moine.",
+      "chaosBrand": "Apporté par un chasseur de démons.",
+      "skyfury": "Apporté par un chaman.",
+      "markOfTheWild": "Apporté par un druide.",
+      "huntersMark": "Apporté par un chasseur.",
+      "powerInfusion": "Apporté par un prêtre."
+    },
+    "bloodlust": "Frénésie sanguinaire",
+    "arcaneIntellect": "Intellect arcanique",
+    "fortitude": "Vigueur",
+    "battleShout": "Cri de guerre",
+    "mysticTouch": "Toucher mystique",
+    "chaosBrand": "Marque du chaos",
+    "skyfury": "Fureur du ciel",
+    "markOfTheWild": "Marque du fauve",
+    "huntersMark": "Marque du chasseur",
+    "powerInfusion": "Infusion de puissance"
+  },
+  "cancel": "Annuler",
+  "save": "Sauvegarder",
+  "notifications": {
+    "load_error_title": "Erreur",
+    "load_error_message": "Échec du chargement des paramètres de validation",
+    "validation_error_title": "Erreur de validation",
+    "validation_error_message": "Au moins un style de combat doit être spécifié",
+    "success_title": "Succès",
+    "success_message": "Paramètres de validation mis à jour avec succès",
+    "save_error_title": "Erreur",
+    "save_error_message": "Échec de la sauvegarde des paramètres de validation"
+  }
+}

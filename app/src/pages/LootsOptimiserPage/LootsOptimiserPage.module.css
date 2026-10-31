@@ -1,0 +1,270 @@
+.page {
+  --surface: var(--mantine-color-dark-7);
+  --surface-raised: var(--mantine-color-dark-6);
+  --line: var(--mantine-color-dark-4);
+  --line-soft: var(--mantine-color-dark-5);
+}
+
+.withPanel {
+  padding-right: 600px;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-lg);
+  background: var(--surface-raised);
+}
+
+.bossThumb {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+}
+
+.bossThumbIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mantine-color-dark-1);
+}
+
+.bossStrip {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-md);
+  background: var(--surface);
+  overflow-x: auto;
+}
+
+.bossButton {
+  display: flex;
+  flex: 1 0 88px;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 88px;
+  padding: 8px 4px 6px;
+  border: 1px solid transparent;
+  border-radius: var(--mantine-radius-sm);
+  color: var(--mantine-color-dark-1);
+  text-align: center;
+}
+
+.bossButton[data-active] {
+  border-color: var(--line);
+  background: var(--surface-raised);
+  color: var(--mantine-color-white);
+}
+
+.bossButton:focus-visible,
+.toggle:focus-visible {
+  outline: 2px solid var(--mantine-color-brand-5);
+  outline-offset: 2px;
+}
+
+.bossVisual {
+  position: relative;
+  display: inline-flex;
+}
+
+.bossPortrait {
+  width: 56px;
+  height: 56px;
+  border-radius: 6px;
+  opacity: 0.7;
+}
+
+.bossButton[data-active] .bossPortrait {
+  opacity: 1;
+}
+
+.bossAll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+}
+
+.bossName {
+  display: -webkit-box;
+  min-height: 2.5em;
+  overflow: hidden;
+  font-size: var(--mantine-font-size-xs);
+  line-height: 1.25;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.bossCount {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border: 2px solid var(--surface);
+  border-radius: 999px;
+  background: var(--mantine-color-teal-8);
+  color: var(--mantine-color-white);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 16px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.list {
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-md);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.row + .row {
+  border-top: 1px solid var(--line-soft);
+}
+
+.rowMain {
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) minmax(0, 1fr) auto;
+  gap: var(--mantine-spacing-md);
+  align-items: center;
+  padding: 10px 12px;
+}
+
+.rowMain[data-clickable],
+.chip[data-clickable] {
+  cursor: pointer;
+}
+
+.chip[data-clickable]:focus-visible {
+  outline: 2px solid var(--mantine-color-brand-5);
+  outline-offset: 2px;
+}
+
+.rowDetail {
+  padding: 0 12px 12px;
+}
+
+.rowLead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.itemIcon {
+  display: block;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  height: 30px;
+  padding: 0 8px 0 3px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--mantine-radius-sm);
+  background: var(--surface-raised);
+  font-size: var(--mantine-font-size-xs);
+}
+
+.chip[data-owned] {
+  opacity: 0.55;
+}
+
+.chip[data-owned] img {
+  filter: grayscale(100%);
+}
+
+.chipName {
+  overflow: hidden;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+.chipIcon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 8px;
+  border: 1px dashed var(--line);
+  border-radius: var(--mantine-radius-sm);
+  color: var(--mantine-color-dark-1);
+  font-size: var(--mantine-font-size-xs);
+}
+
+.gain {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.gain[data-sign='positive'] {
+  color: var(--mantine-color-teal-5);
+}
+
+.gain[data-sign='negative'] {
+  color: var(--mantine-color-red-5);
+}
+
+.gain[data-sign='unknown'] {
+  color: var(--mantine-color-dark-2);
+}
+
+.toggle {
+  border-radius: var(--mantine-radius-sm);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 75em) {
+  .withPanel {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 48em) {
+  .rowMain {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .rowMain .chips {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .chipName {
+    max-width: 96px;
+  }
+}

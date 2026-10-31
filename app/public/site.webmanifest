@@ -1,0 +1,18 @@
+{
+  "name": "SimsLens — Optimiseur de loot & gestion de guilde World of Warcraft",
+  "short_name": "SimsLens",
+  "description": "Outil gratuit et open source (MIT) pour guildes World of Warcraft : gains Raidbots Droptimizer par boss, wishlists, suivi d'équipement, calendrier de raid et historique RCLootCouncil.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e14",
+  "theme_color": "#9e45a1",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
+

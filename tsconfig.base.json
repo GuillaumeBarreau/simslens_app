@@ -1,0 +1,23 @@
+{
+  // Règles TypeScript communes à TOUS les workspaces, sans hypothèse sur
+  // l'environnement d'exécution (navigateur ou Node).
+  // Les réglages liés au navigateur/Vite sont dans tsconfig.web.json.
+  "compilerOptions": {
+    // Rigueur
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // Interopérabilité des modules
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+
+    // Tolérance
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true
+  }
+}

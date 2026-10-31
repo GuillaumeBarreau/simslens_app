@@ -1,0 +1,41 @@
+{
+  "navigation": {
+    "loot_optimizer": "Optimisateur de Butin",
+    "tracking": "Suivi",
+    "roster": "Roster",
+    "wishlist": "Wishlist",
+    "sync_characters": "Synchroniser personnages",
+    "logout": "Déconnexion"
+  },
+  "contact": {
+    "tooltip": "Signaler un bug / Contact",
+    "title": "Contact / Signalement de Bug",
+    "subject": "Sujet",
+    "subjects": {
+      "bug": "Signaler un Bug",
+      "feature": "Suggestion",
+      "other": "Autre"
+    },
+    "name": "Nom",
+    "name_placeholder": "Votre nom",
+    "email": "Email (Optionnel)",
+    "email_placeholder": "votre@email.com",
+    "message": "Message",
+    "message_placeholder": "Décrivez votre problème ou suggestion...",
+    "cancel": "Annuler",
+    "send": "Envoyer",
+    "success_title": "Message envoyé",
+    "success_message": "Merci pour votre retour !",
+    "error_title": "Erreur",
+    "error_message": "Impossible d'envoyer le message. Veuillez réessayer plus tard.",
+    "validation": {
+      "name_short": "Le nom est trop court",
+      "email_invalid": "Email invalide",
+      "message_short": "Le message est trop court"
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "no_upgrades_available": "Aucune upgrade disponible dans la table de loot"
+  }
+}

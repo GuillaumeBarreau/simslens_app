@@ -1,0 +1,34 @@
+{
+  "$comment": "Budgets, quotas et seuils du système d'agents. Chemin protégé : un agent ne peut pas le modifier.",
+  "baseBranch": "origin/master",
+  "maintainer": "GuillaumeBarreau",
+  "budgets": {
+    "cycleMaxMinutes": 60,
+    "issueMaxMinutes": 90,
+    "cyclesPerDay": 2,
+    "maxAttemptsPerIssue": 3,
+    "maxOpenAgentPRs": 5,
+    "maxConcurrentDevelopers": 1,
+    "staleLockHours": 48
+  },
+  "quotas": {
+    "issuesPerCycle": 10,
+    "maxPendingProposals": 30,
+    "scoutIdeasPerCycle": 3,
+    "objectiveProposalsPerCycle": 1,
+    "discordMessagesPerCycle": 10,
+    "commentsPerCycle": 3
+  },
+  "pr": {
+    "maxChangedLines": 400,
+    "maxChangedFiles": 15
+  },
+  "knownTestFailures": [],
+  "screenshots": {
+    "baseUrl": "http://localhost:5173",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "header": {
+    "guild": "Guilde",
+    "members_count_found": "{{count}} membre(s) trouvé(s)",
+    "members_count_active": "{{count}} membre(s) actif(s)"
+  },
+  "actions": {
+    "clear_upgrades": "Supprimer les upgrades",
+    "manage_admins": "Gérer les admins",
+    "sync_battlenet": "Importer le roster via l'Armurerie",
+    "add_manual": "Ajouter"
+  },
+  "stats": {
+    "members": "Membres",
+    "backup": "En attente",
+    "archived": "Archivés",
+    "region": "Région"
+  },
+  "search": {
+    "placeholder": "Rechercher un personnage...",
+    "all_classes": "Toutes les classes"
+  },
+  "classes": {
+    "warrior": "Guerrier",
+    "paladin": "Paladin",
+    "hunter": "Chasseur",
+    "rogue": "Voleur",
+    "priest": "Prêtre",
+    "death_knight": "Chevalier de la mort",
+    "shaman": "Chaman",
+    "mage": "Mage",
+    "warlock": "Démoniste",
+    "monk": "Moine",
+    "druid": "Druide",
+    "demon_hunter": "Chasseur de démons",
+    "evoker": "Évocateur"
+  },
+  "table": {
+    "spec": "Spéc",
+    "name": "Nom",
+    "discord_tag": "Discord Tag",
+    "realm": "Royaume",
+    "linked_status": "Lié à un utilisateur",
+    "actions": "Actions",
+    "not_linked": "Non lié",
+    "linked": "Lié à un utilisateur",
+    "view_wishlist": "Voir la wishlist",
+    "edit_discord": "Modifier le Tag Discord",
+    "approve": "Valider",
+    "reject": "Refuser",
+    "edit": "Éditer",
+    "delete": "Supprimer",
+    "archive": "Archiver",
+    "restore": "Restaurer",
+    "discord_linked": "Discord enregistré",
+    "discord_not_linked": "Pas de Discord renseigné",
+    "connect_discord": "Connecter avec Discord"
+  },
+  "notifications": {
+    "success_title": "Succès",
+    "error_title": "Erreur",
+    "warning_title": "Attention",
+    "upgrades_cleared": "Tous les upgrades ont été supprimés avec succès !",
+    "upgrades_clear_error": "Erreur lors de la suppression des upgrades. Vérifiez la console pour plus de détails.",
+    "confirm_clear_upgrades": "Êtes-vous sûr de vouloir supprimer TOUS les upgrades de la base de données ? Cette action est irréversible.",
+    "updating_data": "Mise à jour des données",
+    "fetching_info": "Récupération des informations des personnages importés...",
+    "data_updated": "Données des personnages mises à jour avec succès.",
+    "update_error": "Erreur lors de la mise à jour des données. Veuillez réessayer via la page de Suivi.",
+    "delete_confirm": "Supprimer {{name}} ?",
+    "archive_confirm": "Archiver {{name}} ?",
+    "delete_error": "Erreur lors de la suppression",
+    "archive_error": "Erreur lors de l'archivage",
+    "loading_realm_error": "Erreur lors du chargement des données du royaume"
+  },
+  "empty": {
+    "no_result_title": "Aucun résultat",
+    "roster_empty_title": "Roster vide",
+    "no_result_desc": "Aucun personnage ne correspond à vos critères de recherche.",
+    "roster_empty_desc": "Votre roster ne contient aucun personnage pour le moment. Utilisez le bouton 'Importer le roster via l'Armurerie' ou 'Ajouter' pour ajouter des personnages.",
+    "backup_empty_title": "Aucune validation en attente",
+    "backup_empty_desc": "Aucune demande de validation en attente.",
+    "backup_empty_wip": "Cette fonctionnalité est en cours de développement et arrive prochainement.",
+    "archived_empty_title": "Aucune archive",
+    "archived_empty_desc": "Aucun personnage archivé trouvé."
+  },
+  "drawer": {
+    "title": "Gestion du Roster",
+    "add_title": "Ajouter un personnage",
+    "edit_title": "Modifier un personnage",
+    "fields": {
+      "name": {
+        "label": "Nom du personnage",
+        "placeholder": "Entrez le nom du personnage",
+        "error": "Le nom doit contenir au moins 2 caractères"
+      },
+      "class": {
+        "label": "Classe",
+        "placeholder": "Sélectionnez la classe",
+        "error": "La classe est requise"
+      },
+      "realm": {
+        "label": "Royaume",
+        "placeholder": "ex: Dalaran, Kael'thas...",
+        "error": "Le royaume est requis"
+      },
+      "region": {
+        "label": "Région"
+      },
+      "spec": {
+        "label": "Spécialisation",
+        "placeholder": "Sélectionnez la spécialisation",
+        "error": "La spécialisation est requise"
+      },
+      "discord_tag": {
+        "label": "Tag Discord",
+        "placeholder": "ex: username#1234"
+      }
+    },
+    "buttons": {
+      "add": "Ajouter au roster",
+      "update": "Mettre à jour"
+    },
+    "notifications": {
+      "add_success": "{{name}} a été ajouté au roster",
+      "update_success": "{{name}} a été mis à jour",
+      "remove_success": "{{name}} a été retiré du roster",
+      "discord_success": "Tag Discord mis à jour pour {{name}}",
+      "update_error": "Erreur lors de la mise à jour du personnage",
+      "add_error": "Erreur lors de l'ajout du personnage",
+      "remove_error": "Erreur lors de la suppression du personnage"
+    }
+  },
+  "admin_drawer": {
+    "title": "Gestion des Administrateurs",
+    "add_title": "Ajouter un administrateur",
+    "current_title": "Administrateurs actuels",
+    "empty": "Aucun administrateur",
+    "loading": "Chargement...",
+    "you": "Vous",
+    "fields": {
+      "user": {
+        "label": "Utilisateur",
+        "placeholder": "Sélectionnez un utilisateur",
+        "description": "Choisissez un utilisateur qui a des personnages dans ce realm",
+        "error": "Sélectionnez un utilisateur"
+      },
+      "role": {
+        "label": "Rôle",
+        "placeholder": "Sélectionnez le rôle",
+        "error": "Le rôle est requis"
+      }
+    },
+    "roles": {
+      "admin": "Administrateur",
+      "moderator": "Modérateur",
+      "member": "Membre"
+    },
+    "buttons": {
+      "add": "Ajouter"
+    },
+    "notifications": {
+      "member_exists": "L'utilisateur est déjà membre du royaume.",
+      "add_success": "Administrateur ajouté avec succès",
+      "remove_success": "Administrateur retiré avec succès",
+      "update_success": "Rôle mis à jour avec succès",
+      "add_error": "Erreur lors de l'ajout de l'administrateur",
+      "remove_error": "Erreur lors de la suppression de l'administrateur",
+      "update_error": "Erreur lors de la mise à jour du rôle",
+      "load_error": "Erreur lors du chargement des administrateurs"
+    },
+    "tooltips": {
+      "no_edit_self": "Vous ne pouvez pas modifier votre propre rôle",
+      "no_delete_self": "Vous ne pouvez pas supprimer votre propre accès"
+    }
+  },
+  "page": {
+    "header": {
+      "label": "Roster",
+      "members_one": "{{count}} membre",
+      "members_other": "{{count}} membres",
+      "pending_one": "{{count}} en attente",
+      "pending_other": "{{count}} en attente",
+      "guests_one": "{{count}} invité",
+      "guests_other": "{{count}} invités",
+      "more": "Gérer",
+      "danger_zone": "Zone de danger"
+    },
+    "summary": {
+      "composition": "Composition",
+      "classes": "Classes",
+      "completeness": "À compléter",
+      "completeness_hint": "Informations manquantes sur les membres. Cliquez pour filtrer.",
+      "incomplete_one": "{{count}} personnage",
+      "incomplete_other": "{{count}} personnages",
+      "complete": "Tout est renseigné",
+      "complete_count_one": "{{count}} / {{total}} membre entièrement renseigné",
+      "complete_count_other": "{{count}} / {{total}} membres entièrement renseignés",
+      "pending": "En attente de validation",
+      "show_pending_one": "Voir la demande",
+      "show_pending_other": "Voir les {{count}} demandes"
+    },
+    "roles": {
+      "tank": "Tanks",
+      "healer": "Soigneurs",
+      "melee": "Mêlée",
+      "ranged": "Distance",
+      "unknown": "Sans spé"
+    },
+    "status": {
+      "all": "Membres",
+      "pending": "En attente",
+      "guests": "Invités"
+    },
+    "completeness": {
+      "no_discord": "Sans Discord",
+      "not_linked": "Compte non lié",
+      "empty_wishlist": "Wishlist vide"
+    },
+    "filters": {
+      "class": "Classe",
+      "role": "Rôle",
+      "all_roles": "Tous les rôles",
+      "completeness": "Complétude",
+      "all_completeness": "Toute complétude",
+      "incomplete_one": "À compléter ({{count}})",
+      "incomplete_other": "À compléter ({{count}})",
+      "reset": "Réinitialiser",
+      "results_one": "{{count}} / {{total}} personnage",
+      "results_other": "{{count}} / {{total}} personnages"
+    },
+    "table": {
+      "character": "Personnage",
+      "account": "Compte",
+      "wishlist": "Wishlist",
+      "more": "Plus d'actions pour {{name}}",
+      "remove": "Retirer du roster"
+    },
+    "badges": {
+      "guest": "Invité",
+      "pending": "En attente"
+    },
+    "account": {
+      "linked": "Lié",
+      "not_linked": "Non lié",
+      "linked_hint": "Un joueur a rattaché ce personnage à son compte : il gère sa wishlist et ses inscriptions.",
+      "not_linked_hint": "Aucun joueur n'a rattaché ce personnage à son compte.",
+      "discord": "Discord",
+      "no_discord": "Sans Discord",
+      "discord_hint": "Tag Discord renseigné.",
+      "no_discord_hint": "Aucun tag Discord renseigné.",
+      "click_to_edit": "Cliquer pour le modifier."
+    },
+    "wishlist": {
+      "empty": "Vide",
+      "empty_hint": "Aucun objet choisi dans la wishlist de la spé principale.",
+      "hint": "{{count}} emplacements remplis sur {{total}} (spé principale, armes comptées ensemble)."
+    },
+    "no_spec": "Spé non renseignée",
+    "empty": {
+      "guests_title": "Aucun invité",
+      "guests_desc": "Aucun invité n'a encore rejoint ce royaume."
+    },
+    "discord_modal": {
+      "title": "Discord — {{name}}"
+    },
+    "clear_modal": {
+      "title": "Supprimer les upgrades",
+      "body": "Tous les upgrades importés pour {{guild}} (rapports Droptimizer) seront supprimés.",
+      "irreversible": "Cette action est irréversible : il faudra réimporter les rapports.",
+      "confirm": "Supprimer les upgrades"
+    },
+    "delete_modal": {
+      "title": "Retirer {{name}} du roster ?",
+      "body": "Le personnage est archivé et n'apparaît plus dans le roster.",
+      "reject_title": "Refuser {{name}} ?",
+      "reject_body": "La demande est refusée et le personnage est retiré du roster."
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "loading": "Loading...",
+  "settings": "Settings",
+  "feature_unavailable": {
+    "title": "This feature is not available.",
+    "description": "It is still under development and will arrive soon."
+  },
+  "navigation": {
+    "loot_optimizer": "Droptimizer",
+    "tracking": "Tracking",
+    "calendar": "Calendar",
+    "raid": "Raid",
+    "dungeons": "Dungeons",
+    "roster": "Roster",
+    "wishlist": "Wishlist",
+    "my_activity": "My Activity",
+    "history": "History",
+    "sync_characters": "Sync characters",
+    "logout": "Logout",
+    "loot_equity": "Loot equity",
+    "loot_equity_desc": "Loot received, simulated gain, BiS and attendance (officers)"
+  },
+  "languages": {
+    "fr": "French",
+    "en": "English",
+    "fr_short": "FR",
+    "en_short": "EN"
+  },
+  "user_fallback": "User",
+  "difficulties": {
+    "mythic": "Mythic",
+    "heroic": "Heroic",
+    "normal": "Normal"
+  },
+  "specializations": {
+    "arms": "Arms",
+    "fury": "Fury",
+    "protection": "Protection",
+    "holy": "Holy",
+    "retribution": "Retribution",
+    "beast_mastery": "Beast Mastery",
+    "marksmanship": "Marksmanship",
+    "survival": "Survival",
+    "assassination": "Assassination",
+    "outlaw": "Outlaw",
+    "subtlety": "Subtlety",
+    "discipline": "Discipline",
+    "shadow": "Shadow",
+    "blood": "Blood",
+    "frost": "Frost",
+    "unholy": "Unholy",
+    "elemental": "Elemental",
+    "enhancement": "Enhancement",
+    "restoration": "Restoration",
+    "arcane": "Arcane",
+    "fire": "Fire",
+    "affliction": "Affliction",
+    "demonology": "Demonology",
+    "destruction": "Destruction",
+    "brewmaster": "Brewmaster",
+    "mistweaver": "Mistweaver",
+    "windwalker": "Windwalker",
+    "balance": "Balance",
+    "feral": "Feral",
+    "guardian": "Guardian",
+    "havoc": "Havoc",
+    "vengeance": "Vengeance",
+    "devourer": "Devourer",
+    "devastation": "Devastation",
+    "preservation": "Preservation",
+    "augmentation": "Augmentation"
+  },
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "or": "or",
+  "no_upgrades_available": "No upgrades available",
+  "feature_wip": "This feature is under development and coming soon.",
+  "views": {
+    "standard": "Standard View",
+    "wishlist": "Wishlist View"
+  },
+  "error": {
+    "extension_not_found": {
+      "title": "Extension Not Found",
+      "description": "The extension \"{{extension}}\" does not exist or is not available.",
+      "go_home": "Go to Home"
+    },
+    "realm_load_error": {
+      "message": "Your guild data could not be loaded.",
+      "retry": "Retry",
+      "go_home": "Go to Home"
+    },
+    "realm_not_found": {
+      "title": "No Guild Found",
+      "description": "No guild is linked to your account. Sync your characters to join yours."
+    }
+  }
+}

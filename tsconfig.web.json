@@ -1,0 +1,16 @@
+{
+  // Base commune aux workspaces front (Vite + React) : app, app_dashboard,
+  // companion. Ils ne compilent rien eux-mêmes — Vite s'en charge — donc
+  // noEmit + isolatedModules.
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "useDefineForClassFields": true,
+    "isolatedModules": true,
+    "noEmit": true
+  }
+}

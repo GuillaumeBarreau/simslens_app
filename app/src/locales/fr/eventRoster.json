@@ -1,0 +1,180 @@
+{
+  "title": "Gestion du Roster",
+  "back": "Retour",
+  "view_composition": "Composition",
+  "view_summary": "Résumé Global",
+  "noBosses": "Aucun boss associé à cet événement",
+  "available": "Disponible",
+  "empty": "Vide",
+  "noAvailable": "Aucun joueur disponible",
+  "sameUserAssigned": "Un autre personnage de ce joueur est déjà assigné",
+  "blockedBy": "Bloqué par {{name}}",
+  "assigned": "assigné(s)",
+  "guests": {
+    "title": "INVITÉS ({{count}})",
+    "role": "Rôle : {{name}}",
+    "unassign": "Désassigner (OUT)"
+  },
+  "import": {
+    "button": "Importer une compo",
+    "title": "Importer une composition passée",
+    "description": "Sélectionne un raid passé pour copier sa composition dans cet événement. Les assignations existantes ne seront pas supprimées.",
+    "noHistory": "Aucun raid passé trouvé pour cette difficulté.",
+    "selectEvent": "Sélectionne un raid pour prévisualiser sa composition.",
+    "cancel": "Annuler",
+    "confirm": "Importer",
+    "role_tanks": "Tanks ({{count}})",
+    "role_healers": "Soins ({{count}})",
+    "role_melee": "Mêlée ({{count}})",
+    "role_ranged": "Distance ({{count}})"
+  },
+  "generate": {
+    "button": "Générer la compo",
+    "title": "Génération automatique de la composition",
+    "description": "L'algorithme construit une composition par boss en priorisant la couverture des buffs de raid, puis les améliorations BiS et la cohérence avec les compositions des semaines précédentes.",
+    "weights": {
+      "buffs": "Priorité aux buffs de raid",
+      "buffsHint": "À 0 %, la couverture des buffs n'est pas garantie. À 100 %, chaque buff actif sera couvert si possible.",
+      "upgrades": "Optimisation des upgrades / BiS",
+      "upgradesHint": "Pondère le score selon les gains de DPS prévus pour chaque joueur sur le boss courant.",
+      "history": "Cohérence avec l'historique",
+      "historyHint": "Pondère le score selon les présences passées des joueurs sur ce boss (mêmes raid + difficulté)."
+    },
+    "size": {
+      "label": "Taille du raid",
+      "mythicLocked": "Mythique : 20 joueurs (verrouillé)",
+      "flexHint": "Jusqu'à 30 joueurs maximum"
+    },
+    "history": {
+      "label": "Semaines d'historiques",
+      "hint": "1 à 6 semaines (mêmes raid + difficulté)"
+    },
+    "minBosses": {
+      "label": "Boss min. par joueur",
+      "hint": "Soft : essaie d'éviter qu'un présent soit benché toute la soirée"
+    },
+    "bosses": {
+      "label": "Boss concernés ({{count}})",
+      "hint": "Décoche les boss que tu ne veux pas inclure dans la génération.",
+      "selectAll": "Tout cocher",
+      "deselectAll": "Tout décocher",
+      "partial": "{{selected}} boss sélectionné(s) sur {{total}}"
+    },
+    "roleSource": {
+      "history": "Rôles d'après l'historique"
+    },
+    "context": {
+      "title": "Snapshot des données",
+      "loading": "Chargement des données…",
+      "error": "Échec du chargement des données.",
+      "retry": "Réessayer",
+      "players": "{{count}} joueur(s) présent(s)",
+      "bosses": "{{selected}}/{{total}} boss inclus",
+      "history": "{{count}} raid(s) passé(s) sur {{weeks}} sem.",
+      "activeBuffs": "{{count}} buff(s) actif(s)",
+      "buffsDisabled": "Slider buffs à 0 % — couverture désactivée",
+      "cap": "Cap : {{cap}} joueurs",
+      "minBosses": "Min boss/joueur : {{count}}",
+      "missingSpec": "{{count}} joueur(s) avec une spé à définir",
+      "showJson": "Voir JSON",
+      "hideJson": "Masquer JSON",
+      "copy": "Copier le JSON",
+      "copied": "JSON copié dans le presse-papier",
+      "copyFailed": "Impossible de copier le JSON"
+    },
+    "run": "Générer",
+    "computing": "Calcul en cours…",
+    "back": "Modifier les paramètres",
+    "cancel": "Fermer",
+    "apply": "Appliquer la composition",
+    "meta": {
+      "pool": "{{count}} joueur(s) présent(s)",
+      "cap": "Cap : {{cap}}",
+      "history": "{{count}} raid(s) analysé(s)",
+      "buffs": "{{count}} buff(s) actif(s)"
+    },
+    "warnings": {
+      "summary": "{{count}} avertissement(s) — vérifie ci-dessous.",
+      "missingBuffs": "Manque : {{buffs}}",
+      "emptyBoss": "Aucune assignation pour ce boss.",
+      "belowMinTitle": "{{count}} joueur(s) sous le minimum",
+      "belowMinEntry": "{{name}} ({{assigned}}/{{target}})",
+      "missingSpecTitle": "{{count}} joueur(s) avec une spé à définir",
+      "missingSpecPlaced": "{{name}} : placé en {{role}} (rôle déduit)",
+      "missingSpecUnplaced": "{{name}} (non placé : aucun rôle connu)",
+      "specToDefine": "spé à définir",
+      "offspecTitle": "{{count}} joueur(s) placé(s) hors spé",
+      "offspecEntry_one": "{{name}} : {{role}} au lieu de {{primaryRole}} ({{count}} boss)",
+      "offspecEntry_other": "{{name}} : {{role}} au lieu de {{primaryRole}} ({{count}} boss)"
+    },
+    "offspec": "Hors spé",
+    "confirm": {
+      "title": "Cette action remplacera la composition actuelle.",
+      "body": "Les assignations existantes pour les boss concernés seront supprimées. Confirme pour appliquer.",
+      "button": "Confirmer le remplacement"
+    }
+  },
+  "vacancies": {
+    "title_one": "{{count}} place libérée par un désistement",
+    "title_other": "{{count}} places libérées par un désistement",
+    "vacancy": "{{boss}} : {{name}} ({{role}}) — inscription passée en absent.",
+    "lostBuffs": "Buffs perdus : {{buffs}}",
+    "noReplacement": "Aucun remplaçant disponible pour ce rôle.",
+    "offspec": "Off-spec",
+    "missingSpec": "Spé à définir",
+    "bis_one": "{{count}} BiS",
+    "bis_other": "{{count}} BiS",
+    "replace": "Remplacer",
+    "replaced": "{{replacement}} remplace {{name}} sur {{boss}}.",
+    "replaceError": "Le remplacement a échoué.",
+    "roles": {
+      "TANK": "tank",
+      "HEALER": "soigneur",
+      "MELEE": "mêlée",
+      "RANGED": "distance"
+    }
+  },
+  "bossNotes": {
+    "button": "Notes de boss",
+    "title": "Notes et assignations par boss",
+    "bossLabel": "Boss",
+    "empty": "Aucune note pour ce boss.",
+    "edit": "Modifier",
+    "copy": "Copier",
+    "copied": "Copié",
+    "copyHint": "Copie le texte pour Discord ou une note MRT",
+    "assignmentsTitle": "Assignations",
+    "notHolder": "Plus sur ce boss",
+    "noHolders": "Aucun joueur placé sur ce boss : place des joueurs dans la composition pour les assigner.",
+    "contentLabel": "Note",
+    "contentHint": "Markdown simple : # titre, - liste, **gras**.",
+    "playerLabel": "Joueur",
+    "taskLabel": "Tâche",
+    "taskPlaceholder": "Ex. : soak gauche, interrupt n°2",
+    "addAssignment": "Ajouter une assignation",
+    "removeAssignment": "Retirer l'assignation",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "saved": "Note enregistrée.",
+    "saveError": "La note n'a pas été enregistrée.",
+    "loadError": "Impossible de charger les notes.",
+    "errors": {
+      "contentTooLong": "{{max}} caractères au maximum.",
+      "playerRequired": "Choisis un joueur.",
+      "taskRequired": "Indique une tâche.",
+      "taskTooLong": "{{max}} caractères au maximum."
+    }
+  },
+  "raidBuffs": {
+    "druid": "Versatilité (+3%)",
+    "mage": "Intelligence (+5%)",
+    "warrior": "Puissance d'attaque (+5%)",
+    "paladin": "Aura de dévotion (3% Réduction dégâts)",
+    "priest": "Endurance (+5%)",
+    "hunter": "Marque du chasseur (+5% Dégâts si PV > 80%)",
+    "evoker": "Bénédiction du bronze (-15% CD Mouvement)",
+    "shaman": "Fureur du ciel (Maîtrise)",
+    "monk": "Toucher mystique (+3% Dégâts Physiques subis)",
+    "demon_hunter": "Marque du chaos (+3% Dégâts Magiques subis)"
+  }
+}

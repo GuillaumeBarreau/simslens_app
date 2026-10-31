@@ -1,0 +1,35 @@
+{
+  "$comment": "Source unique des chemins protégés. Lu par guard.mjs (hook), diff-guard.mjs (/verify) et le reviewer. Motifs glob relatifs à la racine : ** = plusieurs dossiers, * = un segment.",
+  "paths": [
+    { "glob": "server/prisma/**", "reason": "Schéma et migrations de la base" },
+    { "glob": "server/src/shared/config/permissions/**", "reason": "Rôles et permissions" },
+    { "glob": "app/src/types/permissions.ts", "reason": "Permissions recopiées côté front" },
+    { "glob": "server/src/api/auth/**", "reason": "Authentification" },
+    { "glob": "server/src/api/device_auth/**", "reason": "Authentification des appareils" },
+    {
+      "glob": "server/src/middleware/**",
+      "reason": "Middlewares d'authentification et de contexte"
+    },
+    { "glob": "server/src/app.js", "reason": "Sessions, sécurité HTTP, montage des routes" },
+    {
+      "glob": "server/src/shared/config/index.js",
+      "reason": "Configuration et secrets du serveur"
+    },
+    { "glob": "server/docker-entrypoint.sh", "reason": "Démarrage et migrations en production" },
+    { "glob": ".github/**", "reason": "CI, templates, CODEOWNERS" },
+    { "glob": "**/Dockerfile", "reason": "Images de production" },
+    { "glob": "docker-compose*.yml", "reason": "Orchestration des conteneurs" },
+    { "glob": "deployment/**", "reason": "Déploiement en production" },
+    { "glob": "**/.env*", "reason": "Variables d'environnement et secrets" },
+    { "glob": "scripts/env-manager.js", "reason": "Propagation des .env" },
+    { "glob": "**/package.json", "reason": "Dépendances et scripts" },
+    { "glob": "**/package-lock.json", "reason": "Dépendances" },
+    { "glob": ".claude/**", "reason": "Configuration du système d'agents" },
+    { "glob": "CLAUDE.md", "reason": "Contexte des agents" },
+    { "glob": "scripts/agents/**", "reason": "Garde-fous des agents" },
+    {
+      "glob": "docs/TECHNICAL_DEBT.md",
+      "reason": "Registre de dette : les reports sont des décisions humaines"
+    }
+  ]
+}

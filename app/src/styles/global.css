@@ -1,0 +1,171 @@
+.LootImage {
+  width: 40px;
+  height: 40px;
+}
+
+body {
+  background-color: #121418 !important;
+}
+
+.class-warrior {
+  color: #c79c6e !important;
+}
+
+.class-paladin {
+  color: #f58cba !important;
+}
+
+.class-hunter {
+  color: #abd473 !important;
+}
+
+.class-rogue {
+  color: #fff569 !important;
+}
+
+.class-priest {
+  color: #ffffff !important;
+}
+
+.class-death_knight {
+  color: #c41f3b !important;
+}
+
+.class-shaman {
+  color: #0070de !important;
+}
+
+.class-mage {
+  color: #40c7eb !important;
+}
+
+.class-warlock {
+  color: #8787ed !important;
+}
+
+.class-monk {
+  color: #00ff96 !important;
+}
+
+.class-druid {
+  color: #ff7d0a !important;
+}
+
+.class-demon_hunter {
+  color: #a330c9 !important;
+}
+
+.class-evoker {
+  color: #33937f !important;
+}
+
+/* Wishlist icon sizes - prevent Wowhead from overriding */
+.wishlist-icon-large,
+.wishlist-icon-large img,
+.wishlist-icon-large a,
+.wishlist-icon-large a img,
+.wishlist-icon-large * {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+  border-radius: 4px !important;
+  display: block !important;
+}
+
+.wishlist-icon-medium,
+.wishlist-icon-medium img,
+.wishlist-icon-medium a,
+.wishlist-icon-medium a img,
+.wishlist-icon-medium * {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  max-width: 40px !important;
+  max-height: 40px !important;
+  border-radius: 4px !important;
+  display: block !important;
+}
+
+/* Wishlist tooltip wrapper - prevent tooltip flickering */
+a[data-wowhead] * {
+  pointer-events: none !important;
+}
+
+a[data-wowhead] {
+  pointer-events: auto !important;
+}
+
+/* Fix Wowhead tooltip positioning */
+.wowhead-tooltip {
+  position: fixed !important;
+  z-index: 10000 !important;
+}
+
+/* Ensure Wowhead tooltips are above modals */
+div[id^='wowhead-tooltip'] {
+  position: fixed !important;
+  z-index: 10000 !important;
+}
+
+/* Force icon sizes in modal item list */
+a[data-wh-icon-size='small'] img.LootImage {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  max-width: 40px !important;
+  max-height: 40px !important;
+}
+
+/* Hide Wowhead "Powered By" branding in tooltips */
+.whtt-powered,
+table.whtt-powered,
+div.whtt-powered,
+.wowhead-tooltip-powered {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hide the small Wowhead icon that appears inside tooltips or next to links */
+.whtt-icon,
+a.whtt-icon,
+div.whtt-icon {
+  display: none !important;
+}
+
+/* Hide background logo in tooltip */
+.whtt-logo,
+.wowhead-tooltip-logo {
+  display: none !important;
+  background-image: none !important;
+}
+
+/* Hide specific elements inside tooltip that might be the icon */
+.q0.whtt-icon,
+.q1.whtt-icon,
+.q2.whtt-icon,
+.q3.whtt-icon,
+.q4.whtt-icon,
+.q5.whtt-icon {
+  display: none !important;
+}
+
+/* Remove Mantine Card border color in dark mode */
+[data-mantine-color-scheme='dark'] .character-gear-card.m_1b7284a3 {
+  --paper-border-color: transparent !important;
+}
+
+/* Prevent body shift when modal opens */
+body[style] {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  overflow: auto !important;
+}

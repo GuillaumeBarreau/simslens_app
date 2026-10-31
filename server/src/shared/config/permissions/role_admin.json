@@ -1,0 +1,23 @@
+{
+  "manage_realm": true,
+  "delete_realm": true,
+  "view_roster": true,
+  "edit_roster": true,
+  "sync_characters": true,
+  "manage_raid": true,
+  "view_loot_history": true,
+  "assign_loot": true,
+  "delete_loot": true,
+  "edit_loot": true,
+  "import_simc": true,
+  "manage_instance": false,
+  "view_wishlist": true,
+  "manage_wishlist": true,
+  "create_event": true,
+  "edit_event": true,
+  "delete_event": true,
+  "signup_event": true,
+  "manage_signups": true,
+  "manage_event_roster": true,
+  "view_activity_log": true
+}

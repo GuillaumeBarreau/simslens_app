@@ -1,0 +1,42 @@
+{
+  "title": "History",
+  "subtitle": "Guild activity",
+  "no_realm": "No realm selected.",
+  "empty": "No activity recorded yet.",
+  "access_denied": "Access denied. This page is restricted to administrators.",
+  "wishlist": {
+    "removed": "removed",
+    "from_wishlist": "from their wishlist",
+    "added": "added",
+    "to_wishlist": "to their wishlist",
+    "replaced": "replaced",
+    "with": "with",
+    "in_wishlist": "in their wishlist"
+  },
+  "sim": {
+    "uploaded": "uploaded a new sim report"
+  },
+  "event": {
+    "signup": "signed up for the raid on {{date}}",
+    "changed": "changed their status for the raid on {{date}}",
+    "status": {
+      "present": "Present",
+      "absent": "Absent",
+      "late": "Late",
+      "tentative": "Tentative",
+      "bench": "Bench"
+    }
+  },
+  "filter": {
+    "all": "All",
+    "wishlist": "Wishlist changes",
+    "sim": "Sim reports",
+    "event": "Signups",
+    "all_members": "All members"
+  },
+  "badges": {
+    "wishlist": "Wishlist",
+    "sim_report": "Sim Report",
+    "event": "Event"
+  }
+}

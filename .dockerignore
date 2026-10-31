@@ -1,0 +1,68 @@
+# Le contexte de build est la RACINE du dépôt (nécessaire pour que
+# package-lock.json soit atteignable). Ce fichier est donc la seule chose qui
+# empêche d'envoyer tout le dépôt au démon Docker à chaque build.
+
+# Dépendances et sorties de build
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+build/
+**/build/
+storybook-static/
+**/.tmp/
+
+# Secrets, sauvegardes SQL et bases locales
+.env
+.env.*
+!.env.example
+!.env.production.template
+*.db
+**/data.db
+*.sql
+backups/
+
+# Historique, agents et outillage hors conteneurs
+.git/
+.github/
+.vscode/
+.claude/
+.agents-out/
+.docs/
+docs/
+deployment/
+scripts/
+companion/
+woodpecker-server-data/
+
+# Tests, mocks et couverture (jamais compilés ni embarqués en production)
+coverage/
+**/coverage/
+.specs/
+**/__snapshots__/
+**/__tests__/
+**/*.test.ts
+**/*.test.tsx
+**/*.test.js
+**/*.test.mjs
+**/*.spec.ts
+**/*.spec.tsx
+**/*.spec.js
+**/test.ts
+**/test.tsx
+**/vitest.config.*
+
+# Fichiers de config dev/lint/docker inutiles dans les images
+*.log
+npm-debug.log*
+.DS_Store
+*.md
+.eslint*
+.prettier*
+.editorconfig
+.gitattributes
+.gitignore
+knip.json
+docker-compose*.yml
+**/Dockerfile
+app/nginx.conf

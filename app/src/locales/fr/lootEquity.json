@@ -1,0 +1,58 @@
+{
+  "header": {
+    "kicker": "Rapports officiers",
+    "title": "Équité du loot",
+    "subtitle": "Lecture seule, réservée aux officiers : le vote se fait en jeu, dans RCLootCouncil."
+  },
+  "access_denied_title": "Accès refusé",
+  "access_denied": "Ce tableau est réservé aux officiers.",
+  "filters": {
+    "date_range": "Période",
+    "role": "Rôle",
+    "include_optional": "Inclure les raids optionnels"
+  },
+  "roles": {
+    "ALL": "Tous",
+    "TANK": "Tank",
+    "HEALER": "Soigneur",
+    "MELEE": "Mêlée",
+    "RANGED": "Distance"
+  },
+  "stats": {
+    "events": "{{count}} soirée(s)",
+    "players": "{{count}} joueur(s)",
+    "items": "{{count}} objet(s) distribué(s)"
+  },
+  "columns": {
+    "player": "Joueur",
+    "items": "Objets",
+    "items_per_raid": "Objets / soirée",
+    "average_gain": "Gain moyen (sim antérieur au drop)",
+    "cumulative_gain": "Gain cumulé",
+    "bis": "BiS rempli",
+    "presence": "Présence"
+  },
+  "hints": {
+    "items_per_raid": "Objets reçus divisés par le nombre de soirées où le joueur était présent.",
+    "gain": "Gain figé à l'import du loot : celui du sim du joueur à ce moment-là (même objet, même difficulté, spé principale, sim antérieur au drop), qu'un nouveau sim ne modifie plus. Sans gain figé (drop plus ancien, import par fichier, aucun sim à l'import), gain estimé à partir du dernier sim, le seul conservé, s'il date d'avant le drop. Sinon « inconnu », et exclu de la moyenne.",
+    "bis": "Objets de la wishlist actuelle (spé principale, toutes difficultés) obtenus à la fin de la période."
+  },
+  "known_gains": "{{known}}/{{total}} connus",
+  "ratio": "{{value}}/{{total}}",
+  "detail": {
+    "date": "Reçu le",
+    "item": "Objet",
+    "response": "Réponse",
+    "instance": "Instance",
+    "gain": "Gain (sim antérieur au drop)",
+    "bis": "BiS",
+    "unknown": "inconnu",
+    "gain_frozen": "Gain figé à l'import — sim du {{date}}",
+    "gain_estimated": "Gain estimé, aucun gain figé à l'import — sim du {{date}}",
+    "no_items": "Aucun objet reçu sur la période."
+  },
+  "empty": "Aucune donnée sur la période.",
+  "error": {
+    "title": "Erreur"
+  }
+}

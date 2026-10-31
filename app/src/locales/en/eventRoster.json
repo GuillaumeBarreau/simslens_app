@@ -1,0 +1,180 @@
+{
+  "title": "Roster Management",
+  "back": "Back",
+  "view_composition": "Composition",
+  "view_summary": "Global Summary",
+  "noBosses": "No bosses associated with this event",
+  "available": "Available",
+  "empty": "Empty",
+  "noAvailable": "No players available",
+  "assigned": "assigned",
+  "guests": {
+    "title": "GUESTS ({{count}})",
+    "role": "Role: {{name}}",
+    "unassign": "Unassign (OUT)"
+  },
+  "vacancies": {
+    "title_one": "{{count}} spot freed by a withdrawal",
+    "title_other": "{{count}} spots freed by a withdrawal",
+    "vacancy": "{{boss}}: {{name}} ({{role}}) — signup changed to absent.",
+    "lostBuffs": "Lost buffs: {{buffs}}",
+    "noReplacement": "No replacement available for this role.",
+    "offspec": "Off-spec",
+    "missingSpec": "Spec to define",
+    "bis_one": "{{count}} BiS",
+    "bis_other": "{{count}} BiS",
+    "replace": "Replace",
+    "replaced": "{{replacement}} replaces {{name}} on {{boss}}.",
+    "replaceError": "The replacement failed.",
+    "roles": {
+      "TANK": "tank",
+      "HEALER": "healer",
+      "MELEE": "melee",
+      "RANGED": "ranged"
+    }
+  },
+  "bossNotes": {
+    "button": "Boss notes",
+    "title": "Notes and assignments per boss",
+    "bossLabel": "Boss",
+    "empty": "No note for this boss.",
+    "edit": "Edit",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyHint": "Copies the text for Discord or an MRT note",
+    "assignmentsTitle": "Assignments",
+    "notHolder": "No longer on this boss",
+    "noHolders": "No player placed on this boss: place players in the composition to assign them.",
+    "contentLabel": "Note",
+    "contentHint": "Simple markdown: # heading, - list, **bold**.",
+    "playerLabel": "Player",
+    "taskLabel": "Task",
+    "taskPlaceholder": "E.g. left soak, interrupt #2",
+    "addAssignment": "Add an assignment",
+    "removeAssignment": "Remove the assignment",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saved": "Note saved.",
+    "saveError": "The note was not saved.",
+    "loadError": "Could not load the notes.",
+    "errors": {
+      "contentTooLong": "{{max}} characters at most.",
+      "playerRequired": "Pick a player.",
+      "taskRequired": "Enter a task.",
+      "taskTooLong": "{{max}} characters at most."
+    }
+  },
+  "raidBuffs": {
+    "druid": "Versatility (+3%)",
+    "mage": "Intellect (+5%)",
+    "warrior": "Attack Power (+5%)",
+    "paladin": "Devotion Aura (3% DR)",
+    "priest": "Stamina (+5%)",
+    "hunter": "Hunter's Mark (+5% Dmg if HP > 80%)",
+    "evoker": "Blessing of the Bronze (-15% Movement CD)",
+    "shaman": "Skyfury (Mastery)",
+    "monk": "Mystic Touch (+5% Phys Dmg taken)",
+    "demon_hunter": "Chaos Brand (+5% Magic Dmg taken)"
+  },
+  "sameUserAssigned": "Another character from this user is already assigned",
+  "blockedBy": "Blocked by {{name}}",
+  "import": {
+    "button": "Import composition",
+    "title": "Import a past composition",
+    "description": "Select a past raid to copy its composition into this event. Existing assignments will not be removed.",
+    "noHistory": "No past raids found for this difficulty.",
+    "selectEvent": "Select a raid to preview its composition.",
+    "cancel": "Cancel",
+    "confirm": "Import",
+    "role_tanks": "Tanks ({{count}})",
+    "role_healers": "Healers ({{count}})",
+    "role_melee": "Melee ({{count}})",
+    "role_ranged": "Ranged ({{count}})"
+  },
+  "generate": {
+    "button": "Generate composition",
+    "title": "Auto-generate composition",
+    "description": "The algorithm builds a per-boss composition prioritising raid buff coverage, then BiS / upgrade gains and consistency with past weeks' rosters.",
+    "weights": {
+      "buffs": "Raid buff priority",
+      "buffsHint": "At 0%, buff coverage is not enforced. At 100%, every active buff will be covered if possible.",
+      "upgrades": "Upgrade / BiS optimisation",
+      "upgradesHint": "Weights the score by expected DPS gain for each player on the current boss.",
+      "history": "History consistency",
+      "historyHint": "Weights the score by past attendance on this boss (same raid + difficulty)."
+    },
+    "size": {
+      "label": "Raid sisze",
+      "mythicLocked": "Mythic: 20 players (locked)",
+      "flexHint": "Up to 30 players"
+    },
+    "history": {
+      "label": "History weeks",
+      "hint": "1 to 6 weeks (same raid + difficulty)"
+    },
+    "minBosses": {
+      "label": "Min bosses per player",
+      "hint": "Soft: tries to avoid a PRESENT player being benched all night"
+    },
+    "bosses": {
+      "label": "Bosses to include ({{count}})",
+      "hint": "Uncheck bosses you do not want in the generation.",
+      "selectAll": "Select all",
+      "deselectAll": "Deselect all",
+      "partial": "{{selected}} of {{total}} bosses selected"
+    },
+    "roleSource": {
+      "history": "Roles from history"
+    },
+    "context": {
+      "title": "Data snapshot",
+      "loading": "Loading data…",
+      "error": "Failed to load data.",
+      "retry": "Retry",
+      "players": "{{count}} player(s) present",
+      "bosses": "{{selected}}/{{total}} bosses included",
+      "history": "{{count}} past raid(s) over {{weeks}} wk.",
+      "activeBuffs": "{{count}} active buff(s)",
+      "buffsDisabled": "Buffs weight at 0% — coverage disabled",
+      "cap": "Cap: {{cap}} players",
+      "minBosses": "Min bosses/player: {{count}}",
+      "missingSpec": "{{count}} player(s) with a spec to define",
+      "showJson": "Show JSON",
+      "hideJson": "Hide JSON",
+      "copy": "Copy JSON",
+      "copied": "JSON copied to clipboard",
+      "copyFailed": "Failed to copy JSON"
+    },
+    "run": "Generate",
+    "computing": "Computing…",
+    "back": "Edit parameters",
+    "cancel": "Close",
+    "apply": "Apply composition",
+    "meta": {
+      "pool": "{{count}} player(s) present",
+      "cap": "Cap: {{cap}}",
+      "history": "{{count}} past raid(s) analysed",
+      "buffs": "{{count}} active buff(s)"
+    },
+    "warnings": {
+      "summary": "{{count}} warning(s) — see below.",
+      "missingBuffs": "Missing: {{buffs}}",
+      "emptyBoss": "No assignment for this boss.",
+      "belowMinTitle": "{{count}} player(s) below minimum",
+      "belowMinEntry": "{{name}} ({{assigned}}/{{target}})",
+      "missingSpecTitle": "{{count}} player(s) with a spec to define",
+      "missingSpecPlaced": "{{name}}: placed as {{role}} (inferred role)",
+      "missingSpecUnplaced": "{{name}} (not placed: no known role)",
+      "specToDefine": "spec to define",
+      "offspecTitle": "{{count}} player(s) placed off-spec",
+      "offspecEntry_one": "{{name}}: {{role}} instead of {{primaryRole}} ({{count}} boss)",
+      "offspecEntry_other": "{{name}}: {{role}} instead of {{primaryRole}} ({{count}} bosses)"
+    },
+    "offspec": "Off-spec",
+    "confirm": {
+      "title": "This will replace the current composition.",
+      "body": "Existing assignments for the affected bosses will be removed. Confirm to apply.",
+      "button": "Confirm replacement"
+    }
+  }
+}
