@@ -12,7 +12,7 @@ jobs:
   build-and-push:
     name: Build and push ${{ matrix.service }}
     # Jamais dans un fork : pousse vers GHCR avec les secrets du dépôt d'origine.
-    if: github.repository == 'GuillaumeBarreau/sims_tracking'
+    if: github.repository == 'GuillaumeBarreau/simslens_app'
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -35,14 +35,13 @@ jobs:
             dockerfile: ./app/Dockerfile
             image: app
             # Secret absent : lien d'invitation du bot masqué.
-            build-args: |
-              VITE_DISCORD_CLIENT_ID=${{ secrets.VITE_DISCORD_CLIENT_ID }}
+            build-arg-secret: VITE_DISCORD_CLIENT_ID
 
           - service: app_dashboard
             context: .
             dockerfile: ./app_dashboard/Dockerfile
             image: app-dashboard
-            build-args: VITE_CLERK_PUBLISHABLE_KEY=${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
+            build-arg-secret: VITE_CLERK_PUBLISHABLE_KEY
 
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
@@ -63,4 +62,6 @@ jobs:
           file: ${{ matrix.dockerfile }}
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/${{ matrix.image }}:${{ github.ref_name }}
-          build-args: ${{ matrix.build-args }}
+          # `secrets` est interdit dans `strategy.matrix` (workflow invalide) : la
+          # matrice ne porte que le nom du secret, lu ici.
+          build-args: ${{ matrix.build-arg-secret && format('{0}={1}', matrix.build-arg-secret, secrets[matrix.build-arg-secret]) || '' }}
