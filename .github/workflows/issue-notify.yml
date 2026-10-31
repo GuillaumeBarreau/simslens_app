@@ -19,7 +19,7 @@ jobs:
   notify:
     name: Notifier Discord
     # Jamais dans un fork : le webhook Discord est un secret du dépôt d'origine.
-    if: github.repository == 'GuillaumeBarreau/sims_tracking'
+    if: github.repository == 'GuillaumeBarreau/simslens_app'
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
