@@ -1,0 +1,13 @@
+[Unit]
+Description=Pare-feu SimsLens : ferme le panneau Dokploy (3000) et les ports Swarm depuis Internet
+After=docker.service
+PartOf=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/simslens-fw.sh apply
+ExecStop=/usr/local/sbin/simslens-fw.sh remove
+
+[Install]
+WantedBy=docker.service

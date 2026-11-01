@@ -1,0 +1,169 @@
+x-logging: &default-logging
+  driver: 'json-file'
+  options:
+    max-size: '10m'
+    max-file: '3'
+
+services:
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    mem_limit: 128m
+    logging: *default-logging
+    expose:
+      - '80'
+    volumes:
+      - ./deployment/nginx/nginx.dokploy.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - client
+      - server
+      - dashboard
+    networks:
+      - default
+      # Réseau partagé avec le conteneur `simslens-landing` (dépôt séparé), créé hors Dokploy
+      - simslens-net
+
+  server:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    restart: unless-stopped
+    mem_limit: 1g
+    logging: *default-logging
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - NODE_OPTIONS=--max-old-space-size=768
+      - BNET_ID=${BNET_ID}
+      - BNET_SECRET=${BNET_SECRET}
+      - ENABLE_DISCORD_BOT=${ENABLE_DISCORD_BOT:-false}
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - DISCORD_SERVER_URL=${DISCORD_SERVER_URL}
+      - DISCORD_CLIENT_ID=${DISCORD_CLIENT_ID}
+      - DISCORD_CLIENT_SECRET=${DISCORD_CLIENT_SECRET}
+      - CLIENT_URL=${CLIENT_URL}
+      - SERVER_API_URL=${SERVER_API_URL}
+      - SESSION_SECRET=${SESSION_SECRET}
+      - CLERK_PUBLISHABLE_KEY=${CLERK_PUBLISHABLE_KEY}
+      - CLERK_ADMIN_USER_IDS=${CLERK_ADMIN_USER_IDS:-}
+      - DATABASE_URL=postgresql://${DB_USER:-postgres}:${DB_PASSWORD:-postgres}@postgres:5432/${DB_NAME:-droptimizer}?schema=public
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - INIT_DATA_ON_START=0
+    healthcheck:
+      # wget et non curl : l'image runtime est node:20-alpine, où seul busybox wget est présent
+      test: ['CMD', 'wget', '--no-verbose', '--tries=1', '--spider', 'http://localhost:5000/health']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - default
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    shm_size: 256mb
+    mem_limit: 1g
+    logging: *default-logging
+    # Dimensionné pour un VPS 8 Go mutualisé (au lieu de shared_buffers=2GB / effective_cache_size=6GB)
+    command: >
+      postgres
+      -c shared_buffers=256MB
+      -c effective_cache_size=1GB
+      -c work_mem=8MB
+      -c maintenance_work_mem=64MB
+      -c max_connections=50
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-droptimizer}
+    volumes:
+      - droptimizer-pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-droptimizer}']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - default
+
+  client:
+    build:
+      context: .
+      dockerfile: ./app/Dockerfile
+      args:
+        - VITE_API_BASE_URL=${VITE_API_BASE_URL}
+        - VITE_WOW_EXTENSION=${VITE_WOW_EXTENSION}
+        - VITE_CURRENT_SEASON=${VITE_CURRENT_SEASON}
+        - VITE_DISCORD_CLIENT_ID=${VITE_DISCORD_CLIENT_ID:-}
+    restart: unless-stopped
+    mem_limit: 64m
+    logging: *default-logging
+    depends_on:
+      - server
+    networks:
+      - default
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: ./app_dashboard/Dockerfile
+      args:
+        - VITE_CLERK_PUBLISHABLE_KEY=${VITE_CLERK_PUBLISHABLE_KEY}
+        - VITE_BASE_URL=/dashboard/
+    restart: unless-stopped
+    mem_limit: 64m
+    logging: *default-logging
+    depends_on:
+      - server
+    networks:
+      - default
+
+  discord:
+    build:
+      context: .
+      dockerfile: ./server_discord/Dockerfile
+    restart: unless-stopped
+    mem_limit: 350m
+    logging: *default-logging
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - NODE_OPTIONS=--max-old-space-size=256
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - SERVER_API_URL=${SERVER_API_URL}
+      - INTERNAL_SERVER_URL=http://server:5000
+      - PORT=5001
+    depends_on:
+      - server
+    networks:
+      - default
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    mem_limit: 300m
+    logging: *default-logging
+    # Plafonne Redis à 256 Mo ; volatile-lru évince en priorité les sessions à TTL sans toucher aux jobs BullMQ
+    command: redis-server --save 60 1 --loglevel warning --maxmemory 256mb --maxmemory-policy volatile-lru
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    volumes:
+      - redis_data:/data
+    networks:
+      - default
+
+networks:
+  simslens-net:
+    external: true
+
+volumes:
+  droptimizer-pg-data:
+  redis_data:

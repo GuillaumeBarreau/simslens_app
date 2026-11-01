@@ -1,7 +1,11 @@
 # 🐳 Déploiement Docker
 
-> **Déploiement de l'instance officielle.** Ce guide décrit la production du mainteneur.
-> Pour votre propre instance, remplacez le domaine `simslens.com` par le vôtre (variables
+> **L'instance officielle est passée sur Dokploy le 2026-11-01** : voir
+> [`DOKPLOY.md`](DOKPLOY.md). Ce guide reste valable pour déployer avec Docker Compose seul
+> (Nginx et certificats Certbot), et décrit l'ancienne stack, conservée arrêtée le temps de
+> valider la migration.
+
+> **Pour votre propre instance,** remplacez le domaine `simslens.com` par le vôtre (variables
 > `CLIENT_URL`, `VITE_API_BASE_URL`, configuration Nginx…) et utilisez vos propres
 > identifiants. Pour développer en local, suivez plutôt le
 > [démarrage rapide](../README.md#quickstart) ou le
