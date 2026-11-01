@@ -18,6 +18,7 @@ Migrer la stack Docker Compose de ce dépôt vers **Dokploy** (PaaS auto-héberg
 - Conteneur externe optionnel `simslens-landing` (autre dépôt), joint par Nginx via le DNS Docker. Il est aujourd'hui rattaché au réseau par défaut de l'ancienne stack (`<projet>_default`).
 - Au démarrage, le conteneur `server` applique les migrations Prisma (`prisma migrate deploy`, voir [server/docker-entrypoint.sh](../server/docker-entrypoint.sh)). Il ne doit donc pas tourner pendant une restauration de la base.
 - Redis contient les sessions et les jobs BullMQ. Ce ne sont pas des données métier.
+- Traefik reprend à Nginx le TLS et les ports publics, mais **Nginx reste** devant les services : il fait le routage par chemin (`/1/`, `/auth/`, `/admin/` → `server`, `/dashboard/` → `dashboard`), sert la landing sur des chemins exacts (`location = /`) avec repli sur l'application, ajoute les en-têtes de sécurité et la compression. L'interface de Dokploy ne sait faire que des préfixes de chemin ; remplacer Nginx imposerait des labels Traefik écrits à la main. Les futurs services auront leur propre domaine dans Dokploy, sans passer par ce Nginx.
 - Fichiers déjà préparés dans le dépôt (ne pas les réécrire, les valider ; seul l'ajout du réseau de la landing est prévu, Phase 2) :
   - `docker-compose.dokploy.yml` : nginx sans ports publiés (`expose: 80`), sans `/etc/letsencrypt`, sans ports 5433/6380.
   - `deployment/nginx/nginx.dokploy.conf` : HTTP seul, `X-Forwarded-Proto` et `X-Forwarded-For` lus depuis Traefik, redirection `www` → domaine canonique. Compatible avec `app.set('trust proxy', 1)` du serveur : rien à changer côté Express.
@@ -117,11 +118,11 @@ Vérifications obligatoires :
    docker network create simslens-net
    docker network connect simslens-net simslens-landing
    ```
-2. Arrêter l'ancienne stack **sans supprimer les volumes** : `docker compose down` (jamais `-v`). Si `down` signale que le réseau `<projet>_default` a encore des points de terminaison (la landing), c'est attendu : ne pas forcer.
+2. Arrêter l'ancienne stack avec `docker compose stop`, **pas `down`** : les conteneurs, les volumes et le réseau `<projet>_default` restent en place, et le retour arrière se limite à `docker compose start`.
 3. Installer Dokploy après lecture du script : `bash install.sh`.
 4. Vérifier : `docker service ls`, `docker ps`, accès au panneau sur `http://<ip>:3000`.
 5. Créer le compte admin, **activer le 2FA**.
-6. Configurer le domaine du panneau (ex. `dokploy.<domaine>`) en HTTPS. Une fois ce domaine fonctionnel, **fermer le port 3000** via le pare-feu du fournisseur ou la chaîne iptables `DOCKER-USER`. **`ufw` ne suffit pas** : Docker contourne ses règles pour les ports qu'il publie. Vérifier depuis une autre machine : `nc -zv <ip> 3000` doit échouer.
+6. **Fermer depuis Internet** le port du panneau (3000) et les ports Swarm (2377, 7946, 4789), que l'installeur expose sur l'adresse publique. Utiliser [`deployment/firewall/`](../deployment/firewall/README.md), qui couvre IPv4 et IPv6. Ne pas compter sur `ufw` (Docker contourne ses règles) ni sur le pare-feu réseau d'OVH (il ne filtre pas l'IPv6 du VPS). Appliquer les règles avec un retour arrière automatique programmé, et ne l'annuler qu'après avoir vérifié qu'une nouvelle connexion SSH passe. Vérifier depuis une autre machine, en IPv4 et en IPv6 : `nc -zv <ip> 3000` doit échouer. Le panneau reste joignable par tunnel SSH, ou par son propre domaine (ex. `dokploy.<domaine>`) une fois celui-ci configuré.
 7. Vérifier que les autres conteneurs existants hors stack tournent toujours (`docker ps` comparé à la Phase 0).
 
 **Critère de sortie** : Dokploy accessible en HTTPS, port 3000 fermé de l'extérieur, aucun autre conteneur impacté.
@@ -131,19 +132,22 @@ Vérifications obligatoires :
 1. Créer un projet (ex. `simslens`) puis un service de type **Compose** relié au dépôt Git (branche `feat/SIMS-0xx`), fichier `docker-compose.dokploy.yml`.
 2. Renseigner les variables d'environnement depuis le `.env` (saisie par l'utilisateur, ne pas les journaliser). Variables requises : `BNET_ID`, `BNET_SECRET`, `DISCORD_*`, `CLIENT_URL`, `SERVER_API_URL`, `SESSION_SECRET`, `CLERK_*`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `VITE_*`. `CLIENT_URL` doit commencer par `https://` (sinon les cookies ne sont pas `secure`).
 3. **Définir `DB_PASSWORD`** explicitement (le défaut `postgres` est à proscrire).
-4. Déployer la stack. Dokploy déploie un service Compose en bloc : on ne peut pas lancer `postgres` seul. Dès la fin du déploiement, **arrêter `server` et `discord`** pour que rien n'écrive pendant la restauration :
+4. **Ne pas déployer tout de suite.** Dokploy déploie un service Compose en bloc, et le serveur applique les migrations dès son démarrage : il ne doit pas démarrer sur une base vide. On remplit donc les volumes **avant** le premier déploiement. Dokploy lance Compose avec l'« App Name » du service comme nom de projet (`<appName>`), donc les volumes s'appelleront `<appName>_droptimizer-pg-data` et `<appName>_redis_data`.
+5. Créer les volumes avec les étiquettes Compose, puis restaurer le dump dans un Postgres temporaire qui utilise les mêmes identifiants que la stack :
    ```bash
-   docker ps --format '{{.Names}}' | grep -E 'server|discord'   # repérer les noms générés par Dokploy
-   docker stop <server_container> <discord_container>
+   docker volume create --label com.docker.compose.project=<appName> \
+     --label com.docker.compose.volume=droptimizer-pg-data <appName>_droptimizer-pg-data
+   docker run -d --name restore-pg --env-file .env -v <appName>_droptimizer-pg-data:/var/lib/postgresql/data \
+     --entrypoint sh postgres:15-alpine -c 'export POSTGRES_USER="$DB_USER" POSTGRES_PASSWORD="$DB_PASSWORD" POSTGRES_DB="$DB_NAME"; exec docker-entrypoint.sh postgres'
+   # Attendre le TCP : pendant l'initialisation, Postgres n'écoute que sur le socket
+   until docker exec restore-pg pg_isready -h 127.0.0.1 -q; do sleep 2; done
+   docker exec -i restore-pg sh -c 'pg_restore -U "$DB_USER" -d "$DB_NAME" --exit-on-error' < droptimizer.dump
+   docker stop restore-pg && docker rm restore-pg
    ```
-5. Restaurer (option A) dans la base créée par `POSTGRES_DB` :
-   ```bash
-   docker exec -i <postgres_container> pg_restore -U "$DB_USER" -d "$DB_NAME" --clean --if-exists < "$DB_NAME.dump"
-   ```
-   Le serveur a pu appliquer les migrations sur la base vide avant d'être arrêté ; `--clean --if-exists` remplace ce schéma par celui du dump, table `_prisma_migrations` comprise. Comparer ensuite les comptages à ceux de la Phase 1.
-6. Redis : par défaut, il repart vide (les utilisateurs devront se reconnecter, les jobs en attente sont perdus). Si l'utilisateur veut conserver l'état : arrêter le conteneur Redis, copier `dump.rdb` de la sauvegarde dans le nouveau volume, le redémarrer.
-7. Redémarrer `server` et `discord` (`docker start …`, ou redéployer depuis Dokploy). Attendre les healthchecks de `server`, `postgres` et `redis`. Vérifier dans les logs du serveur que `prisma migrate deploy` ne signale aucune migration en échec.
-8. Onglet **Domains** : `simslens.com` → service `nginx`, port `80`, HTTPS activé (Let's Encrypt). Ajouter `www.simslens.com` → même service. Vérifier que les enregistrements DNS A pointent vers le serveur. Vérifier que `nginx` est bien rattaché à `dokploy-network` (`docker inspect`) ; sinon Traefik ne peut pas le joindre.
+   Dans `docker exec`, utiliser `DB_USER` et `DB_NAME` : les variables `POSTGRES_*` n'existent que dans le processus lancé par l'entrypoint. `--env-file` ne retire pas les guillemets : vérifier que les valeurs `DB_*` du `.env` n'en ont pas. Comparer ensuite les comptages à ceux de la Phase 1.
+6. Redis : créer `<appName>_redis_data` de la même façon et y copier `dump.rdb` (propriétaire `999:1000`). Sinon, Redis repart vide : les utilisateurs doivent se reconnecter et les jobs en attente sont perdus.
+7. Déployer. Attendre les healthchecks de `server`, `postgres` et `redis`. Vérifier dans les logs du serveur que `prisma migrate deploy` ne signale rien, et que `postgres` et `redis` montent bien les volumes restaurés (`docker inspect … --format '{{range .Mounts}}{{.Name}} {{end}}'`).
+8. Onglet **Domains** : `simslens.com` → service `nginx`, port `80`, HTTPS activé (Let's Encrypt). Ajouter `www.simslens.com` → même service. Vérifier que les enregistrements DNS A pointent vers le serveur. **Redéployer** : pour un service Compose, les domaines ne sont appliqués qu'au déploiement. Vérifier ensuite que `nginx` est rattaché à `dokploy-network` (`docker inspect`), sinon Traefik ne peut pas le joindre. Avant la première émission, remplacer l'e-mail Let's Encrypt par défaut de l'installeur (`test@localhost.com`, dans `/etc/dokploy/traefik/traefik.yml`) par une vraie adresse, depuis Settings → Web Server.
 9. Configurer les **sauvegardes planifiées** de la base et les notifications d'échec. Vérifier ce que la version installée de Dokploy propose pour un Postgres déclaré dans un Compose ; à défaut, planifier un `pg_dump` par cron vers la destination choisie (S3 ou autre).
 10. Ne pas copier `/etc/letsencrypt` dans Dokploy. Traefik émet ses propres certificats.
 
@@ -155,26 +159,28 @@ Si la migration échoue et que l'utilisateur le demande :
 
 1. Arrêter la stack dans Dokploy (sans supprimer les volumes).
 2. Libérer 80/443 : arrêter Traefik de Dokploy (`docker service scale dokploy-traefik=0` ou `docker stop dokploy-traefik` selon l'installation).
-3. Relancer l'ancienne stack : `docker compose -f docker-compose.yml up -d` (avec l'option A, les anciens volumes sont intacts).
-4. Si la landing a perdu l'ancien réseau : `docker network connect <projet>_default simslens-landing`.
+3. Relancer l'ancienne stack : `docker compose start` dans son dossier (avec l'option A, les anciens volumes sont intacts).
+4. Rattacher la landing à l'ancien réseau si besoin : `docker network connect <projet>_default simslens-landing`.
 5. Vérifier `https://simslens.com`.
 6. En dernier recours, restaurer depuis les sauvegardes de la Phase 1.
 
 ## 10. Critères d'acceptation (tests)
 
-- [ ] `https://simslens.com` répond 200 avec un certificat valide.
-- [ ] `https://www.simslens.com` redirige en 301 vers `https://simslens.com`.
-- [ ] `http://simslens.com` redirige vers HTTPS.
-- [ ] `/health`, `/1/...`, `/auth/` et `/admin/` atteignent le `server`.
-- [ ] `/dashboard/` charge le dashboard.
-- [ ] Connexion Battle.net et Discord OK (cookies, callback), avec `X-Forwarded-Proto: https` bien reçu.
-- [ ] Upload jusqu'à 50 Mo accepté (`client_max_body_size`).
-- [ ] Landing (`/`, `/en/`, `/images/`, `/sitemap.xml`) servie par `simslens-landing`, ou fallback propre vers `client` s'il est absent.
-- [ ] Nombre de lignes des tables clés identique aux comptages consignés en Phase 1.
-- [ ] Le bot Discord est connecté, une seule instance.
-- [ ] Les autres conteneurs du serveur sont inchangés.
-- [ ] Une sauvegarde planifiée s'exécute avec succès et la restauration a été testée sur une base temporaire.
-- [ ] Le port 3000 est fermé depuis l'extérieur (`nc -zv <ip> 3000` depuis une autre machine).
+État au 2026-11-01, après la migration (détails en section 13) :
+
+- [x] `https://simslens.com` répond 200 avec un certificat valide (Let's Encrypt).
+- [x] `https://www.simslens.com` redirige en 301 vers `https://simslens.com`.
+- [x] `http://simslens.com` redirige vers HTTPS.
+- [x] `/health`, `/1/...`, `/auth/` et `/admin/` atteignent le `server`.
+- [x] `/dashboard/` charge le dashboard.
+- [x] Connexion OK, avec `X-Forwarded-Proto: https` bien reçu (cookie de session `Secure`).
+- [x] Upload jusqu'à 50 Mo accepté (49 Mo passent, 55 Mo → 413).
+- [x] Landing (`/`, `/en/`, `/mentions-legales`, `/sitemap.xml`) servie par `simslens-landing`, elle-même déployée par Dokploy.
+- [x] Nombre de lignes identique aux comptages de la Phase 1 (55 tables).
+- [x] Le bot Discord est connecté, une seule instance.
+- [x] Les autres conteneurs du serveur sont inchangés (il n'y en avait pas).
+- [ ] Une sauvegarde planifiée s'exécute avec succès et la restauration a été testée sur une base temporaire. **À faire** : destination à choisir.
+- [x] Les ports 3000, 2377 et 7946 sont fermés depuis l'extérieur, en IPv4 et en IPv6.
 
 ## 11. Livrables attendus de l'agent
 
@@ -182,18 +188,39 @@ Si la migration échoue et que l'utilisateur le demande :
 2. Journal des commandes exécutées et de leurs résultats (sans secrets).
 3. Liste des écarts par rapport à cette spec et leur justification.
 4. Check-list des critères d'acceptation cochée.
-5. Procédure d'exploitation courte : redéployer, restaurer une sauvegarde, mettre à jour Dokploy.
+5. Procédure d'exploitation courte : redéployer, restaurer une sauvegarde, mettre à jour Dokploy. → [`docs/DOKPLOY.md`](DOKPLOY.md).
 
-## 12. Points ouverts à trancher avec l'utilisateur avant de commencer
+## 12. Décisions
 
-- Option A ou B pour les volumes (section 6). Recommandation : A.
-- Autres services du serveur sur 80/443 : à migrer derrière Traefik ou à déplacer (bloquant pour l'installation).
-- Redis : repartir vide (déconnexion de tous les utilisateurs) ou restaurer `dump.rdb`.
-- Domaine du panneau Dokploy et accès (VPN ou public).
-- Destination des sauvegardes planifiées (S3 ?).
-- Sort du conteneur `simslens-landing` (le rattacher à Dokploy ou le laisser hors Dokploy sur le réseau partagé `simslens-net`).
-- Dokploy ou Coolify : cette spec suppose **Dokploy**. Il active Docker Swarm, ce qui est le principal risque sur un serveur qui héberge d'autres services.
+| Sujet                  | Décision                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------- |
+| Coupure                | Acceptée pendant toute la migration                                                                  |
+| Volumes                | Option A : nouveaux volumes, restauration du dump ; l'ancien volume reste intact                     |
+| Redis                  | Restauré depuis `dump.rdb` (sessions et jobs conservés)                                              |
+| Nginx                  | Conservé derrière Traefik pour le routage par chemin et la landing (voir section 2)                  |
+| Landing                | Service Compose de Dokploy, sur le réseau partagé `simslens-net`                                     |
+| Panneau Dokploy        | Fermé depuis Internet ; accès par tunnel SSH, puis `dokploy.simslens.com` quand le DNS existe        |
+| Mise en production     | Dokploy suivra une branche `deploy`, avancée depuis `master` (voir `docs/DOKPLOY.md`)                |
+| Sauvegardes planifiées | Destination à choisir                                                                                |
+| Dokploy ou Coolify     | Dokploy (seule la stack SimsLens tournait sur le serveur : Swarm sans risque pour d'autres services) |
 
-Décisions déjà prises :
+## 13. Bilan de l'exécution (2026-11-01)
 
-- Une coupure du site et des services est acceptée pendant toute la migration (section 1).
+Coupure : 33 minutes (10:33 → 11:06 UTC). Aucune perte de données : 55 tables, comptages identiques avant et après.
+
+Écarts par rapport à la première version de cette spec, et pourquoi :
+
+| Écart                                                                                            | Raison                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Phase 2 (dépôt) faite avant la Phase 1 (coupure)                                                 | Elle ne demande aucun arrêt : la coupure est plus courte                                                                               |
+| Ajout de 4 Go de swap avant les builds                                                           | Le VPS n'en avait pas ; les builds Vite et Dokploy auraient pu manquer de mémoire                                                      |
+| `docker compose stop` au lieu de `down`                                                          | Les conteneurs et le réseau de l'ancienne stack restent : retour arrière par `docker compose start`                                    |
+| Restauration **avant** le premier déploiement (section 8, étapes 4 à 6)                          | Dokploy déploie en bloc : le serveur aurait démarré, et appliqué les migrations, sur une base vide                                     |
+| Source, environnement et domaines du service saisis dans la base de Dokploy (`dokploy-postgres`) | Plus rapide que l'interface, et le `.env` n'a pas transité par le presse-papiers. Les déploiements, eux, se lancent depuis l'interface |
+| E-mail Let's Encrypt corrigé (`test@localhost.com` par défaut)                                   | Adresse invalide pour l'émission des certificats                                                                                       |
+| Pare-feu sur le serveur (`deployment/firewall/`) au lieu du pare-feu OVH ou d'`ufw`              | Le pare-feu OVH ne filtre pas l'IPv6 publique du VPS ; Docker contourne `ufw`                                                          |
+| Ports Swarm (2377, 7946, 4789) fermés en plus du 3000                                            | L'installeur les expose sur l'adresse publique ; inutiles sur un serveur seul                                                          |
+| Landing migrée dans Dokploy (dépôt `simslens_landing` : réseau `simslens-net`)                   | Elle dépendait du réseau de l'ancienne stack ; objectif : tout gérer depuis Dokploy                                                    |
+| Dokploy connecté à GitHub (GitHub App)                                                           | Le dépôt de la landing est privé ; sert aussi aux futurs services et au déploiement automatique                                        |
+
+Restent à faire : sauvegardes planifiées, branche `deploy`, domaine du panneau, suppression des conteneurs arrêtés de l'ancienne stack après quelques jours (ses volumes sont conservés).
