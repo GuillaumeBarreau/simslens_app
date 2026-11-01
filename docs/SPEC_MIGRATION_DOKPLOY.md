@@ -159,7 +159,7 @@ Si la migration échoue et que l'utilisateur le demande :
 
 1. Arrêter la stack dans Dokploy (sans supprimer les volumes).
 2. Libérer 80/443 : arrêter Traefik de Dokploy (`docker service scale dokploy-traefik=0` ou `docker stop dokploy-traefik` selon l'installation).
-3. Relancer l'ancienne stack : `docker compose start` dans son dossier (avec l'option A, les anciens volumes sont intacts).
+3. Relancer l'ancienne stack dans son dossier : `docker compose start` tant que ses conteneurs existent, `docker compose up -d` après leur suppression (ses images et ses volumes ont été conservés ; avec l'option A, les volumes sont intacts).
 4. Rattacher la landing à l'ancien réseau si besoin : `docker network connect <projet>_default simslens-landing`.
 5. Vérifier `https://simslens.com`.
 6. En dernier recours, restaurer depuis les sauvegardes de la Phase 1.
@@ -192,17 +192,17 @@ Si la migration échoue et que l'utilisateur le demande :
 
 ## 12. Décisions
 
-| Sujet                  | Décision                                                                                             |
-| ---------------------- | ---------------------------------------------------------------------------------------------------- |
-| Coupure                | Acceptée pendant toute la migration                                                                  |
-| Volumes                | Option A : nouveaux volumes, restauration du dump ; l'ancien volume reste intact                     |
-| Redis                  | Restauré depuis `dump.rdb` (sessions et jobs conservés)                                              |
-| Nginx                  | Conservé derrière Traefik pour le routage par chemin et la landing (voir section 2)                  |
-| Landing                | Service Compose de Dokploy, sur le réseau partagé `simslens-net`                                     |
-| Panneau Dokploy        | Fermé depuis Internet ; accès par tunnel SSH, puis `dokploy.simslens.com` quand le DNS existe        |
-| Mise en production     | Dokploy suivra une branche `deploy`, avancée depuis `master` (voir `docs/DOKPLOY.md`)                |
-| Sauvegardes planifiées | Destination à choisir                                                                                |
-| Dokploy ou Coolify     | Dokploy (seule la stack SimsLens tournait sur le serveur : Swarm sans risque pour d'autres services) |
+| Sujet                  | Décision                                                                                                           |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Coupure                | Acceptée pendant toute la migration                                                                                |
+| Volumes                | Option A : nouveaux volumes, restauration du dump ; l'ancien volume reste intact                                   |
+| Redis                  | Restauré depuis `dump.rdb` (sessions et jobs conservés)                                                            |
+| Nginx                  | Conservé derrière Traefik pour le routage par chemin et la landing (voir section 2)                                |
+| Landing                | Service Compose de Dokploy, sur le réseau partagé `simslens-net`                                                   |
+| Panneau Dokploy        | `dokploy.simslens.com`, réservé à une liste d'IP (`simslens-panel-allow`) ; port 3000 fermé, tunnel SSH en secours |
+| Mise en production     | Chaque service suit une branche `deploy`, avancée depuis la branche principale (voir `docs/DOKPLOY.md`)            |
+| Sauvegardes planifiées | Destination à choisir                                                                                              |
+| Dokploy ou Coolify     | Dokploy (seule la stack SimsLens tournait sur le serveur : Swarm sans risque pour d'autres services)               |
 
 ## 13. Bilan de l'exécution (2026-11-01)
 
@@ -223,4 +223,6 @@ Coupure : 33 minutes (10:33 → 11:06 UTC). Aucune perte de données : 55 tables
 | Landing migrée dans Dokploy (dépôt `simslens_landing` : réseau `simslens-net`)                   | Elle dépendait du réseau de l'ancienne stack ; objectif : tout gérer depuis Dokploy                                                    |
 | Dokploy connecté à GitHub (GitHub App)                                                           | Le dépôt de la landing est privé ; sert aussi aux futurs services et au déploiement automatique                                        |
 
-Restent à faire : sauvegardes planifiées, branche `deploy`, domaine du panneau, suppression des conteneurs arrêtés de l'ancienne stack après quelques jours (ses volumes sont conservés).
+Faits ensuite, le même jour : branches `deploy` suivies par les deux services, panneau sur `dokploy.simslens.com` filtré par IP, conteneurs de l'ancienne stack supprimés (volumes et images conservés), SSH limité aux clés.
+
+Reste à faire : les sauvegardes planifiées.

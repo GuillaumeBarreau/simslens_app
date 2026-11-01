@@ -1,0 +1,95 @@
+#!/bin/bash
+# IP autorisées à ouvrir le panneau Dokploy sur https://dokploy.simslens.com.
+# Toute autre adresse reçoit un 403 de Traefik ; le tunnel SSH reste toujours possible.
+# Usage : simslens-panel-allow list
+#         simslens-panel-allow set <nom> <ip>   (ajoute ou remplace l'IP de <nom>)
+#         simslens-panel-allow remove <nom>
+# Génère un fichier de configuration dynamique de Traefik, distinct de ceux de Dokploy,
+# que Traefik recharge seul.
+set -euo pipefail
+LIST=/etc/simslens/panel-allowlist
+OUT=/etc/dokploy/traefik/dynamic/simslens-panel.yml
+HOST=dokploy.simslens.com
+
+mkdir -p "$(dirname "$LIST")"
+touch "$LIST"
+
+render() {
+  local ranges
+  ranges=$(awk 'NF == 2 { print "          - \"" $2 "\"" }' "$LIST")
+  # Liste vide : n'autoriser personne plutôt que tout le monde
+  [ -n "$ranges" ] || ranges='          - "127.0.0.1/32"'
+  cat > "$OUT.tmp" <<YAML
+# Généré par simslens-panel-allow : ne pas éditer à la main.
+http:
+  routers:
+    simslens-panel:
+      rule: Host(\`$HOST\`)
+      entryPoints:
+        - websecure
+      middlewares:
+        - simslens-panel-allowlist
+      service: simslens-panel
+      tls:
+        certResolver: letsencrypt
+    simslens-panel-http:
+      rule: Host(\`$HOST\`)
+      entryPoints:
+        - web
+      middlewares:
+        - redirect-to-https
+      service: simslens-panel
+  middlewares:
+    simslens-panel-allowlist:
+      ipAllowList:
+        sourceRange:
+$ranges
+  services:
+    simslens-panel:
+      loadBalancer:
+        servers:
+          - url: http://dokploy:3000
+        passHostHeader: true
+YAML
+  mv "$OUT.tmp" "$OUT"
+}
+
+normalize_ip() {
+  local ip=$1
+  if [[ $ip =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}(/([0-9]|[12][0-9]|3[0-2]))?$ ]]; then
+    [[ $ip == */* ]] || ip="$ip/32"
+  elif [[ $ip =~ ^[0-9a-fA-F:]+:[0-9a-fA-F:]*(/[0-9]{1,3})?$ ]]; then
+    [[ $ip == */* ]] || ip="$ip/128"
+  else
+    echo "IP invalide : $1" >&2
+    exit 1
+  fi
+  echo "$ip"
+}
+
+case "${1:-}" in
+  list)
+    cat "$LIST"
+    ;;
+  set)
+    [ $# -eq 3 ] || { echo "Usage : $0 set <nom> <ip>" >&2; exit 2; }
+    [[ $2 =~ ^[a-z0-9_-]+$ ]] || { echo "Nom invalide : $2 (minuscules, chiffres, - et _)" >&2; exit 2; }
+    ip=$(normalize_ip "$3")
+    grep -v "^$2 " "$LIST" > "$LIST.tmp" || true
+    echo "$2 $ip" >> "$LIST.tmp"
+    mv "$LIST.tmp" "$LIST"
+    render
+    echo "$2 → $ip autorisé"
+    ;;
+  remove)
+    [ $# -eq 2 ] || { echo "Usage : $0 remove <nom>" >&2; exit 2; }
+    grep -v "^$2 " "$LIST" > "$LIST.tmp" || true
+    mv "$LIST.tmp" "$LIST"
+    render
+    echo "$2 retiré"
+    ;;
+  *)
+    echo "Usage : $0 list | set <nom> <ip> | remove <nom>" >&2
+    exit 2
+    ;;
+esac
