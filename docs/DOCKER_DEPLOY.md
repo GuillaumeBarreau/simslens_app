@@ -1,9 +1,9 @@
 # 🐳 Déploiement Docker
 
-> **L'instance officielle est passée sur Dokploy le 2026-11-01** : voir
-> [`DOKPLOY.md`](DOKPLOY.md). Ce guide reste valable pour déployer avec Docker Compose seul
-> (Nginx et certificats Certbot), et décrit l'ancienne stack, conservée arrêtée le temps de
-> valider la migration.
+> Deux variantes : **Docker Compose seul** (`docker-compose.yml`, Nginx gère HTTPS avec des
+> certificats Certbot), décrit ci-dessous, ou **derrière une plateforme qui gère HTTPS**
+> (Dokploy, Coolify, Traefik…) : voir
+> [Déployer derrière Traefik](#-déployer-derrière-traefik-dokploy-coolify).
 
 > **Pour votre propre instance,** remplacez le domaine `simslens.com` par le vôtre (variables
 > `CLIENT_URL`, `VITE_API_BASE_URL`, configuration Nginx…) et utilisez vos propres
@@ -163,6 +163,45 @@ docker-compose run --rm server node ./dist/scripts/initData.js
 - `app/Dockerfile` / `app_dashboard/Dockerfile` : Build des frontends
 - `.dockerignore` : **critique** — le contexte étant la racine, c'est lui seul qui
   évite d'envoyer tout le dépôt au démon Docker
+- `docker-compose.dokploy.yml` + `deployment/nginx/nginx.dokploy.conf` : variante derrière un
+  proxy qui gère HTTPS (section suivante)
+
+## 🧭 Déployer derrière Traefik (Dokploy, Coolify…)
+
+Quand une plateforme termine elle-même HTTPS et route les domaines (Dokploy, Coolify, un
+Traefik existant…), utiliser `docker-compose.dokploy.yml`. Par rapport à `docker-compose.yml` :
+
+- `nginx` ne publie aucun port (`expose: 80`) et ne monte pas `/etc/letsencrypt` ; Postgres et
+  Redis ne sont pas publiés non plus ;
+- sa configuration, [`nginx.dokploy.conf`](../deployment/nginx/nginx.dokploy.conf), écoute en
+  HTTP, reprend l'IP réelle et `X-Forwarded-Proto` du proxy (réseaux privés uniquement) et
+  redirige `www` vers le domaine principal.
+
+**Nginx reste devant les services** : il route par chemin (`/1/`, `/auth/`, `/admin/`,
+`/health` → `server`, `/dashboard/` → `dashboard`, le reste → `client`), ajoute les en-têtes de
+sécurité et la compression. Côté plateforme, le domaine pointe donc vers le service `nginx`,
+port 80, HTTPS activé.
+
+Points d'attention :
+
+- **Domaine** : `simslens.com` est écrit dans `nginx.dokploy.conf` (`server_name`, redirection
+  `www`) : le remplacer par le vôtre.
+- **Réseau `simslens-net`** : le compose y rattache `nginx` pour joindre un conteneur
+  optionnel `simslens-landing` (page vitrine, hors de ce dépôt). Le réseau est déclaré
+  `external` : le créer avant le premier déploiement, même sans vitrine
+  (`docker network create simslens-net`). Sans vitrine, Nginx sert l'application sur `/`.
+- **Variables** : les mêmes que pour `docker-compose.yml`. `CLIENT_URL` doit commencer par
+  `https://`, sinon le cookie de session n'est pas `Secure` ; définir `DB_PASSWORD`
+  explicitement.
+- **Dokploy** : service de type Compose, chemin `./docker-compose.dokploy.yml`. Un service
+  Compose n'applique ses domaines qu'au déploiement : redéployer après en avoir ajouté un.
+  L'installeur de Dokploy expose aussi son panneau (port 3000) et les ports de Docker Swarm
+  (2377, 7946, 4789) sur l'adresse publique : les filtrer, en IPv4 **et** en IPv6. `ufw` ne
+  suffit pas, Docker contourne ses règles.
+- **Migrer une instance existante** : le nom des volumes dépend du nom de projet Compose, que la
+  plateforme choisit. Restaurer un `pg_dump` dans les nouveaux volumes **avant** le premier
+  démarrage du `server`, qui applique les migrations Prisma dès qu'il démarre (voir
+  [Restaurer une sauvegarde](#restaurer-une-sauvegarde)).
 
 ## 📌 Contexte de build : la racine du dépôt
 

@@ -47,13 +47,11 @@ Fichiers communautaires à la racine, en anglais :
 
 ## Exploitation
 
-| Document                                                 | Contenu                                                       |
-| -------------------------------------------------------- | ------------------------------------------------------------- |
-| [`DOKPLOY.md`](DOKPLOY.md)                               | Exploitation de l'instance officielle (Dokploy)               |
-| [`SPEC_MIGRATION_DOKPLOY.md`](SPEC_MIGRATION_DOKPLOY.md) | Migration vers Dokploy : procédure, écarts, bilan             |
-| [`DOCKER_DEPLOY.md`](DOCKER_DEPLOY.md)                   | Déploiement avec Docker Compose seul (instance auto-hébergée) |
-| [`ADMIN_GUIDE.md`](ADMIN_GUIDE.md)                       | Rôles et matrice des permissions                              |
-| [`TECHNICAL_DEBT.md`](TECHNICAL_DEBT.md)                 | Problèmes connus laissés en l'état                            |
+| Document                                 | Contenu                                                                    |
+| ---------------------------------------- | -------------------------------------------------------------------------- |
+| [`DOCKER_DEPLOY.md`](DOCKER_DEPLOY.md)   | Déployer une instance : Docker Compose seul ou derrière Traefik (Dokploy…) |
+| [`ADMIN_GUIDE.md`](ADMIN_GUIDE.md)       | Rôles et matrice des permissions                                           |
+| [`TECHNICAL_DEBT.md`](TECHNICAL_DEBT.md) | Problèmes connus laissés en l'état                                         |
 
 ---
 
