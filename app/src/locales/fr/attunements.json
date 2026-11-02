@@ -1,0 +1,33 @@
+{
+  "title": "Attunements",
+  "names": {
+    "drakefire_amulet": "Drakefire Amulet"
+  },
+  "mine": {
+    "title": "Mes personnages",
+    "empty": "Aucun de tes personnages n'est dans cette guilde."
+  },
+  "faction": {
+    "label": "Faction",
+    "hint": "Choisis la faction : la chaîne de quêtes en dépend. En changer remet l'avancement à zéro.",
+    "alliance": "Alliance",
+    "horde": "Horde"
+  },
+  "progress": "{{done}} / {{total}} quêtes faites",
+  "status": {
+    "ready": "Prêt pour {{raid}}",
+    "not_ready": "Pas encore prêt"
+  },
+  "roster": {
+    "title": "Roster",
+    "ready_count": "{{ready}} / {{total}} prêts pour {{raid}}",
+    "name": "Nom",
+    "class": "Classe",
+    "faction": "Faction",
+    "progress": "Avancement",
+    "status": "Statut",
+    "ready": "Prêt",
+    "not_ready": "Pas prêt"
+  },
+  "save_error": "L'avancement n'a pas pu être enregistré."
+}

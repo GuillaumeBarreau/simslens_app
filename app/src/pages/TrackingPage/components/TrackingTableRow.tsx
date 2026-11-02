@@ -61,6 +61,10 @@ export interface TrackingTableRowProps {
   extension?: string;
   staleAfterDays: number;
   showSimDate: boolean;
+  /** Colonnes clés / score (M+, Retail seulement). */
+  showMythicPlus: boolean;
+  /** Colonne d'état des sims, bouton Droptimizer et lien du rapport (Retail seulement). */
+  showSims: boolean;
   columnCount: number;
 }
 
@@ -87,6 +91,8 @@ export const TrackingTableRow = React.memo<TrackingTableRowProps>(
     extension,
     staleAfterDays,
     showSimDate,
+    showMythicPlus,
+    showSims,
     columnCount,
   }) => {
     const { t } = useTranslation('tracking');
@@ -191,30 +197,36 @@ export const TrackingTableRow = React.memo<TrackingTableRowProps>(
             </Text>
           </Table.Td>
 
-          <Table.Td visibleFrom="sm">
-            <Text size="sm" className={classes.num} c={keys >= 4 ? 'teal.4' : 'dimmed'}>
-              {keys}
-            </Text>
-          </Table.Td>
+          {showMythicPlus && (
+            <>
+              <Table.Td visibleFrom="sm">
+                <Text size="sm" className={classes.num} c={keys >= 4 ? 'teal.4' : 'dimmed'}>
+                  {keys}
+                </Text>
+              </Table.Td>
 
-          <Table.Td visibleFrom="sm">
-            <Text size="sm" className={classes.num} c={character.score ? undefined : 'dimmed'}>
-              {Math.floor(character.score)}
-            </Text>
-          </Table.Td>
+              <Table.Td visibleFrom="sm">
+                <Text size="sm" className={classes.num} c={character.score ? undefined : 'dimmed'}>
+                  {Math.floor(character.score)}
+                </Text>
+              </Table.Td>
+            </>
+          )}
 
-          <Table.Td>
-            {view === 'overview' ? (
-              <ModePills character={character} staleAfterDays={staleAfterDays} />
-            ) : (
-              <SimStateBadge
-                mode={view}
-                report={character.reportsByDifficulty?.[view] ?? null}
-                staleAfterDays={staleAfterDays}
-                showAge={showSimDate}
-              />
-            )}
-          </Table.Td>
+          {showSims && (
+            <Table.Td>
+              {view === 'overview' ? (
+                <ModePills character={character} staleAfterDays={staleAfterDays} />
+              ) : (
+                <SimStateBadge
+                  mode={view}
+                  report={character.reportsByDifficulty?.[view] ?? null}
+                  staleAfterDays={staleAfterDays}
+                  showAge={showSimDate}
+                />
+              )}
+            </Table.Td>
+          )}
 
           {showSimDate && view === 'overview' && (
             <Table.Td visibleFrom="sm">
@@ -224,12 +236,14 @@ export const TrackingTableRow = React.memo<TrackingTableRowProps>(
 
           <Table.Td>
             <Group gap={4} justify="flex-end" wrap="nowrap">
-              <DroptimizerUpdateButton
-                characterName={character.name}
-                mythicReport={character.reportsByDifficulty?.mythic}
-                staleAfterDays={staleAfterDays}
-              />
-              {reportId ? (
+              {showSims && (
+                <DroptimizerUpdateButton
+                  characterName={character.name}
+                  mythicReport={character.reportsByDifficulty?.mythic}
+                  staleAfterDays={staleAfterDays}
+                />
+              )}
+              {showSims && reportId ? (
                 <Tooltip
                   label={
                     view === 'overview'
@@ -253,7 +267,7 @@ export const TrackingTableRow = React.memo<TrackingTableRowProps>(
                   </ActionIcon>
                 </Tooltip>
               ) : (
-                <Box w={28} aria-hidden />
+                showSims && <Box w={28} aria-hidden />
               )}
               <Menu position="bottom-end" withinPortal shadow="md">
                 <Menu.Target>
