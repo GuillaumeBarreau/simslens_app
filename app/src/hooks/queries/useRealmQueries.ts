@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient, type UseQueryOptions } from '@tanstack/react-query';
 import type { GameId } from 'config/games';
+import { useCallback } from 'react';
 import {
   type CreateRealmPayload,
   realmService,
@@ -30,6 +31,25 @@ export function useMyRealmPermissions(realmId: number | undefined, enabled = tru
     enabled: enabled && realmId !== undefined,
     retry: false,
   });
+}
+
+const REALM_LIST_KEY = ['realm', 'list'] as const;
+
+/**
+ * Charge à la demande la liste des guildes (avec leur jeu), mise en cache 5 min :
+ * le sélecteur de jeu n'en a besoin qu'au moment où l'on change de jeu.
+ */
+export function useFetchRealmList() {
+  const queryClient = useQueryClient();
+  return useCallback(
+    () =>
+      queryClient.fetchQuery<Realm[]>({
+        queryKey: REALM_LIST_KEY,
+        queryFn: () => realmService.list(),
+        staleTime: 5 * 60 * 1000,
+      }),
+    [queryClient],
+  );
 }
 
 /** Régions et serveurs d'un jeu (Retail par défaut). */

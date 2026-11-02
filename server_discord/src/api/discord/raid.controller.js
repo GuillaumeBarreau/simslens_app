@@ -6,6 +6,8 @@ import {
   EmbedBuilder,
 } from 'discord.js';
 
+import { CLASS_EMOJI } from '../../Utils/classes.js';
+
 /**
  * Skips sources that are already loaded.
  * @param {import('discord.js').Client} client
@@ -50,32 +52,18 @@ function buildEmojiMap(client) {
   return map;
 }
 
-const CLASS_UNICODE_FALLBACK = {
-  warrior: '⚔️',
-  paladin: '🛡️',
-  hunter: '🏹',
-  rogue: '🗡️',
-  priest: '✨',
-  shaman: '⚡',
-  mage: '🔥',
-  warlock: '🌑',
-  monk: '🥋',
-  druid: '🌿',
-  death_knight: '💀',
-  demon_hunter: '👿',
-  evoker: '🐉',
-};
-
 const DISCORD_FIELD_CHAR_LIMIT = 1024;
 const TRUNCATION_RESERVE = 12;
 
 /**
  * Entries are `{ name, class, lateTime? }` objects (or legacy strings).
+ * Une classe sans emoji Discord ni emoji de repli (classe absente de la table,
+ * SIMS-026) s'affiche par le seul nom du joueur.
  * @param {{ name: string, class?: string, lateTime?: string } | string} item
  * @param {Map<string, import('discord.js').GuildEmoji>} emojiMap
  * @returns {string}
  */
-function formatEntry(item, emojiMap) {
+export function formatEntry(item, emojiMap) {
   if (typeof item === 'string') return item;
 
   const key = String(item.class ?? '')
@@ -88,7 +76,7 @@ function formatEntry(item, emojiMap) {
     console.warn(`[Raid Controller] No emoji for class: "${key}"`);
   }
 
-  const fallback = key ? (CLASS_UNICODE_FALLBACK[key] ?? null) : null;
+  const fallback = key && Object.hasOwn(CLASS_EMOJI, key) ? CLASS_EMOJI[key] : null;
   const base = emoji ? `${emoji} ${item.name}` : fallback ? `${fallback} ${item.name}` : item.name;
   return item.lateTime ? `${base} (${item.lateTime})` : base;
 }

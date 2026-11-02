@@ -1,6 +1,6 @@
 import { forever } from './forever';
 import { retail } from './retail';
-import type { GameCapability, GameDefinition, GameId } from './types';
+import type { GameCapability, GameDefinition, GameDifficulty, GameId } from './types';
 
 export { FOREVER_EXTENSION } from './forever';
 export type { GameCapability, GameDefinition, GameDifficulty, GameId } from './types';
@@ -21,4 +21,23 @@ export function getGameDefinition(game: GameId): GameDefinition {
 
 export function gameHasCapability(game: GameId, capability: GameCapability): boolean {
   return GAMES[game].capabilities.includes(capability);
+}
+
+/** Garde les éléments sans capacité requise ou dont la capacité existe dans le jeu. */
+export function filterByCapability<T extends { capability?: GameCapability }>(
+  items: readonly T[],
+  has: (capability: GameCapability) => boolean,
+): T[] {
+  return items.filter((item) => !item.capability || has(item.capability));
+}
+
+/**
+ * Difficulté effective : celle choisie si le jeu la propose, sinon la plus haute du jeu
+ * (Forever n'a que « normal »).
+ */
+export function resolveDifficulty(
+  selected: GameDifficulty,
+  difficulties: readonly GameDifficulty[],
+): GameDifficulty {
+  return difficulties.includes(selected) ? selected : difficulties[difficulties.length - 1];
 }

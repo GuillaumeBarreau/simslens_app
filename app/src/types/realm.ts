@@ -13,6 +13,8 @@ export interface Realm {
   locale?: string;
   timezone?: string;
   ownerId?: string;
+  /** Identifiant de l'utilisateur qui a créé la guilde. */
+  createdBy?: number;
   discordGuildId?: string | null;
   discordRaidCategoryId?: string | null;
   signupLockHours?: number;

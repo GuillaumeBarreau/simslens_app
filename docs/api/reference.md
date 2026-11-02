@@ -131,6 +131,7 @@
 | `GET`    | `/1/realms`                            | —              |
 | `POST`   | `/1/realms`                            | —              |
 | `GET`    | `/1/realms/check`                      | —              |
+| `GET`    | `/1/realms/mine`                       | —              |
 | `GET`    | `/1/realms/:id`                        | —              |
 | `PATCH`  | `/1/realms/:id/add-character`          | `EDIT_ROSTER`  |
 | `GET`    | `/1/realms/:id/owners`                 | `MANAGE_REALM` |
@@ -242,22 +243,23 @@
 
 ### `/1/events` — module `event`
 
-| Méthode  | Chemin                              | Permission       |
-| :------- | :---------------------------------- | :--------------- |
-| `GET`    | `/1/events`                         | —                |
-| `GET`    | `/1/events/calendar-feed`           | —                |
-| `POST`   | `/1/events/calendar-feed`           | —                |
-| `DELETE` | `/1/events/calendar-feed`           | —                |
-| `GET`    | `/1/events/calendar-feed/:file`     | —                |
-| `POST`   | `/1/events/series`                  | `CREATE_EVENT`   |
-| `PUT`    | `/1/events/series/:seriesId`        | `EDIT_EVENT`     |
-| `DELETE` | `/1/events/series/:seriesId`        | `DELETE_EVENT`   |
-| `GET`    | `/1/events/:id`                     | —                |
-| `POST`   | `/1/events`                         | `CREATE_EVENT`   |
-| `PUT`    | `/1/events/:id`                     | `EDIT_EVENT`     |
-| `DELETE` | `/1/events/:id`                     | `DELETE_EVENT`   |
-| `POST`   | `/1/events/:id/duplicate`           | `CREATE_EVENT`   |
-| `GET`    | `/1/events/:eventId/no-status-tags` | `MANAGE_SIGNUPS` |
+| Méthode  | Chemin                                | Permission       |
+| :------- | :------------------------------------ | :--------------- |
+| `GET`    | `/1/events`                           | —                |
+| `GET`    | `/1/events/calendar-feed`             | —                |
+| `POST`   | `/1/events/calendar-feed`             | —                |
+| `DELETE` | `/1/events/calendar-feed`             | —                |
+| `GET`    | `/1/events/calendar-feed/:file`       | —                |
+| `POST`   | `/1/events/series`                    | `CREATE_EVENT`   |
+| `PUT`    | `/1/events/series/:seriesId`          | `EDIT_EVENT`     |
+| `DELETE` | `/1/events/series/:seriesId`          | `DELETE_EVENT`   |
+| `GET`    | `/1/events/:id`                       | —                |
+| `POST`   | `/1/events`                           | `CREATE_EVENT`   |
+| `PUT`    | `/1/events/:id`                       | `EDIT_EVENT`     |
+| `DELETE` | `/1/events/:id`                       | `DELETE_EVENT`   |
+| `POST`   | `/1/events/:id/duplicate`             | `CREATE_EVENT`   |
+| `GET`    | `/1/events/:eventId/no-status-tags`   | `MANAGE_SIGNUPS` |
+| `GET`    | `/1/events/:eventId/playable-classes` | —                |
 
 ### `/1/absences` — module `absence`
 
@@ -368,3 +370,11 @@
 | Méthode | Chemin         | Permission |
 | :------ | :------------- | :--------- |
 | `POST`  | `/1/sync/loot` | —          |
+
+### `/1/attunements` — module `attunement`
+
+| Méthode | Chemin                                               | Permission    |
+| :------ | :--------------------------------------------------- | :------------ |
+| `GET`   | `/1/attunements/definitions`                         | —             |
+| `GET`   | `/1/attunements`                                     | `VIEW_ROSTER` |
+| `PUT`   | `/1/attunements/characters/:characterId/:attunement` | `EDIT_ROSTER` |

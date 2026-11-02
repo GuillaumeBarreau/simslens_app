@@ -10,6 +10,7 @@ import {
   isGameId,
   raidSize,
   specializationLabel,
+  specializationRole,
 } from '../games';
 
 const { ID_TO_CLASS } = require('../../constants/wow');
@@ -181,5 +182,16 @@ describe('isGameId', () => {
 
   it.each(['classic', 'Retail', '', null, undefined, 1])('refuses %s', (value) => {
     expect(isGameId(value)).toBe(false);
+  });
+});
+
+describe('specializationRole (SIMS-057)', () => {
+  it('plays Survival hunters at range in Forever', () => {
+    expect(specializationRole('forever', 'hunter', 'Survival', 'melee')).toBe('ranged');
+  });
+
+  it('keeps the database role when the game does not override it', () => {
+    expect(specializationRole('forever', 'warrior', 'Protection', 'tank')).toBe('tank');
+    expect(specializationRole('retail', 'hunter', 'Survival', 'melee')).toBe('melee');
   });
 });
