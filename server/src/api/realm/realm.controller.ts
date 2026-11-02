@@ -50,6 +50,10 @@ export async function addCharacter(req: Request, res: Response) {
 /**
  * Sans session, répond `{ realm: null }` plutôt qu'un 401 (cf. checkUserRealm).
  */
+export async function mine(req: Request, res: Response) {
+  res.json({ realms: await usecases.listMyRealms(requireUserId(req)) });
+}
+
 export async function check(req: Request, res: Response) {
   res.json(await usecases.checkUserRealm(req.user?.id));
 }

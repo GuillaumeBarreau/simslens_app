@@ -38,6 +38,8 @@ const mapIdToRealmId = (req: Request, _res: Response, next: NextFunction) => {
 router.get('/', controller.list);
 router.post('/', requireUser, validateBody(createRealmSchema), controller.create);
 router.get('/check', controller.check);
+// Guildes de l'utilisateur et leur jeu (SIMS-062). Avant /:id.
+router.get('/mine', requireUser, controller.mine);
 router.get('/:id', validateParams(realmIdParam), controller.get);
 
 /**
