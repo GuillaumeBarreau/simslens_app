@@ -179,7 +179,9 @@ Traefik existant…), utiliser `docker-compose.dokploy.yml`. Par rapport à `doc
 
 **Nginx reste devant les services** : il route par chemin (`/1/`, `/auth/`, `/admin/`,
 `/health` → `server`, `/dashboard/` → `dashboard`, le reste → `client`), ajoute les en-têtes de
-sécurité et la compression. Côté plateforme, le domaine pointe donc vers le service `nginx`,
+sécurité et la compression. Il joint les conteneurs par leur nom via le DNS de Docker, résolu à
+chaque requête : un redéploiement qui leur donne de nouvelles IP ne demande pas de relancer
+`nginx`. Côté plateforme, le domaine pointe donc vers le service `nginx`,
 port 80, HTTPS activé.
 
 Points d'attention :
