@@ -35,6 +35,11 @@ export interface RaidEvent {
     raid: { id: number; name: string; extension: string; season: string };
     difficulty_rel: { name: string };
   };
+  /**
+   * Taille fixe du raid (10, 20 ou 40 en WoW Forever), `null` pour un raid Retail
+   * à taille flexible (SIMS-028). Renseignée par le détail d'un événement.
+   */
+  raidSize?: number | null;
   signups?: RaidSignup[];
   guests?: RaidGuest[];
   roster?: {

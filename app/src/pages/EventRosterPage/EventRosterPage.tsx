@@ -40,6 +40,7 @@ import {
   EventRosterSkeleton,
   GenerateCompositionModal,
   ImportRosterModal,
+  RaidGroupsPanel,
   RosterSummaryView,
   RosterVacancyAlert,
   vacancyKey,
@@ -360,6 +361,10 @@ export default function EventRosterPage() {
     return <EventRosterSkeleton />;
   }
 
+  // Raid à taille fixe (WoW Forever, SIMS-028) : groupes de 5 et alerte au
+  // dépassement. Retail (`raidSize: null`) garde l'affichage habituel.
+  const raidSize = isFeatureEnabled('forever') ? (event.raidSize ?? null) : null;
+
   const containerStyle = {
     minHeight: 500,
     padding: '20px 0 20px 20px',
@@ -443,6 +448,16 @@ export default function EventRosterPage() {
               bossNames={bossNames}
               onReplace={handleReplace}
               pendingKey={pendingVacancyKey}
+            />
+          )}
+
+          {raidSize !== null && (
+            <RaidGroupsPanel
+              raidSize={raidSize}
+              bosses={orderedBosses}
+              assignments={aggregatedAssignments}
+              guests={event.guests ?? []}
+              guestAssignments={guestAssignments}
             />
           )}
 
