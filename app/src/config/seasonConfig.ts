@@ -1,11 +1,23 @@
+import { isFeatureEnabled } from 'config/featureFlags';
+import { FOREVER_EXTENSION } from 'config/games/forever';
+
 export const CURRENT_SEASON = import.meta.env.VITE_CURRENT_SEASON;
 export const WOW_EXTENSION = import.meta.env.VITE_WOW_EXTENSION;
+/** Extensions Retail. Forever est validée à part, derrière le flag `forever`. */
 export const VALID_EXTENSIONS = ['The-War-Within', 'Midnight'];
 
-/** Seasons available per extension, in display order */
+/** Seasons available per extension, in display order (Forever : paliers) */
 export const EXTENSION_SEASONS: Record<string, string[]> = {
   'The-War-Within': ['season-03'],
   Midnight: ['season-02', 'season-01'],
+  [FOREVER_EXTENSION]: ['tier-1'],
+};
+
+/** Extension acceptée dans l'URL : Retail, ou Forever si le flag `forever` est actif. */
+export const isValidExtension = (extension?: string | null): boolean => {
+  if (!extension) return false;
+  if (VALID_EXTENSIONS.includes(extension)) return true;
+  return extension === FOREVER_EXTENSION && isFeatureEnabled('forever');
 };
 
 export const getRoutePrefix = (extension?: string, guild?: string, season?: string) => {

@@ -13,6 +13,23 @@
     "role": "Role: {{name}}",
     "unassign": "Unassign (OUT)"
   },
+  "raidGroups": {
+    "title": "{{size}}-player raid",
+    "count": "{{count}} / {{size}}",
+    "boss": "Displayed boss",
+    "group": "Group {{number}}",
+    "empty": "— open spot",
+    "guest": "Guest",
+    "over": "Extra",
+    "overTitle": "Raid size exceeded ({{size}} players max)",
+    "overBoss": "{{boss}}: {{count}} / {{size}}",
+    "roles": {
+      "TANK": "Tanks",
+      "HEALER": "Healers",
+      "MELEE": "Melee",
+      "RANGED": "Ranged"
+    }
+  },
   "vacancies": {
     "title_one": "{{count}} spot freed by a withdrawal",
     "title_other": "{{count}} spots freed by a withdrawal",
