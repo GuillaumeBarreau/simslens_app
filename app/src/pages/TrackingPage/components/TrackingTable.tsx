@@ -3,6 +3,7 @@ import { IconReportAnalytics } from '@tabler/icons-react';
 import { Text } from 'components/design-system/atoms';
 import { EmptyState } from 'components/design-system/molecules';
 import { isFeatureEnabled } from 'config/featureFlags';
+import { useGame } from 'hooks/useGame';
 import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ImportedLootRow } from 'services/tracking.service';
@@ -50,9 +51,13 @@ export const TrackingTable: React.FC<TrackingTableProps> = ({
   isFiltered = false,
 }) => {
   const { t } = useTranslation('tracking');
-  const showSimDate = isFeatureEnabled('sim-freshness');
+  const { has } = useGame();
+  // Clés et score viennent de Raider.IO (M+), l'état des sims de Droptimizer : Retail seulement.
+  const showMythicPlus = has('mythicPlus');
+  const showSims = has('droptimizer');
+  const showSimDate = showSims && isFeatureEnabled('sim-freshness');
   const showLastSim = showSimDate && view === 'overview';
-  const columnCount = 7 + (showLastSim ? 1 : 0);
+  const columnCount = 4 + (showMythicPlus ? 2 : 0) + (showSims ? 1 : 0) + (showLastSim ? 1 : 0);
   const [openedCharacterId, setOpenedCharacterId] = useState<number | null>(null);
 
   const toggleLoots = useCallback((id: number) => {
@@ -87,11 +92,14 @@ export const TrackingTable: React.FC<TrackingTableProps> = ({
               {sortableHeader('spec', t('table.spec'), { w: 76, visibleFrom: 'sm' })}
               {sortableHeader('name', t('table.name'))}
               {sortableHeader('ilvl', t('table.ilvl'), { w: 90, visibleFrom: 'sm' })}
-              {sortableHeader('keys', t('table.key'), { w: 80, visibleFrom: 'sm' })}
-              {sortableHeader('score', t('table.score'), { w: 90, visibleFrom: 'sm' })}
-              {sortableHeader('report', stateLabel, {
-                className: `${classes.sortable} ${view === 'overview' ? classes.colPills : classes.colState}`,
-              })}
+              {showMythicPlus &&
+                sortableHeader('keys', t('table.key'), { w: 80, visibleFrom: 'sm' })}
+              {showMythicPlus &&
+                sortableHeader('score', t('table.score'), { w: 90, visibleFrom: 'sm' })}
+              {showSims &&
+                sortableHeader('report', stateLabel, {
+                  className: `${classes.sortable} ${view === 'overview' ? classes.colPills : classes.colState}`,
+                })}
               {showLastSim && (
                 <Table.Th w={130} visibleFrom="sm">
                   <Text variant="section-label">{t('sim_freshness.column')}</Text>
@@ -122,6 +130,8 @@ export const TrackingTable: React.FC<TrackingTableProps> = ({
                 extension={extension}
                 staleAfterDays={staleAfterDays}
                 showSimDate={showSimDate}
+                showMythicPlus={showMythicPlus}
+                showSims={showSims}
                 columnCount={columnCount}
               />
             ))}

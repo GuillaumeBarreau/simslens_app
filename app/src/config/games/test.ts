@@ -7,11 +7,14 @@ import {
 import { CLASS_TO_ID } from 'constants/classes';
 
 import {
+  filterByCapability,
   FOREVER_EXTENSION,
+  type GameCapability,
   gameHasCapability,
   GAMES,
   getGameDefinition,
   getGameForExtension,
+  resolveDifficulty,
 } from '.';
 
 const flags = vi.hoisted(() => ({ forever: true }));
@@ -71,6 +74,40 @@ describe('registre des jeux', () => {
     expect(retail.difficulties).toEqual(['normal', 'heroic', 'mythic']);
     expect(retail.extensions).toEqual(VALID_EXTENSIONS);
     expect(retail.wowheadBaseUrl).toBe('https://www.wowhead.com/');
+  });
+});
+
+describe('filterByCapability (SIMS-022)', () => {
+  const items: { id: string; capability?: GameCapability }[] = [
+    { id: 'tracking' },
+    { id: 'optimizer', capability: 'droptimizer' },
+    { id: 'dungeons', capability: 'mythicPlus' },
+  ];
+  const hasFor = (game: 'retail' | 'forever') => (capability: GameCapability) =>
+    gameHasCapability(game, capability);
+
+  it('garde tout pour Retail', () => {
+    expect(filterByCapability(items, hasFor('retail')).map((i) => i.id)).toEqual([
+      'tracking',
+      'optimizer',
+      'dungeons',
+    ]);
+  });
+
+  it('retire Droptimizer et donjons pour Forever, garde les entrées sans capacité', () => {
+    expect(filterByCapability(items, hasFor('forever')).map((i) => i.id)).toEqual(['tracking']);
+  });
+});
+
+describe('resolveDifficulty (SIMS-022)', () => {
+  it('garde la difficulté choisie quand le jeu la propose (Retail)', () => {
+    expect(resolveDifficulty('mythic', GAMES.retail.difficulties)).toBe('mythic');
+    expect(resolveDifficulty('heroic', GAMES.retail.difficulties)).toBe('heroic');
+  });
+
+  it('impose la seule difficulté de Forever', () => {
+    expect(resolveDifficulty('mythic', GAMES.forever.difficulties)).toBe('normal');
+    expect(resolveDifficulty('normal', GAMES.forever.difficulties)).toBe('normal');
   });
 });
 
