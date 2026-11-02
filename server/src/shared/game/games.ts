@@ -47,6 +47,11 @@ export interface GameSpecialization {
   specName: string;
   /** Libellé affiché pour ce jeu (anglais : le front le traduit). */
   label: string;
+  /**
+   * Rôle de raid propre à ce jeu (`tank`, `healer`, `melee`, `ranged`), quand il
+   * diffère de celui de la ligne en base (SIMS-057). Absent : rôle de la base.
+   */
+  role?: string;
 }
 
 export interface GameDefinition {
@@ -93,7 +98,9 @@ function same(className: string, ...specNames: string[]): GameSpecialization[] {
 const FOREVER_SPECIALIZATIONS: readonly GameSpecialization[] = [
   ...same('warrior', 'Arms', 'Fury', 'Protection'),
   ...same('paladin', 'Holy', 'Protection', 'Retribution'),
-  ...same('hunter', 'Beast Mastery', 'Marksmanship', 'Survival'),
+  ...same('hunter', 'Beast Mastery', 'Marksmanship'),
+  // Survie : arme à distance en vanilla, mêlée en Retail.
+  { className: 'hunter', specName: 'Survival', label: 'Survival', role: 'ranged' },
   ...same('rogue', 'Assassination'),
   { className: 'rogue', specName: 'Outlaw', label: 'Combat' },
   ...same('rogue', 'Subtlety'),
@@ -197,6 +204,21 @@ export function specializationLabel(
     (spec) => spec.className === className && spec.specName === specName,
   );
   return match ? match.label : null;
+}
+
+/**
+ * Rôle d'une spécialisation pour un jeu : celui du registre s'il en décrit un,
+ * sinon `defaultRole` (celui de la ligne en base).
+ */
+export function specializationRole(
+  game: GameId,
+  className: string,
+  specName: string,
+  defaultRole: string,
+): string {
+  const specs = GAMES[game].specializations;
+  const match = specs?.find((spec) => spec.className === className && spec.specName === specName);
+  return match?.role ?? defaultRole;
 }
 
 /** Taille fixe d'un raid pour un jeu, ou `null` si elle n'est pas décrite. */
