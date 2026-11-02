@@ -31,8 +31,10 @@ import {
   IconUsers,
 } from '@tabler/icons-react';
 import { isFeatureEnabled } from 'config/featureFlags';
+import { filterByCapability, type GameCapability } from 'config/games';
 import { EXTENSION_SEASONS, VALID_EXTENSIONS } from 'config/seasonConfig';
 import { useAuth, useRealmAccess } from 'contexts';
+import { useGame } from 'hooks/useGame';
 import { useRealmSync } from 'hooks/useRealmSync';
 import { STORAGE_KEY_EXTENSION, STORAGE_KEY_SEASON, useRouteParams } from 'hooks/useRouteParams';
 import React, { useEffect, useMemo } from 'react';
@@ -118,6 +120,7 @@ export default function Header() {
   const location = useLocation();
   const { guild: routeGuild } = useParams();
   const { hasPermission } = useRealmAccess();
+  const { has } = useGame();
 
   const showNav = !!routeGuild;
 
@@ -158,9 +161,11 @@ export default function Header() {
     description: string;
     path: string;
     visible: boolean;
+    /** Capacité de jeu requise : l'entrée disparaît si le jeu courant ne l'a pas. */
+    capability?: GameCapability;
   }
 
-  const megaItems: MegaItem[] = [
+  const visibleMegaItems: MegaItem[] = [
     {
       icon: IconChartBar,
       label: t('common:navigation.tracking'),
@@ -177,6 +182,7 @@ export default function Header() {
       ),
       path: `/${guild}/${extension}/${season}/boss/0`,
       visible: hasPermission(Permission.MANAGE_RAID),
+      capability: 'droptimizer' as const,
     },
     {
       icon: IconHeart,
@@ -198,6 +204,7 @@ export default function Header() {
       description: t('common:navigation.dungeons_desc', 'Mythic+ dungeon runs'),
       path: `/${guild}/${extension}/dungeons`,
       visible: true,
+      capability: 'mythicPlus' as const,
     },
     {
       icon: IconClock,
@@ -228,6 +235,7 @@ export default function Header() {
       visible: hasPermission(Permission.IMPORT_SIMC),
     },
   ].filter((item) => item.visible);
+  const megaItems = filterByCapability(visibleMegaItems, has);
 
   const megaLinks = megaItems.map((item) => (
     <UnstyledButton

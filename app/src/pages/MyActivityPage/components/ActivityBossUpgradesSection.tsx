@@ -325,7 +325,7 @@ export function ActivityBossUpgradesSection({
   emptyAction,
 }: ActivityBossUpgradesSectionProps) {
   const { t } = useTranslation('myActivity');
-  const { difficulty, setDifficulty } = useDifficulty();
+  const { difficulty, setDifficulty, canSelectDifficulty } = useDifficulty();
   const { extension, season } = useRouteParams();
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -500,13 +500,15 @@ export function ActivityBossUpgradesSection({
               )}
             </Group>
           )}
-          <SegmentedControl
-            size="xs"
-            radius="md"
-            value={difficulty}
-            onChange={(v) => setDifficulty(v as Difficulty)}
-            data={difficultyData}
-          />
+          {canSelectDifficulty && (
+            <SegmentedControl
+              size="xs"
+              radius="md"
+              value={difficulty}
+              onChange={(v) => setDifficulty(v as Difficulty)}
+              data={difficultyData}
+            />
+          )}
           <ActionIcon
             size="md"
             variant="subtle"

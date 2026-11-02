@@ -8,6 +8,7 @@ import {
 } from '@tabler/icons-react';
 import { Text } from 'components/design-system/atoms';
 import { TableSkeleton } from 'components/design-system/molecules/Skeleton';
+import { GameCapabilityGuard } from 'components/GameCapabilityGuard';
 import { isFeatureEnabled } from 'config/featureFlags';
 import { useDifficulty } from 'contexts';
 import { useAuth } from 'contexts/AuthContext';
@@ -19,6 +20,7 @@ import {
   useTrackingRoster,
   useUserRealm,
 } from 'hooks/queries';
+import { useGame } from 'hooks/useGame';
 import { useReportImport } from 'hooks/useReportImport';
 import { useSimStaleAfterDays } from 'hooks/useSimStaleAfterDays';
 import React, { useMemo, useReducer, useRef } from 'react';
@@ -84,7 +86,10 @@ const TrackingPage: React.FC<TrackingPageProps> = () => {
   const { startImport, isSubmitting } = useReportImport({
     onSuccess: () => dispatch({ type: 'SET_INPUT_VALUE', payload: '' }),
   });
-  const { sortKey, sortDir, inputValue, inputError, view, showGear } = state;
+  const { sortKey, sortDir, inputValue, inputError, showGear } = state;
+  // Sans Droptimizer (Forever), pas de vue par mode de sim : vue d'ensemble seulement.
+  const hasSims = useGame().has('droptimizer');
+  const view: TrackingView = hasSims ? state.view : 'overview';
 
   const realmId = currentRealm?.id;
   const { data: rosterData, isLoading, error: queryError } = useTrackingRoster(difficulty, realmId);
@@ -237,16 +242,18 @@ const TrackingPage: React.FC<TrackingPageProps> = () => {
             </Stack>
             <Stack gap={6} align="flex-end">
               <Group gap="xs">
-                <Button
-                  component={Link}
-                  to={`/${guild}/${extension}/keys-history`}
-                  variant="subtle"
-                  color="gray"
-                  leftSection={<IconHistory size={16} stroke={1.5} />}
-                  rightSection={<IconChevronRight size={14} />}
-                >
-                  {t('header.keys_history')}
-                </Button>
+                <GameCapabilityGuard capability="mythicPlus">
+                  <Button
+                    component={Link}
+                    to={`/${guild}/${extension}/keys-history`}
+                    variant="subtle"
+                    color="gray"
+                    leftSection={<IconHistory size={16} stroke={1.5} />}
+                    rightSection={<IconChevronRight size={14} />}
+                  >
+                    {t('header.keys_history')}
+                  </Button>
+                </GameCapabilityGuard>
                 <Can I={Permission.EDIT_ROSTER}>
                   <Button
                     leftSection={<IconRefresh size={16} />}
@@ -271,44 +278,54 @@ const TrackingPage: React.FC<TrackingPageProps> = () => {
           </Group>
 
           <Can I={Permission.EDIT_ROSTER}>
-            <form onSubmit={handleReportSubmit}>
-              <Group gap="sm" mt="md" align="flex-start">
-                <TextInput
-                  style={{ flex: '1 1 240px' }}
-                  placeholder={t(
-                    isFeatureEnabled('hps-sims')
-                      ? 'import.placeholder_with_qe'
-                      : 'import.placeholder',
-                  )}
-                  aria-label={t('import.button_default')}
-                  value={inputValue}
-                  onChange={(e) =>
-                    dispatch({ type: 'SET_INPUT_VALUE', payload: e.currentTarget.value })
-                  }
-                  error={inputError}
-                  ref={textReportID}
-                  leftSection={<IconReportAnalytics size={16} stroke={1.5} />}
-                />
-                <Button disabled={isSubmitting || !inputValue.trim()} type="submit" color="brand.5">
-                  {isSubmitting ? t('import.button_importing') : t('import.button_default')}
-                </Button>
-              </Group>
-            </form>
+            {hasSims && (
+              <form onSubmit={handleReportSubmit}>
+                <Group gap="sm" mt="md" align="flex-start">
+                  <TextInput
+                    style={{ flex: '1 1 240px' }}
+                    placeholder={t(
+                      isFeatureEnabled('hps-sims')
+                        ? 'import.placeholder_with_qe'
+                        : 'import.placeholder',
+                    )}
+                    aria-label={t('import.button_default')}
+                    value={inputValue}
+                    onChange={(e) =>
+                      dispatch({ type: 'SET_INPUT_VALUE', payload: e.currentTarget.value })
+                    }
+                    error={inputError}
+                    ref={textReportID}
+                    leftSection={<IconReportAnalytics size={16} stroke={1.5} />}
+                  />
+                  <Button
+                    disabled={isSubmitting || !inputValue.trim()}
+                    type="submit"
+                    color="brand.5"
+                  >
+                    {isSubmitting ? t('import.button_importing') : t('import.button_default')}
+                  </Button>
+                </Group>
+              </form>
+            )}
           </Can>
         </Box>
 
-        <TrackingViewSelector view={view} onChange={changeView} />
+        {hasSims && (
+          <>
+            <TrackingViewSelector view={view} onChange={changeView} />
 
-        <TrackingSummary
-          summaries={summaries}
-          view={view}
-          stateFilter={state.stateFilter}
-          onSelectMode={changeView}
-          onSelectState={(mode, simState) => {
-            storeView(mode);
-            dispatch({ type: 'TOGGLE_STATE_FILTER', payload: { mode, state: simState } });
-          }}
-        />
+            <TrackingSummary
+              summaries={summaries}
+              view={view}
+              stateFilter={state.stateFilter}
+              onSelectMode={changeView}
+              onSelectState={(mode, simState) => {
+                storeView(mode);
+                dispatch({ type: 'TOGGLE_STATE_FILTER', payload: { mode, state: simState } });
+              }}
+            />
+          </>
+        )}
 
         <TrackingFilters
           state={state}
