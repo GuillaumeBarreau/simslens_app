@@ -10,6 +10,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 
 import enAttunements from './locales/en/attunements.json';
+import enBis from './locales/en/bis.json';
 import enCalendar from './locales/en/calendar.json';
 import enCommon from './locales/en/common.json';
 import enContact from './locales/en/contact.json';
@@ -31,6 +32,7 @@ import enValidationSettings from './locales/en/validationSettings.json';
 import enWishlist from './locales/en/wishlist.json';
 import enWishlistView from './locales/en/wishlistView.json';
 import frAttunements from './locales/fr/attunements.json';
+import frBis from './locales/fr/bis.json';
 import frCalendar from './locales/fr/calendar.json';
 import frCommon from './locales/fr/common.json';
 import frContact from './locales/fr/contact.json';
@@ -81,6 +83,7 @@ i18n
       'myActivity',
       'lootEquity',
       'attunements',
+      'bis',
     ],
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
@@ -108,6 +111,7 @@ i18n
         myActivity: enMyActivity,
         lootEquity: enLootEquity,
         attunements: enAttunements,
+        bis: enBis,
       },
       fr: {
         calendar: frCalendar,
@@ -131,6 +135,7 @@ i18n
         myActivity: frMyActivity,
         lootEquity: frLootEquity,
         attunements: frAttunements,
+        bis: frBis,
       },
     },
   });

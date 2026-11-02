@@ -1,0 +1,74 @@
+{
+  "title": "BiS lists",
+  "subtitle": "The best items for each slot of a specialization, in priority order.",
+  "subtitle_edit": "The best items for each slot of a specialization. Edit a slot to adapt the guild list.",
+  "spec_label": "Specialization",
+  "spec_placeholder": "Choose a specialization",
+  "choose_spec": "Choose a specialization to see its BiS list.",
+  "empty": "No list yet: tier 1 loot tables will be published when raids open on December 9.",
+  "load_error": "Could not load the BiS list.",
+  "slot_empty": "No item",
+  "item_fallback": "Item {{id}}",
+  "rank": "Rank {{rank}}",
+  "edit": "Edit",
+  "edit_slot": "Edit {{slot}}",
+  "groups": {
+    "armor": "Armor",
+    "accessories": "Jewelry and accessories",
+    "weapons": "Weapons"
+  },
+  "origin": {
+    "guild": "Guild",
+    "curated": "Reference",
+    "previousTier": "Earlier tier ({{season}})"
+  },
+  "slots": {
+    "head": "Head",
+    "neck": "Neck",
+    "shoulders": "Shoulders",
+    "back": "Back",
+    "chest": "Chest",
+    "wrists": "Wrists",
+    "hands": "Hands",
+    "waist": "Waist",
+    "legs": "Legs",
+    "feet": "Feet",
+    "finger1": "Ring 1",
+    "finger2": "Ring 2",
+    "trinket1": "Trinket 1",
+    "trinket2": "Trinket 2",
+    "main_hand": "Main hand",
+    "off_hand": "Off hand",
+    "two_hand": "Two-hand",
+    "ranged": "Ranged"
+  },
+  "editor": {
+    "title": "BiS list: {{slot}}",
+    "help": "Up to {{max}} items, best first. Nothing is saved until you click “Save”.",
+    "empty": "No guild item: the slot will follow the reference.",
+    "item_label": "Wowhead ID or link",
+    "note_label": "Note",
+    "note_placeholder": "E.g. pre-BiS, for tanks",
+    "note_for": "Note for item {{id}}",
+    "add": "Add",
+    "move_up": "Move up",
+    "move_down": "Move down",
+    "remove": "Remove",
+    "move_up_item": "Move item {{id}} up",
+    "move_down_item": "Move item {{id}} down",
+    "remove_item": "Remove item {{id}}",
+    "reset": "Back to reference",
+    "cancel": "Cancel",
+    "save": "Save",
+    "errors": {
+      "invalid": "Unreadable item ID or Wowhead link.",
+      "duplicate": "This item is already in the list.",
+      "full": "At most five items per slot."
+    }
+  },
+  "notifications": {
+    "saved": "Slot list saved.",
+    "reset": "The slot follows the reference again.",
+    "error": "The list could not be saved."
+  }
+}

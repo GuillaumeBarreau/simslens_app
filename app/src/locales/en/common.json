@@ -29,7 +29,9 @@
     "loot_equity": "Loot equity",
     "loot_equity_desc": "Loot received, simulated gain, BiS and attendance (officers)",
     "attunements": "Attunements",
-    "attunements_desc": "Raid access quest chains (Onyxia)"
+    "attunements_desc": "Raid access quest chains (Onyxia)",
+    "bis_lists": "BiS lists",
+    "bis_lists_desc": "Best items by specialization and slot"
   },
   "languages": {
     "fr": "French",

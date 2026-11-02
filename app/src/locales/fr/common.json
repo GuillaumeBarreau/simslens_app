@@ -29,7 +29,9 @@
     "loot_equity": "Équité du loot",
     "loot_equity_desc": "Loot reçu, gain simulé, BiS et présence (officiers)",
     "attunements": "Attunements",
-    "attunements_desc": "Chaînes de quêtes d'accès aux raids (Onyxia)"
+    "attunements_desc": "Chaînes de quêtes d'accès aux raids (Onyxia)",
+    "bis_lists": "Listes BiS",
+    "bis_lists_desc": "Meilleurs objets par spécialisation et emplacement"
   },
   "languages": {
     "fr": "Français",

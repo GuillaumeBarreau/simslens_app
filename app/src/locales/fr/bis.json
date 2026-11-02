@@ -1,0 +1,74 @@
+{
+  "title": "Listes BiS",
+  "subtitle": "Les meilleurs objets de chaque emplacement pour une spécialisation, dans l'ordre de priorité.",
+  "subtitle_edit": "Les meilleurs objets de chaque emplacement pour une spécialisation. Modifiez un emplacement pour adapter la liste de la guilde.",
+  "spec_label": "Spécialisation",
+  "spec_placeholder": "Choisir une spécialisation",
+  "choose_spec": "Choisissez une spécialisation pour afficher sa liste BiS.",
+  "empty": "Aucune liste : les tables de loot du palier 1 seront publiées à l'ouverture des raids le 9 décembre.",
+  "load_error": "Impossible de charger la liste BiS.",
+  "slot_empty": "Aucun objet",
+  "item_fallback": "Objet {{id}}",
+  "rank": "Rang {{rank}}",
+  "edit": "Modifier",
+  "edit_slot": "Modifier {{slot}}",
+  "groups": {
+    "armor": "Armure",
+    "accessories": "Bijoux et accessoires",
+    "weapons": "Armes"
+  },
+  "origin": {
+    "guild": "Guilde",
+    "curated": "Référence",
+    "previousTier": "Palier antérieur ({{season}})"
+  },
+  "slots": {
+    "head": "Tête",
+    "neck": "Cou",
+    "shoulders": "Épaules",
+    "back": "Dos",
+    "chest": "Torse",
+    "wrists": "Poignets",
+    "hands": "Mains",
+    "waist": "Taille",
+    "legs": "Jambes",
+    "feet": "Pieds",
+    "finger1": "Anneau 1",
+    "finger2": "Anneau 2",
+    "trinket1": "Bijou 1",
+    "trinket2": "Bijou 2",
+    "main_hand": "Main droite",
+    "off_hand": "Main gauche",
+    "two_hand": "Deux mains",
+    "ranged": "Distance"
+  },
+  "editor": {
+    "title": "Liste BiS : {{slot}}",
+    "help": "Jusqu'à {{max}} objets, du meilleur au moins bon. Rien n'est enregistré avant « Enregistrer ».",
+    "empty": "Aucun objet pour la guilde : l'emplacement suivra la référence.",
+    "item_label": "ID ou lien Wowhead",
+    "note_label": "Note",
+    "note_placeholder": "Ex. : pré-BiS, pour le tank",
+    "note_for": "Note de l'objet {{id}}",
+    "add": "Ajouter",
+    "move_up": "Monter",
+    "move_down": "Descendre",
+    "remove": "Retirer",
+    "move_up_item": "Monter l'objet {{id}}",
+    "move_down_item": "Descendre l'objet {{id}}",
+    "remove_item": "Retirer l'objet {{id}}",
+    "reset": "Revenir à la référence",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "errors": {
+      "invalid": "ID d'objet ou lien Wowhead illisible.",
+      "duplicate": "Cet objet est déjà dans la liste.",
+      "full": "Cinq objets au plus par emplacement."
+    }
+  },
+  "notifications": {
+    "saved": "Liste de l'emplacement enregistrée.",
+    "reset": "L'emplacement suit de nouveau la référence.",
+    "error": "La liste n'a pas pu être enregistrée."
+  }
+}

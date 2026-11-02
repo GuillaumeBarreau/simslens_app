@@ -26,6 +26,7 @@ import DungeonComposerPage from 'pages/DungeonComposerPage/DungeonComposerPage';
 import DungeonsPage from 'pages/DungeonsPage/DungeonsPage';
 import EventRosterPage from 'pages/EventRosterPage/EventRosterPage';
 import AttunementsPage from 'pages/forever/AttunementsPage/AttunementsPage';
+import BisPage from 'pages/forever/BisPage/BisPage';
 import HistoryPage from 'pages/HistoryPage/HistoryPage';
 import ImportPage from 'pages/ImportPage/ImportPage';
 import JoinAsGuestPage from 'pages/JoinAsGuestPage/JoinAsGuestPage';
@@ -208,6 +209,17 @@ const Root = () => {
                   <Header />
                   <WishlistPage />
                 </RequireNotGuest>
+              ),
+            },
+            {
+              path: 'bis',
+              element: (
+                <RequireGameCapability capability="bisLists">
+                  <RequireNotGuest>
+                    <Header />
+                    <BisPage />
+                  </RequireNotGuest>
+                </RequireGameCapability>
               ),
             },
             {

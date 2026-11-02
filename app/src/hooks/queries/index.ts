@@ -5,6 +5,7 @@ export {
   useRealmAttunements,
   useSaveAttunement,
 } from './useAttunementQueries';
+export { useBisList, useSaveBisSlot } from './useBisQueries';
 export { useBlizzardCharacters } from './useBlizzardQueries';
 export { useBossNotes, useSaveBossNote } from './useBossNoteQueries';
 export { useBosses, useBossesByRaid, useInstanceBosses } from './useBossQueries';
