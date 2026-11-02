@@ -5,6 +5,11 @@
     "retail": "World of Warcraft",
     "forever": "WoW Forever"
   },
+  "game_switcher": {
+    "title": "Switch game",
+    "label": "SimsLens, current game: {{game}}. Switch game",
+    "home": "SimsLens, back to the guild home"
+  },
   "feature_unavailable": {
     "title": "This feature is not available.",
     "description": "It is still under development and will arrive soon."
@@ -22,7 +27,9 @@
     "sync_characters": "Sync characters",
     "logout": "Logout",
     "loot_equity": "Loot equity",
-    "loot_equity_desc": "Loot received, simulated gain, BiS and attendance (officers)"
+    "loot_equity_desc": "Loot received, simulated gain, BiS and attendance (officers)",
+    "attunements": "Attunements",
+    "attunements_desc": "Raid access quest chains (Onyxia)"
   },
   "languages": {
     "fr": "French",
@@ -72,7 +79,10 @@
     "devourer": "Devourer",
     "devastation": "Devastation",
     "preservation": "Preservation",
-    "augmentation": "Augmentation"
+    "augmentation": "Augmentation",
+    "combat": "Combat",
+    "feral_combat_cat": "Feral Combat (cat)",
+    "feral_combat_bear": "Feral Combat (bear)"
   },
   "cancel": "Cancel",
   "confirm": "Confirm",

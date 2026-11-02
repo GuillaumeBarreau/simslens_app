@@ -1,7 +1,11 @@
 import { Button, Container, Grid, Stack } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconUserQuestion } from '@tabler/icons-react';
+import { IconUserPlus, IconUserQuestion } from '@tabler/icons-react';
 import { DroptimizerUpdateButton } from 'components/domain/droptimizer';
+import {
+  AddOwnCharacterModal,
+  needsOwnCharacter,
+} from 'components/domain/roster/AddOwnCharacterModal';
 import { isFeatureEnabled } from 'config/featureFlags';
 import { CLASS_COLORS } from 'constants/classes';
 import { useAuth } from 'contexts';
@@ -58,13 +62,19 @@ export default function MyActivityPage() {
   const navigate = useNavigate();
   const { guild, extension } = useRouteParams();
   const { role } = useRealmAccess();
-  const { user, selectedCharacterId } = useAuth();
+  const { user, selectedCharacterId, setSelectedCharacter, refetchUser } = useAuth();
   const isGuest = role === 'guest';
 
   const { data: realmData } = useUserRealm(user?.id ? String(user.id) : null);
   const realmId = realmData?.id || 0;
 
-  const { data: characters = [] } = useCharacters(realmId);
+  const { data: characters = [], isSuccess: charactersLoaded } = useCharacters(realmId);
+  // Guilde WoW Forever sans personnage du joueur : il le saisit lui-même (SIMS-050).
+  const offerOwnCharacter =
+    isFeatureEnabled('forever') &&
+    charactersLoaded &&
+    needsOwnCharacter(realmData?.game, characters, user?.id);
+  const [ownCharacterOpened, ownCharacterModal] = useDisclosure(false);
   const character = useMemo(
     () => resolveActivityCharacter(characters, user?.linkedCharacters, selectedCharacterId),
     [characters, user?.linkedCharacters, selectedCharacterId],
@@ -151,6 +161,34 @@ export default function MyActivityPage() {
   const pageStyle = {
     '--accent': CLASS_COLORS[characterClass] ?? 'var(--mantine-color-brand-5)',
   } as CSSProperties;
+
+  if (offerOwnCharacter) {
+    return (
+      <Container size="xl" py="xl" className={classes.page} style={pageStyle}>
+        <ActivitySection icon={<IconUserPlus size={20} />} title={t('subtitle')}>
+          <ActivityEmptyState
+            icon={<IconUserPlus size={26} stroke={1.5} />}
+            title={t('no_character_forever_title')}
+            text={t('no_character_forever')}
+            action={
+              <Button variant="light" color="brand.5" onClick={ownCharacterModal.open}>
+                {t('add_own_character')}
+              </Button>
+            }
+          />
+        </ActivitySection>
+        <AddOwnCharacterModal
+          opened={ownCharacterOpened}
+          onClose={ownCharacterModal.close}
+          realmId={realmId}
+          onAdded={(created) => {
+            setSelectedCharacter(created.id);
+            void refetchUser();
+          }}
+        />
+      </Container>
+    );
+  }
 
   if (!selectedCharacterId) {
     return (

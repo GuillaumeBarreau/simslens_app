@@ -21,6 +21,7 @@ import {
   IconClock,
   IconFileImport,
   IconHeart,
+  IconKey,
   IconLanguage,
   IconLogout,
   IconMap,
@@ -43,6 +44,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Permission } from 'types/permissions';
 
 import { ContactUs } from '../../../domain/contact/ContactUs/ContactUs';
+import { GameSwitcher } from '../../molecules/GameSwitcher';
 import classes from './Header.module.css';
 
 const FlagIcon = ({ lang }: { lang: string }) => {
@@ -207,6 +209,14 @@ export default function Header() {
       capability: 'mythicPlus' as const,
     },
     {
+      icon: IconKey,
+      label: t('common:navigation.attunements'),
+      description: t('common:navigation.attunements_desc'),
+      path: `/${guild}/${extension}/attunements`,
+      visible: hasPermission(Permission.VIEW_ROSTER),
+      capability: 'attunements' as const,
+    },
+    {
       icon: IconClock,
       label: t('common:navigation.history'),
       description: t('common:navigation.history_desc', 'Activity log and history'),
@@ -271,7 +281,10 @@ export default function Header() {
           width: '100%',
         }}
       >
-        <Group gap={0}>{import.meta.env.DEV && showNav && <ExtensionSelector />}</Group>
+        <Group gap="xs">
+          <GameSwitcher />
+          {import.meta.env.DEV && showNav && <ExtensionSelector />}
+        </Group>
 
         <Group gap={0} justify="center">
           {showNav && (

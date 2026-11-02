@@ -1,12 +1,13 @@
 const { prisma } = require('../../data');
 
-async function createRealm({ name, server, region, ownerId, createdBy }) {
+async function createRealm({ name, server, region, ownerId, createdBy, game }) {
   const realm = await prisma.realms.create({
     data: {
       guildName: name,
       server,
       region: region || 'EU',
       createdBy: createdBy || 0,
+      game: game || 'retail',
     },
   });
 
@@ -105,6 +106,17 @@ async function findRealmByOwnerId(ownerId) {
   };
 }
 
+/**
+ * Guildes d'un jeu dont l'utilisateur est propriétaire (rôle owner).
+ * @param {string} ownerId
+ * @param {'retail' | 'forever'} game
+ */
+async function countOwnedRealmsByGame(ownerId, game) {
+  return await prisma.realm_owners.count({
+    where: { ownerId: String(ownerId), role: 'owner', realm: { game } },
+  });
+}
+
 async function findRealmsByOwnerId(ownerId) {
   const realmOwners = await prisma.realm_owners.findMany({
     where: { ownerId: String(ownerId) },
@@ -112,6 +124,27 @@ async function findRealmsByOwnerId(ownerId) {
   });
 
   return realmOwners.map((ro) => ro.realm);
+}
+
+/**
+ * Lignes `realm_owners` de l'utilisateur, avec leur guilde et leur rôle.
+ * @param {string} userId
+ */
+async function findOwnershipsByUserId(userId) {
+  return prisma.realm_owners.findMany({
+    where: { ownerId: String(userId) },
+    select: { role: true, realm: true },
+  });
+}
+
+/**
+ * Guildes où l'utilisateur a un personnage actif, sans doublon.
+ * @param {string} userId
+ */
+async function findRealmsByMemberUserId(userId) {
+  return prisma.realms.findMany({
+    where: { characters: { some: { userId: String(userId), archived: 0 } } },
+  });
 }
 
 async function isRealmOwner(realmId, ownerId) {
@@ -269,7 +302,10 @@ module.exports = {
   findRealmByDetails,
   findRealmByOwnerId,
   findRealmsByOwnerId,
+  countOwnedRealmsByGame,
   findRealmByMemberUserId,
+  findOwnershipsByUserId,
+  findRealmsByMemberUserId,
   isRealmOwner,
   addRealmOwner,
   getRealmOwners,

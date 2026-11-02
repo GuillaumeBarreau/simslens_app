@@ -1,5 +1,7 @@
 import type { realms } from '@prisma/client';
 
+import type { Game } from '../region/region.types';
+
 export type RealmEntity = realms;
 
 export interface CreateRealmInput {
@@ -16,6 +18,7 @@ export interface CreateRealmResult {
   name: string;
   server: string;
   region: string;
+  game: Game;
 }
 
 export interface RealmOwner {
@@ -38,4 +41,14 @@ export interface RealmSettings {
 export interface UserPermissions {
   role: string | null;
   permissions: string[];
+}
+
+/** Guilde de l'utilisateur, pour le sélecteur de jeu (SIMS-062). */
+export interface MyRealm {
+  id: number;
+  guildName: string;
+  server: string;
+  region: string;
+  game: Game;
+  role: 'owner' | 'admin' | 'moderator' | 'member' | 'guest';
 }

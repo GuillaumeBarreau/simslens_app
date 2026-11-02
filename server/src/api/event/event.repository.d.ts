@@ -1,3 +1,4 @@
+import type { GameId } from '../../shared/game/games';
 import type {
   CreateEventInput,
   CreateSeriesOccurrenceInput,
@@ -20,6 +21,8 @@ declare const eventRepository: {
   ): Promise<EventEntity>;
   update(id: number, data: UpdateEventInput & Record<string, unknown>): Promise<EventEntity>;
   remove(id: number): Promise<EventEntity>;
+  /** Jeu du royaume de l'événement, `null` si l'événement n'existe pas (SIMS-026). */
+  findGame(id: number): Promise<GameId | null>;
 };
 
 export default eventRepository;

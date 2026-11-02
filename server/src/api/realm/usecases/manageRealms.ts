@@ -2,14 +2,22 @@ import createError from 'http-errors';
 
 import blizzardService from '../../blizzard/blizzard.service';
 import inviteRepo from '../../invite/invite.repository';
+import regionRepo from '../../region/region.repository';
 import { assertRealmExists } from '../realm.access';
 import { CharacterNotAttachableError } from '../realm.errors';
 import realmRepo from '../realm.repository';
 import type { CreateRealmInput, CreateRealmResult, RealmEntity } from '../realm.types';
 
+/** Guildes Forever qu'un utilisateur peut posséder tant que Blizzard ne permet pas de les vérifier. */
+const MAX_UNVERIFIED_REALMS = 1;
+
 /**
  * Crée un royaume après avoir vérifié auprès de Blizzard que la guilde
  * existe et que le demandeur en fait partie.
+ *
+ * Le jeu du royaume est celui du serveur choisi (SIMS-019). WoW Forever n'a pas
+ * encore d'API Blizzard : pour un serveur Forever, ces deux contrôles sont
+ * sautés et l'unicité région + serveur + nom reste la seule garantie.
  */
 export async function createRealm({
   name,
@@ -26,17 +34,37 @@ export async function createRealm({
     throw createError(401, 'Battle.net authentication required');
   }
 
-  await assertGuildExists(userToken, server, name, region);
-  await assertUserBelongsToGuild(userToken, server, name, region);
+  // Slug et région tels qu'en base : la clé étrangère realms → servers
+  // respecte la casse, la recherche non.
+  const found = await regionRepo.findServerBySlug(server, region);
+  if (!found) {
+    throw createError(400, 'Unknown server for this region');
+  }
+  const { slug, game } = found;
+  const serverRegion = found.region;
 
-  const existing = await realmRepo.findRealmByDetails(name, server, region);
+  if (game === 'retail') {
+    await assertGuildExists(userToken, slug, name, serverRegion);
+    await assertUserBelongsToGuild(userToken, slug, name, serverRegion);
+  } else if ((await realmRepo.countOwnedRealmsByGame(ownerId, game)) >= MAX_UNVERIFIED_REALMS) {
+    // Sans contrôle Blizzard possible, on limite la réservation de noms.
+    throw createError(409, 'You already own a Forever realm');
+  }
+
+  const existing = await realmRepo.findRealmByDetails(name, slug, serverRegion);
   if (existing) {
     throw createError(409, 'Realm already exists');
   }
 
-  const id = await realmRepo.createRealm({ name, server, region, ownerId });
+  const id = await realmRepo.createRealm({
+    name,
+    server: slug,
+    region: serverRegion,
+    ownerId,
+    game,
+  });
 
-  return { id, name, server, region };
+  return { id, name, server: slug, region: serverRegion, game };
 }
 
 async function assertGuildExists(

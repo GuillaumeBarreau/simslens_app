@@ -3,7 +3,7 @@
 > **Généré depuis `server/prisma/schema.prisma`** — ne pas éditer à la main.
 > Le schéma est la source de vérité ; ce fichier n'en est que le reflet lisible.
 
-Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
+Base **PostgreSQL 15**, accédée via Prisma. 56 tables.
 
 ## Index des tables
 
@@ -11,15 +11,17 @@ Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
 | :--------------------------------------------------------- | :---------------------------- | -----: | --------: |
 | [`activity_logs`](#activitylogs)                           | `activity_logs`               |      7 |         1 |
 | [`api_tokens`](#apitokens)                                 | `api_tokens`                  |      9 |         0 |
+| [`bis_list_entries`](#bislistentries)                      | `bis_list_entries`            |     11 |         2 |
 | [`boss_drop`](#bossdrop)                                   | `boss_drop`                   |      3 |         2 |
 | [`bosses`](#bosses)                                        | `bosses`                      |      7 |         6 |
 | [`calendar_feed_tokens`](#calendarfeedtokens)              | `calendar_feed_tokens`        |      5 |         0 |
+| [`character_attunements`](#characterattunements)           | `character_attunements`       |      7 |         1 |
 | [`character_gear_snapshots`](#charactergearsnapshots)      | `character_gear_snapshots`    |      8 |         3 |
 | [`character_key_runs`](#characterkeyruns)                  | `character_key_runs`          |     12 |         1 |
 | [`character_offspecs`](#characteroffspecs)                 | `character_offspecs`          |      4 |         2 |
 | [`character_talent_loadouts`](#charactertalentloadouts)    | `character_talent_loadouts`   |      9 |         2 |
 | [`character_wishlists`](#characterwishlists)               | `character_wishlists`         |      8 |         3 |
-| [`characters`](#characters)                                | `characters`                  |     19 |        14 |
+| [`characters`](#characters)                                | `characters`                  |     19 |        15 |
 | [`classes`](#classes)                                      | `classes`                     |      2 |         2 |
 | [`device_codes`](#devicecodes)                             | `device_codes`                |     10 |         0 |
 | [`difficulties`](#difficulties)                            | `difficulties`                |      1 |         2 |
@@ -53,10 +55,10 @@ Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
 | [`realm_owners`](#realmowners)                             | `realm_owners`                |      4 |         1 |
 | [`realm_subscriptions`](#realmsubscriptions)               | `realm_subscriptions`         |     10 |         1 |
 | [`realm_user_guests`](#realmuserguests)                    | `realm_user_guests`           |      5 |         2 |
-| [`realms`](#realms)                                        | `realms`                      |     14 |        15 |
+| [`realms`](#realms)                                        | `realms`                      |     14 |        17 |
 | [`regions`](#regions)                                      | `regions`                     |      2 |         1 |
-| [`servers`](#servers)                                      | `servers`                     |      6 |         2 |
-| [`specializations`](#specializations)                      | `specializations`             |      7 |         8 |
+| [`servers`](#servers)                                      | `servers`                     |      6 |         3 |
+| [`specializations`](#specializations)                      | `specializations`             |      7 |         9 |
 | [`talent_hero_subtrees`](#talentherosubtrees)              | `talent_hero_subtrees`        |      4 |         2 |
 | [`talent_nodes`](#talentnodes)                             | `talent_nodes`                |     10 |         2 |
 | [`talent_trees`](#talenttrees)                             | `talent_trees`                |      5 |         3 |
@@ -99,6 +101,29 @@ Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
 | `revokedAt`  | `DateTime?` | —                          |                                                  |
 
 **Index** : `index(userId)`
+
+## `bis_list_entries`
+
+| Champ              | Type       | Contraintes                | Note                                               |
+| :----------------- | :--------- | :------------------------- | :------------------------------------------------- |
+| `id`               | `Int`      | PK, défaut autoincrement() |                                                    |
+| `realmId`          | `Int`      | —                          |                                                    |
+| `specializationId` | `Int`      | —                          |                                                    |
+| `season`           | `String`   | —                          | palier : "tier-1"…                                 |
+| `slot`             | `String`   | —                          | shared/constants/wow.js VALID_SLOTS, plus "ranged" |
+| `rank`             | `Int`      | —                          | 1 = BiS, 2… = alternatives                         |
+| `itemId`           | `Int`      | —                          | identifiant Wowhead Forever                        |
+| `note`             | `String?`  | —                          |                                                    |
+| `updatedBy`        | `String`   | —                          |                                                    |
+| `createdAt`        | `DateTime` | défaut now()               |                                                    |
+| `updatedAt`        | `DateTime` | —                          |                                                    |
+
+**Relations**
+
+- `realm` → `realms` — via `realmId`, onDelete: `Cascade`
+- `specialization` → `specializations` — via `specializationId`, onDelete: `Cascade`
+
+**Index** : `unique(realmId,specializationId,season,slot,rank)`, `index(realmId,specializationId)`
 
 ## `boss_drop`
 
@@ -147,6 +172,24 @@ Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
 | `tokenHash`  | `String`    | unique                     | SHA-256 du jeton ; la valeur brute n'est jamais stockée |
 | `createdAt`  | `DateTime`  | défaut now()               |                                                         |
 | `lastUsedAt` | `DateTime?` | —                          |                                                         |
+
+## `character_attunements`
+
+| Champ            | Type        | Contraintes                | Note       |
+| :--------------- | :---------- | :------------------------- | :--------- |
+| `id`             | `Int`       | PK, défaut autoincrement() |            |
+| `characterId`    | `Int`       | —                          |            |
+| `attunement`     | `String`    | —                          |            |
+| `faction`        | `String?`   | —                          | "alliance" | "horde" : la chaîne de quêtes en dépend |
+| `completedSteps` | `Int`       | défaut 0                   |            |
+| `completedAt`    | `DateTime?` | —                          |            |
+| `updatedAt`      | `DateTime`  | —                          |            |
+
+**Relations**
+
+- `character` → `characters` — via `characterId`, onDelete: `Cascade`
+
+**Index** : `unique(characterId,attunement)`, `index(characterId)`
 
 ## `character_gear_snapshots`
 
@@ -290,6 +333,7 @@ Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
 - `key_runs` → `character_key_runs`[]
 - `boss_note_assignments` → `event_boss_note_assignments`[]
 - `offspecs` → `character_offspecs`[]
+- `attunements` → `character_attunements`[]
 
 **Index** : `unique(name,realm)`, `index(archived)`, `index(realmId)`, `index(userId)`, `index(specializationId)`
 
@@ -1002,6 +1046,7 @@ Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
 
 **Relations**
 
+- `game` → `Game`
 - `characters` → `characters`[]
 - `owners` → `realm_owners`[]
 - `instances` → `instances`[]
@@ -1016,6 +1061,7 @@ Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
 - `subscriptions` → `realm_subscriptions`[]
 - `invite_codes` → `realm_invite_codes`[]
 - `guest_members` → `realm_user_guests`[]
+- `bis_list_entries` → `bis_list_entries`[]
 - `server_rel` → `servers` — via `server,region`, onDelete: `Cascade`
 
 **Index** : `unique(region,server,guildName)`
@@ -1044,10 +1090,11 @@ Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
 
 **Relations**
 
+- `game` → `Game`
 - `region_rel` → `regions` — via `region`, onDelete: `Cascade`
 - `realms` → `realms`[]
 
-**Index** : `unique(slug,region)`, `index(region)`
+**Index** : `unique(slug,region)`, `index(region)`, `index(game)`
 
 ## `specializations`
 
@@ -1071,6 +1118,7 @@ Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
 - `upgrades` → `upgrades`[]
 - `gear_snapshots` → `character_gear_snapshots`[]
 - `offspecs` → `character_offspecs`[]
+- `bis_list_entries` → `bis_list_entries`[]
 
 **Index** : `unique(name,classId)`, `index(classId)`
 

@@ -1,5 +1,7 @@
 import type { EventStatus, raid_event_series, raid_events } from '@prisma/client';
 
+import type { GameId } from '../../shared/game/games';
+
 export type EventEntity = raid_events;
 export type EventSeriesEntity = raid_event_series;
 export type { EventStatus };
@@ -74,4 +76,11 @@ export interface DuplicateEventOptions {
   title?: string;
   /** Reprend les inscriptions de l'événement source. */
   copySignups?: boolean;
+}
+
+/** Classes jouables du jeu de la guilde d'un événement, pour le bot Discord (SIMS-026). */
+export interface EventPlayableClasses {
+  game: GameId;
+  /** Noms normalisés de la table `classes`, dans l'ordre du registre des jeux. */
+  classes: string[];
 }
