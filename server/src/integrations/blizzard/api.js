@@ -5,12 +5,17 @@ const {
   extractThumbnailPath,
 } = require('./utils.js');
 const { getCharacterWeeklyRuns } = require('../raiderio/api.js');
+const { blizzardNamespace } = require('../../shared/game/blizzardNamespace');
 
 async function getCharacterProfile(region = 'eu', realm, character, locale = 'en_GB') {
   const host = regionHost(region);
   const normRegion = (region || 'eu').toLowerCase();
   const url = `https://${host}/profile/wow/character/${realm.toLowerCase()}/${character.toLowerCase()}`;
-  return fetchFromAPI(url, { namespace: `profile-${normRegion}`, locale }, normRegion);
+  return fetchFromAPI(
+    url,
+    { namespace: blizzardNamespace('profile', normRegion), locale },
+    normRegion,
+  );
 }
 
 async function getCharacterMythicKeystoneProfile(
@@ -22,7 +27,11 @@ async function getCharacterMythicKeystoneProfile(
   const host = regionHost(region);
   const normRegion = (region || 'eu').toLowerCase();
   const url = `https://${host}/profile/wow/character/${realm.toLowerCase()}/${character.toLowerCase()}/mythic-keystone-profile`;
-  return fetchFromAPI(url, { namespace: `profile-${normRegion}`, locale }, normRegion);
+  return fetchFromAPI(
+    url,
+    { namespace: blizzardNamespace('profile', normRegion), locale },
+    normRegion,
+  );
 }
 
 async function countCurrentPeriodHighKeysRuns(region = 'eu', realm, character, locale = 'en_GB') {
@@ -87,14 +96,22 @@ async function getCharacterReputations(region = 'eu', realm, character, locale =
   const host = regionHost(region);
   const normRegion = (region || 'eu').toLowerCase();
   const url = `https://${host}/profile/wow/character/${realm.toLowerCase()}/${character.toLowerCase()}/reputations`;
-  return fetchFromAPI(url, { namespace: `profile-${normRegion}`, locale }, normRegion);
+  return fetchFromAPI(
+    url,
+    { namespace: blizzardNamespace('profile', normRegion), locale },
+    normRegion,
+  );
 }
 
 async function getCharacterMedia(region = 'eu', realm, character, locale = 'en_GB') {
   const host = regionHost(region);
   const normRegion = (region || 'eu').toLowerCase();
   const url = `https://${host}/profile/wow/character/${realm.toLowerCase()}/${character.toLowerCase()}/character-media`;
-  return fetchFromAPI(url, { namespace: `profile-${normRegion}`, locale }, normRegion);
+  return fetchFromAPI(
+    url,
+    { namespace: blizzardNamespace('profile', normRegion), locale },
+    normRegion,
+  );
 }
 
 /**
@@ -108,7 +125,11 @@ async function getCharacterEquipment(region = 'eu', realm, character, locale = '
   const host = regionHost(region);
   const normRegion = (region || 'eu').toLowerCase();
   const url = `https://${host}/profile/wow/character/${realm.toLowerCase()}/${character.toLowerCase()}/equipment`;
-  return fetchFromAPI(url, { namespace: `profile-${normRegion}`, locale }, normRegion);
+  return fetchFromAPI(
+    url,
+    { namespace: blizzardNamespace('profile', normRegion), locale },
+    normRegion,
+  );
 }
 
 /**
@@ -122,7 +143,11 @@ async function getCharacterMountsCollection(region = 'eu', realm, character, loc
   const host = regionHost(region);
   const normRegion = (region || 'eu').toLowerCase();
   const url = `https://${host}/profile/wow/character/${realm.toLowerCase()}/${character.toLowerCase()}/collections/mounts`;
-  return fetchFromAPI(url, { namespace: `profile-${normRegion}`, locale }, normRegion);
+  return fetchFromAPI(
+    url,
+    { namespace: blizzardNamespace('profile', normRegion), locale },
+    normRegion,
+  );
 }
 
 /**
@@ -133,7 +158,11 @@ async function getCharacterSpecializations(region = 'eu', realm, character, loca
   const host = regionHost(region);
   const normRegion = (region || 'eu').toLowerCase();
   const url = `https://${host}/profile/wow/character/${realm.toLowerCase()}/${character.toLowerCase()}/specializations`;
-  return fetchFromAPI(url, { namespace: `profile-${normRegion}`, locale }, normRegion);
+  return fetchFromAPI(
+    url,
+    { namespace: blizzardNamespace('profile', normRegion), locale },
+    normRegion,
+  );
 }
 
 /**
@@ -143,7 +172,11 @@ async function getTalentTreeIndex(region = 'eu', locale = 'en_GB') {
   const host = regionHost(region);
   const normRegion = (region || 'eu').toLowerCase();
   const url = `https://${host}/data/wow/talent-tree/index`;
-  return fetchFromAPI(url, { namespace: `static-${normRegion}`, locale }, normRegion);
+  return fetchFromAPI(
+    url,
+    { namespace: blizzardNamespace('static', normRegion), locale },
+    normRegion,
+  );
 }
 
 /**
@@ -155,14 +188,22 @@ async function getTalentTreeForSpec(talentTreeId, specId, region = 'eu', locale 
   const host = regionHost(region);
   const normRegion = (region || 'eu').toLowerCase();
   const url = `https://${host}/data/wow/talent-tree/${talentTreeId}/playable-specialization/${specId}`;
-  return fetchFromAPI(url, { namespace: `static-${normRegion}`, locale }, normRegion);
+  return fetchFromAPI(
+    url,
+    { namespace: blizzardNamespace('static', normRegion), locale },
+    normRegion,
+  );
 }
 
 async function getPlayableSpecializationIndex(region = 'eu', locale = 'en_GB') {
   const host = regionHost(region);
   const normRegion = (region || 'eu').toLowerCase();
   const url = `https://${host}/data/wow/playable-specialization/index`;
-  return fetchFromAPI(url, { namespace: `static-${normRegion}`, locale }, normRegion);
+  return fetchFromAPI(
+    url,
+    { namespace: blizzardNamespace('static', normRegion), locale },
+    normRegion,
+  );
 }
 
 /**
@@ -173,7 +214,11 @@ async function getPlayableSpecialization(specId, region = 'eu', locale = 'en_GB'
   const host = regionHost(region);
   const normRegion = (region || 'eu').toLowerCase();
   const url = `https://${host}/data/wow/playable-specialization/${specId}`;
-  return fetchFromAPI(url, { namespace: `static-${normRegion}`, locale }, normRegion);
+  return fetchFromAPI(
+    url,
+    { namespace: blizzardNamespace('static', normRegion), locale },
+    normRegion,
+  );
 }
 
 module.exports = {

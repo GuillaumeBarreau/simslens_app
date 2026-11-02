@@ -17,6 +17,11 @@ require.cache[redisPath] = {
   exports: fakeRedis,
 };
 
+// Les modules ci-dessous sont chargés par le `require` natif de Node, qui ne résout pas
+// les modules TypeScript (shared/game, SIMS-020) : on active le chargeur CommonJS de tsx.
+const { register: registerTsx } = require('tsx/cjs/api');
+registerTsx();
+
 const request = require('request');
 const { prisma } = require('../../data');
 const validationSettingsRepository = require('../../api/validation_settings/validation_settings.repository');
