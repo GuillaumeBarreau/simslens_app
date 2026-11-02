@@ -3,7 +3,9 @@ import {
   Button,
   Center,
   Container,
+  Group,
   Paper,
+  Radio,
   Select,
   Stack,
   Text,
@@ -12,62 +14,33 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
-import { useMutation } from '@tanstack/react-query';
+import { realmHomePath } from 'components/RequireRealm/realmPath';
+import { isFeatureEnabled } from 'config/featureFlags';
 import { useAuth } from 'contexts';
-import { useRegions } from 'hooks/queries';
-import { useEffect, useMemo, useState } from 'react';
+import { useCreateRealm, useRegions } from 'hooks/queries';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { createRealm } from 'services/api';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import type { CreateRealmPayload } from 'services/realm.service';
+import type { Realm } from 'types/realm';
 
-interface Server {
-  id: number;
-  name: string;
-  slug: string;
-}
-
-interface Region {
-  id: number;
-  name: string;
-  servers: Server[];
-}
+import {
+  createRealmErrorKey,
+  FOREVER_SERVER_MODES,
+  resolveCreateRealmGame,
+} from './createRealm.utils';
 
 const CreateRealmPage: React.FC = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation('createRealm');
-  const { data } = useRegions();
-  const regions = useMemo(() => (data as Region[]) || [], [data]);
-  const [serverOptions, setServerOptions] = useState<{ value: string; label: string }[]>([]);
+  const [searchParams] = useSearchParams();
+  const game = resolveCreateRealmGame(searchParams.get('game'), isFeatureEnabled('forever'));
+  const isForever = game === 'forever';
+  const { data } = useRegions(game);
+  const regions = useMemo(() => data ?? [], [data]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
-  const createRealmMutation = useMutation({
-    mutationFn: createRealm,
-    onSuccess: () => {
-      setErrorMessage(null);
-      notifications.show({
-        title: t('notifications.success_title'),
-        message: t('notifications.success_message'),
-        color: 'green',
-        autoClose: 5000,
-      });
-      navigate('/sync');
-    },
-    onError: (error: any) => {
-      const message =
-        error?.message ||
-        error?.error ||
-        error?.response?.data?.message ||
-        t('notifications.error_message') ||
-        'Failed to create realm';
-      setErrorMessage(message);
-      notifications.show({
-        title: t('notifications.error_title'),
-        message: message,
-        color: 'red',
-      });
-    },
-  });
+  const createRealmMutation = useCreateRealm();
 
   const form = useForm({
     initialValues: {
@@ -76,26 +49,46 @@ const CreateRealmPage: React.FC = () => {
       region: '',
     },
     validate: {
-      guildName: (value) => (value.length < 2 ? t('validation.guild_name_short') : null),
-      server: (value) => (!value ? t('validation.error_message') : null),
+      guildName: (value) => (value.trim().length < 2 ? t('validation.guild_name_short') : null),
+      server: (value) =>
+        !value ? t(isForever ? 'validation.mode_required' : 'validation.error_message') : null,
       region: (value) => (!value ? t('validation.error_message') : null),
     },
   });
 
-  useEffect(() => {
-    const selectedRegion = regions.find((r) => r.name === form.values.region);
-    if (selectedRegion) {
-      const opts = selectedRegion.servers.map((s) => ({ value: s.slug, label: s.name }));
-      setServerOptions(opts);
-    } else {
-      setServerOptions([]);
-    }
-  }, [form.values.region, regions]);
+  const servers = useMemo(
+    () => regions.find((r) => r.name === form.values.region)?.servers ?? [],
+    [regions, form.values.region],
+  );
+
+  const onCreated = (realm: Realm, guildName: string) => {
+    setErrorMessage(null);
+    notifications.show({
+      title: t('notifications.success_title'),
+      message: t(
+        isForever ? 'notifications.forever_success_message' : 'notifications.success_message',
+      ),
+      color: 'green',
+      autoClose: 5000,
+    });
+    // Forever : pas de synchronisation Battle.net, on ouvre directement la guilde.
+    navigate(isForever ? realmHomePath(realm.name || guildName, 'forever') : '/sync');
+  };
+
+  const onFailed = (error: unknown) => {
+    const key = createRealmErrorKey(error);
+    const fallback = (error as { message?: string } | null)?.message;
+    const message = key ? t(key) : fallback || t('notifications.error_message');
+    setErrorMessage(message);
+    notifications.show({
+      title: t('notifications.error_title'),
+      message,
+      color: 'red',
+    });
+  };
 
   const handleSubmit = (values: typeof form.values) => {
-    console.log('Attempting to create realm with values:', values);
     if (!user) {
-      console.error('User is missing in CreateRealmPage');
       notifications.show({
         title: t('notifications.error_title'),
         message: t('notifications.session_missing'),
@@ -104,26 +97,31 @@ const CreateRealmPage: React.FC = () => {
       return;
     }
 
-    createRealmMutation.mutate({
-      name: values.guildName,
+    const payload: CreateRealmPayload = {
+      name: values.guildName.trim(),
       server: values.server,
       region: values.region,
       ownerId: user.id,
+    };
+    createRealmMutation.mutate(payload, {
+      onSuccess: (realm) => onCreated(realm, payload.name),
+      onError: onFailed,
     });
   };
+
+  const regionInput = form.getInputProps('region');
 
   return (
     <Center h="100vh" w="100%">
       <Container size={420} my={40}>
-        <Title ta="center">{t('title')}</Title>
+        <Title ta="center">{t(isForever ? 'forever.title' : 'title')}</Title>
         <Text c="dimmed" size="sm" ta="center" mt={5}>
-          {t('subtitle')}
+          {t(isForever ? 'forever.subtitle' : 'subtitle')}
         </Text>
 
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
           <form
-            onSubmit={form.onSubmit(handleSubmit, (errors) => {
-              console.log('Form validation failed:', errors);
+            onSubmit={form.onSubmit(handleSubmit, () => {
               setErrorMessage(t('validation.error_message'));
               notifications.show({
                 title: t('validation.error_title'),
@@ -145,18 +143,49 @@ const CreateRealmPage: React.FC = () => {
                 placeholder={t('form.region_placeholder')}
                 data={regions.map((r) => ({ value: r.name, label: r.name }))}
                 required
-                {...form.getInputProps('region')}
+                {...regionInput}
+                onChange={(value) => {
+                  regionInput.onChange(value ?? '');
+                  form.setFieldValue('server', '');
+                }}
               />
 
-              <Select
-                label={t('form.server')}
-                placeholder={t('form.server_placeholder')}
-                data={serverOptions}
-                required
-                searchable
-                disabled={!form.values.region}
-                {...form.getInputProps('server')}
-              />
+              {isForever ? (
+                <Radio.Group
+                  label={t('form.mode')}
+                  description={t('form.mode_description')}
+                  required
+                  {...form.getInputProps('server')}
+                >
+                  <Group mt="xs">
+                    {!servers.length && (
+                      <Text size="sm" c="dimmed">
+                        {t('form.mode_pick_region')}
+                      </Text>
+                    )}
+                    {servers.map((s) => {
+                      const mode = FOREVER_SERVER_MODES[s.slug];
+                      return (
+                        <Radio
+                          key={s.slug}
+                          value={s.slug}
+                          label={mode ? t(`form.mode_${mode}`) : s.name}
+                        />
+                      );
+                    })}
+                  </Group>
+                </Radio.Group>
+              ) : (
+                <Select
+                  label={t('form.server')}
+                  placeholder={t('form.server_placeholder')}
+                  data={servers.map((s) => ({ value: s.slug, label: s.name }))}
+                  required
+                  searchable
+                  disabled={!form.values.region}
+                  {...form.getInputProps('server')}
+                />
+              )}
 
               <Button
                 fullWidth
@@ -174,7 +203,7 @@ const CreateRealmPage: React.FC = () => {
         {errorMessage && (
           <Alert
             color="red"
-            title="Error"
+            title={t('notifications.error_title')}
             withCloseButton
             onClose={() => setErrorMessage(null)}
             mt="md"
