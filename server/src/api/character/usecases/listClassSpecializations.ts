@@ -10,7 +10,7 @@
  */
 
 import type { GameId } from '../../../shared/game/games';
-import { specializationLabel } from '../../../shared/game/games';
+import { specializationLabel, specializationRole } from '../../../shared/game/games';
 import characterRepository from '../character.repository';
 
 export interface ClassSpecializationsOutput {
@@ -28,7 +28,7 @@ export interface ClassSpecializationsOutput {
   }[];
 }
 
-/** Restreint la liste aux classes et spés du jeu, avec leur libellé. */
+/** Restreint la liste aux classes et spés du jeu, avec leur libellé et leur rôle. */
 export function filterForGame(
   classes: ClassSpecializationsOutput[],
   game: GameId,
@@ -36,7 +36,8 @@ export function filterForGame(
   return classes.flatMap((cls) => {
     const specializations = cls.specializations.flatMap((spec) => {
       const label = specializationLabel(game, cls.name, spec.name);
-      return label === null ? [] : [{ ...spec, label }];
+      if (label === null) return [];
+      return [{ ...spec, label, role: specializationRole(game, cls.name, spec.name, spec.role) }];
     });
     return specializations.length > 0 ? [{ ...cls, specializations }] : [];
   });
