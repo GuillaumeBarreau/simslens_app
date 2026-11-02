@@ -1,58 +1,52 @@
-const { PrismaClient } = require('@prisma/client');
-const { PrismaPg } = require('@prisma/adapter-pg');
-const { Pool } = require('pg');
 const path = require('path');
 const dotenv = require('dotenv');
 
+const { loadRaids } = require('./catalog');
+
 dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+function raidData(raid) {
+  return {
+    name: raid.name,
+    instanceId: raid.instanceId || null,
+    description: raid.description || null,
+    image_button: raid.image_button || null,
+    image_button_small: raid.image_button_small || null,
+    image_background: raid.image_background || null,
+    extension: raid.extension || null,
+    season: raid.season || null,
+  };
+}
 
-const adapter = new PrismaPg(pool);
-const prisma = new PrismaClient({ adapter });
-
-const raids = require('../data/raids.json');
-
-async function seedRaid() {
-  console.log('🏰 Seeding raids...');
+/**
+ * Upsert de chaque raid par identifiant : relancer le seed ne crée rien de plus.
+ * Retail (`data/raids.json`) et Forever (`data/forever/raids.json`, SIMS-027).
+ */
+async function seedRaid(prisma, raids = loadRaids(), log = console) {
+  log.log('🏰 Seeding raids...');
 
   for (const raid of raids) {
-    console.log(`Processing raid: ${raid.name}`);
-
+    log.log(`Processing raid: ${raid.name}`);
+    const data = raidData(raid);
     await prisma.raids.upsert({
       where: { id: raid.id },
-      update: {
-        name: raid.name,
-        instanceId: raid.instanceId || null,
-        description: raid.description || null,
-        image_button: raid.image_button || null,
-        image_button_small: raid.image_button_small || null,
-        image_background: raid.image_background || null,
-        extension: raid.extension || null,
-        season: raid.season || null,
-      },
-      create: {
-        id: raid.id,
-        name: raid.name,
-        instanceId: raid.instanceId || null,
-        description: raid.description || null,
-        image_button: raid.image_button || null,
-        image_button_small: raid.image_button_small || null,
-        image_background: raid.image_background || null,
-        extension: raid.extension || null,
-        season: raid.season || null,
-      },
+      update: data,
+      create: { id: raid.id, ...data },
     });
   }
 
-  console.log('✅ Raids seeded successfully.');
+  log.log('✅ Raids seeded successfully.');
 }
 
 async function main() {
+  const { PrismaClient } = require('@prisma/client');
+  const { PrismaPg } = require('@prisma/adapter-pg');
+  const { Pool } = require('pg');
+
+  const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+  const prisma = new PrismaClient({ adapter: new PrismaPg(pool) });
   try {
-    await seedRaid();
+    await seedRaid(prisma);
   } catch (error) {
     console.error('❌ Error during seeding:', error);
     throw error;
@@ -62,7 +56,11 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}
+
+module.exports = { seedRaid, raidData };
