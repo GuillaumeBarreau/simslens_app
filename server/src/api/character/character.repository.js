@@ -127,6 +127,26 @@ async function createCharacter(fields) {
   return character.id;
 }
 
+/**
+ * Crée un personnage et ses off-specs en une seule écriture (création imbriquée,
+ * atomique). Les valeurs sont déjà validées par l'usecase (SIMS-050).
+ * @param {object} fields colonnes de `characters`
+ * @param {number[]} offSpecializationIds
+ * @returns {Promise<number>} identifiant du personnage créé
+ */
+async function createCharacterWithOffSpecs(fields, offSpecializationIds) {
+  const character = await prisma.characters.create({
+    data: {
+      ...fields,
+      offspecs: {
+        create: offSpecializationIds.map((specializationId) => ({ specializationId })),
+      },
+    },
+    select: { id: true },
+  });
+  return character.id;
+}
+
 async function updateCharacterById(id, fields) {
   if (fields.lastModified && typeof fields.lastModified === 'number') {
     fields.lastModified = new Date(fields.lastModified);
@@ -619,6 +639,7 @@ module.exports = {
   findCharacterByName,
   findCharacterIdByNameAndRealm,
   createCharacter,
+  createCharacterWithOffSpecs,
   updateCharacterById,
   listCharactersRosterStatus,
   findCharacterByDiscordTag,

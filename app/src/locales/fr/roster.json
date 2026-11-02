@@ -8,7 +8,40 @@
     "clear_upgrades": "Supprimer les upgrades",
     "manage_admins": "Gérer les admins",
     "sync_battlenet": "Importer le roster via l'Armurerie",
-    "add_manual": "Ajouter"
+    "add_manual": "Ajouter",
+    "add_own": "Ajouter mon personnage"
+  },
+  "own_character": {
+    "title": "Ajouter mon personnage",
+    "description": "WoW Forever n'est pas relié à Battle.net : saisissez votre personnage, il rejoint le roster de la guilde. Un officier peut le corriger ou l'archiver.",
+    "submit": "Ajouter mon personnage",
+    "success": "{{name}} a rejoint le roster",
+    "fields": {
+      "name": {
+        "label": "Prénom et nom de famille",
+        "description": "Lettres, espaces, apostrophes et tirets",
+        "placeholder": "Ex. Aerin Valcourt",
+        "error": "Lettres, espaces, apostrophes et tirets uniquement, de 2 à {{max}} caractères"
+      },
+      "class": {
+        "label": "Classe",
+        "placeholder": "Choisir une classe",
+        "error": "Choisissez une classe"
+      },
+      "spec": {
+        "label": "Spécialisation principale",
+        "placeholder": "Facultative"
+      },
+      "offspecs": {
+        "label": "Spécialisations secondaires",
+        "description": "Celles que vous pouvez aussi jouer en raid"
+      }
+    },
+    "errors": {
+      "name_taken": "Ce nom est déjà pris sur ce serveur.",
+      "not_forever": "L'ajout manuel est réservé aux guildes WoW Forever : sur Retail, synchronisez vos personnages via Battle.net.",
+      "generic": "Impossible d'ajouter le personnage."
+    }
   },
   "stats": {
     "members": "Membres",
