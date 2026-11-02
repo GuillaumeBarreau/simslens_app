@@ -1,12 +1,13 @@
 const { prisma } = require('../../data');
 
-async function createRealm({ name, server, region, ownerId, createdBy }) {
+async function createRealm({ name, server, region, ownerId, createdBy, game }) {
   const realm = await prisma.realms.create({
     data: {
       guildName: name,
       server,
       region: region || 'EU',
       createdBy: createdBy || 0,
+      game: game || 'retail',
     },
   });
 
@@ -103,6 +104,17 @@ async function findRealmByOwnerId(ownerId) {
     ...realmOwner.realm,
     role: realmOwner.role,
   };
+}
+
+/**
+ * Guildes d'un jeu dont l'utilisateur est propriétaire (rôle owner).
+ * @param {string} ownerId
+ * @param {'retail' | 'forever'} game
+ */
+async function countOwnedRealmsByGame(ownerId, game) {
+  return await prisma.realm_owners.count({
+    where: { ownerId: String(ownerId), role: 'owner', realm: { game } },
+  });
 }
 
 async function findRealmsByOwnerId(ownerId) {
@@ -269,6 +281,7 @@ module.exports = {
   findRealmByDetails,
   findRealmByOwnerId,
   findRealmsByOwnerId,
+  countOwnedRealmsByGame,
   findRealmByMemberUserId,
   isRealmOwner,
   addRealmOwner,

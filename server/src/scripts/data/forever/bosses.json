@@ -1,0 +1,309 @@
+[
+  {
+    "bossId": 900101,
+    "name": "Deepscar Matriarch",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "The Barrow Deeps",
+    "order": 1,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://warcraft.wiki.gg/wiki/Barrow_Deeps_(instance)",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair"
+    ]
+  },
+  {
+    "bossId": 900102,
+    "name": "Khalith the Dreadspinner",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "The Barrow Deeps",
+    "order": 2,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://warcraft.wiki.gg/wiki/Barrow_Deeps_(instance)",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair"
+    ]
+  },
+  {
+    "bossId": 900103,
+    "name": "Amethrax",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "The Barrow Deeps",
+    "order": 3,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://warcraft.wiki.gg/wiki/Barrow_Deeps_(instance)",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair"
+    ]
+  },
+  {
+    "bossId": 900104,
+    "name": "Ravus and Darlissa",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "The Barrow Deeps",
+    "order": 4,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://warcraft.wiki.gg/wiki/Barrow_Deeps_(instance)",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair"
+    ]
+  },
+  {
+    "bossId": 900105,
+    "name": "Elder Tangleclaw",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "The Barrow Deeps",
+    "order": 5,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://warcraft.wiki.gg/wiki/Barrow_Deeps_(instance)",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair"
+    ]
+  },
+  {
+    "bossId": 900106,
+    "name": "Well of Sorrow",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "The Barrow Deeps",
+    "order": 6,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://warcraft.wiki.gg/wiki/Barrow_Deeps_(instance)",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair"
+    ]
+  },
+  {
+    "bossId": 900107,
+    "name": "Del'lynar Songwood",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "The Barrow Deeps",
+    "order": 7,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://warcraft.wiki.gg/wiki/Barrow_Deeps_(instance)",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair"
+    ]
+  },
+  {
+    "bossId": 900108,
+    "name": "Sonya Darkhallow",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "The Barrow Deeps",
+    "order": 8,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://warcraft.wiki.gg/wiki/Barrow_Deeps_(instance)",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair"
+    ]
+  },
+  {
+    "bossId": 900201,
+    "name": "Bandalar",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 1,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900202,
+    "name": "Ancient of Decay",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 2,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900203,
+    "name": "Time-Lost Battalion",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 3,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900204,
+    "name": "Sylvestris Dusksong",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 4,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900205,
+    "name": "Old Gloomlurker",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 5,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900206,
+    "name": "Gharalis the Abyssal",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 6,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900207,
+    "name": "Kathris the Haunted",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 7,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900208,
+    "name": "Anara Chillwind",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 8,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900209,
+    "name": "Elder Minderel",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 9,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900210,
+    "name": "Tracker Stillwind",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 10,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900211,
+    "name": "Council of Thorns",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 11,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900212,
+    "name": "Nythus the Dreambound",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 12,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900213,
+    "name": "The Wild King",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Hyjal Summit",
+    "order": 13,
+    "icon": null,
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "bossId": 900301,
+    "name": "Onyxia",
+    "extension": "Forever",
+    "season": "tier-1",
+    "raidName": "Onyxia's Lair",
+    "order": 1,
+    "icon": null,
+    "sources": [
+      "https://www.wowhead.com/forever/zone=2159",
+      "https://www.wowhead.com/forever/npc=10184"
+    ]
+  }
+]
