@@ -89,7 +89,7 @@ niveau 60 définitif, contenu nouveau ajouté par paliers. Sortie le **4 novembr
 | Classes     | 9 classes vanilla, arbres de talents vanilla retravaillés pour rendre chaque spé viable (51 points au 60), **double spé au niveau 40**. Nouvelle race **Skyborne**, 6 nouvelles combinaisons race-classe.     | Presse / officiel |
 | Métiers     | Monnaie **Merchant's Favor**, réputations commerciales (Azeroth Commerce Authority, Durotar Supply and Logistics), nombreux patrons d'armure liés quand ramassés.                                             | Wiki              |
 | Legacy      | Points gagnés par le compte, dépensés par personnage dans des arbres (bonus de métier…). Remplace les hauts faits.                                                                                            | Wiki              |
-| Serveurs    | **Plus de royaumes** : un méga-royaume par jeu de règles (Normal, PvP, RP, RP-PvP, Hardcore plus tard) et par région, avec layering. Personnages avec **prénom et nom de famille**.                           | Presse / wiki     |
+| Serveurs    | **Plus de royaumes** : un serveur unique **PvE** ou **PvP** par région (confirmé par le mainteneur), avec layering. Personnages avec **prénom et nom de famille**.                                            | Mainteneur / wiki |
 | Économie    | **GDKP interdit** en Amérique du Nord et en Europe.                                                                                                                                                           | Presse            |
 | Données     | ~40 % des objets sont livrés sans statistiques visibles, révélées au fil du temps.                                                                                                                            | Tiers             |
 
@@ -109,7 +109,7 @@ niveau 60 définitif, contenu nouveau ajouté par paliers. Sortie le **4 novembr
    gain simulé. Le cœur produit devient : listes BiS par classe, spé et palier ; priorités
    de loot décidées par les officiers ; suivi de complétion.
 5. **L'identité d'une guilde et d'un personnage change** : pas de serveur, mais une
-   région + un jeu de règles ; des noms avec nom de famille. Les clés uniques actuelles
+   région + PvE ou PvP ; des noms avec nom de famille. Les clés uniques actuelles
    (`realms [region, server, guildName]`, `characters [name, realm]`) doivent intégrer le
    jeu.
 6. **On ne peut pas compter sur l'API Blizzard au lancement** : aucun namespace Forever
@@ -127,7 +127,7 @@ niveau 60 définitif, contenu nouveau ajouté par paliers. Sortie le **4 novembr
 | Namespace de l'API Battle.net pour Forever                    | Sync des personnages et de la guilde   | Sonder `static/profile/dynamic-*` sur le portail développeur après la sortie |
 | Méthode de loot (master loot, group loot, personal loot)      | Pertinence du conseil de loot et du SR | Notes de patch, premier raid du 9 décembre                                   |
 | Addon de loot dominant et son format de SavedVariables        | Parseur du companion                   | Installer les addons, lire leurs fichiers `SavedVariables`                   |
-| Dossier du client (`_classic_`, `_forever_`…)                 | Détection par le companion             | Installation du client de lancement                                          |
+| Dossier du client (`_forever_` selon les guides, à confirmer) | Détection par le companion             | Installation du client de lancement                                          |
 | Format de l'identifiant de personnage (prénom + nom, unicité) | Clés uniques en base                   | Création d'un personnage, API si disponible                                  |
 | Factions des classes (paladin, chaman)                        | Compositions et priorités de loot      | Écran de création de personnage                                              |
 | Lockouts partagés ou non entre raids d'un même palier         | Planificateur hebdomadaire             | Notes de patch, 9 décembre                                                   |
@@ -139,7 +139,7 @@ niveau 60 définitif, contenu nouveau ajouté par paliers. Sortie le **4 novembr
 | Fonctionnalité                        | Retail (aujourd'hui)                       | Forever (cible)                                               | Verdict   |
 | ------------------------------------- | ------------------------------------------ | ------------------------------------------------------------- | --------- |
 | Connexion Battle.net                  | ✅                                         | ✅ identique                                                  | Conserver |
-| Guilde (« royaume »)                  | région + serveur + nom                     | région + **jeu de règles** + nom                              | Adapter   |
+| Guilde (« royaume »)                  | région + serveur + nom                     | région + **PvE ou PvP** + nom                                 | Adapter   |
 | Rôles, permissions, invitations       | ✅                                         | ✅ identique                                                  | Conserver |
 | Calendrier, séries, iCal, fuseau      | ✅                                         | ✅ + plusieurs raids par semaine selon la taille              | Conserver |
 | Inscriptions web et Discord           | ✅ 13 classes                              | 9 classes, choix du raid (10/20/40)                           | Adapter   |
@@ -185,7 +185,7 @@ Socle partagé, servi par le même code pour les deux jeux :
 
 | Fonctionnalité  | Adaptation                                                                                                                                                                             |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Guilde          | Créée avec région + jeu de règles. Une guilde appartient à **un** jeu ; un même joueur peut avoir une guilde Retail et une guilde Forever.                                             |
+| Guilde          | Créée avec région + serveur unifié (PvE ou PvP). Une guilde appartient à **un** jeu ; un même joueur peut avoir une guilde Retail et une guilde Forever.                               |
 | Personnages     | Prénom + nom de famille, rattachés au jeu. Saisie manuelle ou import (addon / API quand elle existera). Double spé : deux spés par personnage, comme `character_offspecs` aujourd'hui. |
 | Inscriptions    | Choix du raid (10/20/40) et du groupe. Bot Discord : classes lues depuis l'API, plus codées en dur.                                                                                    |
 | Composition     | Gabarits 10 / 20 / 40, groupes de 5, contrôle des buffs de groupe et des classes requises, total de résistance du raid. Pas de matrice de gain.                                        |
@@ -338,8 +338,8 @@ Wowhead Forever et de warcraft.wiki.gg (CC BY-SA, avec attribution), en tenant c
   _Équité_.
 - **Transparence** : les listes de priorité et le SR sont visibles des membres ; c'est ce
   qui réduit le plus les conflits de loot en Classic.
-- **Création de guilde Forever** : formulaire région + jeu de règles + nom ; pas de
-  serveur.
+- **Création de guilde Forever** : formulaire région + PvE ou PvP + nom ; pas de
+  liste de serveurs.
 
 ---
 
@@ -470,7 +470,7 @@ dans un `CatalogScope` côté serveur.
 | 1.3 | Registre des jeux côté front, `GameContext`, extension `Forever` dans les routes, flag `forever` | Feature     | frontend          | —              |
 | 1.4 | Logo et sélecteur de jeu dans l'en-tête                                                          | Feature     | frontend, ux      | —              |
 | 1.5 | Capacités par jeu : `GameCapabilityGuard`, menus filtrés, middleware `requireGameCapability`     | Feature     | backend, frontend | **middleware** |
-| 1.6 | Création d'une guilde Forever (région + jeu de règles) et saisie des personnages (prénom + nom)  | Feature     | backend, frontend | —              |
+| 1.6 | Création d'une guilde Forever (région + PvE / PvP) et saisie des personnages (prénom + nom)      | Feature     | backend, frontend | —              |
 | 1.7 | Classes, spés et rôles Forever (référentiel + icônes) ; bot Discord sans classes codées en dur   | Feature     | backend, data     | —              |
 
 **Critère de sortie** : une guilde Forever existe, on bascule de Retail à Forever par le
@@ -519,7 +519,21 @@ semaine du 9 décembre, avec des joueurs attunés et des listes BiS.
 Contenu du palier 2 (raids à 10 et à 20, BiS cumulatives), quête légendaire, raid revampé
 de l'été, révision de ce document à chaque annonce.
 
-### 8.3 Dépendances
+### 8.3 Suivi sur GitHub
+
+Épique **#45**. Correspondance des tickets du § 8.2 avec les issues :
+
+| Étape     | Issues                                                                                                                                                        |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Forever 1 | #19 colonne `game` · #20 registre serveur · #21 registre front · #22 masquer Retail · #23 sélecteur de jeu · #24 guilde Forever · #25 garde serveur · #26 bot |
+| Forever 2 | #27 catalogue · #28 tailles de raid · #29 attunements · #30 BiS · #31 planning de la semaine · #32 résistances                                                |
+| Forever 3 | #33 import du loot · #34 prio · #35 vue par boss · #36 soft reserve · #37 équité · #38 sets · #39 « Ma progression »                                          |
+| Forever 4 | #40 synchronisation · #41 artisans · #42 consommables · #43 talents · #44 Hardcore                                                                            |
+
+La CI ne tourne que sur les PR vers `master` : pour les PR vers `forever`, la vérification
+locale `node scripts/agents/verify.mjs --base origin/forever` fait foi.
+
+### 8.4 Dépendances
 
 ```
 0.2 inconnues ──► 1.2 migration ──► 1.6 guilde Forever ──► 2.x préparation ──► 3.x loot
@@ -529,6 +543,26 @@ de l'été, révision de ce document à chaque annonce.
 ```
 
 ---
+
+### 8.5 Données du palier 1 connues au 2 novembre
+
+- **Boss** (noms issus de la démo BlizzCon et du datamine de la bêta ; ordre non
+  confirmé) :
+  - The Barrow Deeps : Deepscar Matriarch, Khalith the Dreadspinner, Amethrax, Ravus and
+    Darlissa, Elder Tangleclaw, Well of Sorrow, Del'lynar Songwood, Sonya Darkhallow ;
+  - Hyjal Summit : Bandalar, Ancient of Decay, Time-Lost Battalion, Sylvestris Dusksong,
+    Old Gloomlurker, Gharalis the Abyssal, Kathris the Haunted, Anara Chillwind, Elder
+    Minderel, Tracker Stillwind, Council of Thorns, Nythus the Dreambound, The Wild King ;
+  - Onyxia's Lair : Onyxia (PNJ 10184, zone 2159).
+- **Tables de loot** : non publiées. Le catalogue sera complété à l'ouverture des raids.
+- **Sets du palier 1** : 18 sets publiés sur Wowhead Forever (`item-set=2098` à `2115`),
+  plusieurs par classe hybride (par exemple 4 pour le druide).
+- **Attunement d'Onyxia** : Drakefire Amulet (objet 16309) ; chaînes Alliance (16 quêtes)
+  et Horde (14 quêtes), IDs de Classic conservés.
+- **Factions** : paladins morts-vivants côté Horde, chamans nains côté Alliance ; race
+  Skyborne pour certaines classes.
+- **Wowhead** : `https://www.wowhead.com/forever/item=<id>` ; le script de tooltips gère
+  Forever (environnement « classicplus »).
 
 ## 9. Décisions à prendre
 
@@ -557,6 +591,9 @@ Consultées le 2 novembre 2026.
 - Itemisation (Expertise, toucher unifié) : <https://www.method.gg/wow-forever/itemization-updates-in-world-of-warcraft-forever-expertise-spell-damage-more>
 - Pas d'obsolescence de l'équipement : <https://www.pcgamer.com/games/world-of-warcraft/world-of-warcraft-forever-devs-say-gear-upgrades-will-stay-relevant-for-a-long-long-time-its-very-much-our-intention-to-try-wherever-we-can-to-not-invalidate-old-content/>
 - Jeux de règles à la place des royaumes : <https://www.icy-veins.com/wow-forever/news/rulesets-replace-realms-in-wow-forever-heres-how-it-works/>
+- Boss des raids : <https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair>
+- Sets du palier 1 : <https://www.wowhead.com/forever/item-set=2098>, <https://conquestcapped.com/guides/wow-forever/wow-forever-tier-sets-1/>
+- Attunement : <https://www.wowhead.com/forever/quest=6502>, <https://www.wowhead.com/forever/quest=6602>
 - Objets aux stats masquées : <https://www.icy-veins.com/wow-forever/news/wow-forever-hid-over-12500-items-from-dataminers-heres-whats-still-secret/>
 - GDKP interdit : <https://www.wowhead.com/forever/news/gdkp-will-not-be-allowed-in-wow-forever-382968>
 - Base d'objets Wowhead Forever : <https://www.wowhead.com/forever/items>
