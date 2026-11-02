@@ -2,6 +2,7 @@ import { Container, Flex, Stack, Text, UnstyledButton } from '@mantine/core';
 import { IconBrandDiscord, IconChecks, IconShieldLock, IconTicket } from '@tabler/icons-react';
 import { Select } from 'components/design-system/atoms';
 import { useRealmAccess } from 'contexts';
+import { useGame } from 'hooks/useGame';
 import { useRouteParams } from 'hooks/useRouteParams';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -19,12 +20,16 @@ export default function SettingsPage() {
   const { t } = useTranslation(['common', 'validationSettings', 'discordSettings']);
   const { hasPermission } = useRealmAccess();
   const { guild } = useRouteParams();
+  // La validation des sims n'existe pas sans Droptimizer (Forever).
+  const showValidation = useGame().has('simValidation') && hasPermission(Permission.MANAGE_REALM);
 
-  const initialCategory: SettingsCategory | null = hasPermission(Permission.MANAGE_REALM)
+  const initialCategory: SettingsCategory | null = showValidation
     ? 'validation'
     : hasPermission(Permission.MANAGE_RAID)
       ? 'discord'
-      : null;
+      : hasPermission(Permission.MANAGE_REALM)
+        ? 'permissions'
+        : null;
 
   const [activeCategory, setActiveCategory] = useState<SettingsCategory | null>(initialCategory);
 
@@ -33,7 +38,7 @@ export default function SettingsPage() {
   }
 
   const categories = [
-    ...(hasPermission(Permission.MANAGE_REALM)
+    ...(showValidation
       ? [
           {
             id: 'validation' as const,

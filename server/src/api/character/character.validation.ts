@@ -93,6 +93,19 @@ export const createCharacterSchema = Joi.object({
 }).oxor('spec', 'specializationId');
 
 /**
+ * Personnage WoW Forever saisi par son joueur (SIMS-050). `realmId` désigne la
+ * guilde, contrôlée par checkPermission. Joi ne contrôle que la forme : le format
+ * du nom, la classe et les spés Forever sont vérifiés par l'usecase.
+ */
+export const addOwnCharacterSchema = Joi.object({
+  realmId: positiveId.required(),
+  name: Joi.string().trim().min(2).max(40).required(),
+  class: characterClass.required(),
+  specializationId: positiveId.allow(null).optional(),
+  offSpecializationIds: Joi.array().items(positiveId).unique().max(4).optional(),
+});
+
+/**
  * Spé principale et off-specs (SIMS-212). La liste des off-specs est complète
  * (elle remplace la précédente) ; l'appartenance à la classe et l'exclusion de
  * la spé principale sont vérifiées par l'usecase.

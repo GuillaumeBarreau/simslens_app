@@ -1,0 +1,33 @@
+{
+  "title": "Attunements",
+  "names": {
+    "drakefire_amulet": "Drakefire Amulet"
+  },
+  "mine": {
+    "title": "My characters",
+    "empty": "None of your characters is in this guild."
+  },
+  "faction": {
+    "label": "Faction",
+    "hint": "Pick your faction: the quest chain depends on it. Changing it resets the progress.",
+    "alliance": "Alliance",
+    "horde": "Horde"
+  },
+  "progress": "{{done}} / {{total}} quests done",
+  "status": {
+    "ready": "Ready for {{raid}}",
+    "not_ready": "Not ready yet"
+  },
+  "roster": {
+    "title": "Roster",
+    "ready_count": "{{ready}} / {{total}} ready for {{raid}}",
+    "name": "Name",
+    "class": "Class",
+    "faction": "Faction",
+    "progress": "Progress",
+    "status": "Status",
+    "ready": "Ready",
+    "not_ready": "Not ready"
+  },
+  "save_error": "The progress could not be saved."
+}

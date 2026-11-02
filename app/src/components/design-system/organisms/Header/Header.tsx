@@ -21,7 +21,9 @@ import {
   IconClock,
   IconFileImport,
   IconHeart,
+  IconKey,
   IconLanguage,
+  IconListNumbers,
   IconLogout,
   IconMap,
   IconScale,
@@ -31,8 +33,10 @@ import {
   IconUsers,
 } from '@tabler/icons-react';
 import { isFeatureEnabled } from 'config/featureFlags';
+import { filterByCapability, type GameCapability } from 'config/games';
 import { EXTENSION_SEASONS, VALID_EXTENSIONS } from 'config/seasonConfig';
 import { useAuth, useRealmAccess } from 'contexts';
+import { useGame } from 'hooks/useGame';
 import { useRealmSync } from 'hooks/useRealmSync';
 import { STORAGE_KEY_EXTENSION, STORAGE_KEY_SEASON, useRouteParams } from 'hooks/useRouteParams';
 import React, { useEffect, useMemo } from 'react';
@@ -41,6 +45,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Permission } from 'types/permissions';
 
 import { ContactUs } from '../../../domain/contact/ContactUs/ContactUs';
+import { GameSwitcher } from '../../molecules/GameSwitcher';
 import classes from './Header.module.css';
 
 const FlagIcon = ({ lang }: { lang: string }) => {
@@ -118,6 +123,7 @@ export default function Header() {
   const location = useLocation();
   const { guild: routeGuild } = useParams();
   const { hasPermission } = useRealmAccess();
+  const { has } = useGame();
 
   const showNav = !!routeGuild;
 
@@ -148,7 +154,8 @@ export default function Header() {
       currentPath.includes('/wishlist') ||
       currentPath.includes('/raid') ||
       currentPath.includes('/dungeons') ||
-      currentPath.includes('/history')
+      currentPath.includes('/history') ||
+      currentPath.endsWith('/bis')
     );
   };
 
@@ -158,9 +165,11 @@ export default function Header() {
     description: string;
     path: string;
     visible: boolean;
+    /** Capacité de jeu requise : l'entrée disparaît si le jeu courant ne l'a pas. */
+    capability?: GameCapability;
   }
 
-  const megaItems: MegaItem[] = [
+  const visibleMegaItems: MegaItem[] = [
     {
       icon: IconChartBar,
       label: t('common:navigation.tracking'),
@@ -177,6 +186,7 @@ export default function Header() {
       ),
       path: `/${guild}/${extension}/${season}/boss/0`,
       visible: hasPermission(Permission.MANAGE_RAID),
+      capability: 'droptimizer' as const,
     },
     {
       icon: IconHeart,
@@ -184,6 +194,14 @@ export default function Header() {
       description: t('common:navigation.wishlist_desc', 'Manage your loot wishlist'),
       path: `/${guild}/${extension}/wishlist`,
       visible: hasPermission(Permission.VIEW_ROSTER),
+    },
+    {
+      icon: IconListNumbers,
+      label: t('common:navigation.bis_lists'),
+      description: t('common:navigation.bis_lists_desc'),
+      path: `/${guild}/${extension}/bis`,
+      visible: hasPermission(Permission.VIEW_WISHLIST),
+      capability: 'bisLists' as const,
     },
     {
       icon: IconShield,
@@ -198,6 +216,15 @@ export default function Header() {
       description: t('common:navigation.dungeons_desc', 'Mythic+ dungeon runs'),
       path: `/${guild}/${extension}/dungeons`,
       visible: true,
+      capability: 'mythicPlus' as const,
+    },
+    {
+      icon: IconKey,
+      label: t('common:navigation.attunements'),
+      description: t('common:navigation.attunements_desc'),
+      path: `/${guild}/${extension}/attunements`,
+      visible: hasPermission(Permission.VIEW_ROSTER),
+      capability: 'attunements' as const,
     },
     {
       icon: IconClock,
@@ -228,6 +255,7 @@ export default function Header() {
       visible: hasPermission(Permission.IMPORT_SIMC),
     },
   ].filter((item) => item.visible);
+  const megaItems = filterByCapability(visibleMegaItems, has);
 
   const megaLinks = megaItems.map((item) => (
     <UnstyledButton
@@ -263,7 +291,10 @@ export default function Header() {
           width: '100%',
         }}
       >
-        <Group gap={0}>{import.meta.env.DEV && showNav && <ExtensionSelector />}</Group>
+        <Group gap="xs">
+          <GameSwitcher />
+          {import.meta.env.DEV && showNav && <ExtensionSelector />}
+        </Group>
 
         <Group gap={0} justify="center">
           {showNav && (

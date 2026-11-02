@@ -1,6 +1,15 @@
 {
   "loading": "Chargement...",
   "settings": "Réglages",
+  "games": {
+    "retail": "World of Warcraft",
+    "forever": "WoW Forever"
+  },
+  "game_switcher": {
+    "title": "Changer de jeu",
+    "label": "SimsLens, jeu actuel : {{game}}. Changer de jeu",
+    "home": "SimsLens, retour à l'accueil de la guilde"
+  },
   "feature_unavailable": {
     "title": "Cette fonctionnalité n'est pas disponible.",
     "description": "Elle est encore en cours de développement et arrivera bientôt."
@@ -18,7 +27,11 @@
     "sync_characters": "Synchroniser personnages",
     "logout": "Déconnexion",
     "loot_equity": "Équité du loot",
-    "loot_equity_desc": "Loot reçu, gain simulé, BiS et présence (officiers)"
+    "loot_equity_desc": "Loot reçu, gain simulé, BiS et présence (officiers)",
+    "attunements": "Attunements",
+    "attunements_desc": "Chaînes de quêtes d'accès aux raids (Onyxia)",
+    "bis_lists": "Listes BiS",
+    "bis_lists_desc": "Meilleurs objets par spécialisation et emplacement"
   },
   "languages": {
     "fr": "Français",
@@ -68,7 +81,10 @@
     "devourer": "Dévoreur",
     "devastation": "Dévastation",
     "preservation": "Préservation",
-    "augmentation": "Augmentation"
+    "augmentation": "Augmentation",
+    "combat": "Combat",
+    "feral_combat_cat": "Combat farouche (félin)",
+    "feral_combat_bear": "Combat farouche (ours)"
   },
   "cancel": "Annuler",
   "confirm": "Confirmer",

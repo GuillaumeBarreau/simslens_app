@@ -1,13 +1,28 @@
 import { API_VERSION } from '../config/apiConstants';
+import type { GameId } from '../config/games';
 import type { Realm } from '../types/realm';
 import { apiClient, getErrorStatus } from './api.client';
 
 export interface CreateRealmPayload {
   /** Guild name (sent as `name` in the request body) */
   name: string;
+  /** Slug du serveur ; le serveur en déduit le jeu de la guilde (SIMS-019). */
   server: string;
   region: string;
   ownerId?: string | number;
+}
+
+export interface ServerSummary {
+  id: number;
+  name: string;
+  slug: string;
+  locale?: string | null;
+}
+
+export interface RegionWithServers {
+  id: number;
+  name: string;
+  servers: ServerSummary[];
 }
 
 export interface RealmSettings {
@@ -34,6 +49,20 @@ export const realmService = {
       if (getErrorStatus(error) === 404) return null;
       throw error;
     }
+  },
+
+  /** Toutes les guildes de l'application, avec leur jeu (`GET /realms`). */
+  list: async (): Promise<Realm[]> => {
+    const { data } = await apiClient.get<Realm[]>(`${API_VERSION}/realms`);
+    return data;
+  },
+
+  /** Régions et serveurs d'un jeu : Forever n'a que `forever-pve` et `forever-pvp`. */
+  getRegions: async (game: GameId = 'retail'): Promise<RegionWithServers[]> => {
+    const { data } = await apiClient.get<RegionWithServers[]>(`${API_VERSION}/regions`, {
+      params: { game },
+    });
+    return data;
   },
 
   create: async (payload: CreateRealmPayload): Promise<Realm> => {

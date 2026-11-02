@@ -46,7 +46,7 @@ export async function list(req: Request, res: Response) {
 export async function getById(req: Request, res: Response) {
   const { id } = validated<EventParams>(req, 'params');
   const { realmId } = validated<RealmScope>(req, 'query');
-  res.json({ event: await eventService.getEventDetails(id, realmId) });
+  res.json({ event: await usecases.getEventDetails(id, realmId) });
 }
 
 export async function create(req: Request, res: Response) {
@@ -95,6 +95,12 @@ export async function removeSeries(req: Request, res: Response) {
   const { seriesId } = validated<SeriesParams>(req, 'params');
   const { fromDate } = validated<{ fromDate: Date }>(req, 'query');
   res.json(await usecases.deleteEventSeries(seriesId, checkedRealmId(req), fromDate));
+}
+
+/** Réservée au bot Discord (requireInternal) : menu « classe » d'un invité (SIMS-026). */
+export async function playableClasses(req: Request, res: Response) {
+  const { eventId } = validated<{ eventId: number }>(req, 'params');
+  res.json(await usecases.listEventPlayableClasses(eventId));
 }
 
 /**
