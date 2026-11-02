@@ -1,5 +1,6 @@
 import express from 'express';
 
+import { requireGameCapability } from '../../middleware/requireGameCapability';
 import * as controller from './dungeon_group.controller';
 import { requireGroupInRealm } from './dungeon_group.middleware';
 
@@ -34,6 +35,7 @@ router.get(
 router.post(
   '/',
   checkPermission(Permission.MANAGE_SIGNUPS),
+  requireGameCapability('mythicPlus'),
   validateBody(createGroupSchema),
   controller.create,
 );
@@ -41,6 +43,7 @@ router.post(
 router.put(
   '/:id',
   checkPermission(Permission.MANAGE_SIGNUPS),
+  requireGameCapability('mythicPlus'),
   validateParams(groupIdParam),
   validateQuery(realmScopeQuery),
   validateBody(updateGroupSchema),
@@ -51,6 +54,7 @@ router.put(
 router.delete(
   '/:id',
   checkPermission(Permission.MANAGE_SIGNUPS),
+  requireGameCapability('mythicPlus'),
   validateParams(groupIdParam),
   validateQuery(realmScopeQuery),
   requireGroupInRealm,
@@ -60,6 +64,7 @@ router.delete(
 router.post(
   '/:id/members',
   checkPermission(Permission.MANAGE_SIGNUPS),
+  requireGameCapability('mythicPlus'),
   validateParams(groupIdParam),
   validateQuery(realmScopeQuery),
   validateBody(addMemberSchema),
@@ -70,6 +75,7 @@ router.post(
 router.delete(
   '/:id/members/:userId',
   checkPermission(Permission.MANAGE_SIGNUPS),
+  requireGameCapability('mythicPlus'),
   validateParams(groupMemberParam),
   validateQuery(realmScopeQuery),
   requireGroupInRealm,
@@ -79,6 +85,7 @@ router.delete(
 router.post(
   '/:id/guests',
   checkPermission(Permission.MANAGE_SIGNUPS),
+  requireGameCapability('mythicPlus'),
   validateParams(groupIdParam),
   validateQuery(realmScopeQuery),
   validateBody(addGuestSchema),
@@ -89,6 +96,7 @@ router.post(
 router.patch(
   '/:id/guests/:guestId',
   checkPermission(Permission.MANAGE_SIGNUPS),
+  requireGameCapability('mythicPlus'),
   validateParams(groupGuestParam),
   validateQuery(realmScopeQuery),
   validateBody(updateGuestSchema),
@@ -99,6 +107,7 @@ router.patch(
 router.delete(
   '/:id/guests/:guestId',
   checkPermission(Permission.MANAGE_SIGNUPS),
+  requireGameCapability('mythicPlus'),
   validateParams(groupGuestParam),
   validateQuery(realmScopeQuery),
   requireGroupInRealm,
