@@ -18,7 +18,8 @@ export const realmOwnerParam = realmIdParam.keys({
 export const createRealmSchema = Joi.object({
   name: Joi.string().trim().min(2).max(100).required(),
   server: Joi.string().trim().min(2).max(100).required(),
-  region: Joi.string().valid('EU', 'US', 'KR', 'TW', 'CN').required(),
+  // NA : nom de la région Amériques dans la table `regions` (seedRegions.js)
+  region: Joi.string().valid('EU', 'US', 'NA', 'KR', 'TW', 'CN').required(),
 });
 
 export const addCharacterSchema = Joi.object({
