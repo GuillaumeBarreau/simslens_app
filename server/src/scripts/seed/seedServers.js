@@ -16,6 +16,13 @@ const prisma = new PrismaClient({ adapter });
 
 const serverEuPath = path.join(__dirname, '../data/servers/server_eu.json');
 
+/** Régions créées par seedRegions.js où Forever est jouable. */
+const FOREVER_REGIONS = ['EU', 'NA', 'KR', 'TW'];
+const FOREVER_SERVERS = [
+  ['Forever PvE', 'forever-pve'],
+  ['Forever PvP', 'forever-pvp'],
+];
+
 async function seedServers() {
   console.log('🌍 Seeding servers...');
 
@@ -34,6 +41,14 @@ async function seedServers() {
     category: 'Local',
     region: 'EU',
   });
+
+  // WoW Forever : un serveur unifié PvE ou PvP par région (SIMS-019). La
+  // migration les crée sur une base déjà remplie ; ici pour une base neuve.
+  for (const region of FOREVER_REGIONS) {
+    for (const [name, slug] of FOREVER_SERVERS) {
+      servers.push({ name, slug, locale: 'en-GB', category: 'Forever', region, game: 'forever' });
+    }
+  }
 
   if (!servers || servers.length === 0) {
     console.log('Aucun serveur à ajouter.');
@@ -54,6 +69,7 @@ async function seedServers() {
         name: server.name,
         locale: server.locale,
         category: server.category,
+        game: server.game || 'retail',
       },
       create: {
         name: server.name,
@@ -61,6 +77,7 @@ async function seedServers() {
         locale: server.locale,
         category: server.category,
         region: server.region,
+        game: server.game || 'retail',
       },
     });
     added++;

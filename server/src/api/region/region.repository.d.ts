@@ -1,4 +1,4 @@
-import type { RegionEntity, ServerEntity } from './region.types';
+import type { Game, RegionEntity, ServerEntity } from './region.types';
 
 /**
  * Contrat du repository, qui reste écrit en JavaScript.
@@ -7,7 +7,8 @@ import type { RegionEntity, ServerEntity } from './region.types';
 declare const regionRepository: {
   getAllRegions(): Promise<RegionEntity[]>;
   getServersByRegion(region: string): Promise<ServerEntity[]>;
-  getAllServers(): Promise<ServerEntity[]>;
+  getAllServers(game?: Game): Promise<ServerEntity[]>;
+  findServerBySlug(slug: string, region: string): Promise<ServerEntity | null>;
 };
 
 export default regionRepository;
