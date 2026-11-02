@@ -22,7 +22,9 @@
     "sync_characters": "Synchroniser personnages",
     "logout": "Déconnexion",
     "loot_equity": "Équité du loot",
-    "loot_equity_desc": "Loot reçu, gain simulé, BiS et présence (officiers)"
+    "loot_equity_desc": "Loot reçu, gain simulé, BiS et présence (officiers)",
+    "attunements": "Attunements",
+    "attunements_desc": "Chaînes de quêtes d'accès aux raids (Onyxia)"
   },
   "languages": {
     "fr": "Français",

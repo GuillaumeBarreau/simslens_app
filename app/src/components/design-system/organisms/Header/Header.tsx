@@ -21,6 +21,7 @@ import {
   IconClock,
   IconFileImport,
   IconHeart,
+  IconKey,
   IconLanguage,
   IconLogout,
   IconMap,
@@ -205,6 +206,14 @@ export default function Header() {
       path: `/${guild}/${extension}/dungeons`,
       visible: true,
       capability: 'mythicPlus' as const,
+    },
+    {
+      icon: IconKey,
+      label: t('common:navigation.attunements'),
+      description: t('common:navigation.attunements_desc'),
+      path: `/${guild}/${extension}/attunements`,
+      visible: hasPermission(Permission.VIEW_ROSTER),
+      capability: 'attunements' as const,
     },
     {
       icon: IconClock,

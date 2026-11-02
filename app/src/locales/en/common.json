@@ -22,7 +22,9 @@
     "sync_characters": "Sync characters",
     "logout": "Logout",
     "loot_equity": "Loot equity",
-    "loot_equity_desc": "Loot received, simulated gain, BiS and attendance (officers)"
+    "loot_equity_desc": "Loot received, simulated gain, BiS and attendance (officers)",
+    "attunements": "Attunements",
+    "attunements_desc": "Raid access quest chains (Onyxia)"
   },
   "languages": {
     "fr": "French",
