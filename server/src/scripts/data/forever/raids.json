@@ -1,0 +1,40 @@
+[
+  {
+    "id": 9001,
+    "name": "The Barrow Deeps",
+    "instanceId": null,
+    "description": null,
+    "extension": "Forever",
+    "season": "tier-1",
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://warcraft.wiki.gg/wiki/Barrow_Deeps_(instance)",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair"
+    ]
+  },
+  {
+    "id": 9002,
+    "name": "Hyjal Summit",
+    "instanceId": null,
+    "description": null,
+    "extension": "Forever",
+    "season": "tier-1",
+    "sources": [
+      "https://news.blizzard.com/en-gb/article/24303009",
+      "https://www.method.gg/wow-forever/wow-forever-raids-a-look-at-barrow-deeps-hyjal-summit-and-onyxias-lair",
+      "https://quissy.tv/forever/raids/hyjal-summit/"
+    ]
+  },
+  {
+    "id": 9003,
+    "name": "Onyxia's Lair",
+    "instanceId": null,
+    "description": null,
+    "extension": "Forever",
+    "season": "tier-1",
+    "sources": [
+      "https://www.wowhead.com/forever/zone=2159",
+      "https://www.wowhead.com/forever/npc=10184"
+    ]
+  }
+]

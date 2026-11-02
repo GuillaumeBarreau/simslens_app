@@ -247,4 +247,66 @@ describe('listClassSpecializations', () => {
     await expect(listClassSpecializations()).resolves.toEqual([PALADIN]);
     expect(listClassesWithSpecializations).toHaveBeenCalledTimes(1);
   });
+
+  // SIMS-027 : spés de WoW Forever, lignes Retail réutilisées avec leur libellé.
+  const ROGUE = {
+    id: 4,
+    name: 'rogue',
+    specializations: [
+      { id: 259, name: 'Assassination', classId: 4, role: 'melee', icon: null },
+      { id: 260, name: 'Outlaw', classId: 4, role: 'melee', icon: null },
+      { id: 261, name: 'Subtlety', classId: 4, role: 'melee', icon: null },
+    ],
+  };
+  const DRUID = {
+    id: 11,
+    name: 'druid',
+    specializations: [
+      { id: 102, name: 'Balance', classId: 11, role: 'ranged', icon: null },
+      { id: 103, name: 'Feral', classId: 11, role: 'melee', icon: null },
+      { id: 104, name: 'Guardian', classId: 11, role: 'tank', icon: null },
+      { id: 105, name: 'Restoration', classId: 11, role: 'healer', icon: null },
+    ],
+  };
+  const EVOKER = {
+    id: 13,
+    name: 'evoker',
+    specializations: [{ id: 1467, name: 'Devastation', classId: 13, role: 'ranged', icon: null }],
+  };
+
+  it('serves forever classes only, with their forever labels', async () => {
+    listClassesWithSpecializations.mockResolvedValue([DRUID, EVOKER, ROGUE]);
+    const result = await listClassSpecializations('forever');
+
+    expect(result.map((c) => c.name)).toEqual(['druid', 'rogue']);
+    expect(result[0].specializations.map((s) => [s.id, s.name, s.label])).toEqual([
+      [102, 'Balance', 'Balance'],
+      [103, 'Feral', 'Feral Combat (cat)'],
+      [104, 'Guardian', 'Feral Combat (bear)'],
+      [105, 'Restoration', 'Restoration'],
+    ]);
+    expect(result[1].specializations.map((s) => s.label)).toEqual([
+      'Assassination',
+      'Combat',
+      'Subtlety',
+    ]);
+  });
+
+  it('labels every retail spec with its own name', async () => {
+    listClassesWithSpecializations.mockResolvedValue([EVOKER, ROGUE]);
+    const result = await listClassSpecializations('retail');
+    expect(result.map((c) => c.name)).toEqual(['evoker', 'rogue']);
+    expect(result[1].specializations.map((s) => s.label)).toEqual([
+      'Assassination',
+      'Outlaw',
+      'Subtlety',
+    ]);
+  });
+
+  it('leaves the list untouched without a game', async () => {
+    listClassesWithSpecializations.mockResolvedValue([EVOKER, ROGUE]);
+    const result = await listClassSpecializations();
+    expect(result).toEqual([EVOKER, ROGUE]);
+    expect(result[1].specializations[1]).not.toHaveProperty('label');
+  });
 });

@@ -97,6 +97,12 @@ export async function removeSeries(req: Request, res: Response) {
   res.json(await usecases.deleteEventSeries(seriesId, checkedRealmId(req), fromDate));
 }
 
+/** Réservée au bot Discord (requireInternal) : menu « classe » d'un invité (SIMS-026). */
+export async function playableClasses(req: Request, res: Response) {
+  const { eventId } = validated<{ eventId: number }>(req, 'params');
+  res.json(await usecases.listEventPlayableClasses(eventId));
+}
+
 /**
  * If header `x-acting-discord-tag` is present, the request is treated as being
  * initiated by that Discord user (bot flow) and requires admin/moderator role

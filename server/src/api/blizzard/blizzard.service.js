@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { blizzardNamespace } = require('../../shared/game/blizzardNamespace');
 
 /**
  * @param {string} token - Battle.net Access Token
@@ -16,7 +17,7 @@ async function listUserCharacters(token, region = 'eu', enrich = true) {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        namespace: `profile-${region}`,
+        namespace: blizzardNamespace('profile', region),
         locale: 'en_GB',
       },
     });
@@ -90,7 +91,7 @@ async function getGuildRoster(token, realmSlug, guildName, region = 'eu') {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        namespace: `profile-${region}`,
+        namespace: blizzardNamespace('profile', region),
         locale: 'en_GB',
       },
     });
@@ -185,7 +186,7 @@ async function getCharacterProfile(token, realmSlug, characterName, region = 'eu
     const response = await axios.get(url, {
       headers: { Authorization: `Bearer ${token}` },
       params: {
-        namespace: `profile-${region}`,
+        namespace: blizzardNamespace('profile', region),
         locale: 'en_GB',
       },
     });

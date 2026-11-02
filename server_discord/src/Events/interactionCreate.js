@@ -16,6 +16,7 @@ const pendingGuestInvites = new Map();
 
 import { pingNoResponders } from '../api/discord/raid.controller.js';
 import config from '../Base/config.js';
+import { buildClassSelect, fetchPlayableClasses } from '../Utils/classes.js';
 const cooldown = new Collection();
 
 const INTERACTION_MAX_AGE_MS = 1500;
@@ -354,30 +355,13 @@ async function handleGuestRoleSelect(interaction) {
 
   pendingGuestInvites.set(key, { ...pending, role });
 
-  const classSelect = new StringSelectMenuBuilder()
-    .setCustomId(`guest_class_${eventId}`)
-    .setPlaceholder('Choisir une classe')
-    .addOptions(
-      new StringSelectMenuOptionBuilder().setLabel('Guerrier').setValue('warrior').setEmoji('⚔️'),
-      new StringSelectMenuOptionBuilder().setLabel('Paladin').setValue('paladin').setEmoji('🛡️'),
-      new StringSelectMenuOptionBuilder().setLabel('Chasseur').setValue('hunter').setEmoji('🏹'),
-      new StringSelectMenuOptionBuilder().setLabel('Voleur').setValue('rogue').setEmoji('🗡️'),
-      new StringSelectMenuOptionBuilder().setLabel('Prêtre').setValue('priest').setEmoji('✨'),
-      new StringSelectMenuOptionBuilder().setLabel('Chaman').setValue('shaman').setEmoji('⚡'),
-      new StringSelectMenuOptionBuilder().setLabel('Mage').setValue('mage').setEmoji('🔥'),
-      new StringSelectMenuOptionBuilder().setLabel('Démoniste').setValue('warlock').setEmoji('🌑'),
-      new StringSelectMenuOptionBuilder().setLabel('Moine').setValue('monk').setEmoji('🥋'),
-      new StringSelectMenuOptionBuilder().setLabel('Druide').setValue('druid').setEmoji('🌿'),
-      new StringSelectMenuOptionBuilder()
-        .setLabel('Chevalier de la mort')
-        .setValue('death_knight')
-        .setEmoji('💀'),
-      new StringSelectMenuOptionBuilder()
-        .setLabel('Chasseur de démons')
-        .setValue('demon_hunter')
-        .setEmoji('👿'),
-      new StringSelectMenuOptionBuilder().setLabel('Évocateur').setValue('evoker').setEmoji('🐉'),
-    );
+  // Classes du jeu de la guilde de l'événement (SIMS-026) : 9 pour WoW Forever.
+  const classes = await fetchPlayableClasses(axios, {
+    serverApiUrl: config.serverApiUrl || 'http://localhost:5000',
+    token: config.token,
+    eventId,
+  });
+  const classSelect = buildClassSelect(eventId, classes);
 
   await interaction.editReply({
     content: `Quelle classe pour **${pending.name}** *(${role})* ?`,

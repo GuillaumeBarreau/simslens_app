@@ -241,22 +241,23 @@
 
 ### `/1/events` — module `event`
 
-| Méthode  | Chemin                              | Permission       |
-| :------- | :---------------------------------- | :--------------- |
-| `GET`    | `/1/events`                         | —                |
-| `GET`    | `/1/events/calendar-feed`           | —                |
-| `POST`   | `/1/events/calendar-feed`           | —                |
-| `DELETE` | `/1/events/calendar-feed`           | —                |
-| `GET`    | `/1/events/calendar-feed/:file`     | —                |
-| `POST`   | `/1/events/series`                  | `CREATE_EVENT`   |
-| `PUT`    | `/1/events/series/:seriesId`        | `EDIT_EVENT`     |
-| `DELETE` | `/1/events/series/:seriesId`        | `DELETE_EVENT`   |
-| `GET`    | `/1/events/:id`                     | —                |
-| `POST`   | `/1/events`                         | `CREATE_EVENT`   |
-| `PUT`    | `/1/events/:id`                     | `EDIT_EVENT`     |
-| `DELETE` | `/1/events/:id`                     | `DELETE_EVENT`   |
-| `POST`   | `/1/events/:id/duplicate`           | `CREATE_EVENT`   |
-| `GET`    | `/1/events/:eventId/no-status-tags` | `MANAGE_SIGNUPS` |
+| Méthode  | Chemin                                | Permission       |
+| :------- | :------------------------------------ | :--------------- |
+| `GET`    | `/1/events`                           | —                |
+| `GET`    | `/1/events/calendar-feed`             | —                |
+| `POST`   | `/1/events/calendar-feed`             | —                |
+| `DELETE` | `/1/events/calendar-feed`             | —                |
+| `GET`    | `/1/events/calendar-feed/:file`       | —                |
+| `POST`   | `/1/events/series`                    | `CREATE_EVENT`   |
+| `PUT`    | `/1/events/series/:seriesId`          | `EDIT_EVENT`     |
+| `DELETE` | `/1/events/series/:seriesId`          | `DELETE_EVENT`   |
+| `GET`    | `/1/events/:id`                       | —                |
+| `POST`   | `/1/events`                           | `CREATE_EVENT`   |
+| `PUT`    | `/1/events/:id`                       | `EDIT_EVENT`     |
+| `DELETE` | `/1/events/:id`                       | `DELETE_EVENT`   |
+| `POST`   | `/1/events/:id/duplicate`             | `CREATE_EVENT`   |
+| `GET`    | `/1/events/:eventId/no-status-tags`   | `MANAGE_SIGNUPS` |
+| `GET`    | `/1/events/:eventId/playable-classes` | —                |
 
 ### `/1/absences` — module `absence`
 
