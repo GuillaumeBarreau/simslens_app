@@ -130,6 +130,7 @@
 | `GET`    | `/1/realms`                            | —              |
 | `POST`   | `/1/realms`                            | —              |
 | `GET`    | `/1/realms/check`                      | —              |
+| `GET`    | `/1/realms/mine`                       | —              |
 | `GET`    | `/1/realms/:id`                        | —              |
 | `PATCH`  | `/1/realms/:id/add-character`          | `EDIT_ROSTER`  |
 | `GET`    | `/1/realms/:id/owners`                 | `MANAGE_REALM` |
