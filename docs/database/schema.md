@@ -53,9 +53,9 @@ Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
 | [`realm_owners`](#realmowners)                             | `realm_owners`                |      4 |         1 |
 | [`realm_subscriptions`](#realmsubscriptions)               | `realm_subscriptions`         |     10 |         1 |
 | [`realm_user_guests`](#realmuserguests)                    | `realm_user_guests`           |      5 |         2 |
-| [`realms`](#realms)                                        | `realms`                      |     14 |        15 |
+| [`realms`](#realms)                                        | `realms`                      |     14 |        16 |
 | [`regions`](#regions)                                      | `regions`                     |      2 |         1 |
-| [`servers`](#servers)                                      | `servers`                     |      6 |         2 |
+| [`servers`](#servers)                                      | `servers`                     |      6 |         3 |
 | [`specializations`](#specializations)                      | `specializations`             |      7 |         8 |
 | [`talent_hero_subtrees`](#talentherosubtrees)              | `talent_hero_subtrees`        |      4 |         2 |
 | [`talent_nodes`](#talentnodes)                             | `talent_nodes`                |     10 |         2 |
@@ -1002,6 +1002,7 @@ Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
 
 **Relations**
 
+- `game` → `Game`
 - `characters` → `characters`[]
 - `owners` → `realm_owners`[]
 - `instances` → `instances`[]
@@ -1044,10 +1045,11 @@ Base **PostgreSQL 15**, accédée via Prisma. 54 tables.
 
 **Relations**
 
+- `game` → `Game`
 - `region_rel` → `regions` — via `region`, onDelete: `Cascade`
 - `realms` → `realms`[]
 
-**Index** : `unique(slug,region)`, `index(region)`
+**Index** : `unique(slug,region)`, `index(region)`, `index(game)`
 
 ## `specializations`
 

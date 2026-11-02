@@ -1,5 +1,7 @@
 import type { realms } from '@prisma/client';
 
+import type { Game } from '../region/region.types';
+
 export type RealmEntity = realms;
 
 export interface CreateRealmInput {
@@ -16,6 +18,7 @@ export interface CreateRealmResult {
   name: string;
   server: string;
   region: string;
+  game: Game;
 }
 
 export interface RealmOwner {
