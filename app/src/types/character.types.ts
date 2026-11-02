@@ -7,6 +7,8 @@ export interface Specialization {
   /** "tank" | "healer" | "dps" */
   role: string;
   icon?: string | null;
+  /** Libellé propre au jeu demandé (`?game=`), ex. « Combat » dans Forever. */
+  label?: string;
 }
 
 export interface WowClass {

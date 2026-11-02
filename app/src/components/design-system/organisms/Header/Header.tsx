@@ -22,6 +22,7 @@ import {
   IconFileImport,
   IconHeart,
   IconLanguage,
+  IconListNumbers,
   IconLogout,
   IconMap,
   IconScale,
@@ -151,7 +152,8 @@ export default function Header() {
       currentPath.includes('/wishlist') ||
       currentPath.includes('/raid') ||
       currentPath.includes('/dungeons') ||
-      currentPath.includes('/history')
+      currentPath.includes('/history') ||
+      currentPath.endsWith('/bis')
     );
   };
 
@@ -190,6 +192,14 @@ export default function Header() {
       description: t('common:navigation.wishlist_desc', 'Manage your loot wishlist'),
       path: `/${guild}/${extension}/wishlist`,
       visible: hasPermission(Permission.VIEW_ROSTER),
+    },
+    {
+      icon: IconListNumbers,
+      label: t('common:navigation.bis_lists'),
+      description: t('common:navigation.bis_lists_desc'),
+      path: `/${guild}/${extension}/bis`,
+      visible: hasPermission(Permission.VIEW_WISHLIST),
+      capability: 'bisLists' as const,
     },
     {
       icon: IconShield,
