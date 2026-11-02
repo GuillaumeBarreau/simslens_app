@@ -8,6 +8,7 @@ import * as controller from './event.controller';
 const router = express.Router();
 
 const checkPermission = require('../../middleware/checkPermission');
+const requireInternal = require('../../middleware/requireInternal');
 const requireUser = require('../../middleware/requireUser');
 const { Permission } = require('../../shared/config/permissions/permissions');
 const { validateBody, validateParams, validateQuery } = require('../../shared/middleware/validate');
@@ -115,6 +116,15 @@ router.get(
   checkPermission(Permission.MANAGE_SIGNUPS),
   validateParams(eventIdNamedParam),
   controller.getNoStatusTags,
+);
+
+// Réservée au bot (SIMS-026) : classes jouables du jeu de la guilde de
+// l'événement, pour le menu « classe » de l'invitation d'un invité.
+router.get(
+  '/:eventId/playable-classes',
+  requireInternal,
+  validateParams(eventIdNamedParam),
+  controller.playableClasses,
 );
 
 module.exports = router;

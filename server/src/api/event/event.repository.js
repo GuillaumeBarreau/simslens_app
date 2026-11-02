@@ -275,6 +275,19 @@ async function belongsToRealm(id, realmId) {
   return !!event;
 }
 
+/**
+ * Jeu du royaume de l'événement (SIMS-026).
+ * @param {number} id - Event ID
+ * @returns {Promise<'retail'|'forever'|null>} null si l'événement n'existe pas
+ */
+async function findGame(id) {
+  const event = await prisma.raid_events.findUnique({
+    where: { id },
+    select: { realm: { select: { game: true } } },
+  });
+  return event ? event.realm.game : null;
+}
+
 module.exports = {
   findAll,
   findById,
@@ -283,4 +296,5 @@ module.exports = {
   update,
   remove,
   belongsToRealm,
+  findGame,
 };
