@@ -40,6 +40,7 @@ model characters {
   key_runs                                              character_key_runs[]
   boss_note_assignments                                 event_boss_note_assignments[]
   offspecs                                              character_offspecs[]
+  attunements                                           character_attunements[]
 
   @@unique([name, realm], map: "unique_character_name_realm")
   @@index([archived], map: "idx_characters_archived")
@@ -1109,4 +1110,20 @@ model calendar_feed_tokens {
   lastUsedAt DateTime?
 
   @@map("calendar_feed_tokens")
+}
+
+// Avancement d'un personnage dans un attunement de WoW Forever (SIMS-029).
+// `attunement` est une clé du référentiel api/attunement/attunement.definitions.ts.
+model character_attunements {
+  id             Int        @id @default(autoincrement())
+  characterId    Int
+  attunement     String
+  faction        String? // "alliance" | "horde" : la chaîne de quêtes en dépend
+  completedSteps Int        @default(0)
+  completedAt    DateTime?
+  updatedAt      DateTime   @updatedAt
+  character      characters @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([characterId, attunement])
+  @@index([characterId])
 }
