@@ -1,5 +1,10 @@
 export * from './useAbsenceQueries';
 export * from './useAttendanceQueries';
+export {
+  useAttunementDefinitions,
+  useRealmAttunements,
+  useSaveAttunement,
+} from './useAttunementQueries';
 export { useBisList, useSaveBisSlot } from './useBisQueries';
 export { useBlizzardCharacters } from './useBlizzardQueries';
 export { useBossNotes, useSaveBossNote } from './useBossNoteQueries';
@@ -31,7 +36,13 @@ export {
 export { useAvailableItems } from './useItemQueries';
 export { useLoots } from './useLootQueries';
 export { useInstances, useRaids } from './useRaidQueries';
-export { useMyRealmPermissions, useRegions, useUserRealm } from './useRealmQueries';
+export {
+  useCreateRealm,
+  useFetchRealmList,
+  useMyRealmPermissions,
+  useRegions,
+  useUserRealm,
+} from './useRealmQueries';
 export * from './useRosterQueries';
 export * from './useSignupQueries';
 export * from './useTalentQueries';

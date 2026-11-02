@@ -62,6 +62,22 @@ export class InvalidSpecializationError extends CharacterError {
 }
 
 /**
+ * Thrown when a player adds their own character to a guild whose game does not
+ * allow it (SIMS-050): only WoW Forever guilds, which have no Blizzard API. A Retail
+ * guild goes through the Battle.net claim.
+ */
+export class GameCapabilityUnavailableError extends CharacterError {
+  constructor() {
+    super(
+      "L'ajout manuel d'un personnage est réservé aux guildes WoW Forever : sur Retail, réclamez votre personnage via Battle.net",
+      409,
+      'game_capability_unavailable',
+    );
+    this.name = 'GameCapabilityUnavailableError';
+  }
+}
+
+/**
  * Thrown when the main specialization is also listed among the off-specs
  * (SIMS-212): a spec is either main or secondary.
  */

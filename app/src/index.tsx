@@ -25,6 +25,7 @@ import DiscordOAuthCallbackPage from 'pages/DiscordOAuthCallbackPage';
 import DungeonComposerPage from 'pages/DungeonComposerPage/DungeonComposerPage';
 import DungeonsPage from 'pages/DungeonsPage/DungeonsPage';
 import EventRosterPage from 'pages/EventRosterPage/EventRosterPage';
+import AttunementsPage from 'pages/forever/AttunementsPage/AttunementsPage';
 import BisPage from 'pages/forever/BisPage/BisPage';
 import HistoryPage from 'pages/HistoryPage/HistoryPage';
 import ImportPage from 'pages/ImportPage/ImportPage';
@@ -322,6 +323,17 @@ const Root = () => {
                   <Header />
                   <AttendancePage />
                 </RequireNotGuest>
+              ),
+            },
+            {
+              path: 'attunements',
+              element: (
+                <RequireGameCapability capability="attunements">
+                  <RequireNotGuest>
+                    <Header />
+                    <AttunementsPage />
+                  </RequireNotGuest>
+                </RequireGameCapability>
               ),
             },
             {

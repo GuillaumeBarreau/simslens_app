@@ -258,20 +258,6 @@ async function listEvents(filters) {
 }
 
 /**
- * @param {number} id - Event ID
- * @param {number} realmId - Realm ID for access control
- * @returns {Promise<Object>} Event with roster
- */
-async function getEventDetails(id, realmId) {
-  const hasAccess = await eventRepository.belongsToRealm(id, realmId);
-  if (!hasAccess) {
-    throw new AppError('Event not found or access denied', 404);
-  }
-
-  return eventRepository.findWithRoster(id);
-}
-
-/**
  * Apply default PRESENT status to all active roster members for a newly created event.
  * Called when defaultPresent=true. Does NOT overwrite ABSENT signups already set by applyAbsencesToEvent.
  * @param {Object} event - The event to populate
@@ -604,7 +590,6 @@ async function getNoStatusDiscordTags(eventId) {
 
 module.exports = {
   listEvents,
-  getEventDetails,
   createEvent,
   updateEvent,
   cancelEvent,
