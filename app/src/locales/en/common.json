@@ -5,6 +5,11 @@
     "retail": "World of Warcraft",
     "forever": "WoW Forever"
   },
+  "game_switcher": {
+    "title": "Switch game",
+    "label": "SimsLens, current game: {{game}}. Switch game",
+    "home": "SimsLens, back to the guild home"
+  },
   "feature_unavailable": {
     "title": "This feature is not available.",
     "description": "It is still under development and will arrive soon."
