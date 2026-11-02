@@ -1,5 +1,6 @@
 import Joi from 'joi';
 
+import { GAME_IDS } from '../../shared/game/games';
 import { routeId } from '../../shared/validation/routeId';
 
 const positiveId = Joi.number().integer().positive();
@@ -35,6 +36,13 @@ export const discordTagParam = Joi.object({
 
 export const listCharactersQuery = Joi.object({
   realmId: positiveId.optional(),
+});
+
+/** Classes et spés d'un jeu (SIMS-027) ; sans `game`, toutes les lignes en base. */
+export const classSpecializationsQuery = Joi.object({
+  game: Joi.string()
+    .valid(...GAME_IDS)
+    .optional(),
 });
 
 export const rosterStatusQuery = Joi.object({
@@ -83,6 +91,19 @@ export const createCharacterSchema = Joi.object({
   discordTag: Joi.string().allow('', null).optional(),
   userId: Joi.string().optional(),
 }).oxor('spec', 'specializationId');
+
+/**
+ * Personnage WoW Forever saisi par son joueur (SIMS-050). `realmId` désigne la
+ * guilde, contrôlée par checkPermission. Joi ne contrôle que la forme : le format
+ * du nom, la classe et les spés Forever sont vérifiés par l'usecase.
+ */
+export const addOwnCharacterSchema = Joi.object({
+  realmId: positiveId.required(),
+  name: Joi.string().trim().min(2).max(40).required(),
+  class: characterClass.required(),
+  specializationId: positiveId.allow(null).optional(),
+  offSpecializationIds: Joi.array().items(positiveId).unique().max(4).optional(),
+});
 
 /**
  * Spé principale et off-specs (SIMS-212). La liste des off-specs est complète

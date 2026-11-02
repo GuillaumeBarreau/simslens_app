@@ -8,7 +8,40 @@
     "clear_upgrades": "Clear upgrades",
     "manage_admins": "Admins",
     "sync_battlenet": "Import roster via Armory",
-    "add_manual": "Add manually"
+    "add_manual": "Add manually",
+    "add_own": "Add my character"
+  },
+  "own_character": {
+    "title": "Add my character",
+    "description": "WoW Forever is not linked to Battle.net: enter your character and it joins the guild roster. An officer can correct or archive it.",
+    "submit": "Add my character",
+    "success": "{{name}} joined the roster",
+    "fields": {
+      "name": {
+        "label": "First and last name",
+        "description": "Letters, spaces, apostrophes and hyphens",
+        "placeholder": "e.g. Aerin Valcourt",
+        "error": "Letters, spaces, apostrophes and hyphens only, 2 to {{max}} characters"
+      },
+      "class": {
+        "label": "Class",
+        "placeholder": "Pick a class",
+        "error": "Pick a class"
+      },
+      "spec": {
+        "label": "Main specialization",
+        "placeholder": "Optional"
+      },
+      "offspecs": {
+        "label": "Off-specs",
+        "description": "Those you can also play in raids"
+      }
+    },
+    "errors": {
+      "name_taken": "This name is already taken on this server.",
+      "not_forever": "Manual entry is reserved for WoW Forever guilds: on Retail, sync your characters through Battle.net.",
+      "generic": "Could not add the character."
+    }
   },
   "stats": {
     "members": "Members",
