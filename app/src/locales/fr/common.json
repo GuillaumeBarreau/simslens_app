@@ -1,6 +1,10 @@
 {
   "loading": "Chargement...",
   "settings": "Réglages",
+  "games": {
+    "retail": "World of Warcraft",
+    "forever": "WoW Forever"
+  },
   "feature_unavailable": {
     "title": "Cette fonctionnalité n'est pas disponible.",
     "description": "Elle est encore en cours de développement et arrivera bientôt."
@@ -18,7 +22,9 @@
     "sync_characters": "Synchroniser personnages",
     "logout": "Déconnexion",
     "loot_equity": "Équité du loot",
-    "loot_equity_desc": "Loot reçu, gain simulé, BiS et présence (officiers)"
+    "loot_equity_desc": "Loot reçu, gain simulé, BiS et présence (officiers)",
+    "bis_lists": "Listes BiS",
+    "bis_lists_desc": "Meilleurs objets par spécialisation et emplacement"
   },
   "languages": {
     "fr": "Français",

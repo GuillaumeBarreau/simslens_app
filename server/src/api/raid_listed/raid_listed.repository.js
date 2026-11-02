@@ -31,17 +31,32 @@ async function listAllRaidDifficultyPairs(extension, season) {
  * @param {string} season - The season name (e.g., "season-03")
  * @returns {Promise<Array>} Array of bosses ordered by order
  */
-async function getBossesByRaid(extension, season) {
+/**
+ * @param {string} extension
+ * @param {string} season
+ * @param {string} [raidName] - restreint au raid : un palier Forever en compte plusieurs
+ */
+async function getBossesByRaid(extension, season, raidName) {
   return prisma.bosses.findMany({
     where: {
       extension,
       season,
+      ...(raidName ? { raidName } : {}),
     },
     orderBy: { order: 'asc' },
   });
 }
 
+/**
+ * @param {number} raidId
+ */
+async function findRaidName(raidId) {
+  const raid = await prisma.raids.findUnique({ where: { id: raidId }, select: { name: true } });
+  return raid?.name ?? null;
+}
+
 module.exports = {
   listAllRaidDifficultyPairs,
   getBossesByRaid,
+  findRaidName,
 };

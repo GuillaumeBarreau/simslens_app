@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import type { GameId } from 'config/games';
 import { blizzardService } from 'services/blizzard.service';
 import { type CharacterBossUpgrades, characterService } from 'services/character.service';
 import type {
@@ -108,11 +109,14 @@ export function useCharacterSpecs(characterId: number | null | undefined) {
   });
 }
 
-/** Classes and their specializations: reference data, read once (SIMS-212). */
-export function useClassSpecializations() {
+/**
+ * Classes and their specializations: reference data, read once (SIMS-212).
+ * With a game, only its classes and specs, each with its game label (SIMS-065).
+ */
+export function useClassSpecializations(game?: GameId) {
   return useQuery({
-    queryKey: ['classes', 'specializations'],
-    queryFn: () => characterService.getClassSpecializations(),
+    queryKey: game ? ['classes', 'specializations', game] : ['classes', 'specializations'],
+    queryFn: () => characterService.getClassSpecializations(game),
     staleTime: Infinity,
   });
 }

@@ -1,5 +1,6 @@
 export * from './useAbsenceQueries';
 export * from './useAttendanceQueries';
+export { useBisList, useSaveBisSlot } from './useBisQueries';
 export { useBlizzardCharacters } from './useBlizzardQueries';
 export { useBossNotes, useSaveBossNote } from './useBossNoteQueries';
 export { useBosses, useBossesByRaid, useInstanceBosses } from './useBossQueries';

@@ -13,6 +13,7 @@ import { Header } from 'components/design-system/organisms';
 import { FeatureGuard } from 'components/FeatureGuard';
 import RealmRedirect from 'components/RealmRedirect';
 import RequireExtension from 'components/RequireExtension';
+import RequireGameCapability from 'components/RequireGameCapability';
 import RequireRealm from 'components/RequireRealm';
 import { AuthProvider, DifficultyProvider, useAuth } from 'contexts';
 import { useRealmAccess } from 'contexts/RealmAccessContext';
@@ -24,6 +25,7 @@ import DiscordOAuthCallbackPage from 'pages/DiscordOAuthCallbackPage';
 import DungeonComposerPage from 'pages/DungeonComposerPage/DungeonComposerPage';
 import DungeonsPage from 'pages/DungeonsPage/DungeonsPage';
 import EventRosterPage from 'pages/EventRosterPage/EventRosterPage';
+import BisPage from 'pages/forever/BisPage/BisPage';
 import HistoryPage from 'pages/HistoryPage/HistoryPage';
 import ImportPage from 'pages/ImportPage/ImportPage';
 import JoinAsGuestPage from 'pages/JoinAsGuestPage/JoinAsGuestPage';
@@ -171,10 +173,12 @@ const Root = () => {
                 {
                   path: 'boss/:index',
                   element: (
-                    <RequireNotGuest>
-                      <Header />
-                      <LootsOptimiserPage />
-                    </RequireNotGuest>
+                    <RequireGameCapability capability="droptimizer">
+                      <RequireNotGuest>
+                        <Header />
+                        <LootsOptimiserPage />
+                      </RequireNotGuest>
+                    </RequireGameCapability>
                   ),
                 },
               ],
@@ -207,6 +211,17 @@ const Root = () => {
               ),
             },
             {
+              path: 'bis',
+              element: (
+                <RequireGameCapability capability="bisLists">
+                  <RequireNotGuest>
+                    <Header />
+                    <BisPage />
+                  </RequireNotGuest>
+                </RequireGameCapability>
+              ),
+            },
+            {
               path: 'tracking',
               element: (
                 <RequireNotGuest>
@@ -218,10 +233,12 @@ const Root = () => {
             {
               path: 'keys-history',
               element: (
-                <RequireNotGuest>
-                  <Header />
-                  <KeysHistoryPage />
-                </RequireNotGuest>
+                <RequireGameCapability capability="mythicPlus">
+                  <RequireNotGuest>
+                    <Header />
+                    <KeysHistoryPage />
+                  </RequireNotGuest>
+                </RequireGameCapability>
               ),
             },
             {
@@ -249,6 +266,7 @@ const Root = () => {
             },
             {
               path: 'dungeons',
+              element: <RequireGameCapability capability="mythicPlus" />,
               children: [
                 {
                   index: true,

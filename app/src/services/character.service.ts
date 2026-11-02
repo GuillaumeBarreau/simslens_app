@@ -1,4 +1,5 @@
 import { API_CHARACTER, API_VERSION } from '../config/apiConstants';
+import type { GameId } from '../config/games';
 import type {
   Character,
   CharacterSpecializations,
@@ -92,8 +93,11 @@ export const characterService = {
     return data;
   },
 
-  getClassSpecializations: async (): Promise<ClassSpecializations[]> => {
-    const { data } = await apiClient.get(`${API_VERSION}/character/classes/specializations`);
+  /** Avec un jeu : ses seules classes et spés, avec leur libellé propre (SIMS-027). */
+  getClassSpecializations: async (game?: GameId): Promise<ClassSpecializations[]> => {
+    const { data } = await apiClient.get(`${API_VERSION}/character/classes/specializations`, {
+      params: game ? { game } : undefined,
+    });
     return data;
   },
 

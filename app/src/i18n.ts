@@ -9,6 +9,7 @@ import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 
+import enBis from './locales/en/bis.json';
 import enCalendar from './locales/en/calendar.json';
 import enCommon from './locales/en/common.json';
 import enContact from './locales/en/contact.json';
@@ -29,6 +30,7 @@ import enTracking from './locales/en/tracking.json';
 import enValidationSettings from './locales/en/validationSettings.json';
 import enWishlist from './locales/en/wishlist.json';
 import enWishlistView from './locales/en/wishlistView.json';
+import frBis from './locales/fr/bis.json';
 import frCalendar from './locales/fr/calendar.json';
 import frCommon from './locales/fr/common.json';
 import frContact from './locales/fr/contact.json';
@@ -78,6 +80,7 @@ i18n
       'inviteSettings',
       'myActivity',
       'lootEquity',
+      'bis',
     ],
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
@@ -104,6 +107,7 @@ i18n
         inviteSettings: enInviteSettings,
         myActivity: enMyActivity,
         lootEquity: enLootEquity,
+        bis: enBis,
       },
       fr: {
         calendar: frCalendar,
@@ -126,6 +130,7 @@ i18n
         inviteSettings: frInviteSettings,
         myActivity: frMyActivity,
         lootEquity: frLootEquity,
+        bis: frBis,
       },
     },
   });
