@@ -51,6 +51,12 @@ export const realmService = {
     }
   },
 
+  /** Toutes les guildes de l'application, avec leur jeu (`GET /realms`). */
+  list: async (): Promise<Realm[]> => {
+    const { data } = await apiClient.get<Realm[]>(`${API_VERSION}/realms`);
+    return data;
+  },
+
   /** Régions et serveurs d'un jeu : Forever n'a que `forever-pve` et `forever-pvp`. */
   getRegions: async (game: GameId = 'retail'): Promise<RegionWithServers[]> => {
     const { data } = await apiClient.get<RegionWithServers[]>(`${API_VERSION}/regions`, {

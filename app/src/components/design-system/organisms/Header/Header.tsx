@@ -43,6 +43,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Permission } from 'types/permissions';
 
 import { ContactUs } from '../../../domain/contact/ContactUs/ContactUs';
+import { GameSwitcher } from '../../molecules/GameSwitcher';
 import classes from './Header.module.css';
 
 const FlagIcon = ({ lang }: { lang: string }) => {
@@ -271,7 +272,10 @@ export default function Header() {
           width: '100%',
         }}
       >
-        <Group gap={0}>{import.meta.env.DEV && showNav && <ExtensionSelector />}</Group>
+        <Group gap="xs">
+          <GameSwitcher />
+          {import.meta.env.DEV && showNav && <ExtensionSelector />}
+        </Group>
 
         <Group gap={0} justify="center">
           {showNav && (
