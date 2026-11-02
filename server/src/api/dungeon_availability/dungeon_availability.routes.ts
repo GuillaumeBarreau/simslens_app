@@ -1,5 +1,6 @@
 import express from 'express';
 
+import { requireGameCapability } from '../../middleware/requireGameCapability';
 import * as controller from './dungeon_availability.controller';
 
 const router = express.Router();
@@ -26,6 +27,7 @@ router.get(
 router.post(
   '/',
   checkPermission(Permission.SIGNUP_EVENT),
+  requireGameCapability('mythicPlus'),
   validateBody(createAvailabilitySchema),
   controller.create,
 );
@@ -33,6 +35,7 @@ router.post(
 router.put(
   '/:id',
   checkPermission(Permission.SIGNUP_EVENT),
+  requireGameCapability('mythicPlus'),
   validateParams(availabilityIdParam),
   validateQuery(realmScopeQuery),
   validateBody(updateAvailabilitySchema),
@@ -42,6 +45,7 @@ router.put(
 router.delete(
   '/:id',
   checkPermission(Permission.SIGNUP_EVENT),
+  requireGameCapability('mythicPlus'),
   validateParams(availabilityIdParam),
   validateQuery(realmScopeQuery),
   controller.remove,
