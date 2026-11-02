@@ -7,6 +7,7 @@ import { Permission } from '../../shared/config/permissions/permissions';
 import { validateBody, validateParams, validateQuery } from '../../shared/middleware/validate';
 import * as controller from './character.controller';
 import {
+  addOwnCharacterSchema,
   bulkGearQuery,
   characterIdParam,
   characterNameParam,
@@ -86,6 +87,16 @@ router.post(
   checkPermission(Permission.EDIT_ROSTER),
   validateBody(createCharacterSchema),
   controller.create,
+);
+
+// Un joueur ajoute son personnage WoW Forever, sans API Blizzard (SIMS-050) :
+// tout membre (ou invité) de la guilde `realmId` du corps. Déclarée avant /:id.
+router.post(
+  '/own',
+  requireUser,
+  checkPermission(Permission.SIGNUP_EVENT),
+  validateBody(addOwnCharacterSchema),
+  controller.addOwn,
 );
 
 router.post('/update-all', checkPermission(Permission.EDIT_ROSTER), controller.updateAll);

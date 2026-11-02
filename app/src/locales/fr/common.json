@@ -72,7 +72,10 @@
     "devourer": "Dévoreur",
     "devastation": "Dévastation",
     "preservation": "Préservation",
-    "augmentation": "Augmentation"
+    "augmentation": "Augmentation",
+    "combat": "Combat",
+    "feral_combat_cat": "Combat farouche (félin)",
+    "feral_combat_bear": "Combat farouche (ours)"
   },
   "cancel": "Annuler",
   "confirm": "Confirmer",

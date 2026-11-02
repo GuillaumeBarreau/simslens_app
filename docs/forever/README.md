@@ -184,19 +184,19 @@ Socle partagé, servi par le même code pour les deux jeux :
 
 ### 4.2 À adapter
 
-| Fonctionnalité  | Adaptation                                                                                                                                                                             |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Guilde          | Créée avec région + jeu de règles. Une guilde appartient à **un** jeu ; un même joueur peut avoir une guilde Retail et une guilde Forever.                                             |
-| Personnages     | Prénom + nom de famille, rattachés au jeu. Saisie manuelle ou import (addon / API quand elle existera). Double spé : deux spés par personnage, comme `character_offspecs` aujourd'hui. |
-| Inscriptions    | Choix du raid (10/20/40) et du groupe. Bot Discord : classes lues depuis l'API, plus codées en dur.                                                                                    |
-| Composition     | Gabarits 10 / 20 / 40, groupes de 5, contrôle des buffs de groupe et des classes requises, total de résistance du raid. Pas de matrice de gain.                                        |
-| Wishlist → BiS  | Paperdoll conservé. Chaque slot montre la cible BiS du palier courant, l'objet porté et les étapes intermédiaires (« pré-BiS » donjon, artisanat, raid à 10 puis à 20).                |
-| Mon activité    | « Ce que je peux gagner cette semaine » : objets BiS manquants par raid et par boss, attunements à faire, consommables à préparer.                                                     |
-| Suivi du roster | Colonnes : % BiS du palier, pièces de set, attunements, résistance au feu, métiers. Plus de clés ni de score.                                                                          |
-| Talents         | Arbre vanilla retravaillé, données statiques par classe (l'API Blizzard ne les fournira probablement pas). Export / import de build.                                                   |
-| Import du loot  | Parseurs multiples côté companion et import CSV générique ; champs normalisés (personnage, objet, boss, raid, réponse, date).                                                          |
-| Équité du loot  | Fenêtres glissantes (4 semaines, 12 semaines, depuis le début), pondération par taille de raid, distinction BiS / non-BiS.                                                             |
-| Enchantements   | Référentiel Forever ; contrôle par slot et par rôle.                                                                                                                                   |
+| Fonctionnalité  | Adaptation                                                                                                                                                                                                                               |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Guilde          | Créée avec région + jeu de règles. Une guilde appartient à **un** jeu ; un même joueur peut avoir une guilde Retail et une guilde Forever.                                                                                               |
+| Personnages     | Prénom + nom de famille, rattachés au jeu. Saisie manuelle par le joueur (`POST /1/character/own`, SIMS-050) ou import (addon / API quand elle existera). Double spé : deux spés par personnage, comme `character_offspecs` aujourd'hui. |
+| Inscriptions    | Choix du raid (10/20/40) et du groupe. Bot Discord : classes lues depuis l'API, plus codées en dur.                                                                                                                                      |
+| Composition     | Gabarits 10 / 20 / 40, groupes de 5, contrôle des buffs de groupe et des classes requises, total de résistance du raid. Pas de matrice de gain.                                                                                          |
+| Wishlist → BiS  | Paperdoll conservé. Chaque slot montre la cible BiS du palier courant, l'objet porté et les étapes intermédiaires (« pré-BiS » donjon, artisanat, raid à 10 puis à 20).                                                                  |
+| Mon activité    | « Ce que je peux gagner cette semaine » : objets BiS manquants par raid et par boss, attunements à faire, consommables à préparer.                                                                                                       |
+| Suivi du roster | Colonnes : % BiS du palier, pièces de set, attunements, résistance au feu, métiers. Plus de clés ni de score.                                                                                                                            |
+| Talents         | Arbre vanilla retravaillé, données statiques par classe (l'API Blizzard ne les fournira probablement pas). Export / import de build.                                                                                                     |
+| Import du loot  | Parseurs multiples côté companion et import CSV générique ; champs normalisés (personnage, objet, boss, raid, réponse, date).                                                                                                            |
+| Équité du loot  | Fenêtres glissantes (4 semaines, 12 semaines, depuis le début), pondération par taille de raid, distinction BiS / non-BiS.                                                                                                               |
+| Enchantements   | Référentiel Forever ; contrôle par slot et par rôle.                                                                                                                                                                                     |
 
 ### 4.3 À supprimer pour Forever
 

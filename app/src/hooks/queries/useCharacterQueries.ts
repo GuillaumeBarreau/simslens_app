@@ -1,7 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import type { GameId } from 'config/games';
 import { blizzardService } from 'services/blizzard.service';
 import { type CharacterBossUpgrades, characterService } from 'services/character.service';
 import type {
+  AddOwnCharacterPayload,
   CreateCharacterPayload,
   UpdateCharacterPayload,
   UpdateCharacterSpecializationsPayload,
@@ -108,12 +110,31 @@ export function useCharacterSpecs(characterId: number | null | undefined) {
   });
 }
 
-/** Classes and their specializations: reference data, read once (SIMS-212). */
-export function useClassSpecializations() {
+/**
+ * Classes and their specializations: reference data, read once (SIMS-212).
+ * With a game, only its classes and specs, with their `label` (SIMS-027).
+ */
+export function useClassSpecializations(game?: GameId) {
   return useQuery({
-    queryKey: ['classes', 'specializations'],
-    queryFn: () => characterService.getClassSpecializations(),
+    queryKey: ['classes', 'specializations', game ?? 'all'],
+    queryFn: () => characterService.getClassSpecializations(game),
     staleTime: Infinity,
+  });
+}
+
+/**
+ * A player adds their own WoW Forever character (SIMS-050): it joins the roster
+ * and the player's linked characters.
+ */
+export function useAddOwnCharacter() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (payload: AddOwnCharacterPayload) => characterService.addOwn(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['characters'] });
+      queryClient.invalidateQueries({ queryKey: ['roster'] });
+    },
   });
 }
 

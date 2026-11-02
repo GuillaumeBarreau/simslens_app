@@ -1,5 +1,7 @@
 import { API_CHARACTER, API_VERSION } from '../config/apiConstants';
+import type { GameId } from '../config/games';
 import type {
+  AddOwnCharacterPayload,
   Character,
   CharacterSpecializations,
   CharacterSpecOption,
@@ -92,8 +94,17 @@ export const characterService = {
     return data;
   },
 
-  getClassSpecializations: async (): Promise<ClassSpecializations[]> => {
-    const { data } = await apiClient.get(`${API_VERSION}/character/classes/specializations`);
+  /** Avec `game`, seules les classes et spés de ce jeu, avec leur `label` (SIMS-027). */
+  getClassSpecializations: async (game?: GameId): Promise<ClassSpecializations[]> => {
+    const { data } = await apiClient.get(`${API_VERSION}/character/classes/specializations`, {
+      ...(game ? { params: { game } } : {}),
+    });
+    return data;
+  },
+
+  /** Le joueur ajoute son personnage dans une guilde WoW Forever (SIMS-050). */
+  addOwn: async (payload: AddOwnCharacterPayload): Promise<Character> => {
+    const { data } = await apiClient.post(`${API_VERSION}/character/own`, payload);
     return data;
   },
 

@@ -72,7 +72,10 @@
     "devourer": "Devourer",
     "devastation": "Devastation",
     "preservation": "Preservation",
-    "augmentation": "Augmentation"
+    "augmentation": "Augmentation",
+    "combat": "Combat",
+    "feral_combat_cat": "Feral Combat (cat)",
+    "feral_combat_bear": "Feral Combat (bear)"
   },
   "cancel": "Cancel",
   "confirm": "Confirm",

@@ -2,6 +2,9 @@
   "subtitle": "Mon activité",
   "no_character_title": "Aucun personnage sélectionné",
   "no_character": "Sélectionnez un personnage pour voir votre activité.",
+  "no_character_forever_title": "Vous n'avez pas encore de personnage dans cette guilde",
+  "no_character_forever": "WoW Forever n'est pas relié à Battle.net : ajoutez votre personnage pour vous inscrire aux raids.",
+  "add_own_character": "Ajouter mon personnage",
   "no_status": "Sans statut",
   "header": {
     "ilvl": "ilvl {{ilvl}}",

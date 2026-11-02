@@ -25,6 +25,16 @@ export interface UpdateCharacterInput {
   status?: string;
 }
 
+/** POST /1/character/own : un joueur ajoute son personnage WoW Forever (SIMS-050). */
+export interface AddOwnCharacterInput {
+  /** Prénom et nom de famille. */
+  name: string;
+  /** Classe normalisée ou libellé (« Warrior »), parmi les classes Forever. */
+  class: string;
+  specializationId?: number | null;
+  offSpecializationIds?: number[];
+}
+
 /** PUT /1/character/:id/specializations (SIMS-212). */
 export interface UpdateCharacterSpecializationsInput {
   /** Nouvelle spé principale ; absente, la spé principale ne change pas. */

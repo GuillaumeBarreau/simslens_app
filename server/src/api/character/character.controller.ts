@@ -6,6 +6,7 @@ import type { GameId } from '../../shared/game/games';
 import { validated } from '../../shared/middleware/validated';
 import { roleHasPermission } from '../../shared/realmRolePermissions';
 import type {
+  AddOwnCharacterInput,
   CreateCharacterInput,
   UpdateCharacterInput,
   UpdateCharacterSpecializationsInput,
@@ -77,6 +78,16 @@ export async function getByDiscordTag(req: Request, res: Response) {
 export async function create(req: Request, res: Response) {
   const input = validated<CreateCharacterInput>(req, 'body');
   res.status(201).json(await usecases.createCharacter(input));
+}
+
+/**
+ * Un joueur ajoute son personnage WoW Forever (SIMS-050) : rattaché à la guilde
+ * vérifiée par checkPermission et à l'utilisateur de la session (requireUser).
+ */
+export async function addOwn(req: Request, res: Response) {
+  const input = validated<AddOwnCharacterInput>(req, 'body');
+  const realmId = checkedRealmId(req);
+  res.status(201).json(await usecases.addOwnCharacter(realmId, String(req.user?.id), input));
 }
 
 /**
