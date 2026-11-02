@@ -53,6 +53,12 @@ Fichiers communautaires à la racine, en anglais :
 | [`ADMIN_GUIDE.md`](ADMIN_GUIDE.md)       | Rôles et matrice des permissions                                           |
 | [`TECHNICAL_DEBT.md`](TECHNICAL_DEBT.md) | Problèmes connus laissés en l'état                                         |
 
+## Projets
+
+| Document                                 | Contenu                                                                      |
+| ---------------------------------------- | ---------------------------------------------------------------------------- |
+| [`forever/README.md`](forever/README.md) | WoW Forever : audit, proposition, architecture multi-jeu et feuille de route |
+
 ---
 
 ## 🤖 Documents générés
