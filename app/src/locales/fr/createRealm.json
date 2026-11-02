@@ -1,6 +1,10 @@
 {
   "title": "Créer un Nouveau Royaume",
   "subtitle": "Configurez votre nouvel environnement de guilde pour commencer le suivi du butin.",
+  "forever": {
+    "title": "Créer une guilde Forever",
+    "subtitle": "Choisissez la région et le serveur unifié PvE ou PvP de votre guilde WoW Forever."
+  },
   "form": {
     "guild_name": "Nom de la Guilde",
     "guild_name_placeholder": "Ex: Method",
@@ -8,18 +12,30 @@
     "region_placeholder": "Choisir région",
     "server": "Serveur",
     "server_placeholder": "Choisir serveur",
+    "mode": "Serveur",
+    "mode_description": "WoW Forever n'a qu'un serveur PvE et un serveur PvP par région.",
+    "mode_pick_region": "Choisissez d'abord une région.",
+    "mode_pve": "PvE",
+    "mode_pvp": "PvP",
     "create_btn": "Créer le Royaume"
   },
   "validation": {
     "guild_name_short": "Le nom de la guilde doit comporter au moins 2 lettres",
     "guild_name_long": "Le nom de la guilde ne peut pas dépasser 50 caractères",
+    "mode_required": "Choisissez PvE ou PvP",
     "error_title": "Erreur de Validation",
     "error_message": "Veuillez vérifier les champs du formulaire"
+  },
+  "errors": {
+    "forever_already_owned": "Vous possédez déjà une guilde Forever : un compte ne peut en créer qu'une.",
+    "realm_already_exists": "Cette guilde existe déjà sur ce serveur."
   },
   "notifications": {
     "success_title": "Succès",
     "success_message": "Guilde créée avec succès ! Veuillez maintenant lier vos personnages.",
+    "forever_success_message": "Guilde Forever créée avec succès !",
     "error_title": "Erreur",
+    "error_message": "La création de la guilde a échoué.",
     "session_missing": "Session utilisateur manquante"
   }
 }

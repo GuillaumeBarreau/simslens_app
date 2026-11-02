@@ -13,6 +13,7 @@ import { Header } from 'components/design-system/organisms';
 import { FeatureGuard } from 'components/FeatureGuard';
 import RealmRedirect from 'components/RealmRedirect';
 import RequireExtension from 'components/RequireExtension';
+import RequireGameCapability from 'components/RequireGameCapability';
 import RequireRealm from 'components/RequireRealm';
 import { AuthProvider, DifficultyProvider, useAuth } from 'contexts';
 import { useRealmAccess } from 'contexts/RealmAccessContext';
@@ -171,10 +172,12 @@ const Root = () => {
                 {
                   path: 'boss/:index',
                   element: (
-                    <RequireNotGuest>
-                      <Header />
-                      <LootsOptimiserPage />
-                    </RequireNotGuest>
+                    <RequireGameCapability capability="droptimizer">
+                      <RequireNotGuest>
+                        <Header />
+                        <LootsOptimiserPage />
+                      </RequireNotGuest>
+                    </RequireGameCapability>
                   ),
                 },
               ],
@@ -218,10 +221,12 @@ const Root = () => {
             {
               path: 'keys-history',
               element: (
-                <RequireNotGuest>
-                  <Header />
-                  <KeysHistoryPage />
-                </RequireNotGuest>
+                <RequireGameCapability capability="mythicPlus">
+                  <RequireNotGuest>
+                    <Header />
+                    <KeysHistoryPage />
+                  </RequireNotGuest>
+                </RequireGameCapability>
               ),
             },
             {
@@ -249,6 +254,7 @@ const Root = () => {
             },
             {
               path: 'dungeons',
+              element: <RequireGameCapability capability="mythicPlus" />,
               children: [
                 {
                   index: true,

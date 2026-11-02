@@ -105,6 +105,16 @@ Molecules are simple compositions of atoms that form functional UI units.
 | `Skeleton`       | Loading skeleton       | Multiple skeleton elements |
 | `WorkInProgress` | WIP indicator          | Icon + Text                |
 | `SEO`            | SEO meta tags          | Multiple meta tags         |
+| `GameSwitcher`   | Logo + game selector   | Logo SVG + Menu            |
+
+### Logo et sélecteur de jeu (`GameSwitcher`, SIMS-023)
+
+En haut à gauche de `Header` : logo SimsLens (SVG inline) et jeu courant. Avec le flag
+`forever`, un `Menu` « Retail / Forever » mène à la dernière guilde visitée dans le jeu
+choisi (mémorisée par jeu dans `localStorage`, clé `simslens_last_guild_<jeu>`), sinon à
+une guilde de l'utilisateur dans ce jeu, sinon à `/create-realm?game=<jeu>`. Sans le
+flag, le logo seul ramène à l'accueil de la guilde courante. Accent : `brand` (Retail),
+`orange` (Forever). Import direct : `components/design-system/molecules/GameSwitcher`.
 
 ### Usage
 
