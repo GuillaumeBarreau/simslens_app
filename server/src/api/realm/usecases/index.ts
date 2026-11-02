@@ -1,4 +1,5 @@
 export { getUserPermissions } from './getUserPermissions';
+export { listMyRealms } from './listMyRealms';
 export {
   addRealmOwner,
   getRealmOwners,

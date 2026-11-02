@@ -126,6 +126,27 @@ async function findRealmsByOwnerId(ownerId) {
   return realmOwners.map((ro) => ro.realm);
 }
 
+/**
+ * Lignes `realm_owners` de l'utilisateur, avec leur guilde et leur rôle.
+ * @param {string} userId
+ */
+async function findOwnershipsByUserId(userId) {
+  return prisma.realm_owners.findMany({
+    where: { ownerId: String(userId) },
+    select: { role: true, realm: true },
+  });
+}
+
+/**
+ * Guildes où l'utilisateur a un personnage actif, sans doublon.
+ * @param {string} userId
+ */
+async function findRealmsByMemberUserId(userId) {
+  return prisma.realms.findMany({
+    where: { characters: { some: { userId: String(userId), archived: 0 } } },
+  });
+}
+
 async function isRealmOwner(realmId, ownerId) {
   const owner = await prisma.realm_owners.findUnique({
     where: {
@@ -283,6 +304,8 @@ module.exports = {
   findRealmsByOwnerId,
   countOwnedRealmsByGame,
   findRealmByMemberUserId,
+  findOwnershipsByUserId,
+  findRealmsByMemberUserId,
   isRealmOwner,
   addRealmOwner,
   getRealmOwners,

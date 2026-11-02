@@ -42,3 +42,13 @@ export interface UserPermissions {
   role: string | null;
   permissions: string[];
 }
+
+/** Guilde de l'utilisateur, pour le sélecteur de jeu (SIMS-062). */
+export interface MyRealm {
+  id: number;
+  guildName: string;
+  server: string;
+  region: string;
+  game: Game;
+  role: 'owner' | 'admin' | 'moderator' | 'member' | 'guest';
+}
