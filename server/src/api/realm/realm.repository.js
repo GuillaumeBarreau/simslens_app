@@ -106,6 +106,17 @@ async function findRealmByOwnerId(ownerId) {
   };
 }
 
+/**
+ * Guildes d'un jeu dont l'utilisateur est propriétaire (rôle owner).
+ * @param {string} ownerId
+ * @param {'retail' | 'forever'} game
+ */
+async function countOwnedRealmsByGame(ownerId, game) {
+  return await prisma.realm_owners.count({
+    where: { ownerId: String(ownerId), role: 'owner', realm: { game } },
+  });
+}
+
 async function findRealmsByOwnerId(ownerId) {
   const realmOwners = await prisma.realm_owners.findMany({
     where: { ownerId: String(ownerId) },
@@ -270,6 +281,7 @@ module.exports = {
   findRealmByDetails,
   findRealmByOwnerId,
   findRealmsByOwnerId,
+  countOwnedRealmsByGame,
   findRealmByMemberUserId,
   isRealmOwner,
   addRealmOwner,

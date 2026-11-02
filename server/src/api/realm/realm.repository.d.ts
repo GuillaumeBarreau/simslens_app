@@ -20,6 +20,7 @@ declare const realmRepository: {
   addCharacterToRealm(characterId: number, realmId: number): Promise<number>;
   findRealmByDetails(name: string, server: string, region: string): Promise<RealmEntity | null>;
   findRealmByOwnerId(ownerId: string): Promise<RealmEntity | null>;
+  countOwnedRealmsByGame(ownerId: string, game: Game): Promise<number>;
   findRealmsByOwnerId(ownerId: string): Promise<RealmEntity[]>;
   findRealmByMemberUserId(userId: string): Promise<RealmEntity | null>;
   isRealmOwner(realmId: number, ownerId: string): Promise<boolean>;
