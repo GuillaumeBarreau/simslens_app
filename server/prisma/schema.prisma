@@ -40,6 +40,7 @@ model characters {
   key_runs                                              character_key_runs[]
   boss_note_assignments                                 event_boss_note_assignments[]
   offspecs                                              character_offspecs[]
+  attunements                                           character_attunements[]
 
   @@unique([name, realm], map: "unique_character_name_realm")
   @@index([archived], map: "idx_characters_archived")
@@ -77,6 +78,8 @@ model realms {
   tier                  Int      @default(1)
   // Fuseau IANA des messages Discord (rappels, annonces) ; l'app affiche l'heure du navigateur
   timezone              String   @default("Europe/Paris")
+  // Version du jeu de la guilde (SIMS-019), déduite du serveur à la création
+  game                  Game     @default(retail)
 
   // Relations
   characters             characters[]
@@ -539,11 +542,20 @@ model servers {
   locale     String
   category   String
   region     String
+  // Forever n'a qu'un serveur unifié PvE ou PvP par région (SIMS-019)
+  game       Game     @default(retail)
   region_rel regions  @relation(fields: [region], references: [name], onDelete: Cascade)
   realms     realms[]
 
   @@unique([slug, region])
   @@index([region])
+  @@index([game])
+}
+
+// Version du jeu : Retail ou WoW Forever (SIMS-019)
+enum Game {
+  retail
+  forever
 }
 
 model character_wishlists {
@@ -1098,4 +1110,20 @@ model calendar_feed_tokens {
   lastUsedAt DateTime?
 
   @@map("calendar_feed_tokens")
+}
+
+// Avancement d'un personnage dans un attunement de WoW Forever (SIMS-029).
+// `attunement` est une clé du référentiel api/attunement/attunement.definitions.ts.
+model character_attunements {
+  id             Int        @id @default(autoincrement())
+  characterId    Int
+  attunement     String
+  faction        String? // "alliance" | "horde" : la chaîne de quêtes en dépend
+  completedSteps Int        @default(0)
+  completedAt    DateTime?
+  updatedAt      DateTime   @updatedAt
+  character      characters @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([characterId, attunement])
+  @@index([characterId])
 }
