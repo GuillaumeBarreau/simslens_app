@@ -397,7 +397,7 @@ dans un `CatalogScope` côté serveur.
 - Nouveaux modules au **pattern cible** (`usecases/` + `.ts`) : `bis_list`,
   `loot_priority`, `soft_reserve`, `attunement`, `raid_week_plan`, `profession`.
   Aucun ajout dans les `.service.js` historiques (notamment `composition.service.js`).
-- Référentiels Forever versionnés dans `server/scripts/data/forever/` (classes, spés,
+- Référentiels Forever versionnés dans `server/src/scripts/data/forever/` (classes, spés,
   raids, boss, loot tables, BiS, enchantements, consommables), chargés par les seeds
   existants. Back-office pour les corrections rapides.
 - `sync_loot` : accepte un champ `source` (`rclootcouncil`, `wlc`, `alc`, `slc`, `csv`) et
