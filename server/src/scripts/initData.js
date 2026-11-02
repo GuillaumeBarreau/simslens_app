@@ -27,14 +27,24 @@ const SEED_STEPS = [
 ];
 
 /**
- * @param {{ scriptsPath: string, exec?: Function, log?: Console }} options
+ * Commande qui lance chaque script. Depuis `src/`, les seeds chargent des modules
+ * TypeScript (`shared/game`, SIMS-020) : Node seul ne résout pas un `require` sans
+ * extension vers un `.ts`, d'où le chargeur tsx (dépendance de dev). `dist/` est
+ * déjà compilé.
+ */
+function seedRunner(isDist) {
+  return isDist ? 'node' : 'node --import tsx';
+}
+
+/**
+ * @param {{ scriptsPath: string, runner?: string, exec?: Function, log?: Console }} options
  * @returns {{ ok: true } | { ok: false, step: string, error: string }}
  */
-function runSeeds({ scriptsPath, exec = execSync, log = console }) {
+function runSeeds({ scriptsPath, runner = 'node', exec = execSync, log = console }) {
   for (const [label, script] of SEED_STEPS) {
     log.log(`Ajout des ${label}...`);
     try {
-      exec(`node ${scriptsPath}/${script}`, { stdio: 'inherit' });
+      exec(`${runner} ${scriptsPath}/${script}`, { stdio: 'inherit' });
     } catch (err) {
       return { ok: false, step: label, error: err && err.message ? err.message : String(err) };
     }
@@ -49,7 +59,7 @@ function main() {
   console.log(`Scripts Path: ${scriptsPath}`);
   console.log('Initialisation des données...');
 
-  const result = runSeeds({ scriptsPath });
+  const result = runSeeds({ scriptsPath, runner: seedRunner(isDist) });
   if (result.ok) {
     console.log('Initialisation terminée.');
     return;
@@ -60,4 +70,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { SEED_STEPS, runSeeds };
+module.exports = { SEED_STEPS, runSeeds, seedRunner };
