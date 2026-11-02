@@ -30,7 +30,7 @@ export {
 export { useAvailableItems } from './useItemQueries';
 export { useLoots } from './useLootQueries';
 export { useInstances, useRaids } from './useRaidQueries';
-export { useMyRealmPermissions, useRegions, useUserRealm } from './useRealmQueries';
+export { useCreateRealm, useMyRealmPermissions, useRegions, useUserRealm } from './useRealmQueries';
 export * from './useRosterQueries';
 export * from './useSignupQueries';
 export * from './useTalentQueries';
