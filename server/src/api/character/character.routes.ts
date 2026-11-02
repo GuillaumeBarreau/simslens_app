@@ -11,6 +11,7 @@ import {
   characterIdParam,
   characterNameParam,
   checkMountParam,
+  classSpecializationsQuery,
   createCharacterSchema,
   discordTagParam,
   idParam,
@@ -26,8 +27,13 @@ const router = express.Router();
 router.get('/', validateQuery(listCharactersQuery), controller.list);
 
 // Données de référence (SIMS-212). Déclarée avant /:id/specializations, que
-// « classes » ne doit pas atteindre.
-router.get('/classes/specializations', requireUser, controller.listClassSpecializations);
+// « classes » ne doit pas atteindre. `?game=forever` : classes et spés de ce jeu (SIMS-027).
+router.get(
+  '/classes/specializations',
+  requireUser,
+  validateQuery(classSpecializationsQuery),
+  controller.listClassSpecializations,
+);
 
 // Spé principale et off-specs (SIMS-212) : le propriétaire lit et modifie les
 // siennes (allowSelfEdit), un officier celles du roster.
