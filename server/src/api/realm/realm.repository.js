@@ -1,12 +1,13 @@
 const { prisma } = require('../../data');
 
-async function createRealm({ name, server, region, ownerId, createdBy }) {
+async function createRealm({ name, server, region, ownerId, createdBy, game }) {
   const realm = await prisma.realms.create({
     data: {
       guildName: name,
       server,
       region: region || 'EU',
       createdBy: createdBy || 0,
+      game: game || 'retail',
     },
   });
 

@@ -16,8 +16,17 @@ vi.mock('../realm.repository', () => ({
     createRealm: (...a: unknown[]) => createRealmRow(...a),
   },
 }));
+const validateGuildExists = vi.fn();
+const validateUserInGuild = vi.fn();
 vi.mock('../../blizzard/blizzard.service', () => ({
-  default: { validateGuildExists: vi.fn(), validateUserInGuild: vi.fn() },
+  default: {
+    validateGuildExists: (...a: unknown[]) => validateGuildExists(...a),
+    validateUserInGuild: (...a: unknown[]) => validateUserInGuild(...a),
+  },
+}));
+const findServerBySlug = vi.fn();
+vi.mock('../../region/region.repository', () => ({
+  default: { findServerBySlug: (...a: unknown[]) => findServerBySlug(...a) },
 }));
 vi.mock('../../invite/invite.repository', () => ({
   default: { getGuestMembershipsByUserId: vi.fn() },
@@ -29,6 +38,9 @@ beforeEach(() => {
   findRealmByOwnerId.mockReset().mockResolvedValue({ id: 3 });
   findRealmByDetails.mockReset().mockResolvedValue(null);
   createRealmRow.mockReset().mockResolvedValue(3);
+  findServerBySlug.mockReset().mockResolvedValue({ slug: 'hyjal', region: 'EU', game: 'retail' });
+  validateGuildExists.mockReset().mockResolvedValue(undefined);
+  validateUserInGuild.mockReset().mockResolvedValue(true);
 });
 
 describe('addCharacter', () => {
@@ -73,6 +85,63 @@ describe('createRealm', () => {
     await expect(
       createRealm({ name: 'Nocturne', server: 'Hyjal', region: 'EU', ownerId: 'me' }),
     ).rejects.toMatchObject({ status: 401, message: 'Battle.net authentication required' });
+    expect(createRealmRow).not.toHaveBeenCalled();
+  });
+
+  it('creates a Retail realm after checking the guild with Blizzard', async () => {
+    await expect(
+      createRealm({
+        name: 'Nocturne',
+        server: 'hyjal',
+        region: 'EU',
+        ownerId: 'me',
+        userToken: 't',
+      }),
+    ).resolves.toEqual({ id: 3, name: 'Nocturne', server: 'hyjal', region: 'EU', game: 'retail' });
+    expect(validateGuildExists).toHaveBeenCalled();
+    expect(createRealmRow).toHaveBeenCalledWith(expect.objectContaining({ game: 'retail' }));
+  });
+
+  it('creates a Forever realm without Blizzard checks (no Forever API yet)', async () => {
+    findServerBySlug.mockResolvedValueOnce({ slug: 'forever-pvp', region: 'EU', game: 'forever' });
+    await expect(
+      createRealm({
+        name: 'Nocturne',
+        server: 'forever-pvp',
+        region: 'EU',
+        ownerId: 'me',
+        userToken: 't',
+      }),
+    ).resolves.toMatchObject({ game: 'forever' });
+    expect(validateGuildExists).not.toHaveBeenCalled();
+    expect(validateUserInGuild).not.toHaveBeenCalled();
+    expect(createRealmRow).toHaveBeenCalledWith(expect.objectContaining({ game: 'forever' }));
+  });
+
+  it('treats an unknown server as Retail', async () => {
+    findServerBySlug.mockResolvedValueOnce(null);
+    await createRealm({
+      name: 'Nocturne',
+      server: 'nope',
+      region: 'EU',
+      ownerId: 'me',
+      userToken: 't',
+    });
+    expect(validateGuildExists).toHaveBeenCalled();
+  });
+
+  it('refuses a Forever realm that already exists', async () => {
+    findServerBySlug.mockResolvedValueOnce({ slug: 'forever-pve', region: 'EU', game: 'forever' });
+    findRealmByDetails.mockResolvedValueOnce({ id: 9 });
+    await expect(
+      createRealm({
+        name: 'Nocturne',
+        server: 'forever-pve',
+        region: 'EU',
+        ownerId: 'me',
+        userToken: 't',
+      }),
+    ).rejects.toMatchObject({ status: 409 });
     expect(createRealmRow).not.toHaveBeenCalled();
   });
 });

@@ -2,6 +2,7 @@ import createError from 'http-errors';
 
 import blizzardService from '../../blizzard/blizzard.service';
 import inviteRepo from '../../invite/invite.repository';
+import regionRepo from '../../region/region.repository';
 import { assertRealmExists } from '../realm.access';
 import { CharacterNotAttachableError } from '../realm.errors';
 import realmRepo from '../realm.repository';
@@ -10,6 +11,10 @@ import type { CreateRealmInput, CreateRealmResult, RealmEntity } from '../realm.
 /**
  * Crée un royaume après avoir vérifié auprès de Blizzard que la guilde
  * existe et que le demandeur en fait partie.
+ *
+ * Le jeu du royaume est celui du serveur choisi (SIMS-019). WoW Forever n'a pas
+ * encore d'API Blizzard : pour un serveur Forever, ces deux contrôles sont
+ * sautés et l'unicité région + serveur + nom reste la seule garantie.
  */
 export async function createRealm({
   name,
@@ -26,17 +31,21 @@ export async function createRealm({
     throw createError(401, 'Battle.net authentication required');
   }
 
-  await assertGuildExists(userToken, server, name, region);
-  await assertUserBelongsToGuild(userToken, server, name, region);
+  const game = (await regionRepo.findServerBySlug(server, region))?.game ?? 'retail';
+
+  if (game === 'retail') {
+    await assertGuildExists(userToken, server, name, region);
+    await assertUserBelongsToGuild(userToken, server, name, region);
+  }
 
   const existing = await realmRepo.findRealmByDetails(name, server, region);
   if (existing) {
     throw createError(409, 'Realm already exists');
   }
 
-  const id = await realmRepo.createRealm({ name, server, region, ownerId });
+  const id = await realmRepo.createRealm({ name, server, region, ownerId, game });
 
-  return { id, name, server, region };
+  return { id, name, server, region, game };
 }
 
 async function assertGuildExists(

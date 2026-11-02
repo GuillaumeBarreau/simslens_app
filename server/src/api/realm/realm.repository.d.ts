@@ -1,3 +1,4 @@
+import type { Game } from '../region/region.types';
 import type { RealmEntity, RealmOwner, RealmSettings } from './realm.types';
 
 /**
@@ -10,6 +11,7 @@ declare const realmRepository: {
     server: string;
     region: string;
     ownerId: string;
+    game?: Game;
   }): Promise<number>;
   listAllRealms(): Promise<RealmEntity[]>;
   getRealmById(id: number): Promise<RealmEntity | null>;
