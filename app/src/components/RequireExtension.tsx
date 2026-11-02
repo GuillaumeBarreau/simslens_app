@@ -1,5 +1,5 @@
 import { Button, Center, Image, Stack, Text, Title } from '@mantine/core';
-import { VALID_EXTENSIONS } from 'config/seasonConfig';
+import { isValidExtension } from 'config/seasonConfig';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet, useParams } from 'react-router-dom';
@@ -8,7 +8,7 @@ const RequireExtension: React.FC = () => {
   const { extension } = useParams();
   const { t } = useTranslation('common');
 
-  if (!extension || !VALID_EXTENSIONS.includes(extension)) {
+  if (!isValidExtension(extension)) {
     return (
       <Center h="100vh" w="100%">
         <Stack align="center" gap="md">
