@@ -1,5 +1,10 @@
 export * from './useAbsenceQueries';
 export * from './useAttendanceQueries';
+export {
+  useAttunementDefinitions,
+  useRealmAttunements,
+  useSaveAttunement,
+} from './useAttunementQueries';
 export { useBlizzardCharacters } from './useBlizzardQueries';
 export { useBossNotes, useSaveBossNote } from './useBossNoteQueries';
 export { useBosses, useBossesByRaid, useInstanceBosses } from './useBossQueries';
