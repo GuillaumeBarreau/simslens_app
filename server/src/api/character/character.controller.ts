@@ -2,6 +2,7 @@ import type { Request, Response } from 'express';
 
 import { Permission } from '../../shared/config/permissions/permissions';
 import { AppError } from '../../shared/errors/AppError';
+import type { GameId } from '../../shared/game/games';
 import { validated } from '../../shared/middleware/validated';
 import { roleHasPermission } from '../../shared/realmRolePermissions';
 import type {
@@ -20,6 +21,7 @@ import * as usecases from './usecases';
 type CharacterIdParams = { characterId: number };
 type IdParams = { id: number };
 type RosterQuery = { includePending?: string; realmId?: number };
+type ClassSpecializationsQuery = { game?: GameId };
 
 /**
  * Royaume vérifié par checkPermission, monté sur la route. Son absence est une
@@ -90,8 +92,9 @@ export async function update(req: Request, res: Response) {
   res.json(await usecases.updateCharacter(id, realmId, input, { selfEdit }));
 }
 
-export async function listClassSpecializations(_req: Request, res: Response) {
-  res.json(await usecases.listClassSpecializations());
+export async function listClassSpecializations(req: Request, res: Response) {
+  const { game } = validated<ClassSpecializationsQuery>(req, 'query');
+  res.json(await usecases.listClassSpecializations(game));
 }
 
 export async function getSpecializations(req: Request, res: Response) {
