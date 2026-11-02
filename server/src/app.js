@@ -34,6 +34,7 @@ const { routes: dungeonGroupRoutes } = require('./api/dungeon_group');
 const { routes: rosterRoutes } = require('./api/roster');
 const { routes: bossNoteRoutes } = require('./api/boss_note');
 const { routes: attunementRoutes } = require('./api/attunement');
+const { routes: bisListRoutes } = require('./api/bis_list');
 const { routes: compositionRoutes } = require('./api/composition');
 const { routes: enchantmentsRoutes } = require('./api/enchantments');
 const { routes: itemRoutes } = require('./api/item');
@@ -180,6 +181,7 @@ app.use('/1/attendance', attendanceRoutes);
 app.use('/1/auth', deviceAuthRoutes);
 app.use('/1/sync', syncLootRoutes);
 app.use('/1/attunements', attunementRoutes);
+app.use('/1/bis', bisListRoutes);
 
 scheduleCharacterUpdates();
 scheduleRaidReminders();

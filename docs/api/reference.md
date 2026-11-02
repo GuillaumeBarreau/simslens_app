@@ -375,3 +375,10 @@
 | `GET`   | `/1/attunements/definitions`                         | —             |
 | `GET`   | `/1/attunements`                                     | `VIEW_ROSTER` |
 | `PUT`   | `/1/attunements/characters/:characterId/:attunement` | `EDIT_ROSTER` |
+
+### `/1/bis` — module `bis_list`
+
+| Méthode | Chemin               | Permission      |
+| :------ | :------------------- | :-------------- |
+| `GET`   | `/1/bis`             | `VIEW_WISHLIST` |
+| `PUT`   | `/1/bis/slots/:slot` | `MANAGE_RAID`   |
