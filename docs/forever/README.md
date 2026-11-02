@@ -53,7 +53,8 @@
   jeu demandé est donc à créer, mais on peut partir de ce composant.
 - **Le namespace Blizzard est construit à la main dans au moins cinq fichiers**
   (`profile-${region}`, `static-${region}`). Il faut le centraliser avant d'ajouter un
-  second jeu.
+  second jeu. _Fait (SIMS-020) : `blizzardNamespace()` dans `server/src/shared/game/`,
+  à côté du registre des jeux `games.ts`._
 - **Les référentiels de jeu sont globaux et propres à Retail** : `constants/classes.ts`
   (front), `shared/constants/wow.js` et `roles.js` (serveur), liste des classes du bot
   Discord, `DifficultyContext` (`normal | heroic | mythic`, `mythic` par défaut), table

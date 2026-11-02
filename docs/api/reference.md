@@ -367,3 +367,11 @@
 | Méthode | Chemin         | Permission |
 | :------ | :------------- | :--------- |
 | `POST`  | `/1/sync/loot` | —          |
+
+### `/1/attunements` — module `attunement`
+
+| Méthode | Chemin                                               | Permission    |
+| :------ | :--------------------------------------------------- | :------------ |
+| `GET`   | `/1/attunements/definitions`                         | —             |
+| `GET`   | `/1/attunements`                                     | `VIEW_ROSTER` |
+| `PUT`   | `/1/attunements/characters/:characterId/:attunement` | `EDIT_ROSTER` |
