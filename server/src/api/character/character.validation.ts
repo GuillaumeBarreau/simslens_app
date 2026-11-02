@@ -1,5 +1,6 @@
 import Joi from 'joi';
 
+import { GAME_IDS } from '../../shared/game/games';
 import { routeId } from '../../shared/validation/routeId';
 
 const positiveId = Joi.number().integer().positive();
@@ -35,6 +36,13 @@ export const discordTagParam = Joi.object({
 
 export const listCharactersQuery = Joi.object({
   realmId: positiveId.optional(),
+});
+
+/** Classes et spés d'un jeu (SIMS-027) ; sans `game`, toutes les lignes en base. */
+export const classSpecializationsQuery = Joi.object({
+  game: Joi.string()
+    .valid(...GAME_IDS)
+    .optional(),
 });
 
 export const rosterStatusQuery = Joi.object({
