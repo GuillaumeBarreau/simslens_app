@@ -176,5 +176,22 @@
     "shaman": "Fureur du ciel (Maîtrise)",
     "monk": "Toucher mystique (+3% Dégâts Physiques subis)",
     "demon_hunter": "Marque du chaos (+3% Dégâts Magiques subis)"
+  },
+  "raidGroups": {
+    "title": "Raid à {{size}} joueurs",
+    "count": "{{count}} / {{size}}",
+    "boss": "Boss affiché",
+    "group": "Groupe {{number}}",
+    "empty": "— place libre",
+    "guest": "Invité",
+    "over": "En trop",
+    "overTitle": "Taille du raid dépassée ({{size}} joueurs maximum)",
+    "overBoss": "{{boss}} : {{count}} / {{size}}",
+    "roles": {
+      "TANK": "Tanks",
+      "HEALER": "Soins",
+      "MELEE": "Mêlée",
+      "RANGED": "Distance"
+    }
   }
 }

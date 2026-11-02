@@ -6,6 +6,7 @@ export { EventRosterStats } from './EventRosterStats/EventRosterStats';
 export { default as EventRosterSkeleton } from './EventRosterSkeleton/EventRosterSkeleton';
 export { EventRosterBanner } from './EventRosterBanner/EventRosterBanner';
 export { default as BossRosterColumn } from './BossRosterColumn/BossRosterColumn';
+export { RaidGroupsPanel } from './RaidGroups';
 export { RosterMatrixTable } from './RosterMatrixTable';
 export { RosterVacancyAlert, vacancyKey } from './RosterVacancyAlert/RosterVacancyAlert';
 export * from './RosterSummaryView';

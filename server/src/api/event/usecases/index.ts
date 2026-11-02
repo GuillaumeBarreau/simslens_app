@@ -8,5 +8,6 @@ export { createEventSeries } from './createEventSeries';
 export { deleteEventSeries } from './deleteEventSeries';
 export { extendEventSeries } from './extendEventSeries';
 export { generateSeriesOccurrences } from './generateSeriesOccurrences';
+export { eventRaidSize, getEventDetails } from './getEventDetails';
 export { listEventPlayableClasses } from './listEventPlayableClasses';
 export { updateEventSeries } from './updateEventSeries';

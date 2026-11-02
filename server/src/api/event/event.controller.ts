@@ -46,7 +46,7 @@ export async function list(req: Request, res: Response) {
 export async function getById(req: Request, res: Response) {
   const { id } = validated<EventParams>(req, 'params');
   const { realmId } = validated<RealmScope>(req, 'query');
-  res.json({ event: await eventService.getEventDetails(id, realmId) });
+  res.json({ event: await usecases.getEventDetails(id, realmId) });
 }
 
 export async function create(req: Request, res: Response) {
