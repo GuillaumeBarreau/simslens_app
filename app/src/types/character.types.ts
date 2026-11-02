@@ -7,6 +7,8 @@ export interface Specialization {
   /** "tank" | "healer" | "dps" */
   role: string;
   icon?: string | null;
+  /** Libellé propre au jeu demandé (`?game=`, SIMS-027) : « Combat » pour Outlaw. */
+  label?: string;
 }
 
 export interface WowClass {
@@ -278,6 +280,17 @@ export interface CreateCharacterPayload {
   realmId?: number;
   lastModified?: number;
   spec?: string;
+}
+
+/** POST /1/character/own : le joueur ajoute son personnage WoW Forever (SIMS-050). */
+export interface AddOwnCharacterPayload {
+  realmId: number;
+  /** Prénom et nom de famille. */
+  name: string;
+  /** Classe normalisée (`warrior`). */
+  class: string;
+  specializationId?: number;
+  offSpecializationIds?: number[];
 }
 
 export interface UpdateCharacterPayload {

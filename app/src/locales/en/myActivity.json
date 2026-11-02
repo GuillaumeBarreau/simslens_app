@@ -2,6 +2,9 @@
   "subtitle": "My Activity",
   "no_character_title": "No character selected",
   "no_character": "Select a character to view your activity.",
+  "no_character_forever_title": "You have no character in this guild yet",
+  "no_character_forever": "WoW Forever is not linked to Battle.net: add your character to sign up for raids.",
+  "add_own_character": "Add my character",
   "no_status": "No status",
   "header": {
     "ilvl": "ilvl {{ilvl}}",

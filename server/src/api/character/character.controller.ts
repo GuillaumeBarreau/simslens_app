@@ -2,9 +2,11 @@ import type { Request, Response } from 'express';
 
 import { Permission } from '../../shared/config/permissions/permissions';
 import { AppError } from '../../shared/errors/AppError';
+import type { GameId } from '../../shared/game/games';
 import { validated } from '../../shared/middleware/validated';
 import { roleHasPermission } from '../../shared/realmRolePermissions';
 import type {
+  AddOwnCharacterInput,
   CreateCharacterInput,
   UpdateCharacterInput,
   UpdateCharacterSpecializationsInput,
@@ -20,6 +22,7 @@ import * as usecases from './usecases';
 type CharacterIdParams = { characterId: number };
 type IdParams = { id: number };
 type RosterQuery = { includePending?: string; realmId?: number };
+type ClassSpecializationsQuery = { game?: GameId };
 
 /**
  * Royaume vérifié par checkPermission, monté sur la route. Son absence est une
@@ -78,6 +81,16 @@ export async function create(req: Request, res: Response) {
 }
 
 /**
+ * Un joueur ajoute son personnage WoW Forever (SIMS-050) : rattaché à la guilde
+ * vérifiée par checkPermission et à l'utilisateur de la session (requireUser).
+ */
+export async function addOwn(req: Request, res: Response) {
+  const input = validated<AddOwnCharacterInput>(req, 'body');
+  const realmId = checkedRealmId(req);
+  res.status(201).json(await usecases.addOwnCharacter(realmId, String(req.user?.id), input));
+}
+
+/**
  * La route accepte aussi le propriétaire du personnage (allowSelfEdit) : sans
  * EDIT_ROSTER par son rôle, il est en self-edit et certains champs lui sont
  * fermés (SIMS-196).
@@ -90,8 +103,9 @@ export async function update(req: Request, res: Response) {
   res.json(await usecases.updateCharacter(id, realmId, input, { selfEdit }));
 }
 
-export async function listClassSpecializations(_req: Request, res: Response) {
-  res.json(await usecases.listClassSpecializations());
+export async function listClassSpecializations(req: Request, res: Response) {
+  const { game } = validated<ClassSpecializationsQuery>(req, 'query');
+  res.json(await usecases.listClassSpecializations(game));
 }
 
 export async function getSpecializations(req: Request, res: Response) {

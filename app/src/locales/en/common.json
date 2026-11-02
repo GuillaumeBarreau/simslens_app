@@ -1,6 +1,10 @@
 {
   "loading": "Loading...",
   "settings": "Settings",
+  "games": {
+    "retail": "World of Warcraft",
+    "forever": "WoW Forever"
+  },
   "feature_unavailable": {
     "title": "This feature is not available.",
     "description": "It is still under development and will arrive soon."
@@ -68,7 +72,10 @@
     "devourer": "Devourer",
     "devastation": "Devastation",
     "preservation": "Preservation",
-    "augmentation": "Augmentation"
+    "augmentation": "Augmentation",
+    "combat": "Combat",
+    "feral_combat_cat": "Feral Combat (cat)",
+    "feral_combat_bear": "Feral Combat (bear)"
   },
   "cancel": "Cancel",
   "confirm": "Confirm",

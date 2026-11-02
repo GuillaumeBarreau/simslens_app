@@ -8,7 +8,7 @@
  *
  * Idempotent : relançable à chaque patch WoW pour rafraîchir les arbres.
  *
- * Usage : node src/scripts/seed/seedTalentTrees.js [region] [locale]
+ * Usage : node --import tsx src/scripts/seed/seedTalentTrees.js [region] [locale]
  */
 const path = require('path');
 const { PrismaClient } = require('@prisma/client');

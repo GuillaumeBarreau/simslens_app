@@ -1,3 +1,4 @@
+export { addOwnCharacter } from './addOwnCharacter';
 export { archiveCharacter } from './archiveCharacter';
 export {
   getCharacterSpecializations,

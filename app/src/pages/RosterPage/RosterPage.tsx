@@ -1,11 +1,14 @@
 import { Alert, Box, Button, Container, Group, Loader, Modal, Stack } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { IconCheck, IconX } from '@tabler/icons-react';
 import { useQueryClient } from '@tanstack/react-query';
 import { Text } from 'components/design-system/atoms';
 import { TableSkeleton } from 'components/design-system/molecules/Skeleton';
 import { RealmAdminDrawer } from 'components/domain/admin/RealmAdminDrawer';
+import { AddOwnCharacterModal } from 'components/domain/roster/AddOwnCharacterModal';
 import { RosterDrawer } from 'components/domain/roster/RosterDrawer';
+import { isFeatureEnabled } from 'config/featureFlags';
 import { useDifficulty, useRealmAccess } from 'contexts';
 import { useAuth } from 'contexts/AuthContext';
 import {
@@ -65,7 +68,7 @@ const RosterPage: React.FC = () => {
     characterToDelete,
   } = state;
 
-  const { user } = useAuth();
+  const { user, refetchUser } = useAuth();
   const { canEditAll, canEditSelf } = useRealmAccess();
 
   const {
@@ -74,6 +77,9 @@ const RosterPage: React.FC = () => {
     isLoading: realmLoading,
   } = useUserRealm(user?.id ? String(user.id) : null);
   const realmId = realmData?.id;
+  // Guilde WoW Forever : tout membre peut ajouter son personnage (SIMS-050).
+  const canAddOwnCharacter = isFeatureEnabled('forever') && realmData?.game === 'forever';
+  const [ownCharacterOpened, ownCharacterModal] = useDisclosure(false);
 
   const {
     data: activeCharacters = EMPTY,
@@ -331,6 +337,7 @@ const RosterPage: React.FC = () => {
           onImportSuccess={handleImportSuccess}
           onManageAdmins={() => dispatch({ type: 'SET_ADMIN_DRAWER_OPENED', payload: true })}
           onClearUpgrades={() => dispatch({ type: 'SET_CLEAR_MODAL_OPENED', payload: true })}
+          onAddOwn={canAddOwnCharacter ? ownCharacterModal.open : undefined}
         />
 
         <RosterSummary
@@ -426,6 +433,15 @@ const RosterPage: React.FC = () => {
           closeDrawer();
         }}
       />
+
+      {canAddOwnCharacter && !!realmId && (
+        <AddOwnCharacterModal
+          opened={ownCharacterOpened}
+          onClose={ownCharacterModal.close}
+          realmId={realmId}
+          onAdded={() => void refetchUser()}
+        />
+      )}
 
       <RealmAdminDrawer
         opened={adminDrawerOpened}

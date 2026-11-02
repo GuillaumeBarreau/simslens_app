@@ -41,6 +41,7 @@
 | `GET`    | `/1/character/:name`                           | —                 |
 | `GET`    | `/1/character/discord/:tag`                    | —                 |
 | `POST`   | `/1/character`                                 | `EDIT_ROSTER`     |
+| `POST`   | `/1/character/own`                             | `SIGNUP_EVENT`    |
 | `POST`   | `/1/character/update-all`                      | `EDIT_ROSTER`     |
 | `POST`   | `/1/character/:characterId/sync-blizzard`      | `SYNC_CHARACTERS` |
 | `POST`   | `/1/character/:id`                             | `EDIT_ROSTER`     |
