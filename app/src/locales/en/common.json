@@ -1,6 +1,10 @@
 {
   "loading": "Loading...",
   "settings": "Settings",
+  "games": {
+    "retail": "World of Warcraft",
+    "forever": "WoW Forever"
+  },
   "feature_unavailable": {
     "title": "This feature is not available.",
     "description": "It is still under development and will arrive soon."

@@ -38,6 +38,9 @@ export const FEATURES_IN_DEVELOPMENT = [
   // gains bruts jamais comparés aux DPS dans l'optimiseur (SIMS-202).
   'hps-sims',
   'talent-tree',
+  // Espace WoW Forever : extension « Forever » dans les routes et registre des jeux
+  // (SIMS-021), masqué jusqu'à sa sortie.
+  'forever',
 ] as const satisfies readonly string[];
 
 export type FeatureName = string;

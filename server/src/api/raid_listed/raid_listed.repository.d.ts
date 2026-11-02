@@ -4,7 +4,8 @@
  */
 declare const raidRepository: {
   listAllRaidDifficultyPairs(extension?: string, season?: string): Promise<unknown[]>;
-  getBossesByRaid(extension: string, season: string): Promise<unknown[]>;
+  getBossesByRaid(extension: string, season: string, raidName?: string): Promise<unknown[]>;
+  findRaidName(raidId: number): Promise<string | null>;
 };
 
 export default raidRepository;
