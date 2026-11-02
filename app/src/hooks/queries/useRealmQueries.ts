@@ -1,6 +1,10 @@
-import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
-import { apiClient } from 'services/api.client';
-import { realmService } from 'services/realm.service';
+import { useMutation, useQuery, useQueryClient, type UseQueryOptions } from '@tanstack/react-query';
+import type { GameId } from 'config/games';
+import {
+  type CreateRealmPayload,
+  realmService,
+  type RegionWithServers,
+} from 'services/realm.service';
 import type { Realm } from 'types/realm';
 
 export function useUserRealm(
@@ -28,12 +32,19 @@ export function useMyRealmPermissions(realmId: number | undefined, enabled = tru
   });
 }
 
-export function useRegions() {
-  return useQuery({
-    queryKey: ['regions'],
-    queryFn: async () => {
-      const { data } = await apiClient.get('/1/regions');
-      return data;
-    },
+/** Régions et serveurs d'un jeu (Retail par défaut). */
+export function useRegions(game: GameId = 'retail') {
+  return useQuery<RegionWithServers[]>({
+    queryKey: ['regions', game],
+    queryFn: () => realmService.getRegions(game),
+  });
+}
+
+/** Crée une guilde ; le royaume du compte (`['realm']`) est rechargé ensuite. */
+export function useCreateRealm() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: CreateRealmPayload) => realmService.create(payload),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['realm'] }),
   });
 }
