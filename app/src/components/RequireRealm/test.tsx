@@ -5,7 +5,7 @@ import { AxiosError, type AxiosResponse, type InternalAxiosRequestConfig } from 
 import { createMemoryRouter, RouterProvider, useLocation } from 'react-router-dom';
 import { apiClient } from 'services/api.client';
 
-import { isSameGuild, pathInGuild } from './realmPath';
+import { extensionForGame, isSameGuild, pathInGuild, realmHomePath } from './realmPath';
 import RequireRealm from './RequireRealm';
 
 const auth = vi.hoisted(() => ({
@@ -17,9 +17,15 @@ const auth = vi.hoisted(() => ({
 
 vi.mock('contexts', () => ({ useAuth: () => auth }));
 
+const season = vi.hoisted(() => ({ foreverEnabled: true }));
+
 vi.mock('config/seasonConfig', () => ({
   WOW_EXTENSION: 'Midnight',
   VALID_EXTENSIONS: ['The-War-Within', 'Midnight'],
+  isValidExtension: (extension?: string | null) =>
+    extension === 'The-War-Within' ||
+    extension === 'Midnight' ||
+    (extension === 'Forever' && season.foreverEnabled),
 }));
 
 vi.mock('react-i18next', () => ({
@@ -41,6 +47,7 @@ const REALM = {
 const PERMS = { role: 'member', permissions: {} };
 
 beforeEach(() => {
+  season.foreverEnabled = true;
   auth.user = { id: 42 };
   auth.logout.mockReset();
   auth.refetchUser.mockReset().mockResolvedValue(undefined);
@@ -228,5 +235,40 @@ describe('realmPath', () => {
     expect(pathInGuild({ pathname: '/Autre' }, 'Ma Guilde')).toBe(
       '/Ma%20Guilde/Midnight/my-activity',
     );
+  });
+
+  it('accepte l’extension Forever et renvoie une guilde Forever vers son accueil Forever', () => {
+    expect(pathInGuild({ pathname: '/Autre/Forever/roster' }, 'Ma Guilde', 'forever')).toBe(
+      '/Ma%20Guilde/Forever/roster',
+    );
+    expect(pathInGuild({ pathname: '/Autre/Inconnue' }, 'Ma Guilde', 'forever')).toBe(
+      '/Ma%20Guilde/Forever/my-activity',
+    );
+  });
+
+  it('refuse l’extension Forever quand le flag est coupé', () => {
+    season.foreverEnabled = false;
+    expect(pathInGuild({ pathname: '/Autre/Forever/roster' }, 'Ma Guilde')).toBe(
+      '/Ma%20Guilde/Midnight/my-activity',
+    );
+  });
+
+  it('choisit l’extension selon le jeu de la guilde', () => {
+    expect(extensionForGame('forever')).toBe('Forever');
+    expect(extensionForGame('retail')).toBe('Midnight');
+    expect(extensionForGame(undefined)).toBe('Midnight');
+    expect(realmHomePath('Les Éclaireurs', 'forever')).toBe(
+      '/Les%20%C3%89claireurs/Forever/my-activity',
+    );
+    season.foreverEnabled = false;
+    expect(extensionForGame('forever')).toBe('Midnight');
+  });
+});
+
+describe('<RequireRealm /> guilde Forever', () => {
+  it('redirige une autre guilde vers l’accueil Forever de la sienne', async () => {
+    routes['/1/realms/check'] = { status: 200, data: { ...REALM, game: 'forever' } };
+    renderAt('/Autre%20Guilde/Inconnue/roster');
+    expect(await page()).toHaveTextContent('guild /Les Éclaireurs/Forever/my-activity');
   });
 });

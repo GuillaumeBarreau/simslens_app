@@ -90,7 +90,7 @@ const RequireRealm = () => {
     return <FullPageLoader />;
   }
 
-  const goHome = () => navigate(realm ? realmHomePath(realm.guildName) : '/redirect');
+  const goHome = () => navigate(realm ? realmHomePath(realm.guildName, realm.game) : '/redirect');
 
   const loadError = (onRetry: () => unknown) => (
     <RealmErrorLayout>
@@ -128,7 +128,7 @@ const RequireRealm = () => {
   }
 
   if (!isOwnGuild) {
-    return <Navigate to={pathInGuild(location, realm.guildName)} replace />;
+    return <Navigate to={pathInGuild(location, realm.guildName, realm.game)} replace />;
   }
 
   if (permQuery.isError || !permQuery.data) {

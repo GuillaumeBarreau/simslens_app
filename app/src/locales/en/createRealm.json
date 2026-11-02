@@ -1,6 +1,10 @@
 {
   "title": "Create a New Realm",
   "subtitle": "Configure your new guild environment to start tracking loot.",
+  "forever": {
+    "title": "Create a Forever guild",
+    "subtitle": "Pick the region and the unified PvE or PvP server of your WoW Forever guild."
+  },
   "form": {
     "guild_name": "Guild Name",
     "guild_name_placeholder": "Ex: Method",
@@ -8,18 +12,30 @@
     "region_placeholder": "Pick region",
     "server": "Server",
     "server_placeholder": "Pick server",
+    "mode": "Server",
+    "mode_description": "WoW Forever has a single PvE server and a single PvP server per region.",
+    "mode_pick_region": "Pick a region first.",
+    "mode_pve": "PvE",
+    "mode_pvp": "PvP",
     "create_btn": "Create Realm"
   },
   "validation": {
     "guild_name_short": "Guild name must have at least 2 letters",
     "guild_name_long": "Guild name cannot exceed 50 characters",
+    "mode_required": "Pick PvE or PvP",
     "error_title": "Validation Error",
     "error_message": "Please check the form fields"
+  },
+  "errors": {
+    "forever_already_owned": "You already own a Forever guild: an account can only create one.",
+    "realm_already_exists": "This guild already exists on this server."
   },
   "notifications": {
     "success_title": "Success",
     "success_message": "Guild created successfully! Please link your characters now.",
+    "forever_success_message": "Forever guild created successfully!",
     "error_title": "Error",
+    "error_message": "Failed to create the guild.",
     "session_missing": "User session missing"
   }
 }
