@@ -17,6 +17,8 @@ import { useUserRealm } from 'hooks/queries';
 import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
 
+import { extensionForGame } from '../RequireRealm/realmPath';
+
 const RealmRedirect: React.FC = () => {
   const { user, isLoading: isAuthLoading, lastVisitedRealm } = useAuth();
 
@@ -54,12 +56,15 @@ const RealmRedirect: React.FC = () => {
 
   if (realm) {
     const hasLinkedCharacters = user.linkedCharacters && user.linkedCharacters.length > 0;
+    const isForever = realm.game === 'forever';
 
-    if (!hasLinkedCharacters) {
+    // Les personnages Forever ne viennent pas de Battle.net : pas de détour par /sync.
+    if (!hasLinkedCharacters && !isForever) {
       return <Navigate to="/sync" replace />;
     }
 
-    return <Navigate to={`/${realm.guildName}/${currentExtension}/my-activity`} replace />;
+    const extension = isForever ? extensionForGame(realm.game) : currentExtension;
+    return <Navigate to={`/${realm.guildName}/${extension}/my-activity`} replace />;
   }
 
   if (user.linkedCharacters && user.linkedCharacters.length > 0) {

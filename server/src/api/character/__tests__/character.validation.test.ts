@@ -1,4 +1,5 @@
 import {
+  addOwnCharacterSchema,
   bulkGearQuery,
   characterIdParam,
   checkMountParam,
@@ -102,5 +103,24 @@ describe('discordTagParam', () => {
 
   it('refuses a blank tag', () => {
     expect(validate(discordTagParam, { tag: '  ' }).error).toBeDefined();
+  });
+});
+
+describe('addOwnCharacterSchema', () => {
+  const own = { realmId: 7, name: ' Jean-Luc Picard ', class: 'rogue' };
+
+  it('requires the guild and trims the name', () => {
+    expect(validate(addOwnCharacterSchema, own).value).toEqual({
+      ...own,
+      name: 'Jean-Luc Picard',
+    });
+    expect(validate(addOwnCharacterSchema, { ...own, realmId: undefined }).error).toBeDefined();
+  });
+
+  it('refuses a name too long and duplicate off-specs', () => {
+    expect(validate(addOwnCharacterSchema, { ...own, name: 'a'.repeat(41) }).error).toBeDefined();
+    expect(
+      validate(addOwnCharacterSchema, { ...own, offSpecializationIds: [3, 3] }).error,
+    ).toBeDefined();
   });
 });

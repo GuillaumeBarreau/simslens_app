@@ -31,6 +31,8 @@ interface RosterHeaderProps {
   onImportSuccess: () => void;
   onManageAdmins: () => void;
   onClearUpgrades: () => void;
+  /** Guilde WoW Forever : le joueur ajoute son personnage (SIMS-050). */
+  onAddOwn?: () => void;
 }
 
 const capitalize = (value: string) => value.charAt(0).toUpperCase() + value.slice(1);
@@ -51,6 +53,7 @@ export function RosterHeader({
   onImportSuccess,
   onManageAdmins,
   onClearUpgrades,
+  onAddOwn,
 }: RosterHeaderProps) {
   const { t } = useTranslation('roster');
   const counts = [
@@ -73,49 +76,61 @@ export function RosterHeader({
         </Stack>
 
         {realmData && (
-          <Can I={Permission.EDIT_ROSTER}>
-            <Group gap="xs">
-              <Menu position="bottom-end" withinPortal shadow="md" width={260}>
-                <Menu.Target>
-                  <Button
-                    variant="default"
-                    rightSection={<IconChevronDown size={14} />}
-                    loading={isFetchingRoster || isClearing}
-                  >
-                    {t('page.header.more')}
-                  </Button>
-                </Menu.Target>
-                <Menu.Dropdown>
-                  <Menu.Item
-                    leftSection={<IconCloudDownload size={16} stroke={1.5} />}
-                    onClick={onImport}
-                  >
-                    {t('actions.sync_battlenet')}
-                  </Menu.Item>
-                  {canManageAdmins && (
-                    <Menu.Item
-                      leftSection={<IconShield size={16} stroke={1.5} />}
-                      onClick={onManageAdmins}
-                    >
-                      {t('actions.manage_admins')}
-                    </Menu.Item>
-                  )}
-                  <Menu.Divider />
-                  <Menu.Label>{t('page.header.danger_zone')}</Menu.Label>
-                  <Menu.Item
-                    color="red"
-                    leftSection={<IconTrash size={16} stroke={1.5} />}
-                    onClick={onClearUpgrades}
-                  >
-                    {t('actions.clear_upgrades')}
-                  </Menu.Item>
-                </Menu.Dropdown>
-              </Menu>
-              <Button leftSection={<IconUserPlus size={16} />} color="brand.5" onClick={onAdd}>
-                {t('actions.add_manual')}
+          <Group gap="xs">
+            {onAddOwn && (
+              <Button
+                leftSection={<IconUserPlus size={16} />}
+                variant="light"
+                color="brand.5"
+                onClick={onAddOwn}
+              >
+                {t('actions.add_own')}
               </Button>
-            </Group>
-          </Can>
+            )}
+            <Can I={Permission.EDIT_ROSTER}>
+              <Group gap="xs">
+                <Menu position="bottom-end" withinPortal shadow="md" width={260}>
+                  <Menu.Target>
+                    <Button
+                      variant="default"
+                      rightSection={<IconChevronDown size={14} />}
+                      loading={isFetchingRoster || isClearing}
+                    >
+                      {t('page.header.more')}
+                    </Button>
+                  </Menu.Target>
+                  <Menu.Dropdown>
+                    <Menu.Item
+                      leftSection={<IconCloudDownload size={16} stroke={1.5} />}
+                      onClick={onImport}
+                    >
+                      {t('actions.sync_battlenet')}
+                    </Menu.Item>
+                    {canManageAdmins && (
+                      <Menu.Item
+                        leftSection={<IconShield size={16} stroke={1.5} />}
+                        onClick={onManageAdmins}
+                      >
+                        {t('actions.manage_admins')}
+                      </Menu.Item>
+                    )}
+                    <Menu.Divider />
+                    <Menu.Label>{t('page.header.danger_zone')}</Menu.Label>
+                    <Menu.Item
+                      color="red"
+                      leftSection={<IconTrash size={16} stroke={1.5} />}
+                      onClick={onClearUpgrades}
+                    >
+                      {t('actions.clear_upgrades')}
+                    </Menu.Item>
+                  </Menu.Dropdown>
+                </Menu>
+                <Button leftSection={<IconUserPlus size={16} />} color="brand.5" onClick={onAdd}>
+                  {t('actions.add_manual')}
+                </Button>
+              </Group>
+            </Can>
+          </Group>
         )}
       </Group>
 
