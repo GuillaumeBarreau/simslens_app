@@ -6,6 +6,7 @@ import { TrackingTable } from './TrackingTable';
 import type { Character, TrackingTableRowProps } from './TrackingTableRow';
 
 const flags = vi.hoisted(() => ({ simFreshness: false }));
+const currentGame = vi.hoisted(() => ({ id: 'retail' as 'retail' | 'forever' }));
 const rowProps = vi.hoisted(() => [] as TrackingTableRowProps[]);
 
 vi.mock('react-i18next', () => ({
@@ -15,6 +16,17 @@ vi.mock('react-i18next', () => ({
 vi.mock('config/featureFlags', () => ({
   isFeatureEnabled: (feature: string) => (feature === 'sim-freshness' ? flags.simFreshness : true),
 }));
+
+vi.mock('hooks/useGame', async () => {
+  const { gameHasCapability } = await import('config/games');
+  return {
+    useGame: () => ({
+      game: currentGame.id,
+      has: (capability: Parameters<typeof gameHasCapability>[1]) =>
+        gameHasCapability(currentGame.id, capability),
+    }),
+  };
+});
 
 // La ligne réelle tire le bouton Droptimizer, l'équipement et le routeur : on ne
 // vérifie ici que ce que le tableau lui transmet.
@@ -61,6 +73,7 @@ const renderTable = (view: TrackingView = 'overview') =>
 beforeEach(() => {
   rowProps.length = 0;
   flags.simFreshness = false;
+  currentGame.id = 'retail';
 });
 
 describe('<TrackingTable /> — fraîcheur des sims (SIMS-199)', () => {
@@ -88,5 +101,39 @@ describe('<TrackingTable /> — fraîcheur des sims (SIMS-199)', () => {
   it('transmet le seuil de la guilde à chaque ligne', () => {
     renderTable();
     expect(rowProps.at(-1)).toMatchObject({ staleAfterDays: 12, character });
+  });
+});
+
+describe('<TrackingTable /> — colonnes par jeu (SIMS-022)', () => {
+  it('affiche clés, score et état des sims pour Retail', () => {
+    flags.simFreshness = true;
+    renderTable();
+    expect(screen.getByText(/table.key/)).toBeInTheDocument();
+    expect(screen.getByText(/table.score/)).toBeInTheDocument();
+    expect(screen.getByText(/table.modes/)).toBeInTheDocument();
+    expect(screen.getByText('sim_freshness.column')).toBeInTheDocument();
+    expect(rowProps.at(-1)).toMatchObject({
+      showMythicPlus: true,
+      showSims: true,
+      showSimDate: true,
+      columnCount: 8,
+    });
+  });
+
+  it('masque clés, score, état et date des sims pour Forever', () => {
+    flags.simFreshness = true;
+    currentGame.id = 'forever';
+    renderTable();
+    expect(screen.queryByText(/table.key/)).toBeNull();
+    expect(screen.queryByText(/table.score/)).toBeNull();
+    expect(screen.queryByText(/table.modes/)).toBeNull();
+    expect(screen.queryByText('sim_freshness.column')).toBeNull();
+    expect(screen.getByText(/table.name/)).toBeInTheDocument();
+    expect(rowProps.at(-1)).toMatchObject({
+      showMythicPlus: false,
+      showSims: false,
+      showSimDate: false,
+      columnCount: 4,
+    });
   });
 });

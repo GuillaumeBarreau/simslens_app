@@ -2,7 +2,7 @@
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 
-const { SEED_STEPS, runSeeds } = require('../initData');
+const { SEED_STEPS, runSeeds, seedRunner } = require('../initData');
 
 const silent = { log: vi.fn() } as unknown as Console;
 
@@ -24,6 +24,23 @@ describe('runSeeds', () => {
     const result = runSeeds({ scriptsPath: './src/scripts', exec, log: silent });
     expect(result).toEqual({ ok: false, step: 'bonus data', error: 'seedBonuses.js a échoué' });
     expect(exec).toHaveBeenCalledTimes(2);
+  });
+
+  it('lance chaque script avec la commande donnée', () => {
+    const exec = vi.fn();
+    runSeeds({ scriptsPath: './src/scripts', runner: 'node --import tsx', exec, log: silent });
+    expect(exec.mock.calls[0][0]).toBe('node --import tsx ./src/scripts/seed/seedItems.js');
+  });
+});
+
+describe('seedRunner', () => {
+  // Les seeds de src/ chargent des modules .ts (SIMS-020) : il faut le chargeur tsx.
+  it('charge tsx depuis src/', () => {
+    expect(seedRunner(false)).toBe('node --import tsx');
+  });
+
+  it('lance node seul depuis dist/, déjà compilé', () => {
+    expect(seedRunner(true)).toBe('node');
   });
 });
 

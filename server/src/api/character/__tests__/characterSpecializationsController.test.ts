@@ -14,9 +14,17 @@ vi.mock('../usecases', () => ({
 import type { RequestHandler } from 'express';
 
 import * as controller from '../character.controller';
-import { idParam, updateCharacterSpecializationsSchema } from '../character.validation';
+import {
+  classSpecializationsQuery,
+  idParam,
+  updateCharacterSpecializationsSchema,
+} from '../character.validation';
 
-const { validateBody, validateParams } = require('../../../shared/middleware/validate');
+const {
+  validateBody,
+  validateParams,
+  validateQuery,
+} = require('../../../shared/middleware/validate');
 
 async function validatedRequest(req: Record<string, unknown>, middlewares: RequestHandler[]) {
   for (const middleware of middlewares) {
@@ -45,9 +53,31 @@ beforeEach(() => {
 
 describe('GET /1/character/classes/specializations', () => {
   it('serves the reference list', async () => {
+    const req = await validatedRequest({ query: {} }, [validateQuery(classSpecializationsQuery)]);
     const r = res();
-    await controller.listClassSpecializations({} as never, r as never);
+    await controller.listClassSpecializations(req, r as never);
     expect(r.json).toHaveBeenCalledWith({ ok: true });
+    expect(listClassSpecializations).toHaveBeenCalledWith(undefined);
+  });
+
+  it('passes the requested game (SIMS-027)', async () => {
+    const req = await validatedRequest({ query: { game: 'forever' } }, [
+      validateQuery(classSpecializationsQuery),
+    ]);
+    await controller.listClassSpecializations(req, res() as never);
+    expect(listClassSpecializations).toHaveBeenCalledWith('forever');
+  });
+
+  it.each(['classic', 'Forever', ''])('refuses game=%s', async (game) => {
+    await expect(
+      validatedRequest({ query: { game } }, [validateQuery(classSpecializationsQuery)]),
+    ).rejects.toMatchObject({ statusCode: 400 });
+  });
+
+  it('refuses (500) a route mounted without query validation', async () => {
+    await expect(
+      controller.listClassSpecializations({ query: {} } as never, res() as never),
+    ).rejects.toMatchObject({ statusCode: 500, code: 'unvalidated_request' });
   });
 });
 

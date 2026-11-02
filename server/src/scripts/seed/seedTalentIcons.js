@@ -6,7 +6,7 @@
  * manquantes (sauf --force). Le front rend l'icône via
  * https://render.worldofwarcraft.com/<region>/icons/56/<slug>.jpg
  *
- * Usage : node src/scripts/seed/seedTalentIcons.js [region] [--force]
+ * Usage : node --import tsx src/scripts/seed/seedTalentIcons.js [region] [--force]
  */
 const path = require('path');
 const { PrismaClient } = require('@prisma/client');
@@ -17,6 +17,7 @@ const dotenv = require('dotenv');
 dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
 const { fetchFromAPI, regionHost } = require('../../integrations/blizzard/blizzardToken');
+const { blizzardNamespace } = require('../../shared/game/blizzardNamespace');
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const adapter = new PrismaPg(pool);
@@ -42,7 +43,11 @@ async function getSpellIconSlug(spellId) {
 
   for (let attempt = 0; attempt < MAX_RETRIES; attempt += 1) {
     try {
-      const data = await fetchFromAPI(url, { namespace: `static-${REGION}` }, REGION);
+      const data = await fetchFromAPI(
+        url,
+        { namespace: blizzardNamespace('static', REGION) },
+        REGION,
+      );
       const icon = (data.assets || []).find((a) => a.key === 'icon');
       return slugFromUrl(icon?.value);
     } catch (err) {

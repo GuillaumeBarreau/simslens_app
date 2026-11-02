@@ -9,6 +9,7 @@ import axios from 'axios';
 
 import { ensureToken } from '../../integrations/blizzard/blizzardToken';
 import config from '../../shared/config';
+import { blizzardNamespace } from '../../shared/game/blizzardNamespace';
 import type { BlizzardItemData } from './item.types';
 
 /**
@@ -28,7 +29,7 @@ export async function fetchItemFromBlizzard(
     const { token } = await ensureToken(config.bnet.id, config.bnet.secret, region);
 
     const headers = { Authorization: `Bearer ${token}` };
-    const params = { namespace: `static-${region}`, locale: 'en_GB' };
+    const params = { namespace: blizzardNamespace('static', region), locale: 'en_GB' };
 
     const [item, media] = await Promise.all([
       axios.get(`https://${host}/data/wow/item/${itemId}`, { headers, params }),
