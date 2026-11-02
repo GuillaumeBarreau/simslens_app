@@ -7,8 +7,8 @@ import {
   bossesOverCapacity,
   bossMembers,
   countByRole,
-  type RaidMember,
   raidCapacity,
+  type RaidMember,
   splitIntoGroups,
 } from './raidGroups';
 import { RaidGroupsPanel } from './RaidGroupsPanel';

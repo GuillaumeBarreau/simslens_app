@@ -11,8 +11,8 @@ import {
   bossMembers,
   countByRole,
   RAID_ROLES,
-  type RaidMember,
   raidCapacity,
+  type RaidMember,
   splitIntoGroups,
 } from './raidGroups';
 
