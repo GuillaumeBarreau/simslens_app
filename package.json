@@ -77,6 +77,6 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-tailwindcss": "^3.18.2",
     "knip": "^5.88.1",
-    "prettier": "^3.9.10"
+    "prettier": "^3.10.1"
   }
 }
