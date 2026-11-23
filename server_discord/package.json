@@ -13,9 +13,9 @@
   },
   "type": "module",
   "dependencies": {
-    "axios": "^1.21.0",
+    "axios": "^1.21.1",
     "cors": "^2.8.5",
-    "discord.js": "^14.25.0",
+    "discord.js": "^14.28.1",
     "dotenv": "^16.0.0",
     "express": "^5.3.0",
     "winston": "^3.17.0"
@@ -27,7 +27,7 @@
     "eslint-config-prettier": "^9.1.2",
     "eslint-plugin-prettier": "^5.5.7",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "prettier": "^3.9.10",
+    "prettier": "^3.10.1",
     "tsx": "^4.23.15"
   },
   "engines": {
